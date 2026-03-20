@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="블랙홀, 빅뱅, 암흑물질, 외계행성 — 누구나 이해할 수 있는 기초 천문학 지식 플랫폼" />
+  <title>기초 천문 지식 — COSMOS BRIEF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Knowledge page additional styles */
+    .topic-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .knowledge-hero {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(ellipse at center top, rgba(247,201,72,0.06) 0%, transparent 70%);
+    }
+
+    .level-explainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+
+    .level-card {
+      background: var(--gradient-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .level-card .level-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .level-card .level-name { font-weight: 800; font-size: 1rem; margin-bottom: 0.25rem; }
+    .level-card .level-desc { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.6; }
+
+    .level-card.beginner { border-color: rgba(56, 217, 217, 0.2); }
+    .level-card.intermediate { border-color: rgba(79, 142, 247, 0.2); }
+    .level-card.advanced { border-color: rgba(224, 92, 138, 0.2); }
+
+    /* Article detail page */
+    .article-full {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+    }
+
+    .article-full-header {
+      margin-bottom: 2rem;
+    }
+
+    .article-full-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin: 1rem 0;
+    }
+
+    .article-full-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      flex-wrap: wrap;
+    }
+
+    .article-full-body {
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--color-text-secondary);
+    }
+
+    .article-full-body h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .article-full-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .article-full-body p { margin-bottom: 1.25rem; }
+
+    .article-full-body .callout {
+      background: rgba(79, 142, 247, 0.06);
+      border-left: 3px solid var(--color-accent-blue);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .article-full-body .math-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      font-family: 'Georgia', serif;
+      font-size: 1.1rem;
+      text-align: center;
+      color: var(--color-text-primary);
+      margin: 1.5rem 0;
+    }
+
+    .article-full-body .image-block {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--gradient-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      font-size: 4rem;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-full-body .image-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 40% 60%, rgba(79,142,247,0.1) 0%, transparent 60%),
+                  radial-gradient(circle at 60% 40%, rgba(123,94,167,0.1) 0%, transparent 60%);
+    }
+
+    .article-full-body .image-caption {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: -1.5rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .humanistic-close {
+      background: linear-gradient(135deg, rgba(123,94,167,0.1), rgba(79,142,247,0.06));
+      border: 1px solid rgba(123,94,167,0.25);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .humanistic-close .hc-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-violet);
+      margin-bottom: 0.75rem;
+    }
+
+    .humanistic-close p {
+      color: var(--color-text-primary) !important;
+      font-style: italic;
+      line-height: 1.9;
+      margin: 0 !important;
+    }
+
+    /* Back nav */
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      transition: var(--transition-fast);
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav:hover { color: var(--color-accent-blue); }
+
+    @media (max-width: 640px) {
+      .level-explainer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="star-canvas"></canvas>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">🌌</div>
+    <div class="logo-text">COSMOS <span>BRIEF</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">홈</a></li>
+    <li><a href="trends.html" class="nav-link">개발 동향</a></li>
+    <li><a href="knowledge.html" class="nav-link active">천문 지식</a></li>
+    <li><a href="index.html#about" class="nav-link">소개</a></li>
+  </ul>
+  <a href="trends.html" class="nav-cta">개발 동향 →</a>
+  <button class="nav-mobile-toggle" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- ============ KNOWLEDGE HERO ============ -->
+  <div class="knowledge-hero">
+    <div class="hero-badge" style="animation:none;">
+      <span>🌠</span>
+      인류를 위한 천문학
+    </div>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,4rem); margin-bottom:1rem;">
+      기초 <span class="gold-text">천문 지식</span>
+    </h1>
+    <p style="color:var(--color-text-secondary); max-width:680px; margin:0 auto 2.5rem; line-height:1.8;">
+      블랙홀, 빅뱅, 암흑물질, 외계행성… 우주의 언어를 모국어처럼 읽게 될 때까지.
+      처음 만나는 분부터, 한번 더 정리하고 싶은 분까지 모두를 위한 공간입니다.
+    </p>
+
+    <div class="level-explainer reveal">
+      <div class="level-card beginner">
+        <div class="level-icon">⭐</div>
+        <div class="level-name" style="color: var(--color-accent-cyan);">입문</div>
+        <div class="level-desc">천문학을 처음 접하는 분. 비유와 이야기로 개념을 소개합니다.</div>
+      </div>
+      <div class="level-card intermediate">
+        <div class="level-icon">⭐⭐</div>
+        <div class="level-name" style="color: var(--color-accent-blue);">중급</div>
+        <div class="level-desc">기초 물리학적 원리, 공식의 의미, 개념 간 연결을 설명합니다.</div>
+      </div>
+      <div class="level-card advanced">
+        <div class="level-icon">⭐⭐⭐</div>
+        <div class="level-name" style="color: var(--color-accent-rose);">심화</div>
+        <div class="level-desc">수학적 표현, 현재 연구의 전선, 미해결 문제까지 다룹니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOPIC TABS ============ -->
+  <div class="topic-section" style="padding-bottom:0;">
+    <div style="overflow-x:auto; margin-bottom:2rem;">
+      <div class="topic-tabs">
+        <button class="topic-tab active" data-topic="all">전체</button>
+        <button class="topic-tab" data-topic="universe">🌌 우주론</button>
+        <button class="topic-tab" data-topic="stars">⭐ 별과 은하</button>
+        <button class="topic-tab" data-topic="blackhole">⚫ 블랙홀</button>
+        <button class="topic-tab" data-topic="exoplanet">🔭 외계행성</button>
+        <button class="topic-tab" data-topic="solarsystem">☀️ 태양계</button>
+        <button class="topic-tab" data-topic="physics">⚡ 물리 기초</button>
+      </div>
+    </div>
+
+    <!-- Difficulty filter -->
+    <div class="difficulty-filter" style="justify-content:flex-start; margin-bottom:2rem;">
+      <span style="font-size:0.8rem; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em; line-height:36px; margin-right:0.5rem;">난이도:</span>
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn beginner" data-filter="beginner">⭐ 입문</button>
+      <button class="filter-btn intermediate" data-filter="intermediate">⭐⭐ 중급</button>
+      <button class="filter-btn advanced" data-filter="advanced">⭐⭐⭐ 심화</button>
+    </div>
+  </div>
+
+  <!-- ============ KNOWLEDGE CARDS ============ -->
+  <div class="topic-section" style="padding-top:0;">
+    <div class="knowledge-grid reveal">
+
+      <!-- Black Hole - Beginner -->
+      <div class="knowledge-card" data-article="blackhole-shadow" data-difficulty="beginner" data-topic="blackhole" style="cursor:pointer;">
+        <div class="kc-icon">⚫</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span>★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">입문</span>
+        </div>
+        <h3 class="kc-title">블랙홀이란 무엇인가</h3>
+        <p class="kc-desc">빛조차 탈출할 수 없는 시공간의 끝. 블랙홀의 정체와 탄생, 사건 지평선, 슈바르츠실트 반지름까지 처음부터 설명합니다.</p>
+        <div class="kc-footer">
+          <span>📖 8분</span>
+          <span class="article-tag tag-beginner">입문</span>
+        </div>
+      </div>
+
+      <!-- Big Bang - Beginner -->
+      <div class="knowledge-card" data-difficulty="beginner" data-topic="universe" style="cursor:pointer;"
+           onclick="openKnowledge('bigbang')">
+        <div class="kc-icon">💥</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span>★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">입문</span>
+        </div>
+        <h3 class="kc-title">빅뱅 — 우주의 탄생</h3>
+        <p class="kc-desc">138억 년 전, 모든 것이 하나의 점에서 시작됐습니다. 우주가 어떻게 팽창해 왔는지, 그 증거는 무엇인지 쉽게 설명합니다.</p>
+        <div class="kc-footer">
+          <span>📖 10분</span>
+          <span class="article-tag tag-beginner">입문</span>
+        </div>
+      </div>
+
+      <!-- Solar System - Beginner -->
+      <div class="knowledge-card" data-difficulty="beginner" data-topic="solarsystem" style="cursor:pointer;">
+        <div class="kc-icon">☀️</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span>★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">입문</span>
+        </div>
+        <h3 class="kc-title">태양계의 구조와 행성들</h3>
+        <p class="kc-desc">지구는 수성, 금성에 이어 세 번째 행성입니다. 8개 행성의 특징, 소행성대, 카이퍼 벨트까지 태양계 전체를 한눈에.</p>
+        <div class="kc-footer">
+          <span>📖 7분</span>
+          <span class="article-tag tag-beginner">입문</span>
+        </div>
+      </div>
+
+      <!-- Stars - Intermediate -->
+      <div class="knowledge-card" data-difficulty="intermediate" data-topic="stars" style="cursor:pointer;">
+        <div class="kc-icon">⭐</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">중급</span>
+        </div>
+        <h3 class="kc-title">별의 일생과 원소의 기원</h3>
+        <p class="kc-desc">우리 몸의 철, 칼슘은 별의 핵융합에서 만들어졌습니다. H-R 도표, 주계열성, 적색 거성, 초신성, 중성자별까지.</p>
+        <div class="kc-footer">
+          <span>📖 12분</span>
+          <span class="article-tag tag-intermediate">중급</span>
+        </div>
+      </div>
+
+      <!-- Dark Matter - Intermediate -->
+      <div class="knowledge-card" data-difficulty="intermediate" data-topic="universe" style="cursor:pointer;">
+        <div class="kc-icon">🕳️</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">중급</span>
+        </div>
+        <h3 class="kc-title">암흑물질과 암흑에너지</h3>
+        <p class="kc-desc">우주의 95%는 보이지 않습니다. 은하 회전 속도 문제, 중력 렌즈, 우주 가속 팽창이 가리키는 미지의 존재들.</p>
+        <div class="kc-footer">
+          <span>📖 15분</span>
+          <span class="article-tag tag-intermediate">중급</span>
+        </div>
+      </div>
+
+      <!-- Exoplanets - Intermediate -->
+      <div class="knowledge-card" data-difficulty="intermediate" data-topic="exoplanet" style="cursor:pointer;">
+        <div class="kc-icon">🌍</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span>★</span>
+          </div>
+          <span class="difficulty-label">중급</span>
+        </div>
+        <h3 class="kc-title">외계행성 탐색 방법</h3>
+        <p class="kc-desc">수천 광년 밖 행성을 어떻게 발견할까? 통과법, 도플러 분광법, 직접 이미징... 현재 5,500개 이상의 외계행성이 확인됐습니다.</p>
+        <div class="kc-footer">
+          <span>📖 13분</span>
+          <span class="article-tag tag-intermediate">중급</span>
+        </div>
+      </div>
+
+      <!-- General Relativity - Advanced -->
+      <div class="knowledge-card" data-difficulty="advanced" data-topic="physics" style="cursor:pointer;">
+        <div class="kc-icon">🌀</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span class="lit">★</span>
+          </div>
+          <span class="difficulty-label">심화</span>
+        </div>
+        <h3 class="kc-title">일반 상대성 이론과 시공간</h3>
+        <p class="kc-desc">아인슈타인 장 방정식 G_μν = 8πT_μν. 질량이 공간을 어떻게 구부리는지, GPS가 왜 일반 상대성 보정이 필요한지.</p>
+        <div class="kc-footer">
+          <span>📖 20분</span>
+          <span class="article-tag tag-advanced">심화</span>
+        </div>
+      </div>
+
+      <!-- Gravitational Waves - Advanced -->
+      <div class="knowledge-card" data-difficulty="advanced" data-topic="physics" style="cursor:pointer;">
+        <div class="kc-icon">〰️</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span class="lit">★</span>
+          </div>
+          <span class="difficulty-label">심화</span>
+        </div>
+        <h3 class="kc-title">중력파 — 시공간의 파문</h3>
+        <p class="kc-desc">LIGO는 어떻게 양성자 지름의 1/1000 변화를 측정하는가. 중력파의 발생 메커니즘, 검출 원리, 그리고 다중 신호 천문학의 시대.</p>
+        <div class="kc-footer">
+          <span>📖 18분</span>
+          <span class="article-tag tag-advanced">심화</span>
+        </div>
+      </div>
+
+      <!-- Cosmic Inflation - Advanced -->
+      <div class="knowledge-card" data-difficulty="advanced" data-topic="universe" style="cursor:pointer;">
+        <div class="kc-icon">⚡</div>
+        <div class="kc-difficulty">
+          <div class="difficulty-stars">
+            <span class="lit">★</span><span class="lit">★</span><span class="lit">★</span>
+          </div>
+          <span class="difficulty-label">심화</span>
+        </div>
+        <h3 class="kc-title">우주 급팽창 (Inflation) 이론</h3>
+        <p class="kc-desc">빅뱅 직후 10⁻³⁶초 안에 우주는 빛의 속도를 초월해 팽창했습니다. 지평선 문제, 평탄성 문제, 단극자 문제를 어떻게 해결하는가.</p>
+        <div class="kc-footer">
+          <span>📖 22분</span>
+          <span class="article-tag tag-advanced">심화</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Philosophy Section -->
+    <div class="philosophy-section reveal" style="margin-top:4rem;">
+      <p class="philosophy-quote">
+        "천문학을 공부한다는 것은 단지 별을 공부하는 게 아닙니다.<br />
+        그것은 인류가 어디서 왔고, 어디로 가야 하는지를 묻는 일입니다.<br />
+        그리고 그 질문을 할 수 있다는 것 자체가, 우주에서 가장 놀라운 현상입니다."
+      </p>
+      <p class="philosophy-author">— COSMOS BRIEF</p>
+    </div>
+  </div>
+
+  <!-- ============ INLINE ARTICLE: Black Hole ============ -->
+  <div id="article-blackhole" style="display:none; max-width:1280px; margin:0 auto; padding:0 2rem 6rem;">
+    <div class="article-full">
+      <a href="javascript:history.back()" class="back-nav">← 목록으로 돌아가기</a>
+      <div class="article-full-header">
+        <div class="article-tags">
+          <span class="article-tag tag-beginner">입문</span>
+          <span class="article-tag tag-science">블랙홀</span>
+        </div>
+        <h1 class="article-full-title">블랙홀이란 무엇인가<br />— 빛조차 탈출할 수 없는 시공간의 끝</h1>
+        <div class="article-full-meta">
+          <span>📖 읽는 시간 약 8분</span>
+          <span>⭐ 입문 수준</span>
+          <span>🗓 2026년 3월 1일</span>
+        </div>
+      </div>
+      <div class="article-full-body">
+        <div class="image-block">
+          <span>⚫</span>
+          <span style="font-size:0.9rem; color:var(--color-text-muted); position:relative; z-index:1;">M87 블랙홀 — EHT 촬영 기반 시각화</span>
+        </div>
+        <p class="image-caption">▲ 인류 최초로 촬영된 블랙홀 M87*의 그림자 (EHT 팀, 2019). 가운데 어두운 부분이 블랙홀 그림자, 주변 빛의 고리는 사건 지평선 근처에서 휘어진 빛입니다.</p>
+
+        <h2>블랙홀은 '구멍'이 아닙니다</h2>
+        <p>많은 사람이 블랙홀을 마치 우주에 뚫린 구멍처럼 상상합니다. 하지만 블랙홀은 물건이 '빨려 들어가는' 구멍이 아니라, <strong>물질이 극도로 압축된 천체</strong>입니다. 그 중력이 너무 강해 빛의 속도(초속 30만 km)로 달려도 탈출이 불가능한 것이죠.</p>
+
+        <div class="callout">
+          💡 <strong>핵심 개념:</strong> 블랙홀은 시공간이 극단적으로 휘어진 영역입니다. 우리가 눈으로 볼 수 있는 '그림자'는 블랙홀 자체가 아닌, 그 주변에서 휘어지는 빛에 의해 형성된 윤곽입니다.
+        </div>
+
+        <h2>어떻게 만들어지나?</h2>
+        <p>블랙홀이 만들어지는 방법은 여러 가지가 있지만, 가장 잘 알려진 것은 <strong>대질량 별의 죽음</strong>입니다. 태양 질량의 약 25배 이상 되는 별은 핵연료를 모두 소진하면 더 이상 핵융합으로 중력을 버티지 못합니다. 순간적으로 자기 중력에 의해 붕괴하면서 엄청난 폭발(초신성)을 일으키고, 남은 핵이 블랙홀이 됩니다.</p>
+
+        <h2>사건 지평선 (Event Horizon)</h2>
+        <p>블랙홀에는 <strong>사건 지평선</strong>이라는 보이지 않는 경계선이 있습니다. 이 선을 한번 넘으면, 빛의 속도로 달려도 블랙홀 밖으로 나올 수 없습니다. 사건 지평선 안에서 무슨 일이 일어나는지 우리는 원리적으로 알 수 없습니다 — 그 안의 정보는 외부로 전달될 수 없기 때문입니다.</p>
+
+        <h2>슈바르츠실트 반지름</h2>
+        <p>어떤 질량 M의 물체를 블랙홀로 만들기 위한 최소 크기(슈바르츠실트 반지름)는 다음과 같습니다:</p>
+        <div class="math-block">
+          r_s = 2GM / c²
+        </div>
+        <p>여기서 G는 중력 상수, c는 빛의 속도입니다. 이 공식에 따르면:</p>
+        <ul style="padding-left:1.5rem; margin-bottom:1.25rem; color:var(--color-text-secondary);">
+          <li style="margin-bottom:0.5rem;">🌍 지구를 블랙홀로 만들려면? → 지름 약 <strong>9mm</strong> (호두알 크기)</li>
+          <li style="margin-bottom:0.5rem;">☀️ 태양을 블랙홀로 만들려면? → 반지름 약 <strong>3km</strong></li>
+          <li>🌌 은하 중심 초질량 블랙홀? → 태양계 크기 이상</li>
+        </ul>
+
+        <h2>블랙홀은 모든 것을 '빨아들이지' 않습니다</h2>
+        <p>오해가 많은 부분입니다. 만약 태양이 갑자기 같은 질량의 블랙홀로 변한다면, 지구의 공전 궤도는 변하지 않습니다. 중력은 그대로이기 때문입니다. 블랙홀이 위험한 이유는 그 강력한 중력이 집중된 것이지, 주변 모든 것을 강제로 당기기 때문이 아닙니다.</p>
+
+        <div class="humanistic-close">
+          <div class="hc-label">💫 인류에게 전하는 메시지</div>
+          <p>블랙홀은 파괴의 상징처럼 보이지만, 사실 거의 모든 은하의 중심에는 수백만~수십억 태양 질량의 초질량 블랙홀이 존재합니다. 그리고 이 블랙홀들은 은하 전체의 별 형성과 구조를 조율하는 중심축 역할을 합니다. 죽음처럼 보이는 것이 사실 우주 규모의 창조를 이끌고 있습니다. 우주는 언제나 우리의 직관을 배반하며 더 깊은 진실을 보여줍니다 — 그것이 천문학을 공부할 이유입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-text">COSMOS <span>BRIEF</span></div>
+        <p>천문학을 인류 모두의 것으로. 어렵지 않게, 그러나 깊이 있게.</p>
+      </div>
+      <div class="footer-section">
+        <h4>난이도</h4>
+        <ul>
+          <li><a href="#">⭐ 입문 모음</a></li>
+          <li><a href="#">⭐⭐ 중급 모음</a></li>
+          <li><a href="#">⭐⭐⭐ 심화 모음</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>주제별</h4>
+        <ul>
+          <li><a href="#">🌌 우주론</a></li>
+          <li><a href="#">⭐ 별과 은하</a></li>
+          <li><a href="#">⚫ 블랙홀</a></li>
+          <li><a href="#">🔭 외계행성</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>페이지</h4>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="trends.html">개발 동향</a></li>
+          <li><a href="index.html#about">소개</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 COSMOS BRIEF.</span>
+      <span>Made with ❤️ for the curious minds</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ARTICLE MODAL -->
+<div class="modal-overlay" id="article-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="article-tags" id="modal-tags" style="margin-bottom:0.75rem;"></div>
+        <h2 id="modal-title" style="font-size:1.3rem; font-weight:800; line-height:1.35; letter-spacing:-0.02em;"></h2>
+        <div style="display:flex; gap:1rem; margin-top:0.5rem; font-size:0.8rem; color:var(--color-text-muted);">
+          <span id="modal-source"></span>
+          <span id="modal-date"></span>
+        </div>
+      </div>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  function openKnowledge(id) {
+    const data = ARTICLE_DATA[id] || ARTICLE_DATA['blackhole-shadow'];
+    if (data) {
+      const overlay = document.getElementById('article-modal');
+      overlay.querySelector('#modal-tags').innerHTML = (data.tags || []).map(t => `<span class="article-tag tag-${t.cls}">${t.label}</span>`).join('');
+      overlay.querySelector('#modal-title').textContent = data.title;
+      overlay.querySelector('#modal-source').textContent = data.source;
+      overlay.querySelector('#modal-date').textContent = data.date;
+      overlay.querySelector('#modal-body').innerHTML = data.body;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+</script>
+</body>
+</html>
