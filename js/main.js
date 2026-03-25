@@ -229,7 +229,450 @@
 })();
 
 /* ============================================
-   ARTICLE DATA (추후 CMS/API로 대체 예정)
+   KNOWLEDGE HUB DATA
+   카테고리 → 소주제 → 티저 → 글
+   ============================================ */
+const KNOWLEDGE_HUB = [
+  {
+    id: "solar",
+    name: "태양계",
+    icon: "☀️",
+    cls: "hub-solar",
+    desc: "우리가 살고 있는 우주의 집",
+    count: "16개 주제",
+    items: [
+      { id: "solar-overview", icon: "🌌", name: "태양계 개요", preview: "태양계는 어떻게 생겼을까?",
+        teaser: "우리 태양계는 수십억 년 전 거대한 <span class='hook-highlight'>성간 가스 구름</span>이 중력으로 뭉쳐 탄생했어요. 태양 하나와 행성 8개, 수백만 개의 소행성과 혜성으로 이루어진 이 거대한 시스템 — <span class='hook-gold'>우리는 그 안에 있어요.</span>" },
+      { id: "sun", icon: "☀️", name: "태양", preview: "지구에서 1억 5천만 km 떨어진 별",
+        teaser: "지금 이 순간에도 태양 중심에서는 <span class='hook-highlight'>매초 6억 톤의 수소가 헬륨으로 변환</span>되고 있어요. 그 에너지가 지구까지 닿는 데 걸리는 시간은 단 8분 — 그 빛이 지금 당신의 피부를 따뜻하게 하고 있죠. <span class='hook-gold'>태양이 없으면 지구의 생명도 없어요.</span>" },
+      { id: "mercury", icon: "⚫", name: "수성", preview: "태양에 가장 가까운 행성",
+        teaser: "수성은 태양에서 가장 가까운 행성이지만, <span class='hook-highlight'>가장 뜨거운 행성은 아니에요</span>. 낮에는 430°C, 밤에는 -180°C — 하루 사이 온도 차가 600도! <span class='hook-gold'>왜 그럴까요? 그 비밀은 대기에 있어요.</span>" },
+      { id: "venus", icon: "🟡", name: "금성", preview: "지구의 '쌍둥이'이자 지옥별",
+        teaser: "금성은 크기도 지구와 비슷하고 질량도 비슷해서 '쌍둥이 행성'이라 불려요. 하지만 표면 온도가 <span class='hook-highlight'>460°C</span> — 납도 녹아내리는 온도예요. <span class='hook-gold'>왜 지구와 이렇게 달라졌을까요? 기후변화의 극단적 사례를 금성에서 배울 수 있어요.</span>" },
+      { id: "earth", icon: "🌍", name: "지구", preview: "지금까지 알려진 유일한 생명의 행성",
+        teaser: "우리가 살고 있는 지구, 사실 얼마나 특별한지 생각해본 적 있나요? <span class='hook-highlight'>액체 물이 존재하는 행성</span>은 우리가 아는 한 지구뿐이에요. 우주적 관점에서 지구는 한 줄기 빛 속의 <span class='hook-gold'>아주 작은 창백한 점(Pale Blue Dot)</span>입니다." },
+      { id: "mars", icon: "🔴", name: "화성", preview: "인류가 100년 뒤 마을을 지을 곳",
+        teaser: "화성은 지구와 같이 <span class='hook-highlight'>사계절이 있고 하루가 약 24시간 37분</span>이에요. 거대한 화산, 깊은 협곡, 그리고 과거에 존재했던 강의 흔적들 — 우리가 미래에 <span class='hook-gold'>이웃 행성에 마을을 짓고 여행을 갈 수 있을지도 몰라요.</span> 지금 바로 탐사 중인 화성의 이야기를 들어볼까요?" },
+      { id: "jupiter", icon: "🪐", name: "목성", preview: "태양계 최대 행성, 지구의 1300배",
+        teaser: "목성의 대적점(Great Red Spot)은 <span class='hook-highlight'>300년 넘게 지속되는 폭풍</span>이에요. 그 크기가 지구 두 개를 합친 것보다 크죠. 목성이 없었다면 수많은 소행성이 지구에 충돌했을 거라는 이야기도 있어요. <span class='hook-gold'>목성은 우리의 보호막이었을까요?</span>" },
+      { id: "saturn", icon: "🪐", name: "토성", preview: "고리의 왕, 태양계의 보석",
+        teaser: "토성의 고리는 얼음과 암석으로 이루어진 수십만 개의 조각들이에요. 두께는 놀랍도록 얇아서 <span class='hook-highlight'>평균 10m 정도</span>밖에 안 돼요. 하지만 넓이는 지구~달 거리의 70%! <span class='hook-gold'>이 아름다운 고리는 앞으로 1억 년 후면 사라질 수도 있어요.</span>" },
+      { id: "uranus", icon: "🔵", name: "천왕성", preview: "옆으로 누워 도는 행성",
+        teaser: "천왕성은 <span class='hook-highlight'>자전축이 98도 기울어져</span> 옆으로 굴러다니듯 공전해요. 왜 이럴까요? 옛날 거대한 천체와 충돌했기 때문이에요. 그리고 메탄 때문에 아름다운 <span class='hook-gold'>청록색</span>을 띠고 있죠." },
+      { id: "neptune", icon: "🔵", name: "해왕성", preview: "태양계 끝의 푸른 거인",
+        teaser: "해왕성은 <span class='hook-highlight'>직접 본 적이 없이 수학으로만 예측해서 발견한 행성</span>이에요. 최강 바람이 시속 2,000km — 지구 최강 태풍의 10배! <span class='hook-gold'>수학이 행성을 발견한 이야기, 정말 신기하지 않나요?</span>" },
+      { id: "dwarf", icon: "⚪", name: "왜소행성", preview: "명왕성은 왜 행성에서 쫓겨났을까?",
+        teaser: "2006년, 명왕성은 갑자기 행성 지위를 잃었어요. 과학자들이 규칙을 바꿨거든요. <span class='hook-highlight'>행성이 되려면 3가지 조건</span>을 모두 만족해야 해요. 명왕성은 그 중 하나를 못 채웠죠. <span class='hook-gold'>과학은 언제나 새로운 발견 앞에서 기준을 다시 세워요.</span>" },
+      { id: "asteroid", icon: "🪨", name: "소행성", preview: "지구를 위협하는 우주의 돌덩이들",
+        teaser: "태양계 초창기 행성이 만들어지고 남은 찌꺼기들 — 그것이 소행성이에요. <span class='hook-highlight'>현재 NASA는 잠재적 위험 소행성 수천 개를 추적 중</span>이에요. 6600만 년 전 공룡 멸종도 소행성 충돌로 일어났죠. <span class='hook-gold'>우리는 지금 어떻게 지구를 지킬 준비를 하고 있을까요?</span>" },
+      { id: "comet", icon: "☄️", name: "혜성", preview: "꼬리 달린 천체의 비밀",
+        teaser: "혜성은 얼음과 먼지로 된 천체예요. 태양에 가까워지면 얼음이 증발하며 <span class='hook-highlight'>수백만 km의 빛나는 꼬리</span>를 만들어요. 지구의 물이 사실 혜성이 가져온 것일 수도 있다는 가설도 있어요. <span class='hook-gold'>생명의 씨앗을 운반한 별똥별?</span>" },
+      { id: "meteor", icon: "🌠", name: "유성", preview: "별똥별의 진짜 정체",
+        teaser: "소원을 빌게 하는 별똥별! 사실 유성은 <span class='hook-highlight'>대기와 마찰하며 타는 작은 돌가루</span>예요. 대부분 완두콩만 한 크기죠. 매년 여름 페르세우스자리 유성우처럼 <span class='hook-gold'>수십 개씩 쏟아지는 장관을 볼 수 있어요.</span>" },
+      { id: "kuiper", icon: "💫", name: "카이퍼 벨트", preview: "해왕성 너머의 신비로운 영역",
+        teaser: "해왕성 궤도 너머, 수십억 개의 얼음 천체들이 태양을 도는 영역 — 그것이 카이퍼 벨트예요. 명왕성도 여기 살아요. <span class='hook-highlight'>뉴허라이즌스 탐사선이 2015년 처음으로 이 영역을 탐사</span>했죠. <span class='hook-gold'>우주의 냉동 창고에는 무엇이 있을까요?</span>" },
+      { id: "oort", icon: "🌐", name: "오르트 구름", preview: "태양계의 진짜 끝",
+        teaser: "가수 <span class='hook-highlight'>윤하의 노래 제목으로도 유명한 오르트 구름</span>은 태양계 끝자락, 수많은 얼음덩어리와 바위로 된 천체들이 사는 미지의 영역이에요. 윤하의 노래는 태양계 영역을 탐사하는 보이저 탐사선의 희망과 꿈을 담은 노래예요. <span class='hook-gold'>태양계의 진짜 경계는 어디일까요?</span>" },
+    ]
+  },
+  {
+    id: "celestial",
+    name: "천체",
+    icon: "⭐",
+    cls: "hub-celestial",
+    desc: "별에서 은하까지, 우주의 구성원들",
+    count: "3개 주제",
+    items: [
+      { id: "star", icon: "⭐", name: "항성", preview: "스스로 빛나는 별들",
+        teaser: "밤하늘의 별들은 모두 <span class='hook-highlight'>스스로 핵융합으로 빛을 만드는 항성</span>이에요. 우리 은하에만 2000억~4000억 개의 항성이 있어요. 그 중 가장 가까운 것은 4.2광년 떨어진 프록시마 센타우리. <span class='hook-gold'>빛의 속도로 달려도 4년이 걸리는 곳에 이웃이 있어요.</span>" },
+      { id: "nebula", icon: "🌫️", name: "성운·성단", preview: "별이 태어나는 우주의 요람",
+        teaser: "성운은 우주의 <span class='hook-highlight'>가스와 먼지가 모인 거대한 구름</span>이에요. 허블 망원경이 찍은 '창조의 기둥' 사진을 본 적 있나요? 그 안에서 지금 이 순간에도 새로운 별들이 태어나고 있어요. <span class='hook-gold'>우주는 지금도 멈추지 않고 창조 중이에요.</span>" },
+      { id: "galaxy", icon: "🌌", name: "은하", preview: "수천억 개 별들의 도시",
+        teaser: "우리 은하 '밀키웨이'에는 <span class='hook-highlight'>3000억 개의 별</span>이 있어요. 그리고 관측 가능한 우주에는 이런 은하가 2조 개! 모든 은하의 중심에는 초질량 블랙홀이 있어요. <span class='hook-gold'>우리는 2조 개 도시 중 하나의 변두리 동네에 살고 있어요.</span>" },
+    ]
+  },
+  {
+    id: "astrophysics",
+    name: "천체물리",
+    icon: "⚡",
+    cls: "hub-astrophysics",
+    desc: "우주를 이해하는 물리학의 언어",
+    count: "9개 주제",
+    items: [
+      { id: "distance", icon: "📏", name: "행성 거리", preview: "우주 거리를 어떻게 잴까?",
+        teaser: "자로 잴 수 없는 거리를 어떻게 알까요? 천문학자들은 <span class='hook-highlight'>빛이 이동하는 시간, 시차, 세페이드 변광성</span> 등 여러 '우주 거리 사다리'를 써요. <span class='hook-gold'>수십억 광년 거리를 측정하는 방법이 있다는 게 놀랍지 않나요?</span>" },
+      { id: "brightness", icon: "💡", name: "밝기", preview: "별의 밝기를 재는 방법",
+        teaser: "고대 그리스 히파르코스는 맨눈으로 별 밝기를 1~6등급으로 나눴어요. 현대에도 이 시스템을 써요! <span class='hook-highlight'>1등급 차이가 밝기 2.5배 차이</span>예요. <span class='hook-gold'>2000년 전 사람들이 만든 척도가 지금도 쓰인다는 사실!</span>" },
+      { id: "spectrum", icon: "🌈", name: "스펙트럼", preview: "빛을 쪼개면 별의 성분이 보인다",
+        teaser: "빨주노초파남보, 맞아요 무지개의 색상이죠! 천문학에서는 빛 연구가 굉장히 중요한데, 이를 고급 장비로 분해해서 보는 걸 <span class='hook-highlight'>스펙트럼</span>이라고 해요. 스펙트럼을 보면 어떤 별에 어떤 물질이 있는지 알 수 있죠. <span class='hook-gold'>하지만 그게 다가 아니에요! 별의 속도까지 알 수 있답니다!</span>" },
+      { id: "color-temp", icon: "🌡️", name: "색깔과 온도", preview: "파란 별이 빨간 별보다 뜨겁다",
+        teaser: "별의 색깔은 온도를 나타내요. <span class='hook-highlight'>빨간 별은 약 3000°C, 파란 별은 30000°C 이상</span>이에요. 우리 태양은 노란색으로 약 5500°C. 색깔만 봐도 온도를 알 수 있어요. <span class='hook-gold'>별은 색깔로 말하고 있었어요.</span>" },
+      { id: "position", icon: "🗺️", name: "별의 위치", preview: "하늘을 지도로 만드는 방법",
+        teaser: "천문학자들은 하늘을 <span class='hook-highlight'>적경·적위</span>로 나눠서 별의 위치를 정확히 표시해요. 지구의 위도·경도와 비슷한 개념이죠. <span class='hook-gold'>밤하늘 전체를 지도로 만든 사람들의 이야기를 들어볼까요?</span>" },
+      { id: "star-distance", icon: "🔭", name: "별의 거리", preview: "시차로 별까지 거리를 재다",
+        teaser: "손가락을 눈 앞에 세우고 한쪽 눈씩 감으면 손가락이 움직여 보이죠? 이것이 <span class='hook-highlight'>시차</span>의 원리예요. 천문학자들도 같은 방법으로 가까운 별까지 거리를 측정해요. <span class='hook-gold'>일상의 원리가 우주를 측정하는 데 쓰인다는 사실!</span>" },
+      { id: "dynamics", icon: "🔄", name: "역학", preview: "케플러와 뉴턴이 밝힌 천체의 운동",
+        teaser: "케플러는 행성이 <span class='hook-highlight'>타원 궤도</span>로 공전한다는 걸 밝혔고, 뉴턴은 그 이유를 중력으로 설명했어요. 뉴턴이 사과 나무 아래서 떠올린 아이디어가 우주선 궤도 계산에 쓰여요. <span class='hook-gold'>사과 한 개가 우주 시대를 열었어요.</span>" },
+      { id: "theory", icon: "📐", name: "이론", preview: "상대성 이론부터 양자역학까지",
+        teaser: "아인슈타인은 <span class='hook-highlight'>E=mc²</span> 하나로 질량과 에너지가 같다는 걸 보였어요. 이 공식이 별이 빛나는 이유를 설명해줘요. <span class='hook-gold'>가장 간단한 공식이 가장 많은 것을 설명한다는 게 천재성의 증거예요.</span>" },
+      { id: "au", icon: "📡", name: "천문단위", preview: "우주 거리를 재는 자",
+        teaser: "1천문단위(AU) = 지구에서 태양까지 거리 = 약 1억 5천만 km. <span class='hook-highlight'>명왕성은 태양에서 40AU</span> 떨어져 있어요. 오르트 구름은 10만AU! <span class='hook-gold'>이 엄청난 거리를 다루기 위해 천문학자들이 만든 단위, 지금부터 배워봐요.</span>" },
+    ]
+  },
+  {
+    id: "exploration",
+    name: "우주탐사",
+    icon: "🚀",
+    cls: "hub-exploration",
+    desc: "인류가 우주로 뻗어나간 역사",
+    count: "5개 주제",
+    items: [
+      { id: "rocket", icon: "🚀", name: "로켓의 발달", preview: "폭죽에서 스타십까지",
+        teaser: "최초의 로켓은 중국의 <span class='hook-highlight'>불화살</span>이었어요. 지금은 재사용 가능한 로켓으로 화성을 꿈꿔요. 100년 만에 하늘을 가로질러 우주까지 — <span class='hook-gold'>인류의 가장 빠른 기술 진보 이야기를 들어볼까요?</span>" },
+      { id: "shuttle", icon: "🛸", name: "우주왕복선", preview: "날개 달린 우주선의 시대",
+        teaser: "우주왕복선은 <span class='hook-highlight'>30년간 135번 비행</span>하며 허블 망원경을 수리하고 ISS를 건설했어요. 2011년 마지막 비행 후 은퇴했지만, 그 유산은 지금도 이어지고 있어요. <span class='hook-gold'>챌린저와 컬럼비아의 비극도 기억해야 할 역사예요.</span>" },
+      { id: "solar-explore", icon: "🛰️", name: "태양계 탐사", preview: "보이저에서 뉴허라이즌스까지",
+        teaser: "1977년 발사된 보이저 1호는 지금도 날아가고 있어요. 태양에서 <span class='hook-highlight'>225억 km</span> — 인류가 만든 가장 멀리 간 물체예요. <span class='hook-gold'>45년 된 탐사선이 아직도 신호를 보내오고 있다는 것, 감동적이지 않나요?</span>" },
+      { id: "exoplanet-search", icon: "🔍", name: "외계행성 찾기", preview: "수천 광년 밖 행성을 어떻게 찾나?",
+        teaser: "지금까지 발견된 외계행성은 <span class='hook-highlight'>5,500개 이상</span>이에요. 별빛이 행성에 가려져 잠깐 어두워지는 '통과법'으로 발견해요. <span class='hook-gold'>수천 광년 밖의 세계를 빛의 깜빡임으로 찾아내는 방법이 궁금하지 않나요?</span>" },
+      { id: "alien", icon: "👾", name: "외계생명체 찾기", preview: "우리는 혼자일까?",
+        teaser: "드레이크 방정식에 따르면 우리 은하에만 수천~수백만 개의 문명이 있을 수 있어요. 하지만 아직 아무 신호도 받지 못했죠 — <span class='hook-highlight'>이것을 '페르미 역설'</span>이라 해요. <span class='hook-gold'>광대한 우주에서 우리는 왜 혼자인 것처럼 느껴질까요?</span>" },
+    ]
+  },
+  {
+    id: "constellation",
+    name: "별자리",
+    icon: "✨",
+    cls: "hub-constellation",
+    desc: "신화와 계절이 담긴 밤하늘의 그림",
+    count: "5개 주제",
+    items: [
+      { id: "const-origin", icon: "📜", name: "기원과 상식", preview: "별자리는 누가 처음 만들었을까?",
+        teaser: "별자리는 <span class='hook-highlight'>약 5000년 전 메소포타미아</span>에서 시작됐어요. 농사 시기를 알기 위한 달력이었죠. 현재 공식 별자리는 88개예요. <span class='hook-gold'>고대인들의 지혜가 오늘날 천문학의 기초가 됐어요.</span>" },
+      { id: "const-north", icon: "⬆️", name: "북반구 별자리", preview: "오리온, 큰곰, 작은곰자리",
+        teaser: "북두칠성을 알고 있나요? 그건 큰곰자리의 일부예요. <span class='hook-highlight'>북극성은 작은곰자리</span>에 있고, 항상 북쪽을 가리켜요. 나침반이 없던 시절 별이 GPS였죠. <span class='hook-gold'>오늘 밤 맨눈으로 찾아볼 수 있는 별자리를 소개해 드릴게요.</span>" },
+      { id: "const-south", icon: "⬇️", name: "남반구 별자리", preview: "호주에서 보이는 밤하늘",
+        teaser: "남반구에서는 <span class='hook-highlight'>남십자성</span>이 보여요. 밤하늘의 구성이 완전히 달라지죠. 지구 반대편의 밤하늘을 상상해본 적 있나요? <span class='hook-gold'>같은 우주, 다른 시선으로 본다면 어떨까요?</span>" },
+      { id: "const-legend", icon: "🧝", name: "별자리 전설", preview: "그리스 로마 신화와 별자리",
+        teaser: "오리온은 사냥꾼이었고, 카시오페이아는 허영심 강한 왕비였죠. <span class='hook-highlight'>그리스 로마 신화의 주인공들이 밤하늘에 새겨졌어요.</span> 별자리를 알면 신화가 더 재미있고, 신화를 알면 별자리가 더 생생해요. <span class='hook-gold'>밤하늘이 하나의 거대한 신화책이에요.</span>" },
+      { id: "const-east", icon: "🐉", name: "동양 별자리", preview: "용과 봉황이 사는 동쪽 하늘",
+        teaser: "서양 별자리와 달리 동양에서는 하늘을 <span class='hook-highlight'>28개 별자리(이십팔수)</span>로 나눴어요. 청룡, 백호, 주작, 현무 사신이 하늘을 지켜요. <span class='hook-gold'>같은 별인데 전혀 다른 이야기가 담겨있어요. 문화가 다르면 우주도 달리 보여요.</span>" },
+    ]
+  },
+  {
+    id: "telescope",
+    name: "망원경",
+    icon: "🔭",
+    cls: "hub-telescope",
+    desc: "인류의 눈을 우주로 확장한 도구",
+    count: "1개 주제",
+    items: [
+      { id: "telescope-history", icon: "🔭", name: "망원경의 역사와 종류", preview: "갈릴레오부터 JWST까지",
+        teaser: "1609년 갈릴레오가 처음 망원경으로 밤하늘을 봤을 때, 달에 산이 있고 목성에 위성이 있다는 걸 알았어요. <span class='hook-highlight'>그 하나의 행동이 코페르니쿠스 혁명을 완성</span>했어요. 지금의 JWST는 138억 광년 밖을 보고 있죠. <span class='hook-gold'>인류의 눈은 얼마나 멀리까지 닿을까요?</span>" },
+    ]
+  },
+  {
+    id: "astronomer",
+    name: "천문학자",
+    icon: "👩‍🔬",
+    cls: "hub-astronomer",
+    desc: "별을 연구한 위대한 인물들",
+    count: "1개 주제",
+    items: [
+      { id: "famous-astronomers", icon: "👨‍🏫", name: "위대한 천문학자들", preview: "코페르니쿠스부터 호킹까지",
+        teaser: "<span class='hook-highlight'>갈릴레오는 종교재판을 받으면서도 '그래도 지구는 돈다'</span>고 했어요. 허블은 우주가 팽창한다는 걸 발견했고, 호킹은 블랙홀도 빛을 낼 수 있다는 걸 증명했어요. <span class='hook-gold'>진리를 찾기 위해 온 삶을 바친 사람들의 이야기는 어느 소설보다 드라마틱해요.</span>" },
+    ]
+  }
+];
+
+/* ---- Knowledge Hub 렌더링 ---- */
+(function renderKnowledgeHub() {
+  const hub = document.getElementById('knowledge-hub');
+  if (!hub) return;
+
+  hub.innerHTML = KNOWLEDGE_HUB.map((cat, i) => `
+    <div class="hub-card ${cat.cls}" data-cat="${cat.id}" style="animation-delay:${i * 0.07}s">
+      <div class="hub-icon-wrap float">${cat.icon}</div>
+      <div class="hub-card-name">${cat.name}</div>
+      <div class="hub-card-count">${cat.count}</div>
+    </div>
+  `).join('');
+
+  hub.querySelectorAll('.hub-card').forEach(card => {
+    card.addEventListener('click', () => showSubcategory(card.dataset.cat));
+  });
+})();
+
+/* ---- 서브카테고리 패널 ---- */
+function showSubcategory(catId) {
+  const cat = KNOWLEDGE_HUB.find(c => c.id === catId);
+  if (!cat) return;
+
+  const panel = document.getElementById('subcategory-panel');
+  const hub = document.getElementById('knowledge-hub-wrap');
+  if (!panel || !hub) return;
+
+  hub.style.display = 'none';
+
+  panel.innerHTML = `
+    <div class="subcategory-breadcrumb" onclick="showHub()">
+      ← 지식 카테고리 &nbsp;/&nbsp; <span>${cat.name}</span>
+    </div>
+    <div class="subcategory-title-bar">
+      <div class="cat-icon-lg" style="background:var(--gradient-card); border:1px solid var(--color-border);">${cat.icon}</div>
+      <div>
+        <h2>${cat.name}</h2>
+        <p>${cat.desc}</p>
+      </div>
+    </div>
+    <div class="subcategory-grid">
+      ${cat.items.map(item => `
+        <div class="subcat-item" data-item="${item.id}" data-cat="${cat.id}">
+          <span class="subcat-icon">${item.icon}</span>
+          <div class="subcat-info">
+            <div class="subcat-name">${item.name}</div>
+            <div class="subcat-preview">${item.preview}</div>
+          </div>
+          <span class="subcat-arrow">→</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  panel.classList.add('active');
+
+  panel.querySelectorAll('.subcat-item').forEach(el => {
+    el.addEventListener('click', () => showTeaser(el.dataset.cat, el.dataset.item));
+  });
+}
+
+function showHub() {
+  const panel = document.getElementById('subcategory-panel');
+  const hub = document.getElementById('knowledge-hub-wrap');
+  if (panel) panel.classList.remove('active');
+  if (hub) hub.style.display = '';
+}
+
+/* ---- Teaser Modal ---- */
+function showTeaser(catId, itemId) {
+  const cat = KNOWLEDGE_HUB.find(c => c.id === catId);
+  if (!cat) return;
+  const item = cat.items.find(i => i.id === itemId);
+  if (!item) return;
+
+  const overlay = document.getElementById('teaser-overlay');
+  if (!overlay) return;
+
+  overlay.querySelector('#teaser-icon').textContent = item.icon;
+  overlay.querySelector('#teaser-badge').textContent = cat.name;
+  overlay.querySelector('#teaser-name').textContent = item.name;
+  overlay.querySelector('#teaser-hook').innerHTML = item.teaser;
+  overlay.querySelector('#btn-deep-dive').onclick = () => {
+    closeTeaserModal();
+    openReader(catId, itemId);
+  };
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTeaserModal() {
+  const overlay = document.getElementById('teaser-overlay');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ---- Reader (Deep Dive) ---- */
+function openReader(catId, itemId) {
+  const data = KNOWLEDGE_ARTICLES[itemId] || generatePlaceholderArticle(catId, itemId);
+  const overlay = document.getElementById('reader-overlay');
+  if (!overlay) return;
+
+  overlay.querySelector('#reader-tags').innerHTML = (data.tags || []).map(t =>
+    `<span class="article-tag tag-${t.cls}">${t.label}</span>`).join('');
+  overlay.querySelector('#reader-title').textContent = data.title;
+  overlay.querySelector('#reader-meta').innerHTML = `
+    <span>📖 읽는 시간 ${data.readTime || '10'}분</span>
+    <span>${data.difficulty || '⭐ 입문'}</span>
+    <span>🗓 ${data.date || '2026년 3월'}</span>
+  `;
+  overlay.querySelector('#reader-body').innerHTML = data.body;
+  overlay.querySelector('#reader-related').innerHTML = generateRelated(catId, itemId);
+
+  overlay.classList.add('open');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+
+  // Progress bar
+  const bar = overlay.querySelector('.reader-progress');
+  overlay.addEventListener('scroll', () => {
+    const pct = overlay.scrollTop / (overlay.scrollHeight - overlay.clientHeight) * 100;
+    if (bar) bar.style.width = pct + '%';
+  });
+}
+
+function closeReader() {
+  const overlay = document.getElementById('reader-overlay');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function generateRelated(catId, itemId) {
+  const cat = KNOWLEDGE_HUB.find(c => c.id === catId);
+  if (!cat) return '';
+  const others = cat.items.filter(i => i.id !== itemId).slice(0, 4);
+  if (!others.length) return '';
+  return `<h3>이것도 읽어보세요</h3><div class="related-grid">` +
+    others.map(o => `
+      <div class="related-card" onclick="showTeaser('${catId}', '${o.id}')">
+        <div class="rel-icon">${o.icon}</div>
+        <div class="rel-name">${o.name}</div>
+        <div class="rel-cat">${cat.name} · ${o.preview}</div>
+      </div>`).join('') + `</div>`;
+}
+
+function generatePlaceholderArticle(catId, itemId) {
+  const cat = KNOWLEDGE_HUB.find(c => c.id === catId);
+  const item = cat ? cat.items.find(i => i.id === itemId) : null;
+  return {
+    title: item ? item.name : '준비 중',
+    tags: [{ cls: 'beginner', label: '입문' }],
+    readTime: '10',
+    difficulty: '⭐ 입문',
+    date: '2026년',
+    body: `<p>이 주제의 심층 글은 현재 작성 중이에요. 곧 업데이트될 예정입니다! 🚀</p>
+    <div class="callout"><span class="callout-icon">📌 Coming Soon</span>양질의 콘텐츠를 위해 열심히 준비 중이에요. 다른 주제를 먼저 탐험해보시겠어요?</div>
+    <div class="humanistic-close"><span class="hc-label">💫 잠깐, 생각해보기</span><p>천문학을 공부한다는 건 우주의 광대함 앞에서 겸손해지는 연습이에요. 아직 알지 못하는 것들이 많다는 게, 오히려 설레지 않나요?</p></div>`
+  };
+}
+
+/* ---- TTS (Text to Speech) Stub ---- */
+(function ttsStub() {
+  let ttsActive = false;
+  let utterance = null;
+  let ttsBar;
+
+  function getTtsBtn() { return document.getElementById('btn-tts'); }
+  function getTtsBar() { return document.getElementById('tts-bar'); }
+
+  window.toggleTTS = function() {
+    if (!ttsActive) {
+      ttsBar = getTtsBar();
+      if (ttsBar) ttsBar.classList.add('open');
+      ttsActive = true;
+      const btn = getTtsBtn();
+      if (btn) { btn.classList.add('active'); btn.innerHTML = '⏹ 음성 중지'; }
+      startTTS();
+    } else {
+      stopTTS();
+    }
+  };
+
+  function startTTS() {
+    if (!window.speechSynthesis) {
+      showLoginPrompt('이 브라우저는 음성 기능을 지원하지 않아요.');
+      ttsActive = false; return;
+    }
+    const body = document.getElementById('reader-body');
+    if (!body) return;
+    const text = body.innerText.slice(0, 2000);
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ko-KR';
+    utterance.rate = 1.0;
+    window.speechSynthesis.speak(utterance);
+
+    // Progress simulate
+    let prog = 0;
+    const fill = document.getElementById('tts-fill');
+    const timer = setInterval(() => {
+      prog += 0.5;
+      if (fill) fill.style.width = Math.min(prog, 100) + '%';
+      if (prog >= 100 || !ttsActive) clearInterval(timer);
+    }, 300);
+
+    utterance.onend = () => stopTTS();
+  }
+
+  function stopTTS() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    ttsActive = false;
+    const ttsBar = getTtsBar();
+    if (ttsBar) ttsBar.classList.remove('open');
+    const btn = getTtsBtn();
+    if (btn) { btn.classList.remove('active'); btn.innerHTML = '🔊 듣기'; }
+    const fill = document.getElementById('tts-fill');
+    if (fill) fill.style.width = '0%';
+  }
+
+  window.setTTSSpeed = function(sel) {
+    if (utterance && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      utterance.rate = parseFloat(sel.value);
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+})();
+
+/* ---- Like / Save (로그인 필요) Stub ---- */
+let userLikes = JSON.parse(localStorage.getItem('cb_likes') || '{}');
+let userSaves = JSON.parse(localStorage.getItem('cb_saves') || '{}');
+let isLoggedIn = false; // 추후 실제 인증으로 교체
+
+window.toggleLike = function(articleId) {
+  if (!isLoggedIn) { showLoginPrompt('좋아요 기능은 로그인 후 이용할 수 있어요 🔐'); return; }
+  userLikes[articleId] = !userLikes[articleId];
+  localStorage.setItem('cb_likes', JSON.stringify(userLikes));
+  const btn = document.getElementById('btn-like');
+  if (btn) btn.classList.toggle('liked', userLikes[articleId]);
+};
+
+window.toggleSave = function(articleId) {
+  if (!isLoggedIn) { showLoginPrompt('스크랩 기능은 로그인 후 이용할 수 있어요 🔐'); return; }
+  userSaves[articleId] = !userSaves[articleId];
+  localStorage.setItem('cb_saves', JSON.stringify(userSaves));
+  const btn = document.getElementById('btn-save');
+  if (btn) btn.classList.toggle('saved', userSaves[articleId]);
+};
+
+/* ---- Login Prompt Toast ---- */
+function showLoginPrompt(msg) {
+  let prompt = document.getElementById('login-prompt');
+  if (!prompt) {
+    prompt = document.createElement('div');
+    prompt.id = 'login-prompt';
+    prompt.className = 'login-prompt';
+    document.body.appendChild(prompt);
+  }
+  prompt.textContent = msg;
+  prompt.classList.add('show');
+  setTimeout(() => prompt.classList.remove('show'), 3000);
+}
+
+/* ---- Algorithm Feed 렌더링 (홈/지식 페이지) ---- */
+(function renderAlgoFeed() {
+  const feed = document.getElementById('algo-feed');
+  if (!feed) return;
+
+  // 모든 아이템을 섞어서 추천 형태
+  const allItems = KNOWLEDGE_HUB.flatMap(cat =>
+    cat.items.map(item => ({ ...item, catId: cat.id, catName: cat.name }))
+  );
+  const shuffled = allItems.sort(() => Math.random() - 0.5).slice(0, 6);
+
+  feed.innerHTML = shuffled.map(item => `
+    <div class="algo-item" onclick="showTeaser('${item.catId}', '${item.id}')">
+      <span class="algo-icon">${item.icon}</span>
+      <div class="algo-info">
+        <div class="algo-name">${item.name}</div>
+        <div class="algo-meta">${item.catName} · ${item.preview}</div>
+      </div>
+      <span class="algo-badge">추천</span>
+    </div>
+  `).join('');
+})();
+
+/* ============================================
+   ARTICLE DATA (개발동향 모달용)
    ============================================ */
 const ARTICLE_DATA = {
   "starship-ift6": {
