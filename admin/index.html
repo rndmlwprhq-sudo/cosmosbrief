@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛰 관리자 — COSMOS BRIEF 뉴스 허브</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08080f;
+      --surf: #111119;
+      --surf2: #17172a;
+      --border: rgba(255,255,255,0.08);
+      --border-hi: rgba(126,232,232,0.4);
+      --text: #e8e8f0;
+      --muted: #6a6a88;
+      --cyan: #7ee8e8;
+      --gold: #f7c948;
+      --green: #56e0a0;
+      --red: #e05c5c;
+      --blue: #4f8ef7;
+      --r: 10px;
+      --r-sm: 7px;
+    }
+    body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; min-height:100vh; }
+    a { color:var(--cyan); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    /* ── Layout ── */
+    .shell { display:grid; grid-template-columns:260px 1fr; grid-template-rows:52px 1fr; height:100vh; }
+
+    /* Topbar */
+    .topbar {
+      grid-column:1/-1;
+      background:var(--surf); border-bottom:1px solid var(--border);
+      display:flex; align-items:center; gap:1rem; padding:0 1.5rem;
+    }
+    .topbar-logo { font-weight:900; font-size:0.9rem; color:var(--cyan); letter-spacing:0.05em; }
+    .topbar-badge { background:rgba(224,92,92,0.15); border:1px solid rgba(224,92,92,0.3); color:var(--red); padding:0.15rem 0.6rem; border-radius:2rem; font-size:0.7rem; font-weight:800; }
+    .topbar-spacer { flex:1; }
+    .topbar-link { font-size:0.78rem; color:var(--muted); }
+    .topbar-link:hover { color:var(--cyan); }
+    .status-dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .topbar-status { display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:var(--muted); }
+
+    /* Sidebar */
+    .sidebar {
+      background:var(--surf); border-right:1px solid var(--border);
+      padding:1rem 0.75rem; overflow-y:auto;
+    }
+    .sidebar-label { font-size:0.65rem; font-weight:700; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; padding:0.5rem 0.6rem 0.35rem; }
+    .company-btn {
+      display:flex; align-items:center; gap:0.6rem; width:100%;
+      background:none; border:none; color:var(--muted);
+      padding:0.55rem 0.75rem; border-radius:var(--r-sm); cursor:pointer;
+      font-family:inherit; font-size:0.82rem; font-weight:500;
+      transition:background 0.15s, color 0.15s; text-align:left;
+    }
+    .company-btn:hover { background:rgba(255,255,255,0.04); color:var(--text); }
+    .company-btn.active { background:rgba(126,232,232,0.1); color:var(--cyan); font-weight:700; }
+    .company-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .company-badge {
+      margin-left:auto; background:rgba(255,255,255,0.07);
+      color:var(--muted); padding:0.1rem 0.4rem;
+      border-radius:1rem; font-size:0.65rem;
+    }
+    .company-btn.active .company-badge { background:rgba(126,232,232,0.15); color:var(--cyan); }
+    .company-btn.has-new .company-badge { background:rgba(86,224,160,0.15); color:var(--green); }
+
+    .sidebar-divider { height:1px; background:var(--border); margin:0.75rem 0.5rem; }
+
+    /* Main */
+    .main-area { overflow-y:auto; display:flex; flex-direction:column; }
+    .main-inner { flex:1; padding:1.75rem 2rem; max-width:1000px; }
+
+    /* Panel */
+    .panel { display:none; animation:fadeUp 0.2s ease; }
+    .panel.active { display:block; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Company header */
+    .company-header {
+      display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;
+      padding-bottom:1.25rem; border-bottom:1px solid var(--border);
+    }
+    .company-avatar {
+      width:46px; height:46px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900; font-size:1rem; flex-shrink:0;
+    }
+    .company-header h1 { font-size:1.25rem; font-weight:900; margin-bottom:0.2rem; }
+    .company-header p  { font-size:0.78rem; color:var(--muted); }
+    .btn-row { display:flex; gap:0.6rem; margin-left:auto; }
+
+    /* Buttons */
+    .btn {
+      border:none; border-radius:var(--r-sm); padding:0.5rem 1rem;
+      font-family:inherit; font-size:0.8rem; font-weight:700;
+      cursor:pointer; transition:opacity 0.15s, transform 0.15s; white-space:nowrap;
+    }
+    .btn:hover { opacity:0.85; transform:translateY(-1px); }
+    .btn:active { transform:translateY(0); }
+    .btn:disabled { opacity:0.4; cursor:default; transform:none; }
+    .btn-cyan  { background:var(--cyan); color:#08080f; }
+    .btn-green { background:var(--green); color:#08080f; }
+    .btn-gold  { background:var(--gold); color:#08080f; }
+    .btn-ghost { background:rgba(255,255,255,0.06); color:var(--text); border:1px solid var(--border); }
+    .btn-danger{ background:rgba(224,92,92,0.15); color:var(--red); border:1px solid rgba(224,92,92,0.3); }
+    .btn-sm { padding:0.3rem 0.65rem; font-size:0.72rem; }
+    .btn-lg { padding:0.7rem 1.75rem; font-size:0.88rem; }
+
+    /* Section */
+    .sec-title {
+      font-size:0.7rem; font-weight:700; color:var(--muted);
+      letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;
+      display:flex; align-items:center; gap:0.5rem;
+    }
+    .sec-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* Fetch status */
+    .fetch-status {
+      background:var(--surf2); border:1px solid var(--border);
+      border-radius:var(--r); padding:1rem 1.25rem;
+      margin-bottom:1.25rem;
+      font-size:0.82rem; color:var(--muted); display:flex; align-items:center; gap:0.75rem;
+    }
+    .fetch-status.loading { border-color:rgba(126,232,232,0.2); color:var(--cyan); }
+    .fetch-status.error   { border-color:rgba(224,92,92,0.25); color:var(--red); }
+    .fetch-status.ok      { border-color:rgba(86,224,160,0.25); color:var(--green); }
+    .spin { animation:spin 1s linear infinite; display:inline-block; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+
+    /* Article cards */
+    .articles-grid { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem; }
+    .article-card {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r); padding:0.9rem 1rem;
+      transition:border-color 0.2s; cursor:pointer;
+    }
+    .article-card:hover { border-color:var(--border-hi); }
+    .article-card.selected { border-color:var(--cyan); background:rgba(126,232,232,0.04); }
+    .ac-top { display:flex; align-items:flex-start; gap:0.75rem; }
+    .ac-sel  { width:18px; height:18px; border-radius:4px; border:2px solid var(--border); flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:0.65rem; transition:all 0.15s; }
+    .article-card.selected .ac-sel { background:var(--cyan); border-color:var(--cyan); color:#000; }
+    .ac-info { flex:1; }
+    .ac-title { font-size:0.88rem; font-weight:700; margin-bottom:0.3rem; line-height:1.45; }
+    .ac-meta  { display:flex; gap:0.75rem; font-size:0.72rem; color:var(--muted); flex-wrap:wrap; }
+    .ac-source { color:var(--cyan); font-weight:600; }
+    .ac-desc { font-size:0.8rem; color:#aaa; line-height:1.7; margin-top:0.4rem; }
+
+    /* Summary editor */
+    .summary-editor {
+      background:var(--surf2); border:1px solid var(--border);
+      border-radius:var(--r); padding:1.25rem;
+      margin-bottom:1.25rem;
+    }
+    .summary-editor label { display:block; font-size:0.75rem; font-weight:700; color:var(--muted); margin-bottom:0.5rem; }
+    .summary-editor input[type=text] {
+      width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--border);
+      border-radius:var(--r-sm); color:var(--text); font-family:inherit;
+      font-size:0.88rem; padding:0.55rem 0.8rem; outline:none; margin-bottom:0.75rem;
+      transition:border-color 0.2s;
+    }
+    .summary-editor input[type=text]:focus { border-color:var(--cyan); }
+    .summary-editor textarea {
+      width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--border);
+      border-radius:var(--r-sm); color:var(--text); font-family:inherit;
+      font-size:0.85rem; padding:0.65rem 0.8rem; outline:none; resize:vertical;
+      min-height:120px; line-height:1.75; transition:border-color 0.2s;
+    }
+    .summary-editor textarea:focus { border-color:var(--cyan); }
+    .char-count { text-align:right; font-size:0.7rem; color:var(--muted); margin-top:0.3rem; }
+
+    /* Publish panel */
+    .publish-bar {
+      display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+      background:linear-gradient(135deg, rgba(86,224,160,0.07), rgba(126,232,232,0.04));
+      border:1px solid rgba(86,224,160,0.2);
+      border-radius:var(--r); padding:1rem 1.25rem;
+    }
+    .publish-bar-info { flex:1; }
+    .publish-bar-info strong { display:block; font-size:0.88rem; font-weight:800; color:var(--green); margin-bottom:0.15rem; }
+    .publish-bar-info span { font-size:0.75rem; color:var(--muted); }
+
+    /* Published list */
+    .published-list { display:flex; flex-direction:column; gap:0.75rem; }
+    .published-item {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r); padding:1rem 1.25rem;
+      transition:border-color 0.2s;
+    }
+    .published-item:hover { border-color:var(--border-hi); }
+    .pi-top { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; }
+    .pi-company-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    .pi-company { font-weight:800; font-size:0.88rem; }
+    .pi-time { font-size:0.72rem; color:var(--muted); margin-left:auto; }
+    .pi-title { font-size:0.85rem; color:var(--cyan); margin-bottom:0.4rem; font-weight:700; }
+    .pi-summary { font-size:0.82rem; color:#bbb; line-height:1.75; }
+    .pi-footer { display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap; align-items:center; }
+    .pi-tag { background:rgba(255,255,255,0.06); color:var(--muted); padding:0.1rem 0.5rem; border-radius:1rem; font-size:0.68rem; }
+    .pi-visible { background:rgba(86,224,160,0.1); border:1px solid rgba(86,224,160,0.2); color:var(--green); padding:0.1rem 0.5rem; border-radius:1rem; font-size:0.68rem; font-weight:700; }
+    .pi-actions { margin-left:auto; display:flex; gap:0.4rem; }
+
+    /* Empty */
+    .empty { text-align:center; padding:3.5rem 1rem; color:var(--muted); }
+    .empty .e-icon { font-size:2.5rem; margin-bottom:0.75rem; }
+    .empty p { font-size:0.82rem; line-height:1.8; }
+
+    /* Toast */
+    #toast {
+      position:fixed; bottom:1.75rem; right:1.75rem;
+      background:var(--surf2); border:1px solid var(--border-hi);
+      color:var(--text); padding:0.7rem 1.2rem; border-radius:var(--r);
+      font-size:0.82rem; opacity:0; transform:translateY(8px);
+      transition:all 0.25s; pointer-events:none; z-index:999;
+    }
+    #toast.show { opacity:1; transform:translateY(0); }
+
+    /* Loading overlay */
+    .loading-overlay {
+      position:absolute; inset:0; background:rgba(8,8,15,0.7);
+      backdrop-filter:blur(4px); z-index:50;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:0.75rem; border-radius:var(--r);
+    }
+    .loading-spinner { font-size:2rem; animation:spin 1s linear infinite; }
+    .loading-text { font-size:0.82rem; color:var(--muted); }
+
+    /* Stats strip */
+    .stats-strip { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .stat-box {
+      background:var(--surf); border:1px solid var(--border);
+      border-radius:var(--r-sm); padding:0.75rem 1.1rem; flex:1; min-width:100px;
+    }
+    .stat-box .sv { font-size:1.3rem; font-weight:900; color:var(--cyan); }
+    .stat-box .sl { font-size:0.68rem; color:var(--muted); margin-top:0.1rem; }
+
+    /* Tag pills for company */
+    .company-tag { display:inline-block; padding:0.15rem 0.5rem; border-radius:1rem; font-size:0.68rem; font-weight:700; margin-right:0.35rem; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:10px; }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .shell { grid-template-columns:1fr; grid-template-rows:52px auto 1fr; }
+      .sidebar { display:flex; overflow-x:auto; overflow-y:hidden; padding:0.5rem; gap:0.3rem; }
+      .sidebar-label { display:none; }
+      .company-btn { flex-shrink:0; padding:0.4rem 0.7rem; white-space:nowrap; }
+      .sidebar-divider { width:1px; height:auto; margin:0 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+  <!-- Topbar -->
+  <header class="topbar">
+    <span class="topbar-logo">🛰 COSMOS BRIEF</span>
+    <span class="topbar-badge">관리자</span>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-status" id="last-fetch-info">
+      <span class="status-dot"></span>
+      <span id="last-fetch-text">대기 중</span>
+    </div>
+    <a class="topbar-link" href="../trends.html" target="_blank">← 공개 페이지</a>
+  </header>
+
+  <!-- Sidebar: Company tabs -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-label">해외 기업 · 기관</div>
+
+    <button class="company-btn" data-company="nasa" onclick="selectCompany('nasa', this)">
+      <span class="company-dot" style="background:#4b8ef5"></span> NASA
+      <span class="company-badge" id="badge-nasa">0</span>
+    </button>
+    <button class="company-btn" data-company="spacex" onclick="selectCompany('spacex', this)">
+      <span class="company-dot" style="background:#ccc"></span> SpaceX
+      <span class="company-badge" id="badge-spacex">0</span>
+    </button>
+    <button class="company-btn" data-company="esa" onclick="selectCompany('esa', this)">
+      <span class="company-dot" style="background:#003399"></span> ESA
+      <span class="company-badge" id="badge-esa">0</span>
+    </button>
+    <button class="company-btn" data-company="blueorigin" onclick="selectCompany('blueorigin', this)">
+      <span class="company-dot" style="background:#1a7f9c"></span> Blue Origin
+      <span class="company-badge" id="badge-blueorigin">0</span>
+    </button>
+    <button class="company-btn" data-company="rocketlab" onclick="selectCompany('rocketlab', this)">
+      <span class="company-dot" style="background:#cb3034"></span> Rocket Lab
+      <span class="company-badge" id="badge-rocketlab">0</span>
+    </button>
+    <button class="company-btn" data-company="jaxa" onclick="selectCompany('jaxa', this)">
+      <span class="company-dot" style="background:#1e4898"></span> JAXA
+      <span class="company-badge" id="badge-jaxa">0</span>
+    </button>
+    <button class="company-btn" data-company="ula" onclick="selectCompany('ula', this)">
+      <span class="company-dot" style="background:#00508c"></span> ULA
+      <span class="company-badge" id="badge-ula">0</span>
+    </button>
+    <button class="company-btn" data-company="axiom" onclick="selectCompany('axiom', this)">
+      <span class="company-dot" style="background:#6a3fa3"></span> Axiom Space
+      <span class="company-badge" id="badge-axiom">0</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">한국 기업 · 기관</div>
+
+    <button class="company-btn" data-company="kasa" onclick="selectCompany('kasa', this)">
+      <span class="company-dot" style="background:#003087"></span> 우주항공청(KASA)
+      <span class="company-badge" id="badge-kasa">0</span>
+    </button>
+    <button class="company-btn" data-company="kari" onclick="selectCompany('kari', this)">
+      <span class="company-dot" style="background:#005bac"></span> KARI
+      <span class="company-badge" id="badge-kari">0</span>
+    </button>
+    <button class="company-btn" data-company="kasi" onclick="selectCompany('kasi', this)">
+      <span class="company-dot" style="background:#1a3a6b"></span> KASI
+      <span class="company-badge" id="badge-kasi">0</span>
+    </button>
+    <button class="company-btn" data-company="kai" onclick="selectCompany('kai', this)">
+      <span class="company-dot" style="background:#e6000a"></span> KAI
+      <span class="company-badge" id="badge-kai">0</span>
+    </button>
+    <button class="company-btn" data-company="hanwha" onclick="selectCompany('hanwha', this)">
+      <span class="company-dot" style="background:#f75c00"></span> 한화에어로스페이스
+      <span class="company-badge" id="badge-hanwha">0</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">관리</div>
+    <button class="company-btn" onclick="selectCompany('published', this)">
+      <span class="company-dot" style="background:var(--green)"></span> 발행된 업데이트
+    </button>
+    <button class="company-btn" onclick="selectCompany('settings', this)">
+      <span class="company-dot" style="background:var(--gold)"></span> 설정
+    </button>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-area">
+    <div class="main-inner">
+
+      <!-- ══ PLACEHOLDER ══ -->
+      <div class="panel active" id="panel-placeholder">
+        <div class="empty">
+          <div class="e-icon">🛰</div>
+          <p>왼쪽에서 기업/기관을 선택하면<br>최신 뉴스를 불러올 수 있어요</p>
+        </div>
+        <div class="stats-strip" id="global-stats">
+          <div class="stat-box">
+            <div class="sv" id="gs-total">0</div>
+            <div class="sl">총 발행 업데이트</div>
+          </div>
+          <div class="stat-box">
+            <div class="sv" id="gs-companies">0</div>
+            <div class="sl">기업/기관 커버</div>
+          </div>
+          <div class="stat-box">
+            <div class="sv" id="gs-last">—</div>
+            <div class="sl">마지막 발행</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ COMPANY PANEL (dynamic) ══ -->
+      <div class="panel" id="panel-company">
+        <div class="company-header" id="company-header">
+          <div class="company-avatar" id="co-avatar">N</div>
+          <div>
+            <h1 id="co-name">NASA</h1>
+            <p id="co-desc">공식 보도자료 및 뉴스 요약</p>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="btn-fetch" onclick="fetchNews()">
+              🔄 뉴스 가져오기
+            </button>
+            <button class="btn btn-green btn-lg" id="btn-publish" onclick="publishUpdate()" disabled>
+              📡 업데이트 발행
+            </button>
+          </div>
+        </div>
+
+        <!-- Fetch status -->
+        <div class="fetch-status" id="fetch-status" style="display:none;"></div>
+
+        <!-- Source info -->
+        <div id="source-info" style="margin-bottom:1rem; font-size:0.75rem; color:var(--muted);"></div>
+
+        <!-- Articles list -->
+        <div class="sec-title" id="articles-sec-title" style="display:none;">
+          수집된 기사 <span style="color:var(--muted);font-weight:400;" id="articles-count"></span>
+        </div>
+        <div class="articles-grid" id="articles-grid"></div>
+
+        <!-- Summary editor -->
+        <div id="summary-section" style="display:none;">
+          <div class="sec-title">발행할 업데이트 내용 작성</div>
+          <div class="summary-editor">
+            <label>📌 업데이트 제목</label>
+            <input type="text" id="pub-title" placeholder="예: SpaceX, 스타십 7차 IFT 성공 발사 — 2026년 3월 동향" />
+
+            <label>📝 요약 / 해설 <span style="color:var(--muted);font-weight:400">(직접 작성하거나 아이디어 참고)</span></label>
+            <textarea id="pub-summary" placeholder="이 기업의 최근 동향을 직접 작성해주세요.&#10;&#10;수집된 기사 제목과 내용을 참고해서 편집장의 시각으로 요약해보세요. 원문을 그대로 붙여넣지 말고, 독자적인 해설 문장으로 써주세요.&#10;&#10;이렇게 하면 저작권 문제 없이 공개할 수 있어요 ✅"
+              oninput="updateCharCount()"></textarea>
+            <div class="char-count"><span id="char-count">0</span>자</div>
+
+            <label style="margin-top:0.75rem;">🔗 주요 참고 링크 (선택, 쉼표 구분)</label>
+            <input type="text" id="pub-links" placeholder="https://www.nasa.gov/..., https://..." />
+          </div>
+
+          <div class="publish-bar">
+            <div class="publish-bar-info">
+              <strong>✅ 발행 준비 완료</strong>
+              <span>발행하면 공개 트렌드 페이지에 즉시 표시됩니다</span>
+            </div>
+            <button class="btn btn-green btn-lg" id="btn-publish-bottom" onclick="publishUpdate()">
+              📡 지금 발행하기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PUBLISHED ══ -->
+      <div class="panel" id="panel-published">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+          <div>
+            <h1 style="font-size:1.2rem; font-weight:900; margin-bottom:0.2rem;">📡 발행된 업데이트</h1>
+            <p style="font-size:0.78rem; color:var(--muted);">공개 트렌드 페이지에 표시되는 모든 업데이트</p>
+          </div>
+          <button class="btn btn-danger" onclick="clearAllPublished()">전체 삭제</button>
+        </div>
+        <div class="published-list" id="published-list"></div>
+      </div>
+
+      <!-- ══ SETTINGS ══ -->
+      <div class="panel" id="panel-settings">
+        <h1 style="font-size:1.2rem; font-weight:900; margin-bottom:0.4rem;">⚙️ 설정</h1>
+        <p style="font-size:0.78rem; color:var(--muted); margin-bottom:2rem;">뉴스 수집 방식과 저작권 가이드라인 확인</p>
+
+        <div style="background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
+          <div class="sec-title">뉴스 소스 방식</div>
+          <p style="font-size:0.83rem; color:#bbb; line-height:1.9;">
+            현재 이 시스템은 <strong style="color:var(--cyan);">Google News RSS 피드</strong>를 통해 각 기업/기관 관련 뉴스를 수집합니다.<br>
+            RSS는 뉴스 배포를 목적으로 공개된 피드이므로 집계 자체는 합법적이에요.<br>
+            단, <strong style="color:var(--gold);">원문 텍스트를 그대로 복사하지 말고 직접 작성한 해설로 대체</strong>해주세요.
+          </p>
+        </div>
+
+        <div style="background:rgba(86,224,160,0.05); border:1px solid rgba(86,224,160,0.2); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
+          <div class="sec-title" style="color:var(--green);">✅ 안전한 운영 원칙</div>
+          <ul style="font-size:0.82rem; color:#bbb; line-height:2.1; padding-left:1.2rem;">
+            <li>기사 원문을 그대로 쓰지 말고 <strong style="color:var(--text);">편집장 해설 형식</strong>으로 작성</li>
+            <li>수집된 기사 링크는 항상 <strong style="color:var(--text);">출처 링크로 연결</strong></li>
+            <li>인용 시 최소한으로 (헤드라인 + 1~2 문장 이내)</li>
+            <li>보도자료(Press Release)는 비교적 자유롭게 요약 가능</li>
+            <li>NASA, ESA 등 정부 공식 발표는 퍼블릭 도메인에 가까움</li>
+          </ul>
+        </div>
+
+        <div style="background:rgba(224,92,92,0.05); border:1px solid rgba(224,92,92,0.2); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
+          <div class="sec-title" style="color:var(--red);">⚠️ 수익화 시 주의</div>
+          <ul style="font-size:0.82rem; color:#bbb; line-height:2.1; padding-left:1.2rem;">
+            <li>광고 수익 발생 시 → 요약문을 <strong style="color:var(--text);">완전한 독자 저작물</strong>로 작성 필요</li>
+            <li>구독료 모델 → 뉴스 API 유료 라이선스 검토 (NewsAPI Business: $449/월)</li>
+            <li>수익이 월 $1,000 이상 → 법인 설립 + 저작권 정책 문서화 권장</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:1.5rem;">
+          <div class="sec-title">데이터 관리</div>
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">발행된 업데이트는 브라우저 로컬스토리지에 저장됩니다.</p>
+          <div style="display:flex; gap:0.6rem;">
+            <button class="btn btn-ghost" onclick="exportData()">📤 데이터 내보내기 (JSON)</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 데이터 불러오기</button>
+            <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)" />
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-inner -->
+  </main>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   COMPANY CONFIG
+═══════════════════════════════════════════ */
+const COMPANIES = {
+  nasa:       { name:'NASA',               short:'NASA',  color:'#4b8ef5', icon:'🚀',
+                query:'NASA space exploration', lang:'en' },
+  spacex:     { name:'SpaceX',             short:'SpX',   color:'#cccccc', icon:'🛸',
+                query:'SpaceX launch rocket', lang:'en' },
+  esa:        { name:'ESA',                short:'ESA',   color:'#003399', icon:'🛰',
+                query:'ESA European Space Agency', lang:'en' },
+  blueorigin: { name:'Blue Origin',        short:'BO',    color:'#1a7f9c', icon:'🔵',
+                query:'Blue Origin rocket launch', lang:'en' },
+  rocketlab:  { name:'Rocket Lab',         short:'RL',    color:'#cb3034', icon:'🔴',
+                query:'"Rocket Lab" launch space', lang:'en' },
+  jaxa:       { name:'JAXA',               short:'JXA',   color:'#1e4898', icon:'🇯🇵',
+                query:'JAXA Japan space agency', lang:'en' },
+  ula:        { name:'ULA',                short:'ULA',   color:'#00508c', icon:'🚀',
+                query:'United Launch Alliance ULA', lang:'en' },
+  axiom:      { name:'Axiom Space',        short:'AX',    color:'#6a3fa3', icon:'🌌',
+                query:'Axiom Space station ISS', lang:'en' },
+  kasa:       { name:'우주항공청 (KASA)',  short:'KASA',  color:'#003087', icon:'🇰🇷',
+                query:'우주항공청 KASA 한국 우주', lang:'ko' },
+  kari:       { name:'KARI 한국항공우주연구원', short:'KARI', color:'#005bac', icon:'🛸',
+                query:'KARI 한국항공우주연구원 누리호', lang:'ko' },
+  kasi:       { name:'KASI 한국천문연구원', short:'KASI', color:'#1a3a6b', icon:'🔭',
+                query:'한국천문연구원 KASI 천문', lang:'ko' },
+  kai:        { name:'KAI 한국항공우주산업', short:'KAI', color:'#e6000a', icon:'✈️',
+                query:'KAI 한국항공우주산업 우주', lang:'ko' },
+  hanwha:     { name:'한화에어로스페이스', short:'한화',  color:'#f75c00', icon:'🔶',
+                query:'한화에어로스페이스 우주 발사체', lang:'ko' },
+};
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let currentCompany = null;
+let fetchedArticles = [];
+let selectedArticles = new Set();
+
+const DB_KEY = 'cb_published_news';
+
+function loadPublished() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '[]'); } catch { return []; }
+}
+function savePublished(data) { localStorage.setItem(DB_KEY, JSON.stringify(data)); }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+function selectCompany(companyId, btn) {
+  document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+
+  if (companyId === 'published') {
+    document.getElementById('panel-published').classList.add('active');
+    renderPublished();
+    return;
+  }
+  if (companyId === 'settings') {
+    document.getElementById('panel-settings').classList.add('active');
+    return;
+  }
+
+  currentCompany = companyId;
+  fetchedArticles = [];
+  selectedArticles = new Set();
+
+  const co = COMPANIES[companyId];
+  document.getElementById('panel-company').classList.add('active');
+
+  // Set header
+  const av = document.getElementById('co-avatar');
+  av.textContent = co.icon;
+  av.style.background = hexToRgba(co.color, 0.15);
+  av.style.border = `1px solid ${hexToRgba(co.color, 0.3)}`;
+  document.getElementById('co-name').textContent = co.name;
+  document.getElementById('co-desc').textContent = `"${co.query}" 키워드로 최신 뉴스 수집`;
+  document.getElementById('source-info').innerHTML =
+    `🔗 수집 출처: <strong>Google News RSS</strong> — <code style="color:var(--cyan);font-size:0.72rem;">${co.query}</code>`;
+
+  // Reset UI
+  document.getElementById('fetch-status').style.display = 'none';
+  document.getElementById('articles-sec-title').style.display = 'none';
+  document.getElementById('articles-grid').innerHTML = '';
+  document.getElementById('summary-section').style.display = 'none';
+  document.getElementById('btn-publish').disabled = true;
+  document.getElementById('btn-publish-bottom') && (document.getElementById('btn-publish-bottom').disabled = false);
+  document.getElementById('pub-title').value = '';
+  document.getElementById('pub-summary').value = '';
+  document.getElementById('pub-links').value = '';
+  updateCharCount();
+}
+
+/* ═══════════════════════════════════════════
+   RSS FETCH
+═══════════════════════════════════════════ */
+async function fetchNews() {
+  if (!currentCompany) return;
+  const co = COMPANIES[currentCompany];
+  const btn = document.getElementById('btn-fetch');
+  const statusEl = document.getElementById('fetch-status');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin">⟳</span> 수집 중...';
+
+  statusEl.style.display = 'flex';
+  statusEl.className = 'fetch-status loading';
+  statusEl.innerHTML = '<span class="spin">⟳</span> Google News에서 최신 기사를 가져오는 중... (CORS 프록시 경유)';
+
+  const hl = co.lang === 'ko' ? 'ko' : 'en';
+  const gl = co.lang === 'ko' ? 'KR' : 'US';
+  const ceid = co.lang === 'ko' ? 'KR:ko' : 'US:en';
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(co.query)}&hl=${hl}&gl=${gl}&ceid=${ceid}`;
+
+  // Try multiple CORS proxies in order
+  const proxies = [
+    `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
+    `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
+  ];
+
+  let xmlText = null;
+  let proxyUsed = '';
+
+  for (const proxy of proxies) {
+    try {
+      const res = await fetch(proxy, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) continue;
+      const json = await res.json().catch(() => null);
+      if (json && json.contents) { xmlText = json.contents; proxyUsed = 'allorigins'; break; }
+      // corsproxy returns raw
+      const text = await res.text().catch(() => null);
+      if (text && text.includes('<rss')) { xmlText = text; proxyUsed = 'corsproxy'; break; }
+    } catch (err) { continue; }
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '🔄 뉴스 가져오기';
+
+  if (!xmlText) {
+    statusEl.className = 'fetch-status error';
+    statusEl.innerHTML = `⚠️ CORS 프록시를 통한 RSS 수집 실패. 인터넷 연결 또는 프록시 서버 상태를 확인해주세요.<br><small style="color:var(--muted)">직접 URL: <a href="${rssUrl}" target="_blank" style="color:var(--cyan)">RSS 열기</a></small>`;
+    return;
+  }
+
+  // Parse XML
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(xmlText, 'text/xml');
+  const items = Array.from(xml.querySelectorAll('item'));
+
+  if (!items.length) {
+    statusEl.className = 'fetch-status error';
+    statusEl.innerHTML = '기사를 찾지 못했어요. 검색어를 확인하거나 잠시 후 다시 시도해주세요.';
+    return;
+  }
+
+  fetchedArticles = items.map(item => {
+    const title  = item.querySelector('title')?.textContent?.replace(/<[^>]+>/g,'').trim() || '';
+    const link   = item.querySelector('link')?.textContent?.trim() ||
+                   item.querySelector('guid')?.textContent?.trim() || '#';
+    const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+    const desc   = (item.querySelector('description')?.textContent || '')
+                    .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280);
+    const source = item.querySelector('source')?.textContent?.trim() || 'Google News';
+    return { title, link, pubDate, desc, source };
+  }).slice(0, 20);
+
+  statusEl.className = 'fetch-status ok';
+  statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (${proxyUsed})`;
+
+  renderArticles();
+  document.getElementById('articles-sec-title').style.display = 'flex';
+  document.getElementById('summary-section').style.display = 'block';
+  document.getElementById('btn-publish').disabled = false;
+
+  // Update badge
+  const badge = document.getElementById('badge-' + currentCompany);
+  if (badge) { badge.textContent = fetchedArticles.length; badge.parentElement.classList.add('has-new'); }
+  document.getElementById('last-fetch-text').textContent = `최근 수집: ${co.name} — ${new Date().toLocaleTimeString('ko-KR')}`;
+
+  // Auto-suggest title
+  if (!document.getElementById('pub-title').value) {
+    document.getElementById('pub-title').value =
+      `${co.name} — ${new Date().toLocaleDateString('ko-KR')} 동향 업데이트`;
+  }
+
+  toast(`✅ ${fetchedArticles.length}개 기사를 가져왔어요`);
+}
+
+/* ═══════════════════════════════════════════
+   RENDER ARTICLES
+═══════════════════════════════════════════ */
+function renderArticles() {
+  const grid = document.getElementById('articles-grid');
+  document.getElementById('articles-count').textContent = `${fetchedArticles.length}개`;
+
+  if (!fetchedArticles.length) {
+    grid.innerHTML = '<div class="empty" style="padding:1.5rem"><p>수집된 기사가 없어요</p></div>';
+    return;
+  }
+
+  grid.innerHTML = fetchedArticles.map((a, i) => {
+    const d = parseDate(a.pubDate);
+    return `
+    <div class="article-card" id="ac-${i}" onclick="toggleArticle(${i})">
+      <div class="ac-top">
+        <div class="ac-sel" id="sel-${i}">✓</div>
+        <div class="ac-info">
+          <div class="ac-title"><a href="${escHtml(a.link)}" target="_blank" onclick="e=>e.stopPropagation()">${escHtml(a.title)}</a></div>
+          <div class="ac-meta">
+            <span class="ac-source">${escHtml(a.source)}</span>
+            <span>${d}</span>
+          </div>
+          ${a.desc ? `<div class="ac-desc">${escHtml(a.desc)}</div>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleArticle(i) {
+  if (selectedArticles.has(i)) selectedArticles.delete(i);
+  else selectedArticles.add(i);
+  const card = document.getElementById('ac-' + i);
+  const sel  = document.getElementById('sel-' + i);
+  card.classList.toggle('selected', selectedArticles.has(i));
+}
+
+/* ═══════════════════════════════════════════
+   PUBLISH
+═══════════════════════════════════════════ */
+function publishUpdate() {
+  const title   = document.getElementById('pub-title').value.trim();
+  const summary = document.getElementById('pub-summary').value.trim();
+  const links   = document.getElementById('pub-links').value.trim();
+
+  if (!title) { toast('⚠️ 제목을 입력해주세요'); return; }
+  if (!summary) { toast('⚠️ 요약 내용을 직접 작성해주세요'); return; }
+
+  const co = COMPANIES[currentCompany];
+  const selected = fetchedArticles.filter((_, i) => selectedArticles.has(i));
+
+  const entry = {
+    id: Date.now(),
+    company: currentCompany,
+    companyName: co.name,
+    companyColor: co.color,
+    companyIcon: co.icon,
+    title,
+    summary,
+    links: links ? links.split(',').map(s => s.trim()).filter(Boolean) : [],
+    articles: selected.map(a => ({ title: a.title, link: a.link, source: a.source })),
+    publishedAt: new Date().toISOString(),
+    publishedAtDisplay: new Date().toLocaleString('ko-KR'),
+    visible: true,
+  };
+
+  const db = loadPublished();
+  db.unshift(entry);
+  savePublished(db);
+
+  toast(`📡 "${co.name}" 업데이트가 발행됐어요!`);
+  updateGlobalStats();
+
+  // Reset form
+  document.getElementById('pub-title').value = '';
+  document.getElementById('pub-summary').value = '';
+  document.getElementById('pub-links').value = '';
+  updateCharCount();
+  fetchedArticles = [];
+  selectedArticles = new Set();
+  document.getElementById('articles-grid').innerHTML = '';
+  document.getElementById('articles-sec-title').style.display = 'none';
+  document.getElementById('summary-section').style.display = 'none';
+  document.getElementById('fetch-status').style.display = 'none';
+  document.getElementById('btn-publish').disabled = true;
+  const badge = document.getElementById('badge-' + currentCompany);
+  if (badge) { badge.textContent = '✓'; badge.parentElement.classList.remove('has-new'); }
+}
+
+/* ═══════════════════════════════════════════
+   PUBLISHED LIST
+═══════════════════════════════════════════ */
+function renderPublished() {
+  const db = loadPublished();
+  const list = document.getElementById('published-list');
+
+  if (!db.length) {
+    list.innerHTML = '<div class="empty"><div class="e-icon">📡</div><p>아직 발행된 업데이트가 없어요.<br>기업을 선택하고 뉴스를 수집한 뒤 발행해보세요!</p></div>';
+    return;
+  }
+
+  list.innerHTML = db.map(item => `
+    <div class="published-item" id="pi-${item.id}">
+      <div class="pi-top">
+        <span class="pi-company-dot" style="background:${item.companyColor}"></span>
+        <span class="pi-company">${item.companyIcon} ${item.companyName}</span>
+        <span class="pi-visible">${item.visible ? '공개 중' : '비공개'}</span>
+        <span class="pi-time">${item.publishedAtDisplay}</span>
+      </div>
+      <div class="pi-title">${escHtml(item.title)}</div>
+      <div class="pi-summary">${escHtml(item.summary.slice(0, 200))}${item.summary.length > 200 ? '...' : ''}</div>
+      <div class="pi-footer">
+        <div class="pi-tags">
+          ${item.articles.map(a => `<span class="pi-tag">${escHtml(a.source||'')}</span>`).join('')}
+          ${item.links.map(l => `<a href="${escHtml(l)}" target="_blank" class="pi-tag" style="color:var(--cyan)">🔗 링크</a>`).join('')}
+        </div>
+        <div class="pi-actions">
+          <button class="btn btn-ghost btn-sm" onclick="toggleVisible(${item.id})">${item.visible ? '숨기기' : '공개'}</button>
+          <button class="btn btn-danger btn-sm" onclick="deletePublished(${item.id})">삭제</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleVisible(id) {
+  const db = loadPublished().map(e => e.id === id ? { ...e, visible: !e.visible } : e);
+  savePublished(db);
+  renderPublished();
+  toast('✅ 공개 상태가 변경됐어요');
+}
+function deletePublished(id) {
+  if (!confirm('이 업데이트를 삭제할까요?')) return;
+  savePublished(loadPublished().filter(e => e.id !== id));
+  document.getElementById('pi-' + id)?.remove();
+  toast('🗑️ 삭제됐어요');
+  updateGlobalStats();
+}
+function clearAllPublished() {
+  if (!confirm('모든 발행 업데이트를 삭제할까요? 공개 페이지에서도 사라져요.')) return;
+  savePublished([]);
+  renderPublished();
+  updateGlobalStats();
+  toast('🗑️ 전체 삭제됐어요');
+}
+
+/* ═══════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════ */
+function updateGlobalStats() {
+  const db = loadPublished();
+  document.getElementById('gs-total').textContent = db.length;
+  const companies = new Set(db.map(e => e.company)).size;
+  document.getElementById('gs-companies').textContent = companies;
+  const last = db[0];
+  document.getElementById('gs-last').textContent = last
+    ? new Date(last.publishedAt).toLocaleDateString('ko-KR')
+    : '—';
+}
+
+/* ═══════════════════════════════════════════
+   DATA EXPORT / IMPORT
+═══════════════════════════════════════════ */
+function exportData() {
+  const data = { published: loadPublished(), exported: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `cosmos-brief-news-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+}
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (data.published) {
+        const existing = loadPublished();
+        const merged = [...data.published, ...existing]
+          .filter((v, i, a) => a.findIndex(x => x.id === v.id) === i);
+        savePublished(merged);
+        toast(`✅ ${data.published.length}개 업데이트 불러왔어요`);
+        updateGlobalStats();
+      }
+    } catch { toast('⚠️ JSON 파일 형식이 올바르지 않아요'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+/* ═══════════════════════════════════════════
+   CHAR COUNT
+═══════════════════════════════════════════ */
+function updateCharCount() {
+  const len = (document.getElementById('pub-summary')?.value || '').length;
+  document.getElementById('char-count').textContent = len;
+}
+
+/* ═══════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════ */
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function hexToRgba(hex, a) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function parseDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+  } catch { return dateStr.slice(0,16); }
+}
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+/* Init */
+updateGlobalStats();
+</script>
+</body>
+</html>

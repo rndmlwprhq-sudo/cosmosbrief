@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✦ 서술 스타일 트레이너 — COSMOS BRIEF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a14;
+      --surface: #13131f;
+      --surface2: #1a1a2e;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(126,232,232,0.4);
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --cyan: #7ee8e8;
+      --gold: #f7c948;
+      --pink: #e05c8a;
+      --green: #56e0a0;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; min-height: 100vh; }
+
+    /* ── Layout ── */
+    .app { display: grid; grid-template-columns: 240px 1fr; grid-template-rows: 56px 1fr; height: 100vh; }
+    .topbar {
+      grid-column: 1 / -1;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem;
+    }
+    .topbar-logo { font-size: 0.95rem; font-weight: 900; letter-spacing: 0.05em; color: var(--cyan); }
+    .topbar-subtitle { font-size: 0.75rem; color: var(--muted); }
+    .topbar-spacer { flex: 1; }
+    .topbar-stats { display: flex; gap: 1.5rem; }
+    .stat-item { text-align: right; }
+    .stat-val  { font-size: 1.1rem; font-weight: 800; color: var(--gold); }
+    .stat-lbl  { font-size: 0.68rem; color: var(--muted); }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 1.25rem 1rem;
+      overflow-y: auto;
+    }
+    .sidebar-section { margin-bottom: 1.5rem; }
+    .sidebar-label { font-size: 0.68rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; padding-left: 0.5rem; }
+    .nav-btn {
+      display: flex; align-items: center; gap: 0.6rem;
+      width: 100%; background: none; border: none;
+      color: var(--muted); padding: 0.6rem 0.75rem;
+      border-radius: var(--radius-sm); cursor: pointer;
+      font-family: inherit; font-size: 0.85rem; font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+    .nav-btn.active { background: rgba(126,232,232,0.1); color: var(--cyan); font-weight: 700; }
+    .nav-btn .nb-icon { font-size: 1rem; flex-shrink: 0; }
+    .nav-btn .nb-count { margin-left: auto; background: rgba(255,255,255,0.08); color: var(--muted); padding: 0.1rem 0.45rem; border-radius: 1rem; font-size: 0.68rem; }
+    .nav-btn.active .nb-count { background: rgba(126,232,232,0.15); color: var(--cyan); }
+
+    /* ── Main ── */
+    .main { overflow-y: auto; padding: 2rem; }
+
+    /* ── Panels ── */
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeUp 0.25s ease; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    .panel-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .panel-desc  { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+
+    /* ── Cards / Form ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card-title { font-size: 0.8rem; font-weight: 700; color: var(--cyan); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+
+    label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; }
+    textarea, input[type="text"], select {
+      width: 100%; background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text); font-family: inherit;
+      font-size: 0.9rem; padding: 0.65rem 0.9rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    textarea:focus, input[type="text"]:focus { border-color: var(--cyan); }
+    textarea { resize: vertical; min-height: 90px; line-height: 1.7; }
+    .field-gap { margin-bottom: 1rem; }
+
+    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .tag-chip {
+      background: rgba(126,232,232,0.1); border: 1px solid rgba(126,232,232,0.25);
+      color: var(--cyan); padding: 0.2rem 0.7rem; border-radius: 2rem;
+      font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: background 0.15s;
+    }
+    .tag-chip:hover  { background: rgba(126,232,232,0.2); }
+    .tag-chip.active { background: rgba(126,232,232,0.25); box-shadow: 0 0 0 2px var(--cyan); }
+
+    /* ── Buttons ── */
+    .btn {
+      border: none; border-radius: var(--radius-sm);
+      padding: 0.6rem 1.25rem; font-family: inherit;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary   { background: var(--cyan); color: #0a0a14; }
+    .btn-secondary { background: rgba(255,255,255,0.07); color: var(--text); border: 1px solid var(--border); }
+    .btn-gold      { background: var(--gold); color: #0a0a14; }
+    .btn-danger    { background: rgba(224,92,138,0.15); color: var(--pink); border: 1px solid rgba(224,92,138,0.25); }
+    .btn-sm { padding: 0.35rem 0.75rem; font-size: 0.78rem; }
+    .btn-row { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--surface2); border: 1px solid var(--border-hover);
+      color: var(--text); padding: 0.75rem 1.25rem;
+      border-radius: var(--radius); font-size: 0.85rem;
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.3s; pointer-events: none; z-index: 999;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── Rule items (DB view) ── */
+    .db-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+    .db-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .db-item:hover { border-color: var(--border-hover); }
+    .db-item-top { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.6rem; }
+    .db-item-type {
+      flex-shrink: 0; padding: 0.2rem 0.6rem; border-radius: 1rem;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .type-rule    { background: rgba(126,232,232,0.12); color: var(--cyan); border: 1px solid rgba(126,232,232,0.25); }
+    .type-example { background: rgba(86,224,160,0.12);  color: var(--green); border: 1px solid rgba(86,224,160,0.25); }
+    .type-upload  { background: rgba(247,201,72,0.12);  color: var(--gold);  border: 1px solid rgba(247,201,72,0.25); }
+    .db-item-title { font-weight: 700; font-size: 0.9rem; flex: 1; }
+    .db-item-date  { font-size: 0.72rem; color: var(--muted); flex-shrink: 0; }
+    .db-item-body  { font-size: 0.83rem; color: #aaa; line-height: 1.75; white-space: pre-wrap; }
+    .db-item-body.collapsed { max-height: 3.5em; overflow: hidden; position: relative; }
+    .db-item-body.collapsed::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1.5em; background: linear-gradient(transparent, var(--surface)); }
+    .db-item-footer { display: flex; gap: 0.5rem; margin-top: 0.75rem; align-items: center; }
+    .db-item-tags  { flex: 1; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .db-item-tag   { background: rgba(255,255,255,0.06); color: var(--muted); padding: 0.1rem 0.5rem; border-radius: 1rem; font-size: 0.68rem; }
+
+    /* ── Upload zone ── */
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem; text-align: center;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .upload-zone:hover, .upload-zone.over { border-color: var(--cyan); background: rgba(126,232,232,0.03); }
+    .upload-zone .uz-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .upload-zone p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+    .upload-zone strong { color: var(--cyan); }
+    #file-input { display: none; }
+
+    /* ── Prompt export ── */
+    .prompt-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      font-size: 0.82rem; line-height: 1.85;
+      color: #ccc; white-space: pre-wrap;
+      max-height: 420px; overflow-y: auto;
+      font-family: 'Courier New', monospace;
+    }
+    .prompt-box .ph { color: var(--cyan); }
+    .prompt-box .pv { color: #e8c46a; }
+
+    /* ── Progress / counts ── */
+    .progress-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 5px; margin-top: 0.35rem; }
+    .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--cyan), var(--gold)); transition: width 0.4s; }
+
+    /* ── Empty state ── */
+    .empty { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+    .empty .e-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty p { font-size: 0.85rem; line-height: 1.8; }
+
+    /* ── Filter bar ── */
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .filter-btn {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      color: var(--muted); padding: 0.3rem 0.85rem; border-radius: 2rem;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .filter-btn:hover  { border-color: var(--border-hover); color: var(--text); }
+    .filter-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(126,232,232,0.08); }
+
+    /* ── Search ── */
+    .search-wrap { position: relative; margin-bottom: 1rem; }
+    .search-wrap input { padding-left: 2.1rem; }
+    .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 0.85rem; pointer-events: none; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── Dialog ── */
+    .dialog-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 900;
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .dialog-overlay.open { opacity: 1; pointer-events: auto; }
+    .dialog-box {
+      background: var(--surface2); border: 1px solid var(--border-hover);
+      border-radius: 16px; padding: 2rem; max-width: 540px; width: 100%;
+      animation: fadeUp 0.25s ease;
+    }
+    .dialog-title { font-size: 1.1rem; font-weight: 900; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Topbar ── -->
+  <header class="topbar">
+    <div>
+      <div class="topbar-logo">✦ 서술 스타일 트레이너</div>
+      <div class="topbar-subtitle">COSMOS BRIEF 운영 도구</div>
+    </div>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-stats" id="topbar-stats">
+      <div class="stat-item">
+        <div class="stat-val" id="count-rules">0</div>
+        <div class="stat-lbl">규칙</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val" id="count-examples">0</div>
+        <div class="stat-lbl">예문</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val" id="count-uploads">0</div>
+        <div class="stat-lbl">업로드</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">학습 추가</div>
+      <button class="nav-btn active" data-panel="rules" onclick="switchPanel('rules', this)">
+        <span class="nb-icon">📋</span> 규칙 타이핑
+        <span class="nb-count" id="cnt-rules">0</span>
+      </button>
+      <button class="nav-btn" data-panel="example" onclick="switchPanel('example', this)">
+        <span class="nb-icon">✍️</span> 예문 직접 입력
+        <span class="nb-count" id="cnt-examples">0</span>
+      </button>
+      <button class="nav-btn" data-panel="upload" onclick="switchPanel('upload', this)">
+        <span class="nb-icon">📁</span> 파일 업로드
+        <span class="nb-count" id="cnt-uploads">0</span>
+      </button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">관리</div>
+      <button class="nav-btn" onclick="switchPanel('database', this)">
+        <span class="nb-icon">🗂️</span> 전체 스타일 DB
+      </button>
+      <button class="nav-btn" onclick="switchPanel('export', this)">
+        <span class="nb-icon">🚀</span> 프롬프트 내보내기
+      </button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">도움말</div>
+      <button class="nav-btn" onclick="switchPanel('guide', this)">
+        <span class="nb-icon">💡</span> 사용 가이드
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- ══════ PANEL: 규칙 타이핑 ══════ -->
+    <div class="panel active" id="panel-rules">
+      <div class="panel-title">📋 규칙 타이핑</div>
+      <div class="panel-desc">
+        "어떤 상황에서는 어떻게 설명해" 형식으로 자유롭게 적어주세요.<br>
+        예: <em>"어린아이한테 설명할 때는 비유를 반드시 써"</em> / <em>"전문 용어 처음 나올 때는 괄호로 쉬운 말 넣어"</em>
+      </div>
+
+      <div class="card">
+        <div class="card-title">새 규칙 추가</div>
+
+        <div class="field-gap">
+          <label>📌 상황 / 조건 <span style="color:var(--muted); font-weight:400">(어떤 상황일 때?)</span></label>
+          <textarea id="rule-situation" placeholder="예: 아이들 눈높이에서 설명할 때&#10;예: 복잡한 물리 개념을 처음 접하는 사람에게&#10;예: 티저 문구(맛보기 글)를 쓸 때"></textarea>
+        </div>
+
+        <div class="field-gap">
+          <label>✍️ 설명 방식 / 규칙 <span style="color:var(--muted); font-weight:400">(어떻게 써?)</span></label>
+          <textarea id="rule-style" placeholder="예: 교과서 설명은 절대 쓰지 말고, 일상에서 느낄 수 있는 비유나 경험으로 시작해. '~거든요', '~이에요', '~죠?' 말투 사용.&#10;예: 첫 문장은 독자가 '나도 이런 경험 있다'고 느낄 만한 친숙한 진술로 시작해."></textarea>
+        </div>
+
+        <div class="field-gap">
+          <label>🏷️ 태그 <span style="color:var(--muted); font-weight:400">(분류용, 선택)</span></label>
+          <input type="text" id="rule-tags" placeholder="태그를 쉼표로 구분: 티저, 입문, 감성, 비유" />
+          <div class="tag-row" id="quick-tags">
+            <span class="tag-chip" onclick="addQuickTag('티저')">티저</span>
+            <span class="tag-chip" onclick="addQuickTag('본문')">본문</span>
+            <span class="tag-chip" onclick="addQuickTag('입문')">입문</span>
+            <span class="tag-chip" onclick="addQuickTag('감성')">감성</span>
+            <span class="tag-chip" onclick="addQuickTag('비유')">비유</span>
+            <span class="tag-chip" onclick="addQuickTag('전문')">전문</span>
+            <span class="tag-chip" onclick="addQuickTag('도입부')">도입부</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="saveRule()">💾 저장</button>
+          <button class="btn btn-secondary" onclick="clearRuleForm()">초기화</button>
+        </div>
+      </div>
+
+      <!-- 최근 규칙 미리보기 -->
+      <div id="recent-rules-wrap"></div>
+    </div>
+
+    <!-- ══════ PANEL: 예문 직접 입력 ══════ -->
+    <div class="panel" id="panel-example">
+      <div class="panel-title">✍️ 예문 직접 입력</div>
+      <div class="panel-desc">
+        직접 쓴 글, 마음에 드는 문장, 또는 "이런 방식으로 쓰고 싶어" 하는 예시를 붙여넣으세요.<br>
+        주제나 어떤 의도로 쓴 글인지 설명하면 더 잘 활용할 수 있어요.
+      </div>
+
+      <div class="card">
+        <div class="card-title">예문 저장</div>
+
+        <div class="field-gap">
+          <label>📄 제목 / 한 줄 설명</label>
+          <input type="text" id="ex-title" placeholder="예: 화성 티저 초안 / 좋아하는 문체 샘플 / 직접 쓴 오르트구름 소개" />
+        </div>
+
+        <div class="field-gap">
+          <label>💬 예문 전체 텍스트</label>
+          <textarea id="ex-body" style="min-height:150px;" placeholder="예문을 여기에 붙여넣거나 직접 써주세요..."></textarea>
+        </div>
+
+        <div class="field-gap">
+          <label>📝 이 글의 포인트 <span style="color:var(--muted); font-weight:400">(선택 — 왜 좋은지, 어떤 점을 배워야 하는지)</span></label>
+          <textarea id="ex-note" placeholder="예: 전문 용어 없이도 감동을 줄 수 있다는 걸 보여주는 글. 첫 문장의 비유 방식이 특히 마음에 들어."></textarea>
+        </div>
+
+        <div class="field-gap">
+          <label>🏷️ 태그</label>
+          <input type="text" id="ex-tags" placeholder="태그를 쉼표로 구분" />
+          <div class="tag-row">
+            <span class="tag-chip" onclick="addQuickTagEx('내가 쓴 글')">내가 쓴 글</span>
+            <span class="tag-chip" onclick="addQuickTagEx('레퍼런스')">레퍼런스</span>
+            <span class="tag-chip" onclick="addQuickTagEx('티저')">티저</span>
+            <span class="tag-chip" onclick="addQuickTagEx('본문')">본문</span>
+            <span class="tag-chip" onclick="addQuickTagEx('도입')">도입</span>
+            <span class="tag-chip" onclick="addQuickTagEx('마무리')">마무리</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="saveExample()">💾 저장</button>
+          <button class="btn btn-secondary" onclick="clearExForm()">초기화</button>
+        </div>
+      </div>
+
+      <div id="recent-examples-wrap"></div>
+    </div>
+
+    <!-- ══════ PANEL: 파일 업로드 ══════ -->
+    <div class="panel" id="panel-upload">
+      <div class="panel-title">📁 파일 업로드</div>
+      <div class="panel-desc">
+        참고할 책, 글, 기사 원문 등 텍스트 파일을 올려주세요.<br>
+        지원 형식: <strong>.txt</strong> · <strong>.md</strong> · <strong>.html</strong> · <strong>.csv</strong> (텍스트 추출) · 직접 붙여넣기
+      </div>
+
+      <div class="card">
+        <div class="card-title">파일 업로드</div>
+
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+          <div class="uz-icon">📂</div>
+          <p><strong>클릭하거나 drag & drop</strong>으로 파일을 올려주세요<br>
+          .txt / .md / .html 파일 지원 · 여러 파일 한 번에 가능</p>
+        </div>
+        <input type="file" id="file-input" accept=".txt,.md,.html,.htm,.csv" multiple />
+
+        <div style="margin: 1.25rem 0; display:flex; align-items:center; gap:0.75rem;">
+          <div style="flex:1; height:1px; background:var(--border)"></div>
+          <span style="font-size:0.75rem; color:var(--muted)">또는 직접 붙여넣기</span>
+          <div style="flex:1; height:1px; background:var(--border)"></div>
+        </div>
+
+        <div class="field-gap">
+          <label>📌 제목 / 출처</label>
+          <input type="text" id="up-title" placeholder="예: '창백한 푸른 점' 칼 세이건 / 내 블로그 원고 초안" />
+        </div>
+        <div class="field-gap">
+          <label>📄 텍스트 붙여넣기</label>
+          <textarea id="up-body" style="min-height:120px;" placeholder="텍스트를 여기에 붙여넣으세요..."></textarea>
+        </div>
+        <div class="field-gap">
+          <label>🏷️ 태그</label>
+          <input type="text" id="up-tags" placeholder="예: 참고문헌, 세이건, 감성글쓰기" />
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="saveUpload()">💾 저장</button>
+          <button class="btn btn-secondary" onclick="clearUpForm()">초기화</button>
+        </div>
+      </div>
+
+      <div id="upload-list-wrap"></div>
+    </div>
+
+    <!-- ══════ PANEL: 전체 DB ══════ -->
+    <div class="panel" id="panel-database">
+      <div class="panel-title">🗂️ 전체 스타일 DB</div>
+      <div class="panel-desc">저장된 모든 규칙, 예문, 업로드 파일을 확인하고 관리할 수 있어요.</div>
+
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="db-search" placeholder="검색어 입력..." oninput="renderDB()" style="padding-left:2.1rem;" />
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter('all', this)">전체</button>
+        <button class="filter-btn" onclick="setFilter('rule', this)">📋 규칙</button>
+        <button class="filter-btn" onclick="setFilter('example', this)">✍️ 예문</button>
+        <button class="filter-btn" onclick="setFilter('upload', this)">📁 업로드</button>
+      </div>
+
+      <div class="db-grid" id="db-grid">
+        <!-- JS renders here -->
+      </div>
+    </div>
+
+    <!-- ══════ PANEL: 프롬프트 내보내기 ══════ -->
+    <div class="panel" id="panel-export">
+      <div class="panel-title">🚀 프롬프트 내보내기</div>
+      <div class="panel-desc">
+        저장된 규칙과 예문을 AI(ChatGPT, Claude 등)에게 붙여넣을 수 있는 시스템 프롬프트로 만들어줘요.<br>
+        이 프롬프트를 AI 대화창 첫 메시지로 넣으면 학습된 스타일로 글을 써줘요.
+      </div>
+
+      <div class="card">
+        <div class="card-title">프롬프트 설정</div>
+        <div class="field-gap">
+          <label>대상 AI 플랫폼</label>
+          <select id="export-platform">
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="chatgpt">ChatGPT (OpenAI)</option>
+            <option value="copilot">GitHub Copilot Chat</option>
+            <option value="general">범용 (어디서든 사용)</option>
+          </select>
+        </div>
+        <div class="field-gap">
+          <label>포함할 항목</label>
+          <div class="tag-row">
+            <span class="tag-chip active" id="inc-rules" onclick="toggleInclude('rules')">📋 규칙</span>
+            <span class="tag-chip active" id="inc-examples" onclick="toggleInclude('examples')">✍️ 예문</span>
+            <span class="tag-chip active" id="inc-uploads" onclick="toggleInclude('uploads')">📁 업로드 텍스트</span>
+          </div>
+        </div>
+        <div class="field-gap">
+          <label>예문 최대 글자 수 <span style="color:var(--muted); font-weight:400">(너무 길면 토큰 초과)</span></label>
+          <select id="export-maxlen">
+            <option value="200">200자 (짧게)</option>
+            <option value="500" selected>500자 (보통)</option>
+            <option value="1000">1000자 (길게)</option>
+            <option value="99999">제한 없음</option>
+          </select>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-gold" onclick="generatePrompt()">✨ 프롬프트 생성</button>
+          <button class="btn btn-secondary" onclick="copyPrompt()">📋 클립보드 복사</button>
+        </div>
+      </div>
+
+      <div class="card" id="prompt-output-card" style="display:none;">
+        <div class="card-title" style="display:flex; align-items:center; justify-content:space-between;">
+          <span>생성된 프롬프트</span>
+          <button class="btn btn-secondary btn-sm" onclick="copyPrompt()">📋 복사</button>
+        </div>
+        <div class="prompt-box" id="prompt-output"></div>
+        <div style="margin-top:0.75rem; font-size:0.78rem; color:var(--muted);">
+          💡 이 텍스트 전체를 복사해서 AI 채팅창 첫 메시지로 붙여넣으세요.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ PANEL: 가이드 ══════ -->
+    <div class="panel" id="panel-guide">
+      <div class="panel-title">💡 사용 가이드</div>
+      <div class="panel-desc">이 도구를 어떻게 활용하면 좋을지 안내해드릴게요.</div>
+
+      <div class="card">
+        <div class="card-title">🎯 이 도구의 목적</div>
+        <p style="font-size:0.88rem; line-height:1.9; color:#bbb;">
+          COSMOS BRIEF 웹사이트의 글을 AI가 써줄 때 <strong style="color:var(--cyan);">"내 말투와 서술 방식을 모르면 소용없잖아요"</strong>.<br>
+          그래서 이 도구에 당신만의 글쓰기 방식을 학습시키면, 나중에 AI에게<br>
+          <code style="background:rgba(126,232,232,0.1); color:var(--cyan); padding:0.1rem 0.4rem; border-radius:4px;">화성 소개 글 써줘</code>
+          라고만 해도 내 스타일로 써줘요.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 규칙 타이핑 — 이렇게 써보세요</div>
+        <div style="font-size:0.85rem; line-height:1.9; color:#bbb;">
+          <strong style="color:var(--text);">예시 1) 상황: 티저 문구 쓸 때</strong><br>
+          규칙: 첫 문장은 독자가 몰랐던 놀라운 사실로 시작해. 교과서 말투 절대 금지.
+          '학교에서 배운 것처럼 딱딱하게'가 아니라 친구한테 이야기해주듯이.<br><br>
+          <strong style="color:var(--text);">예시 2) 상황: 전문 용어가 나올 때</strong><br>
+          규칙: 처음 나오는 전문 용어는 반드시 쉬운 비유나 일상 예시로 바로 설명해줘.
+          '스펙트럼 = 무지개처럼 빛을 쪼개서 보는 것' 이런 식으로.<br><br>
+          <strong style="color:var(--text);">예시 3) 상황: 글 마무리할 때</strong><br>
+          규칙: 마지막 문장은 독자에게 질문을 던지거나 우주적 감동으로 끝내. 정보 나열로 끝내지 마.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📁 파일 업로드 — 뭘 올리면 좋을까요?</div>
+        <ul style="font-size:0.85rem; line-height:2; color:#bbb; padding-left:1.25rem;">
+          <li><strong style="color:var(--text);">직접 쓴 초안</strong> — 메모장에 써둔 글도 OK</li>
+          <li><strong style="color:var(--text);">좋아하는 책/글 발췌</strong> — 이런 스타일이 좋다 싶은 텍스트</li>
+          <li><strong style="color:var(--text);">윤하 가사, 칼 세이건 글 등</strong> — 감성 레퍼런스</li>
+          <li><strong style="color:var(--text);">웹사이트 티저 초안들</strong> — 맛보기 텍스트 기존 버전</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🚀 내보내기 활용법</div>
+        <p style="font-size:0.85rem; line-height:1.9; color:#bbb;">
+          1. "프롬프트 내보내기" 탭 클릭<br>
+          2. "프롬프트 생성" 버튼 클릭<br>
+          3. 생성된 텍스트 전체 복사<br>
+          4. ChatGPT / Claude 새 채팅창 열기<br>
+          5. 첫 번째 메시지로 붙여넣기<br>
+          6. 그 다음부터 <code style="background:rgba(126,232,232,0.1); color:var(--cyan); padding:0.1rem 0.4rem; border-radius:4px;">"화성 티저 써줘"</code> 하면 내 스타일로 써줘요
+        </p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Edit dialog -->
+<div class="dialog-overlay" id="edit-dialog">
+  <div class="dialog-box">
+    <div class="dialog-title">✏️ 항목 편집</div>
+    <div class="field-gap">
+      <label>제목 / 상황</label>
+      <input type="text" id="edit-title" />
+    </div>
+    <div class="field-gap">
+      <label>내용</label>
+      <textarea id="edit-body" style="min-height:120px;"></textarea>
+    </div>
+    <div class="field-gap">
+      <label>태그 (쉼표 구분)</label>
+      <input type="text" id="edit-tags" />
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="saveEdit()">저장</button>
+      <button class="btn btn-secondary" onclick="closeEditDialog()">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════
+   DATA LAYER — localStorage
+══════════════════════════════════════════════ */
+const DB_KEY = 'cb_style_db';
+
+function loadDB() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '[]'); } catch { return []; }
+}
+function saveDB(data) { localStorage.setItem(DB_KEY, JSON.stringify(data)); }
+
+function addEntry(entry) {
+  const db = loadDB();
+  db.unshift({ ...entry, id: Date.now(), date: new Date().toLocaleDateString('ko-KR') });
+  saveDB(db);
+  updateCounts();
+}
+function deleteEntry(id) {
+  saveDB(loadDB().filter(e => e.id !== id));
+  updateCounts();
+}
+function updateEntry(id, changes) {
+  saveDB(loadDB().map(e => e.id === id ? { ...e, ...changes } : e));
+}
+
+function updateCounts() {
+  const db = loadDB();
+  const r = db.filter(e => e.type === 'rule').length;
+  const ex = db.filter(e => e.type === 'example').length;
+  const up = db.filter(e => e.type === 'upload').length;
+  document.getElementById('count-rules').textContent    = r;
+  document.getElementById('count-examples').textContent = ex;
+  document.getElementById('count-uploads').textContent  = up;
+  document.getElementById('cnt-rules').textContent      = r;
+  document.getElementById('cnt-examples').textContent   = ex;
+  document.getElementById('cnt-uploads').textContent    = up;
+}
+
+/* ══════════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════════ */
+let currentPanel = 'rules';
+
+function switchPanel(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  currentPanel = name;
+  if (name === 'database') renderDB();
+  if (name === 'rules') renderRecentRules();
+  if (name === 'example') renderRecentExamples();
+  if (name === 'upload') renderUploadList();
+}
+
+/* ══════════════════════════════════════════════
+   RULE FORM
+══════════════════════════════════════════════ */
+function addQuickTag(tag) {
+  const el = document.getElementById('rule-tags');
+  const cur = el.value.split(',').map(s => s.trim()).filter(Boolean);
+  if (!cur.includes(tag)) cur.push(tag);
+  el.value = cur.join(', ');
+}
+function addQuickTagEx(tag) {
+  const el = document.getElementById('ex-tags');
+  const cur = el.value.split(',').map(s => s.trim()).filter(Boolean);
+  if (!cur.includes(tag)) cur.push(tag);
+  el.value = cur.join(', ');
+}
+
+function saveRule() {
+  const situation = document.getElementById('rule-situation').value.trim();
+  const style     = document.getElementById('rule-style').value.trim();
+  const tags      = parseTags(document.getElementById('rule-tags').value);
+  if (!situation || !style) { toast('⚠️ 상황과 설명 방식을 모두 입력해주세요'); return; }
+  addEntry({ type: 'rule', title: situation, body: style, tags });
+  clearRuleForm();
+  renderRecentRules();
+  toast('✅ 규칙이 저장됐어요!');
+}
+function clearRuleForm() {
+  ['rule-situation','rule-style','rule-tags'].forEach(id => document.getElementById(id).value = '');
+}
+
+function saveExample() {
+  const title = document.getElementById('ex-title').value.trim();
+  const body  = document.getElementById('ex-body').value.trim();
+  const note  = document.getElementById('ex-note').value.trim();
+  const tags  = parseTags(document.getElementById('ex-tags').value);
+  if (!body) { toast('⚠️ 예문 텍스트를 입력해주세요'); return; }
+  addEntry({ type: 'example', title: title || '제목 없음', body, note, tags });
+  clearExForm();
+  renderRecentExamples();
+  toast('✅ 예문이 저장됐어요!');
+}
+function clearExForm() {
+  ['ex-title','ex-body','ex-note','ex-tags'].forEach(id => document.getElementById(id).value = '');
+}
+
+function saveUpload() {
+  const title = document.getElementById('up-title').value.trim();
+  const body  = document.getElementById('up-body').value.trim();
+  const tags  = parseTags(document.getElementById('up-tags').value);
+  if (!body) { toast('⚠️ 텍스트 내용이 없어요. 파일을 업로드하거나 직접 붙여넣어 주세요'); return; }
+  addEntry({ type: 'upload', title: title || '파일 업로드', body, tags });
+  clearUpForm();
+  renderUploadList();
+  toast('✅ 저장됐어요!');
+}
+function clearUpForm() {
+  ['up-title','up-body','up-tags'].forEach(id => document.getElementById(id).value = '');
+}
+
+function parseTags(str) {
+  return str.split(',').map(s => s.trim()).filter(Boolean);
+}
+
+/* ══════════════════════════════════════════════
+   FILE UPLOAD
+══════════════════════════════════════════════ */
+const fileInput = document.getElementById('file-input');
+const uploadZone = document.getElementById('upload-zone');
+
+fileInput.addEventListener('change', handleFiles);
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('over'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('over');
+  handleFiles({ target: { files: e.dataTransfer.files } });
+});
+
+function handleFiles(e) {
+  const files = Array.from(e.target.files || []);
+  if (!files.length) return;
+  let loaded = 0;
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const text = ev.target.result;
+      // Strip HTML tags if html file
+      const clean = file.name.endsWith('.html') || file.name.endsWith('.htm')
+        ? text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+        : text;
+      // Pre-fill form if first file
+      if (loaded === 0) {
+        document.getElementById('up-title').value = file.name.replace(/\.[^.]+$/, '');
+        document.getElementById('up-body').value = clean.slice(0, 20000);
+      } else {
+        // Auto-save subsequent files
+        addEntry({ type: 'upload', title: file.name.replace(/\.[^.]+$/, ''), body: clean.slice(0, 20000), tags: ['파일 업로드'] });
+      }
+      loaded++;
+      if (loaded === files.length) {
+        toast(`📁 ${files.length}개 파일 불러왔어요. 제목/태그 확인 후 저장해주세요`);
+        renderUploadList();
+      }
+    };
+    reader.readAsText(file, 'UTF-8');
+  });
+  fileInput.value = '';
+}
+
+/* ══════════════════════════════════════════════
+   RENDER RECENT (sidebar panels)
+══════════════════════════════════════════════ */
+function renderRecentRules() {
+  const db = loadDB().filter(e => e.type === 'rule').slice(0, 5);
+  const wrap = document.getElementById('recent-rules-wrap');
+  if (!db.length) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = `<div style="font-size:0.78rem;font-weight:700;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin:1.5rem 0 0.75rem;">최근 저장된 규칙</div>` +
+    renderItems(db);
+}
+function renderRecentExamples() {
+  const db = loadDB().filter(e => e.type === 'example').slice(0, 5);
+  const wrap = document.getElementById('recent-examples-wrap');
+  if (!db.length) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = `<div style="font-size:0.78rem;font-weight:700;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin:1.5rem 0 0.75rem;">최근 저장된 예문</div>` +
+    renderItems(db);
+}
+function renderUploadList() {
+  const db = loadDB().filter(e => e.type === 'upload').slice(0, 10);
+  const wrap = document.getElementById('upload-list-wrap');
+  if (!db.length) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = `<div style="font-size:0.78rem;font-weight:700;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin:1.5rem 0 0.75rem;">저장된 파일 텍스트</div>` +
+    renderItems(db);
+}
+
+/* ══════════════════════════════════════════════
+   RENDER DB (full list)
+══════════════════════════════════════════════ */
+let dbFilter = 'all';
+
+function setFilter(f, btn) {
+  dbFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDB();
+}
+
+function renderDB() {
+  const query = (document.getElementById('db-search')?.value || '').toLowerCase();
+  let db = loadDB();
+  if (dbFilter !== 'all') db = db.filter(e => e.type === dbFilter);
+  if (query) db = db.filter(e =>
+    (e.title||'').toLowerCase().includes(query) ||
+    (e.body||'').toLowerCase().includes(query) ||
+    (e.tags||[]).join(' ').toLowerCase().includes(query)
+  );
+  const grid = document.getElementById('db-grid');
+  if (!db.length) {
+    grid.innerHTML = `<div class="empty"><div class="e-icon">🌌</div><p>${query ? '검색 결과가 없어요' : '저장된 항목이 없어요. 규칙이나 예문을 추가해보세요!'}</p></div>`;
+    return;
+  }
+  grid.innerHTML = renderItems(db);
+}
+
+function renderItems(db) {
+  return db.map(item => `
+    <div class="db-item" id="item-${item.id}">
+      <div class="db-item-top">
+        <span class="db-item-type type-${item.type}">${{rule:'📋 규칙', example:'✍️ 예문', upload:'📁 업로드'}[item.type]}</span>
+        <span class="db-item-title">${escHtml(item.title || '')}</span>
+        <span class="db-item-date">${item.date || ''}</span>
+      </div>
+      <div class="db-item-body collapsed" id="body-${item.id}">${escHtml((item.body||'').slice(0,1000))}</div>
+      ${item.note ? `<div style="margin-top:0.5rem;font-size:0.8rem;color:var(--cyan);">💡 ${escHtml(item.note)}</div>` : ''}
+      <div class="db-item-footer">
+        <div class="db-item-tags">${(item.tags||[]).map(t => `<span class="db-item-tag">${escHtml(t)}</span>`).join('')}</div>
+        <button class="btn btn-secondary btn-sm" onclick="toggleBody(${item.id})">펼치기</button>
+        <button class="btn btn-secondary btn-sm" onclick="openEditDialog(${item.id})">편집</button>
+        <button class="btn btn-danger btn-sm" onclick="confirmDelete(${item.id})">삭제</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleBody(id) {
+  const el = document.getElementById('body-' + id);
+  if (!el) return;
+  el.classList.toggle('collapsed');
+  const btn = el.closest('.db-item').querySelector('button');
+  btn.textContent = el.classList.contains('collapsed') ? '펼치기' : '접기';
+}
+
+function confirmDelete(id) {
+  if (confirm('이 항목을 삭제할까요?')) {
+    deleteEntry(id);
+    document.getElementById('item-' + id)?.remove();
+    if (currentPanel === 'database') renderDB();
+    toast('🗑️ 삭제됐어요');
+  }
+}
+
+/* ══════════════════════════════════════════════
+   EDIT DIALOG
+══════════════════════════════════════════════ */
+let editingId = null;
+function openEditDialog(id) {
+  const item = loadDB().find(e => e.id === id);
+  if (!item) return;
+  editingId = id;
+  document.getElementById('edit-title').value = item.title || '';
+  document.getElementById('edit-body').value  = item.body || '';
+  document.getElementById('edit-tags').value  = (item.tags||[]).join(', ');
+  document.getElementById('edit-dialog').classList.add('open');
+}
+function closeEditDialog() {
+  document.getElementById('edit-dialog').classList.remove('open');
+  editingId = null;
+}
+function saveEdit() {
+  if (!editingId) return;
+  updateEntry(editingId, {
+    title: document.getElementById('edit-title').value.trim(),
+    body:  document.getElementById('edit-body').value.trim(),
+    tags:  parseTags(document.getElementById('edit-tags').value),
+  });
+  closeEditDialog();
+  toast('✅ 수정됐어요!');
+  if (currentPanel === 'database') renderDB();
+  else if (currentPanel === 'rules') renderRecentRules();
+  else if (currentPanel === 'example') renderRecentExamples();
+}
+
+/* ══════════════════════════════════════════════
+   PROMPT EXPORT
+══════════════════════════════════════════════ */
+const includes = { rules: true, examples: true, uploads: true };
+
+function toggleInclude(key) {
+  includes[key] = !includes[key];
+  document.getElementById('inc-' + key).classList.toggle('active', includes[key]);
+}
+
+function generatePrompt() {
+  const db = loadDB();
+  const maxlen = parseInt(document.getElementById('export-maxlen').value);
+  const platform = document.getElementById('export-platform').value;
+
+  let parts = [];
+
+  // Header
+  parts.push(`당신은 "COSMOS BRIEF"라는 천문학 웹사이트의 글쓰기 어시스턴트입니다.\n이 웹사이트는 천문학을 어렵지 않게, 감동적이고 인간적인 언어로 설명하는 것을 목표로 합니다.\n아래에 정의된 서술 스타일과 규칙을 철저히 따라 글을 작성해주세요.\n`);
+
+  // Rules
+  if (includes.rules) {
+    const rules = db.filter(e => e.type === 'rule');
+    if (rules.length) {
+      parts.push(`\n═══ 서술 규칙 (${rules.length}개) ═══`);
+      rules.forEach((r, i) => {
+        parts.push(`\n[규칙 ${i+1}] 상황: ${r.title}\n→ 방식: ${r.body}`);
+      });
+    }
+  }
+
+  // Examples
+  if (includes.examples) {
+    const exs = db.filter(e => e.type === 'example');
+    if (exs.length) {
+      parts.push(`\n\n═══ 스타일 예문 (${exs.length}개) ═══`);
+      exs.forEach((ex, i) => {
+        const truncated = ex.body.length > maxlen ? ex.body.slice(0, maxlen) + '...' : ex.body;
+        parts.push(`\n[예문 ${i+1}] ${ex.title}`);
+        if (ex.note) parts.push(`포인트: ${ex.note}`);
+        parts.push(`---\n${truncated}\n---`);
+      });
+    }
+  }
+
+  // Uploads
+  if (includes.uploads) {
+    const ups = db.filter(e => e.type === 'upload');
+    if (ups.length) {
+      parts.push(`\n\n═══ 참고 텍스트 / 업로드 (${ups.length}개) ═══`);
+      ups.forEach((u, i) => {
+        const truncated = u.body.length > maxlen ? u.body.slice(0, maxlen) + '...' : u.body;
+        parts.push(`\n[참고 ${i+1}] ${u.title}\n---\n${truncated}\n---`);
+      });
+    }
+  }
+
+  // Footer instruction
+  parts.push(`\n\n═══ 글쓰기 요청 방식 ═══`);
+  parts.push(`사용자가 "X 주제 글 써줘", "X 티저 만들어줘" 등의 요청을 하면 위 규칙과 예문을 바탕으로 COSMOS BRIEF 스타일로 작성해주세요.`);
+
+  if (platform === 'claude') parts.push(`\n이 지시사항은 대화 전체에 걸쳐 유지됩니다.`);
+
+  const prompt = parts.join('\n');
+  document.getElementById('prompt-output').textContent = prompt;
+  document.getElementById('prompt-output-card').style.display = 'block';
+
+  // Stats
+  const charCount = prompt.length;
+  toast(`✅ 프롬프트 생성 완료! 약 ${charCount.toLocaleString()}자`);
+}
+
+function copyPrompt() {
+  const text = document.getElementById('prompt-output')?.textContent;
+  if (!text) { toast('⚠️ 먼저 프롬프트를 생성해주세요'); return; }
+  navigator.clipboard.writeText(text).then(() => toast('📋 클립보드에 복사됐어요!')).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    toast('📋 복사됐어요!');
+  });
+}
+
+/* ══════════════════════════════════════════════
+   UTILS
+══════════════════════════════════════════════ */
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+updateCounts();
+renderRecentRules();
+
+// Close dialog on overlay click
+document.getElementById('edit-dialog').addEventListener('click', function(e) {
+  if (e.target === this) closeEditDialog();
+});
+</script>
+</body>
+</html>

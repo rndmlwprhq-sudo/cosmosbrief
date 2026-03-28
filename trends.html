@@ -8,6 +8,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Published news from admin ── */
+    .live-updates-wrap { max-width:1280px; margin:0 auto; padding:0 2rem 1.5rem; }
+    .live-updates-header {
+      display:flex; align-items:center; gap:0.75rem; margin-bottom:1.1rem;
+    }
+    .live-updates-title { font-size:1rem; font-weight:800; }
+    .live-badge-green {
+      background:rgba(86,224,160,0.15); border:1px solid rgba(86,224,160,0.3);
+      color:#56e0a0; padding:0.15rem 0.6rem; border-radius:2rem;
+      font-size:0.68rem; font-weight:800; letter-spacing:0.05em;
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen { 0%,100%{opacity:1}50%{opacity:0.5} }
+    .updates-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:0.85rem; }
+    .update-card {
+      background:linear-gradient(145deg, #13131f, #0f0f1a);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:12px; padding:1.1rem 1.25rem;
+      transition:border-color 0.2s, transform 0.2s;
+      cursor:default;
+    }
+    .update-card:hover { border-color:rgba(126,232,232,0.3); transform:translateY(-2px); }
+    .uc-top { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.65rem; }
+    .uc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .uc-company { font-size:0.72rem; font-weight:800; color:#ccc; }
+    .uc-time { font-size:0.68rem; color:var(--color-text-muted); margin-left:auto; }
+    .uc-title { font-size:0.9rem; font-weight:800; line-height:1.4; margin-bottom:0.5rem; color:var(--color-text); }
+    .uc-summary { font-size:0.8rem; color:#999; line-height:1.75; }
+    .uc-footer { display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap; }
+    .uc-source-tag { background:rgba(255,255,255,0.06); color:var(--color-text-muted); padding:0.1rem 0.45rem; border-radius:1rem; font-size:0.65rem; }
+    .uc-link { background:rgba(126,232,232,0.07); border:1px solid rgba(126,232,232,0.2); color:#7ee8e8; padding:0.1rem 0.5rem; border-radius:1rem; font-size:0.65rem; font-weight:700; text-decoration:none; }
+    .uc-link:hover { background:rgba(126,232,232,0.15); }
+    .no-updates-msg { text-align:center; padding:1.5rem; font-size:0.82rem; color:var(--color-text-muted); }
+  </style>
 </head>
 <body>
 
@@ -84,6 +119,16 @@
         arXiv 논문
       </div>
     </div>
+  </div>
+
+  <!-- ============ LIVE ADMIN UPDATES ============ -->
+  <div class="live-updates-wrap" id="live-updates-wrap" style="display:none;">
+    <div class="live-updates-header">
+      <div class="live-updates-title">📡 최신 동향 업데이트</div>
+      <span class="live-badge-green">LIVE</span>
+      <span style="font-size:0.72rem; color:var(--color-text-muted); margin-left:auto;" id="updates-count"></span>
+    </div>
+    <div class="updates-grid" id="updates-grid"></div>
   </div>
 
   <!-- ============ KEYWORD TRENDS ============ -->
@@ -371,6 +416,49 @@
 
 <script src="js/main.js"></script>
 <script>
+  /* ── Load published news from admin ── */
+  (function loadAdminUpdates() {
+    const DB_KEY = 'cb_published_news';
+    let db;
+    try { db = JSON.parse(localStorage.getItem(DB_KEY) || '[]'); } catch { db = []; }
+    const visible = db.filter(e => e.visible !== false);
+    if (!visible.length) return;
+
+    const wrap = document.getElementById('live-updates-wrap');
+    const grid = document.getElementById('updates-grid');
+    const countEl = document.getElementById('updates-count');
+    wrap.style.display = '';
+    countEl.textContent = visible.length + '개 업데이트';
+
+    function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function relTime(iso) {
+      const diff = Date.now() - new Date(iso).getTime();
+      const h = Math.floor(diff/3600000);
+      const d = Math.floor(diff/86400000);
+      if (d > 0) return d + '일 전';
+      if (h > 0) return h + '시간 전';
+      return '방금';
+    }
+
+    grid.innerHTML = visible.map(item => {
+      const sourceTags = (item.articles||[]).slice(0,3)
+        .map(a => `<span class="uc-source-tag">${esc(a.source||'')}</span>`).join('');
+      const linkTags = (item.links||[]).slice(0,2)
+        .map(l => `<a href="${esc(l)}" target="_blank" rel="noopener" class="uc-link">🔗 원문</a>`).join('');
+      return `
+        <div class="update-card reveal">
+          <div class="uc-top">
+            <span class="uc-dot" style="background:${esc(item.companyColor||'#7ee8e8')}"></span>
+            <span class="uc-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>
+            <span class="uc-time">${relTime(item.publishedAt)}</span>
+          </div>
+          <div class="uc-title">${esc(item.title)}</div>
+          <div class="uc-summary">${esc(item.summary.slice(0,200))}${item.summary.length>200?'...':''}</div>
+          <div class="uc-footer">${sourceTags}${linkTags}</div>
+        </div>`;
+    }).join('');
+  })();
+
   // Trends page specific: category filter
   (function categoryFilter() {
     const filterBtns = document.querySelectorAll('.filter-bar .filter-btn');
