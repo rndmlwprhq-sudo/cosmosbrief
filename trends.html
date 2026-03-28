@@ -449,7 +449,7 @@
       const linkTags = (item.links||[]).slice(0,2)
         .map(l => `<a href="${esc(l)}" target="_blank" rel="noopener" class="uc-link">🔗 원문</a>`).join('');
       return `
-        <div class="update-card reveal">
+        <div class="update-card">
           <div class="uc-top">
             <span class="uc-dot" style="background:${esc(item.companyColor||'#7ee8e8')}"></span>
             <span class="uc-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>
