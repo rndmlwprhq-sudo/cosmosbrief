@@ -92,7 +92,7 @@
 
 <!-- Article fullscreen modal -->
 <div class="article-modal-bg" id="article-modal-bg" onclick="closeArticleModal(event)">
-  <div class="article-modal" id="article-modal">
+  <div class="article-modal">
     <button class="modal-close" onclick="closeArticleModal()" aria-label="닫기">✕</button>
     <div class="modal-meta" id="modal-meta"></div>
     <div class="modal-title" id="modal-title"></div>
@@ -543,24 +543,6 @@
     </div>
   </footer>
 
-</div>
-
-<!-- ARTICLE MODAL -->
-<div class="modal-overlay" id="article-modal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div>
-        <div class="article-tags" id="modal-tags" style="margin-bottom:0.75rem;"></div>
-        <h2 id="modal-title" style="font-size:1.3rem; font-weight:800; line-height:1.35; letter-spacing:-0.02em;"></h2>
-        <div style="display:flex; gap:1rem; margin-top:0.5rem; font-size:0.8rem; color:var(--color-text-muted);">
-          <span id="modal-source"></span>
-          <span id="modal-date"></span>
-        </div>
-      </div>
-      <button class="modal-close">✕</button>
-    </div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
 </div>
 
 <script src="js/main.js"></script>
