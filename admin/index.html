@@ -604,60 +604,81 @@ async function fetchNews() {
   const ceid = co.lang === 'ko' ? 'KR:ko' : 'US:en';
   const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(co.query)}&hl=${hl}&gl=${gl}&ceid=${ceid}`;
 
-  // Try multiple CORS proxies in order
-  const proxies = [
-    `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
-    `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
-  ];
+  let fetchedOk = false;
 
-  let xmlText = null;
-  let proxyUsed = '';
+  // ── Strategy 1: rss2json.com (JSON API, most reliable) ──────────────
+  try {
+    const r2jUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
+    const res = await fetch(r2jUrl, { signal: AbortSignal.timeout(12000) });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.status === 'ok' && Array.isArray(data.items) && data.items.length) {
+        fetchedArticles = data.items.map(it => ({
+          title:   it.title?.replace(/<[^>]+>/g,'').trim() || '',
+          link:    it.link || it.guid || '#',
+          pubDate: it.pubDate || '',
+          desc:    (it.description || it.content || '')
+                     .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0, 280),
+          source:  it.author || data.feed?.title || 'Google News',
+        })).slice(0, 20);
+        fetchedOk = true;
+        statusEl.className = 'fetch-status ok';
+        statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (rss2json)`;
+      }
+    }
+  } catch (_) {}
 
-  for (const proxy of proxies) {
-    try {
-      const res = await fetch(proxy, { signal: AbortSignal.timeout(10000) });
-      if (!res.ok) continue;
-      const json = await res.json().catch(() => null);
-      if (json && json.contents) { xmlText = json.contents; proxyUsed = 'allorigins'; break; }
-      // corsproxy returns raw
-      const text = await res.text().catch(() => null);
-      if (text && text.includes('<rss')) { xmlText = text; proxyUsed = 'corsproxy'; break; }
-    } catch (err) { continue; }
+  // ── Strategy 2: CORS proxies → raw RSS (body read once, fix bug) ─────
+  if (!fetchedOk) {
+    const proxies = [
+      { url: `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`, name: 'allorigins' },
+      { url: `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,              name: 'corsproxy'  },
+      { url: `https://thingproxy.freeboard.io/fetch/${rssUrl}`,                  name: 'thingproxy' },
+    ];
+    for (const proxy of proxies) {
+      try {
+        const res = await fetch(proxy.url, { signal: AbortSignal.timeout(10000) });
+        if (!res.ok) continue;
+        const rawText = await res.text();           // read body ONCE
+        let xmlText = null;
+        try {
+          const j = JSON.parse(rawText);            // allorigins wraps in {contents}
+          if (j?.contents?.includes('<rss')) xmlText = j.contents;
+        } catch {}
+        if (!xmlText && (rawText.includes('<rss') || rawText.includes('<feed'))) xmlText = rawText;
+        if (!xmlText) continue;
+
+        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const items = Array.from(xml.querySelectorAll('item'));
+        if (!items.length) continue;
+
+        fetchedArticles = items.map(item => ({
+          title:   (item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
+          link:    item.querySelector('link')?.textContent?.trim() ||
+                   item.querySelector('guid')?.textContent?.trim() || '#',
+          pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
+          desc:    (item.querySelector('description')?.textContent||'')
+                     .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+          source:  item.querySelector('source')?.textContent?.trim() || 'Google News',
+        })).slice(0, 20);
+        fetchedOk = true;
+        statusEl.className = 'fetch-status ok';
+        statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (${proxy.name})`;
+        break;
+      } catch (_) { continue; }
+    }
   }
 
   btn.disabled = false;
   btn.innerHTML = '🔄 뉴스 가져오기';
 
-  if (!xmlText) {
+  if (!fetchedOk) {
     statusEl.className = 'fetch-status error';
-    statusEl.innerHTML = `⚠️ CORS 프록시를 통한 RSS 수집 실패. 인터넷 연결 또는 프록시 서버 상태를 확인해주세요.<br><small style="color:var(--muted)">직접 URL: <a href="${rssUrl}" target="_blank" style="color:var(--cyan)">RSS 열기</a></small>`;
+    statusEl.innerHTML = `⚠️ 뉴스 수집 실패 (rss2json + CORS 프록시 3개 모두 실패).<br>
+      <small style="color:var(--muted)">잠시 후 다시 시도하거나 →
+      <a href="${rssUrl}" target="_blank" style="color:var(--cyan)">RSS 직접 열기</a></small>`;
     return;
   }
-
-  // Parse XML
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmlText, 'text/xml');
-  const items = Array.from(xml.querySelectorAll('item'));
-
-  if (!items.length) {
-    statusEl.className = 'fetch-status error';
-    statusEl.innerHTML = '기사를 찾지 못했어요. 검색어를 확인하거나 잠시 후 다시 시도해주세요.';
-    return;
-  }
-
-  fetchedArticles = items.map(item => {
-    const title  = item.querySelector('title')?.textContent?.replace(/<[^>]+>/g,'').trim() || '';
-    const link   = item.querySelector('link')?.textContent?.trim() ||
-                   item.querySelector('guid')?.textContent?.trim() || '#';
-    const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
-    const desc   = (item.querySelector('description')?.textContent || '')
-                    .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280);
-    const source = item.querySelector('source')?.textContent?.trim() || 'Google News';
-    return { title, link, pubDate, desc, source };
-  }).slice(0, 20);
-
-  statusEl.className = 'fetch-status ok';
-  statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (${proxyUsed})`;
 
   renderArticles();
   document.getElementById('articles-sec-title').style.display = 'flex';
