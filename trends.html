@@ -420,6 +420,10 @@
   (async function loadAdminUpdates() {
     let db = [];
     try { const r = await fetch('/api/articles', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
+    // Fallback to localStorage if API returned nothing
+    if (!db || !db.length) {
+      try { db = JSON.parse(localStorage.getItem('cb_published_news') || '[]'); } catch {}
+    }
     const visible = (db||[]).filter(e => e.visible !== false);
     if (!visible.length) return;
 
