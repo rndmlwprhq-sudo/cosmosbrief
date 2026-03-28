@@ -423,19 +423,19 @@
 const COMPANIES = {
   main_global:{ name:'🌌 우주 종합',  short:'SPACE', color:'#7ee8e8', icon:'🌌', query:'space astronomy exploration rocket launch 2026', lang:'en' },
   main_ko:    { name:'🇰🇷 한국 우주', short:'KR',    color:'#f7c948', icon:'🇰🇷', query:'우주 탐사 천문학 로켓 발사 위성 2026', lang:'ko' },
-  nasa:       { name:'NASA',           short:'NASA',  color:'#4b8ef5', icon:'🚀', query:'NASA space exploration', lang:'en' },
-  spacex:     { name:'SpaceX',         short:'SpX',   color:'#cccccc', icon:'🛸', query:'SpaceX launch Starship Falcon', lang:'en' },
-  esa:        { name:'ESA',            short:'ESA',   color:'#003399', icon:'🛰', query:'ESA European Space Agency mission', lang:'en' },
-  blueorigin: { name:'Blue Origin',    short:'BO',    color:'#1a7f9c', icon:'🔵', query:'Blue Origin New Glenn rocket', lang:'en' },
-  rocketlab:  { name:'Rocket Lab',     short:'RL',    color:'#cb3034', icon:'🔴', query:'"Rocket Lab" Electron launch', lang:'en' },
-  jaxa:       { name:'JAXA',           short:'JXA',   color:'#1e4898', icon:'🇯🇵', query:'JAXA Japan space mission', lang:'en' },
-  ula:        { name:'ULA',            short:'ULA',   color:'#00508c', icon:'🚀', query:'United Launch Alliance Vulcan', lang:'en' },
-  axiom:      { name:'Axiom Space',    short:'AX',    color:'#6a3fa3', icon:'🌌', query:'Axiom Space station mission', lang:'en' },
-  kasa:       { name:'우주항공청 (KASA)',        short:'KASA', color:'#003087', icon:'🇰🇷', query:'우주항공청 KASA 한국 우주', lang:'ko' },
-  kari:       { name:'KARI 한국항공우주연구원',  short:'KARI', color:'#005bac', icon:'🛸', query:'KARI 한국항공우주연구원 누리호', lang:'ko' },
-  kasi:       { name:'KASI 한국천문연구원',      short:'KASI', color:'#1a3a6b', icon:'🔭', query:'한국천문연구원 KASI 천문', lang:'ko' },
-  kai:        { name:'KAI 한국항공우주산업',     short:'KAI',  color:'#e6000a', icon:'✈️', query:'KAI 한국항공우주산업', lang:'ko' },
-  hanwha:     { name:'한화에어로스페이스',        short:'한화',  color:'#f75c00', icon:'🔶', query:'한화에어로스페이스 우주 발사체', lang:'ko' },
+  nasa:       { name:'NASA',           short:'NASA',  color:'#4b8ef5', icon:'🚀', query:'NASA space exploration', lang:'en',        officialUrl:'https://www.nasa.gov/news-releases/' },
+  spacex:     { name:'SpaceX',         short:'SpX',   color:'#cccccc', icon:'🛸', query:'SpaceX launch Starship Falcon', lang:'en',  officialUrl:'https://www.spacex.com/updates/' },
+  esa:        { name:'ESA',            short:'ESA',   color:'#003399', icon:'🛰', query:'ESA European Space Agency mission', lang:'en', officialUrl:'https://www.esa.int/Newsroom/Press_Releases' },
+  blueorigin: { name:'Blue Origin',    short:'BO',    color:'#1a7f9c', icon:'🔵', query:'Blue Origin New Glenn rocket', lang:'en',   officialUrl:'https://www.blueorigin.com/news/' },
+  rocketlab:  { name:'Rocket Lab',     short:'RL',    color:'#cb3034', icon:'🔴', query:'"Rocket Lab" Electron launch', lang:'en',   officialUrl:'https://www.rocketlabusa.com/about/news/' },
+  jaxa:       { name:'JAXA',           short:'JXA',   color:'#1e4898', icon:'🇯🇵', query:'JAXA Japan space mission', lang:'en',     officialUrl:'https://global.jaxa.jp/press/' },
+  ula:        { name:'ULA',            short:'ULA',   color:'#00508c', icon:'🚀', query:'United Launch Alliance Vulcan', lang:'en',  officialUrl:'https://www.ulalaunch.com/about/news/' },
+  axiom:      { name:'Axiom Space',    short:'AX',    color:'#6a3fa3', icon:'🌌', query:'Axiom Space station mission', lang:'en',    officialUrl:'https://www.axiomspace.com/newsroom' },
+  kasa:       { name:'우주항공청 (KASA)',        short:'KASA', color:'#003087', icon:'🇰🇷', query:'우주항공청 KASA 한국 우주', lang:'ko',         officialUrl:'https://www.kasa.go.kr/prog/bbsArticle/BBSMSTR_000000000041/list.do' },
+  kari:       { name:'KARI 한국항공우주연구원',  short:'KARI', color:'#005bac', icon:'🛸', query:'KARI 한국항공우주연구원 누리호', lang:'ko',  officialUrl:'https://www.kari.re.kr/kor/sub05_01.do' },
+  kasi:       { name:'KASI 한국천문연구원',      short:'KASI', color:'#1a3a6b', icon:'🔭', query:'한국천문연구원 KASI 천문', lang:'ko',       officialUrl:'https://www.kasi.re.kr/kor/publication/post/news' },
+  kai:        { name:'KAI 한국항공우주산업',     short:'KAI',  color:'#e6000a', icon:'✈️', query:'KAI 한국항공우주산업', lang:'ko',         officialUrl:'https://www.koreaaero.com/ko/media/news_list.do' },
+  hanwha:     { name:'한화에어로스페이스',        short:'한화',  color:'#f75c00', icon:'🔶', query:'한화에어로스페이스 우주 발사체', lang:'ko',   officialUrl:'https://www.hanwhaaerospace.com/kor/media/newsroom/list.do' },
 };
 
 let currentCompany = null;
@@ -465,7 +465,9 @@ function selectCompany(id, btn) {
   av.style.background = hexToRgba(co.color, 0.15);
   av.style.border = '1px solid ' + hexToRgba(co.color, 0.3);
   document.getElementById('co-name').textContent = co.name;
-  document.getElementById('co-desc').textContent = 'RSS 키워드: "' + co.query + '"';
+  document.getElementById('co-desc').textContent = co.officialUrl
+    ? '공식 뉴스 페이지: ' + co.officialUrl
+    : 'RSS 키워드: "' + co.query + '"';
 
   document.getElementById('fetch-status').style.display = 'none';
   document.getElementById('articles-count').textContent = '';
@@ -506,92 +508,128 @@ async function fetchNews() {
   statusEl.innerHTML = '<span class="spin">⟳</span> 뉴스를 가져오는 중...';
   btn.disabled = true; btn.innerHTML = '<span class="spin">⟳</span> 수집 중...';
 
-  const hl=co.lang==='ko'?'ko':'en', gl=co.lang==='ko'?'KR':'US', ceid=co.lang==='ko'?'KR:ko':'US:en';
-  const rssUrl = 'https://news.google.com/rss/search?q='+encodeURIComponent(co.query)+'&hl='+hl+'&gl='+gl+'&ceid='+ceid;
   let fetchedOk = false;
+  const isMainTab = !co.officialUrl; // main_global / main_ko have no officialUrl
 
-  try {
-    const res = await fetch('/api/rss?url='+encodeURIComponent(rssUrl), {signal:AbortSignal.timeout(12000)});
-    if (res.ok) {
-      const xmlText = await res.text();
-      if (xmlText.includes('<item>')) {
-        const xml = new DOMParser().parseFromString(xmlText,'text/xml');
-        const items = Array.from(xml.querySelectorAll('item'));
-        if (items.length) {
+  // ── Company tabs: fetch from official website via /api/scrape ──
+  if (!isMainTab) {
+    try {
+      const res = await fetch('/api/scrape?company=' + currentCompany, {signal: AbortSignal.timeout(25000)});
+      if (res.ok) {
+        const data = await res.json();
+        if (data.articles && data.articles.length) {
+          fetchedArticles = data.articles.map(a => ({
+            title: a.title || '',
+            link: a.link || '#',
+            pubDate: a.date || '',
+            desc: a.summary || '',
+            source: a.source || data.name || co.name,
+          }));
+          fetchedOk = true;
+          const methodLabel = data.method === 'google_news_fallback' ? ' (Google News 폴백)' : ' (공식 홈페이지)';
+          statusEl.className = 'fetch-status ok';
+          statusEl.innerHTML = '✅ ' + fetchedArticles.length + '개 기사 수집 완료' + methodLabel;
+        }
+      }
+    } catch(_) {}
+
+    if (!fetchedOk) {
+      statusEl.className = 'fetch-status error';
+      statusEl.innerHTML = '⚠️ 수집 실패 — <a href="' + co.officialUrl + '" target="_blank" style="color:var(--cyan)">공식 페이지 직접 열기</a>';
+      btn.disabled = false; btn.innerHTML = '🔄 뉴스 가져오기';
+      return;
+    }
+
+  // ── Main tabs (우주 종합 / 한국 우주): Google News RSS ──
+  } else {
+    const hl=co.lang==='ko'?'ko':'en', gl=co.lang==='ko'?'KR':'US', ceid=co.lang==='ko'?'KR:ko':'US:en';
+    const rssUrl = 'https://news.google.com/rss/search?q='+encodeURIComponent(co.query)+'&hl='+hl+'&gl='+gl+'&ceid='+ceid;
+
+    try {
+      const res = await fetch('/api/rss?url='+encodeURIComponent(rssUrl), {signal:AbortSignal.timeout(12000)});
+      if (res.ok) {
+        const xmlText = await res.text();
+        if (xmlText.includes('<item>')) {
+          const xml = new DOMParser().parseFromString(xmlText,'text/xml');
+          const items = Array.from(xml.querySelectorAll('item'));
+          if (items.length) {
+            fetchedArticles = items.map(item => ({
+              title:(item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
+              link:item.querySelector('link')?.textContent?.trim()||item.querySelector('guid')?.textContent?.trim()||'#',
+              pubDate:item.querySelector('pubDate')?.textContent?.trim()||'',
+              desc:(item.querySelector('description')?.textContent||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+              source:item.querySelector('source')?.textContent?.trim()||'Google News',
+            })).slice(0,20);
+            fetchedOk = true;
+            statusEl.className = 'fetch-status ok';
+            statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
+          }
+        }
+      }
+    } catch(_) {}
+
+    if (!fetchedOk) {
+      try {
+        const r2j = 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rssUrl)+'&count=20';
+        const res = await fetch(r2j,{signal:AbortSignal.timeout(12000)});
+        if (res.ok) {
+          const data = await res.json();
+          if (data.status==='ok' && data.items?.length) {
+            fetchedArticles = data.items.map(it => ({
+              title:it.title?.replace(/<[^>]+>/g,'').trim()||'',
+              link:it.link||it.guid||'#', pubDate:it.pubDate||'',
+              desc:(it.description||it.content||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+              source:it.author||data.feed?.title||'Google News',
+            })).slice(0,20);
+            fetchedOk = true;
+            statusEl.className = 'fetch-status ok';
+            statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
+          }
+        }
+      } catch(_) {}
+    }
+
+    if (!fetchedOk) {
+      const proxies = [
+        'https://api.allorigins.win/get?url='+encodeURIComponent(rssUrl),
+        'https://corsproxy.io/?'+encodeURIComponent(rssUrl),
+      ];
+      for (const px of proxies) {
+        if (fetchedOk) break;
+        try {
+          const res = await fetch(px,{signal:AbortSignal.timeout(10000)});
+          if (!res.ok) continue;
+          const raw = await res.text();
+          let xmlText = null;
+          try { const j=JSON.parse(raw); if(j?.contents?.includes('<rss')) xmlText=j.contents; } catch {}
+          if (!xmlText && (raw.includes('<rss')||raw.includes('<feed'))) xmlText=raw;
+          if (!xmlText) continue;
+          const xml = new DOMParser().parseFromString(xmlText,'text/xml');
+          const items = Array.from(xml.querySelectorAll('item'));
+          if (!items.length) continue;
           fetchedArticles = items.map(item => ({
             title:(item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
-            link:item.querySelector('link')?.textContent?.trim()||item.querySelector('guid')?.textContent?.trim()||'#',
+            link:item.querySelector('link')?.textContent?.trim()||'#',
             pubDate:item.querySelector('pubDate')?.textContent?.trim()||'',
             desc:(item.querySelector('description')?.textContent||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
             source:item.querySelector('source')?.textContent?.trim()||'Google News',
           })).slice(0,20);
           fetchedOk = true;
           statusEl.className = 'fetch-status ok';
-          statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
-        }
+          statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집';
+        } catch(_) {}
       }
     }
-  } catch(_) {}
 
-  if (!fetchedOk) {
-    try {
-      const r2j = 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rssUrl)+'&count=20';
-      const res = await fetch(r2j,{signal:AbortSignal.timeout(12000)});
-      if (res.ok) {
-        const data = await res.json();
-        if (data.status==='ok' && data.items?.length) {
-          fetchedArticles = data.items.map(it => ({
-            title:it.title?.replace(/<[^>]+>/g,'').trim()||'',
-            link:it.link||it.guid||'#', pubDate:it.pubDate||'',
-            desc:(it.description||it.content||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
-            source:it.author||data.feed?.title||'Google News',
-          })).slice(0,20);
-          fetchedOk = true;
-          statusEl.className = 'fetch-status ok';
-          statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
-        }
-      }
-    } catch(_) {}
-  }
-
-  if (!fetchedOk) {
-    const proxies = [
-      'https://api.allorigins.win/get?url='+encodeURIComponent(rssUrl),
-      'https://corsproxy.io/?'+encodeURIComponent(rssUrl),
-    ];
-    for (const px of proxies) {
-      if (fetchedOk) break;
-      try {
-        const res = await fetch(px,{signal:AbortSignal.timeout(10000)});
-        if (!res.ok) continue;
-        const raw = await res.text();
-        let xmlText = null;
-        try { const j=JSON.parse(raw); if(j?.contents?.includes('<rss')) xmlText=j.contents; } catch {}
-        if (!xmlText && (raw.includes('<rss')||raw.includes('<feed'))) xmlText=raw;
-        if (!xmlText) continue;
-        const xml = new DOMParser().parseFromString(xmlText,'text/xml');
-        const items = Array.from(xml.querySelectorAll('item'));
-        if (!items.length) continue;
-        fetchedArticles = items.map(item => ({
-          title:(item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
-          link:item.querySelector('link')?.textContent?.trim()||'#',
-          pubDate:item.querySelector('pubDate')?.textContent?.trim()||'',
-          desc:(item.querySelector('description')?.textContent||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
-          source:item.querySelector('source')?.textContent?.trim()||'Google News',
-        })).slice(0,20);
-        fetchedOk = true;
-        statusEl.className = 'fetch-status ok';
-        statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집';
-      } catch(_) {}
+    if (!fetchedOk) {
+      statusEl.className = 'fetch-status error';
+      statusEl.innerHTML = '⚠️ 수집 실패 — <a href="'+rssUrl+'" target="_blank" style="color:var(--cyan)">RSS 직접 열기</a>';
+      btn.disabled = false; btn.innerHTML = '🔄 뉴스 가져오기';
+      return;
     }
   }
 
   btn.disabled = false; btn.innerHTML = '🔄 뉴스 가져오기';
-  if (!fetchedOk) {
-    statusEl.className = 'fetch-status error';
-    statusEl.innerHTML = '⚠️ 수집 실패 — <a href="'+rssUrl+'" target="_blank" style="color:var(--cyan)">RSS 직접 열기</a>';
-    return;
-  }
   renderArticles();
   const badge = document.getElementById('badge-'+currentCompany);
   if (badge) badge.textContent = fetchedArticles.length;
