@@ -317,243 +317,10 @@
   <!-- ============ ARTICLES ============ -->
   <div style="max-width:1280px; margin:0 auto; padding:0 2rem 6rem;">
 
-    <!-- NEW articles (항상 표시: 3월 말 최신) -->
+    <!-- NEW articles (최신 6개, 날짜 내림차순) -->
     <div class="articles-grid reveal" id="articles-new">
 
-      <!-- New 1 -->
-      <div class="article-card" data-key="ift8" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🚀</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">SpaceX</span>
-          </div>
-          <h3 class="article-title">스타십 IFT-8 성공 — 상단부 재진입 완벽 제어, 궤도 리퓨얼링 연내 시험</h3>
-          <p class="article-excerpt">SpaceX의 스타십이 IFT-8에서 상단부 통제 재진입에 성공하며 완전 재사용 능력을 공식 증명했습니다. 화성 임무의 핵심 기술인 궤도상 연료 보급 테스트가 2026년 내 예정되어 있습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">S</span>SpaceX 기술 브리핑</div>
-            <span class="article-date">2026.03.18</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- New 2 -->
-      <div class="article-card" data-key="roman-telescope" data-category="science" style="cursor:pointer;">
-        <div class="article-img-placeholder">🔭</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-science">우주망원경</span>
-            <span class="article-tag tag-mission">NASA</span>
-          </div>
-          <h3 class="article-title">NASA 로먼 우주망원경 2026년 가을 발사 확정 — 제임스웹 후계자의 귀환</h3>
-          <p class="article-excerpt">최종 극저온 테스트를 통과한 NASA 낸시 그레이스 로먼 우주망원경이 2026년 가을 발사를 확정했습니다. 100만 개 이상 외계행성 탐색·암흑에너지 연구 등 제임스웹이 볼 수 없는 넓은 시야를 담당합니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">N</span>NASA 보도자료</div>
-            <span class="article-date">2026.03.12</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- New 3 -->
-      <div class="article-card" data-key="new-glenn-3" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🔵</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">Blue Origin</span>
-          </div>
-          <h3 class="article-title">Blue Origin New Glenn 3차 발사 성공 — GEO 상업 서비스 본격화</h3>
-          <p class="article-excerpt">Blue Origin의 New Glenn이 GEO 궤도에 상업위성 2기를 정확히 투입하며 3차 연속 성공을 달성했습니다. 론치 서비스 계약 3건이 추가로 체결되어 SpaceX와의 중형위성 시장 경쟁이 본격화됩니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">B</span>Blue Origin 공식</div>
-            <span class="article-date">2026.03.03</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- New 4 -->
-      <div class="article-card" data-key="kasa-roadmap" data-category="policy" style="cursor:pointer;">
-        <div class="article-img-placeholder">🇰🇷</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-mission">정책</span>
-            <span class="article-tag tag-mission">KASA</span>
-          </div>
-          <h3 class="article-title">KASA 설립 1주년 — 한국 독자 달 탐사 2032년 목표 로드맵 공식화</h3>
-          <p class="article-excerpt">우주항공청(KASA)이 설립 1주년을 맞아 독자 달 탐사 로드맵을 공개했습니다. 2028년 달 궤도선 시범, 2032년 달 착륙선 투입을 목표로 누리호 업그레이드 버전과 차세대 발사체를 활용하는 계획입니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">K</span>KASA 공식</div>
-            <span class="article-date">2026.03.25</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 더보기 버튼 -->
-    <div style="text-align:center; margin:2.5rem 0 0.5rem;" class="reveal">
-      <button class="btn-secondary" id="btn-show-more-articles" onclick="toggleOldArticles()">
-        이전 기사 더 보기 ↓
-      </button>
-    </div>
-
-    <!-- OLD articles (기본 숨김) -->
-    <div class="articles-grid reveal" id="articles-old" style="display:none; margin-top:1.25rem;">
-
-      <!-- Article 1 -->
-      <div class="article-card" data-key="starship-ift6" data-article="starship-ift6" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🚀</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">SpaceX</span>
-          </div>
-          <h3 class="article-title">스타십 IFT-6: 궤도 진입 완전 성공, 부스터 기계 팔 포착 재현</h3>
-          <p class="article-excerpt">스타십이 완전한 궤도 비행을 달성했습니다. 수퍼헤비 부스터의 기계 팔 재포착, 스타십 상단은 인도양 정밀 착수. 화성 임무의 현실화가 한 걸음 더 가까워졌습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">S</span>SpaceX 요약</div>
-            <span class="article-date">2026.03.05</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 2 -->
-      <div class="article-card" data-key="jwst-k2-18b" data-article="jwst-exo" data-category="science" style="cursor:pointer;">
-        <div class="article-img-placeholder">🔭</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-science">외계행성</span>
-            <span class="article-tag tag-mission">JWST</span>
-          </div>
-          <h3 class="article-title">JWST, K2-18b 대기서 CO₂+CH₄ 동시 검출 — 생명 지표 분자 포착</h3>
-          <p class="article-excerpt">40광년 외계 슈퍼-지구 대기에서 생명 활동 가능성을 시사하는 분자 조합이 발견됐습니다. 천문학계 최대 화제.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">N</span>Nature Astronomy</div>
-            <span class="article-date">2026.02.18</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 3 -->
-      <div class="article-card" data-key="artemis-iii" data-category="explore" style="cursor:pointer;">
-        <div class="article-img-placeholder">🌙</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-explore">탐사</span>
-            <span class="article-tag tag-mission">NASA</span>
-          </div>
-          <h3 class="article-title">아르테미스 III 달 착륙 2027년 7월 확정 — 착륙 지점은 남극 근방</h3>
-          <p class="article-excerpt">NASA가 아폴로 이후 첫 유인 달 착륙 일정을 공식 확정했습니다. 착륙 지점은 달 남극 근방의 물 얼음이 있는 영구 음영 지역 근처입니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">N</span>NASA 공식</div>
-            <span class="article-date">2026.03.10</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 4 -->
-      <div class="article-card" data-key="kari-sat3" data-category="satellite" style="cursor:pointer;">
-        <div class="article-img-placeholder">🛰️</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-earth">위성</span>
-            <span class="article-tag tag-mission">KARI</span>
-          </div>
-          <h3 class="article-title">한국 차세대 중형위성 3호 운용 개시 — 한반도 고해상도 관측</h3>
-          <p class="article-excerpt">한국항공우주연구원이 독자 개발한 차세대 중형위성 3호가 정상 운용을 시작했습니다. 해상도 0.5m급 광학 촬영으로 재난·재해 모니터링에 활용됩니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">K</span>KARI 공식</div>
-            <span class="article-date">2026.03.20</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 5 -->
-      <div class="article-card" data-key="juice-jupiter" data-category="explore" style="cursor:pointer;">
-        <div class="article-img-placeholder">🪐</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-explore">탐사</span>
-            <span class="article-tag tag-mission">ESA</span>
-          </div>
-          <h3 class="article-title">ESA JUICE, 목성계 궤도 최종 진입 완료 — 유로파 플라이바이 준비</h3>
-          <p class="article-excerpt">유럽우주국의 목성 얼음 위성 탐사선 JUICE가 목성 궤도 진입에 성공했습니다. 2030년 가니메데 궤도 진입 전, 유로파와 칼리스토 플라이바이가 예정되어 있습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">E</span>ESA 공식</div>
-            <span class="article-date">2026.03.15</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 6 -->
-      <div class="article-card" data-key="space-investment" data-category="policy" style="cursor:pointer;">
-        <div class="article-img-placeholder">💰</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-mission">정책</span>
-            <span class="article-tag tag-launch">투자</span>
-          </div>
-          <h3 class="article-title">2026 글로벌 우주 산업 투자 리포트 — 민간 우주기업 투자 사상 최고치</h3>
-          <p class="article-excerpt">글로벌 민간 우주 스타트업 투자액이 역대 최고인 920억 달러를 기록했습니다. 발사체 서비스, 위성 통신, 우주 관광 분야에 집중 투자가 이어지고 있습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">S</span>SpaceWorks 리포트</div>
-            <span class="article-date">2026.03.01</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 7 (신규) -->
-      <div class="article-card" data-key="rocket-lab-60" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🔴</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">Rocket Lab</span>
-          </div>
-          <h3 class="article-title">Rocket Lab Electron 60번째 발사 성공 — 초소형 위성 시장 독보적 누적</h3>
-          <p class="article-excerpt">뉴질랜드 발사 센터에서 Electron 로켓의 60번째 발사가 성공적으로 완료됐습니다. 소형 위성 전용 발사 서비스 분야에서 독보적인 누적 기록을 달성했습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">R</span>Rocket Lab 공식</div>
-            <span class="article-date">2026.03.07</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 8 (신규) -->
-      <div class="article-card" data-key="starlink-v3" data-category="satellite" style="cursor:pointer;">
-        <div class="article-img-placeholder">🛰️</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-earth">위성군집</span>
-            <span class="article-tag tag-mission">SpaceX</span>
-          </div>
-          <h3 class="article-title">스타링크 v3 군집 위성 50기 일괄 발사 — 저궤도 광대역 대역폭 2배 향상</h3>
-          <p class="article-excerpt">SpaceX가 스타링크 v3.0 위성 50기를 팰컨9으로 일괄 발사했습니다. 기존 대비 2배 향상된 대역폭 성능으로 농촌·해양·항공 인터넷 서비스가 크게 개선될 전망입니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">S</span>SpaceX 공식</div>
-            <span class="article-date">2026.03.21</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 9 (신규) -->
-      <div class="article-card" data-key="ariane6-3" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🇪🇺</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">ESA / ArianeGroup</span>
-          </div>
-          <h3 class="article-title">아리안 6 세 번째 발사 성공 — 유럽 자립 발사 역량 본격 회복</h3>
-          <p class="article-excerpt">유럽의 차세대 대형 발사체 아리안 6가 세 번째 비행에서 상업 위성 탑재에 성공했습니다. 아리안스페이스의 유럽 독자 발사 서비스 재건이 본격적인 궤도에 오르게 됐습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">E</span>ESA / ArianeGroup</div>
-            <span class="article-date">2026.03.09</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 10 (신규) -->
+      <!-- 1: crew11-iss 2026.03.27 -->
       <div class="article-card" data-key="crew11-iss" data-category="explore" style="cursor:pointer;">
         <div class="article-img-placeholder">🧑‍🚀</div>
         <div class="article-body">
@@ -570,75 +337,24 @@
         </div>
       </div>
 
-      <!-- Article 11 (신규) -->
-      <div class="article-card" data-key="shenzhou-22" data-category="explore" style="cursor:pointer;">
-        <div class="article-img-placeholder">🇨🇳</div>
+      <!-- 2: kasa-roadmap 2026.03.25 -->
+      <div class="article-card" data-key="kasa-roadmap" data-category="policy" style="cursor:pointer;">
+        <div class="article-img-placeholder">🇰🇷</div>
         <div class="article-body">
           <div class="article-tags">
-            <span class="article-tag tag-explore">유인탐사</span>
-            <span class="article-tag tag-mission">CNSA</span>
+            <span class="article-tag tag-mission">정책</span>
+            <span class="article-tag tag-mission">KASA</span>
           </div>
-          <h3 class="article-title">중국 선저우-22 발사 성공 — 천궁 우주정거장 3인 승무원 교대</h3>
-          <p class="article-excerpt">중국국가항천국(CNSA)이 선저우-22호를 성공 발사해 천궁 우주정거장 승무원 교대를 완료했습니다. 중국은 이번 임무와 함께 2030년 달 탐사를 위한 독자 기술 검증을 병행 수행합니다.</p>
+          <h3 class="article-title">KASA 설립 1주년 — 한국 독자 달 탐사 2032년 목표 로드맵 공식화</h3>
+          <p class="article-excerpt">우주항공청(KASA)이 설립 1주년을 맞아 독자 달 탐사 로드맵을 공개했습니다. 2028년 달 궤도선 시범, 2032년 달 착륙선 투입을 목표로 누리호 업그레이드 버전과 차세대 발사체를 활용하는 계획입니다.</p>
           <div class="article-meta">
-            <div class="article-source"><span class="source-logo">C</span>CNSA 공식</div>
-            <span class="article-date">2026.03.15</span>
+            <div class="article-source"><span class="source-logo">K</span>KASA 공식</div>
+            <span class="article-date">2026.03.25</span>
           </div>
         </div>
       </div>
 
-      <!-- Article 12 (신규) -->
-      <div class="article-card" data-key="isro-pslvc61" data-category="satellite" style="cursor:pointer;">
-        <div class="article-img-placeholder">🇮🇳</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-earth">위성</span>
-            <span class="article-tag tag-mission">ISRO</span>
-          </div>
-          <h3 class="article-title">ISRO PSLV-C61, 지구관측 위성 EOS-09 발사 성공 — 농업·재난 관측 강화</h3>
-          <p class="article-excerpt">인도우주연구기구(ISRO)가 PSLV-C61로 지구관측 위성 EOS-09를 태양동기궤도에 투입했습니다. 고해상도 SAR 센서로 농업 모니터링, 해안선 변화, 자연재해 대응 역량을 크게 높였습니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">I</span>ISRO 공식</div>
-            <span class="article-date">2026.02.28</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 13 (신규) -->
-      <div class="article-card" data-key="sls2-assembly" data-category="launch" style="cursor:pointer;">
-        <div class="article-img-placeholder">🏗️</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">NASA</span>
-          </div>
-          <h3 class="article-title">NASA SLS 2호 로켓 조립 완료 — 아르테미스 II 유인 달 비행 준비 박차</h3>
-          <p class="article-excerpt">NASA가 아르테미스 II 임무를 위한 우주발사시스템(SLS) 2호 로켓의 조립을 케네디우주센터에서 완료했습니다. 2026년 말 발사 목표로 오리온 캡슐과의 통합 테스트가 시작됩니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">N</span>NASA 공식</div>
-            <span class="article-date">2026.03.22</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 14 (신규) -->
-      <div class="article-card" data-key="moon-water-prospect" data-category="science" style="cursor:pointer;">
-        <div class="article-img-placeholder">💧</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-science">달과학</span>
-            <span class="article-tag tag-mission">ESA</span>
-          </div>
-          <h3 class="article-title">ESA PROSPECT, 달 남극 드릴 실험 성공 — 얼음 물 존재 직접 확인</h3>
-          <p class="article-excerpt">ESA의 달 남극 지하 탐사 장비 PROSPECT가 달 레골리스 1m 아래에서 수분 함유 토양을 직접 채취하는 데 성공했습니다. 달 자원 ISRU(현지 자원 활용) 계획의 현실성을 높이는 결정적 성과입니다.</p>
-          <div class="article-meta">
-            <div class="article-source"><span class="source-logo">E</span>ESA 과학저널</div>
-            <span class="article-date">2026.03.16</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Article 15 (신규) -->
+      <!-- 3: mars-sample-return 2026.03.24 -->
       <div class="article-card" data-key="mars-sample-return" data-category="explore" style="cursor:pointer;">
         <div class="article-img-placeholder">🔴</div>
         <div class="article-body">
@@ -655,7 +371,87 @@
         </div>
       </div>
 
-      <!-- Article 16 (신규) -->
+      <!-- 4: sls2-assembly 2026.03.22 -->
+      <div class="article-card" data-key="sls2-assembly" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🏗️</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">NASA</span>
+          </div>
+          <h3 class="article-title">NASA SLS 2호 로켓 조립 완료 — 아르테미스 II 유인 달 비행 준비 박차</h3>
+          <p class="article-excerpt">NASA가 아르테미스 II 임무를 위한 우주발사시스템(SLS) 2호 로켓의 조립을 케네디우주센터에서 완료했습니다. 2026년 말 발사 목표로 오리온 캡슐과의 통합 테스트가 시작됩니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">N</span>NASA 공식</div>
+            <span class="article-date">2026.03.22</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: starlink-v3 2026.03.21 -->
+      <div class="article-card" data-key="starlink-v3" data-category="satellite" style="cursor:pointer;">
+        <div class="article-img-placeholder">🛰️</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-earth">위성군집</span>
+            <span class="article-tag tag-mission">SpaceX</span>
+          </div>
+          <h3 class="article-title">스타링크 v3 군집 위성 50기 일괄 발사 — 저궤도 광대역 대역폭 2배 향상</h3>
+          <p class="article-excerpt">SpaceX가 스타링크 v3.0 위성 50기를 팰컨9으로 일괄 발사했습니다. 기존 대비 2배 향상된 대역폭 성능으로 농촌·해양·항공 인터넷 서비스가 크게 개선될 전망입니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">S</span>SpaceX 공식</div>
+            <span class="article-date">2026.03.21</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6: kari-sat3 2026.03.20 -->
+      <div class="article-card" data-key="kari-sat3" data-category="satellite" style="cursor:pointer;">
+        <div class="article-img-placeholder">🛰️</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-earth">위성</span>
+            <span class="article-tag tag-mission">KARI</span>
+          </div>
+          <h3 class="article-title">한국 차세대 중형위성 3호 운용 개시 — 한반도 고해상도 관측</h3>
+          <p class="article-excerpt">한국항공우주연구원이 독자 개발한 차세대 중형위성 3호가 정상 운용을 시작했습니다. 해상도 0.5m급 광학 촬영으로 재난·재해 모니터링에 활용됩니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">K</span>KARI 공식</div>
+            <span class="article-date">2026.03.20</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 더보기 버튼 -->
+    <div style="text-align:center; margin:2.5rem 0 0.5rem;" class="reveal">
+      <button class="btn-secondary" id="btn-show-more-articles" onclick="toggleOldArticles()">
+        이전 기사 더 보기 ↓
+      </button>
+    </div>
+
+    <!-- OLD articles (기본 숨김, 날짜 내림차순) -->
+    <div class="articles-grid reveal" id="articles-old" style="display:none; margin-top:1.25rem;">
+
+      <!-- 7: ift8 2026.03.18 -->
+      <div class="article-card" data-key="ift8" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🚀</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">SpaceX</span>
+          </div>
+          <h3 class="article-title">스타십 IFT-8 성공 — 상단부 재진입 완벽 제어, 궤도 리퓨얼링 연내 시험</h3>
+          <p class="article-excerpt">SpaceX의 스타십이 IFT-8에서 상단부 통제 재진입에 성공하며 완전 재사용 능력을 공식 증명했습니다. 화성 임무의 핵심 기술인 궤도상 연료 보급 테스트가 2026년 내 예정되어 있습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">S</span>SpaceX 기술 브리핑</div>
+            <span class="article-date">2026.03.18</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8: space-tourism-2026 2026.03.17 -->
       <div class="article-card" data-key="space-tourism-2026" data-category="policy" style="cursor:pointer;">
         <div class="article-img-placeholder">🌍</div>
         <div class="article-body">
@@ -671,6 +467,211 @@
           </div>
         </div>
       </div>
+
+      <!-- 9: moon-water-prospect 2026.03.16 -->
+      <div class="article-card" data-key="moon-water-prospect" data-category="science" style="cursor:pointer;">
+        <div class="article-img-placeholder">💧</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-science">달과학</span>
+            <span class="article-tag tag-mission">ESA</span>
+          </div>
+          <h3 class="article-title">ESA PROSPECT, 달 남극 드릴 실험 성공 — 얼음 물 존재 직접 확인</h3>
+          <p class="article-excerpt">ESA의 달 남극 지하 탐사 장비 PROSPECT가 달 레골리스 1m 아래에서 수분 함유 토양을 직접 채취하는 데 성공했습니다. 달 자원 ISRU(현지 자원 활용) 계획의 현실성을 높이는 결정적 성과입니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">E</span>ESA 과학저널</div>
+            <span class="article-date">2026.03.16</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10: juice-jupiter 2026.03.15 -->
+      <div class="article-card" data-key="juice-jupiter" data-category="explore" style="cursor:pointer;">
+        <div class="article-img-placeholder">🪐</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-explore">탐사</span>
+            <span class="article-tag tag-mission">ESA</span>
+          </div>
+          <h3 class="article-title">ESA JUICE, 목성계 궤도 최종 진입 완료 — 유로파 플라이바이 준비</h3>
+          <p class="article-excerpt">유럽우주국의 목성 얼음 위성 탐사선 JUICE가 목성 궤도 진입에 성공했습니다. 2030년 가니메데 궤도 진입 전, 유로파와 칼리스토 플라이바이가 예정되어 있습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">E</span>ESA 공식</div>
+            <span class="article-date">2026.03.15</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11: shenzhou-22 2026.03.15 -->
+      <div class="article-card" data-key="shenzhou-22" data-category="explore" style="cursor:pointer;">
+        <div class="article-img-placeholder">🇨🇳</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-explore">유인탐사</span>
+            <span class="article-tag tag-mission">CNSA</span>
+          </div>
+          <h3 class="article-title">중국 선저우-22 발사 성공 — 천궁 우주정거장 3인 승무원 교대</h3>
+          <p class="article-excerpt">중국국가항천국(CNSA)이 선저우-22호를 성공 발사해 천궁 우주정거장 승무원 교대를 완료했습니다. 중국은 이번 임무와 함께 2030년 달 탐사를 위한 독자 기술 검증을 병행 수행합니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">C</span>CNSA 공식</div>
+            <span class="article-date">2026.03.15</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12: roman-telescope 2026.03.12 -->
+      <div class="article-card" data-key="roman-telescope" data-category="science" style="cursor:pointer;">
+        <div class="article-img-placeholder">🔭</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-science">우주망원경</span>
+            <span class="article-tag tag-mission">NASA</span>
+          </div>
+          <h3 class="article-title">NASA 로먼 우주망원경 2026년 가을 발사 확정 — 제임스웹 후계자의 귀환</h3>
+          <p class="article-excerpt">최종 극저온 테스트를 통과한 NASA 낸시 그레이스 로먼 우주망원경이 2026년 가을 발사를 확정했습니다. 100만 개 이상 외계행성 탐색·암흑에너지 연구 등 제임스웹이 볼 수 없는 넓은 시야를 담당합니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">N</span>NASA 보도자료</div>
+            <span class="article-date">2026.03.12</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13: artemis-iii 2026.03.10 -->
+      <div class="article-card" data-key="artemis-iii" data-category="explore" style="cursor:pointer;">
+        <div class="article-img-placeholder">🌙</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-explore">탐사</span>
+            <span class="article-tag tag-mission">NASA</span>
+          </div>
+          <h3 class="article-title">아르테미스 III 달 착륙 2027년 7월 확정 — 착륙 지점은 남극 근방</h3>
+          <p class="article-excerpt">NASA가 아폴로 이후 첫 유인 달 착륙 일정을 공식 확정했습니다. 착륙 지점은 달 남극 근방의 물 얼음이 있는 영구 음영 지역 근처입니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">N</span>NASA 공식</div>
+            <span class="article-date">2026.03.10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14: ariane6-3 2026.03.09 -->
+      <div class="article-card" data-key="ariane6-3" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🇪🇺</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">ESA / ArianeGroup</span>
+          </div>
+          <h3 class="article-title">아리안 6 세 번째 발사 성공 — 유럽 자립 발사 역량 본격 회복</h3>
+          <p class="article-excerpt">유럽의 차세대 대형 발사체 아리안 6가 세 번째 비행에서 상업 위성 탑재에 성공했습니다. 아리안스페이스의 유럽 독자 발사 서비스 재건이 본격적인 궤도에 오르게 됐습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">E</span>ESA / ArianeGroup</div>
+            <span class="article-date">2026.03.09</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15: rocket-lab-60 2026.03.07 -->
+      <div class="article-card" data-key="rocket-lab-60" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🔴</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">Rocket Lab</span>
+          </div>
+          <h3 class="article-title">Rocket Lab Electron 60번째 발사 성공 — 초소형 위성 시장 독보적 누적</h3>
+          <p class="article-excerpt">뉴질랜드 발사 센터에서 Electron 로켓의 60번째 발사가 성공적으로 완료됐습니다. 소형 위성 전용 발사 서비스 분야에서 독보적인 누적 기록을 달성했습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">R</span>Rocket Lab 공식</div>
+            <span class="article-date">2026.03.07</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16: starship-ift6 2026.03.05 -->
+      <div class="article-card" data-key="starship-ift6" data-article="starship-ift6" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🚀</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">SpaceX</span>
+          </div>
+          <h3 class="article-title">스타십 IFT-6: 궤도 진입 완전 성공, 부스터 기계 팔 포착 재현</h3>
+          <p class="article-excerpt">스타십이 완전한 궤도 비행을 달성했습니다. 수퍼헤비 부스터의 기계 팔 재포착, 스타십 상단은 인도양 정밀 착수. 화성 임무의 현실화가 한 걸음 더 가까워졌습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">S</span>SpaceX 요약</div>
+            <span class="article-date">2026.03.05</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17: new-glenn-3 2026.03.03 -->
+      <div class="article-card" data-key="new-glenn-3" data-category="launch" style="cursor:pointer;">
+        <div class="article-img-placeholder">🔵</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-launch">발사체</span>
+            <span class="article-tag tag-mission">Blue Origin</span>
+          </div>
+          <h3 class="article-title">Blue Origin New Glenn 3차 발사 성공 — GEO 상업 서비스 본격화</h3>
+          <p class="article-excerpt">Blue Origin의 New Glenn이 GEO 궤도에 상업위성 2기를 정확히 투입하며 3차 연속 성공을 달성했습니다. 론치 서비스 계약 3건이 추가로 체결되어 SpaceX와의 중형위성 시장 경쟁이 본격화됩니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">B</span>Blue Origin 공식</div>
+            <span class="article-date">2026.03.03</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18: space-investment 2026.03.01 -->
+      <div class="article-card" data-key="space-investment" data-category="policy" style="cursor:pointer;">
+        <div class="article-img-placeholder">💰</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-mission">정책</span>
+            <span class="article-tag tag-launch">투자</span>
+          </div>
+          <h3 class="article-title">2026 글로벌 우주 산업 투자 리포트 — 민간 우주기업 투자 사상 최고치</h3>
+          <p class="article-excerpt">글로벌 민간 우주 스타트업 투자액이 역대 최고인 920억 달러를 기록했습니다. 발사체 서비스, 위성 통신, 우주 관광 분야에 집중 투자가 이어지고 있습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">S</span>SpaceWorks 리포트</div>
+            <span class="article-date">2026.03.01</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19: isro-pslvc61 2026.02.28 -->
+      <div class="article-card" data-key="isro-pslvc61" data-category="satellite" style="cursor:pointer;">
+        <div class="article-img-placeholder">🇮🇳</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-earth">위성</span>
+            <span class="article-tag tag-mission">ISRO</span>
+          </div>
+          <h3 class="article-title">ISRO PSLV-C61, 지구관측 위성 EOS-09 발사 성공 — 농업·재난 관측 강화</h3>
+          <p class="article-excerpt">인도우주연구기구(ISRO)가 PSLV-C61로 지구관측 위성 EOS-09를 태양동기궤도에 투입했습니다. 고해상도 SAR 센서로 농업 모니터링, 해안선 변화, 자연재해 대응 역량을 크게 높였습니다.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">I</span>ISRO 공식</div>
+            <span class="article-date">2026.02.28</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20: jwst-k2-18b 2026.02.18 -->
+      <div class="article-card" data-key="jwst-k2-18b" data-article="jwst-exo" data-category="science" style="cursor:pointer;">
+        <div class="article-img-placeholder">🔭</div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="article-tag tag-science">외계행성</span>
+            <span class="article-tag tag-mission">JWST</span>
+          </div>
+          <h3 class="article-title">JWST, K2-18b 대기서 CO₂+CH₄ 동시 검출 — 생명 지표 분자 포착</h3>
+          <p class="article-excerpt">40광년 외계 슈퍼-지구 대기에서 생명 활동 가능성을 시사하는 분자 조합이 발견됐습니다. 천문학계 최대 화제.</p>
+          <div class="article-meta">
+            <div class="article-source"><span class="source-logo">N</span>Nature Astronomy</div>
+            <span class="article-date">2026.02.18</span>
+          </div>
+        </div>
+      </div>
+
 
     </div>
 
