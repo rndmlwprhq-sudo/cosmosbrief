@@ -417,11 +417,10 @@
 <script src="js/main.js"></script>
 <script>
   /* ── Load published news from admin ── */
-  (function loadAdminUpdates() {
-    const DB_KEY = 'cb_published_news';
-    let db;
-    try { db = JSON.parse(localStorage.getItem(DB_KEY) || '[]'); } catch { db = []; }
-    const visible = db.filter(e => e.visible !== false);
+  (async function loadAdminUpdates() {
+    let db = [];
+    try { const r = await fetch('/api/articles', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
+    const visible = (db||[]).filter(e => e.visible !== false);
     if (!visible.length) return;
 
     const wrap = document.getElementById('live-updates-wrap');
