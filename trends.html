@@ -674,6 +674,30 @@
     oldGrid.style.display = isHidden ? '' : 'none';
     if (btn) btn.textContent = isHidden ? '이전 기사 접기 ↑' : '이전 기사 더 보기 ↓';
   }
+
+  // Make ALL static article cards openable in the modal
+  document.querySelectorAll('.article-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var title   = (card.querySelector('.article-title')         || {}).textContent || '';
+      var body    = (card.querySelector('.article-excerpt')       || {}).textContent || '';
+      var src     = (card.querySelector('.article-source')        || {}).textContent || '';
+      var date    = (card.querySelector('.article-date')          || {}).textContent || '';
+      var icon    = (card.querySelector('.article-img-placeholder')|| {}).textContent || '📰';
+      var tagsHTML= (card.querySelector('.article-tags')          || {}).innerHTML   || '';
+
+      document.getElementById('modal-meta').innerHTML =
+        '<span style="font-size:1.8rem;line-height:1;margin-right:0.6rem">' + icon.trim() + '</span>' +
+        '<span class="modal-company">' + src.trim() + '</span>' +
+        '<span class="modal-time" style="margin-left:auto">' + date.trim() + '</span>';
+      document.getElementById('modal-title').textContent = title.trim();
+      document.getElementById('modal-body').innerHTML =
+        (tagsHTML ? '<div class="article-tags" style="margin-bottom:1rem">' + tagsHTML + '</div>' : '') +
+        '<p style="font-size:1rem;line-height:1.9;color:#ccc">' + body.trim() + '</p>';
+      document.getElementById('modal-footer').innerHTML = '';
+      document.getElementById('article-modal-bg').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
 </script>
 </body>
 </html>
