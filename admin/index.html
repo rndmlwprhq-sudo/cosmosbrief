@@ -612,27 +612,56 @@ async function fetchNews() {
 
   let fetchedOk = false;
 
-  // ── Strategy 1: rss2json.com (JSON API, most reliable) ──────────────
+  // ── Strategy 0: Self-hosted Vercel API proxy (most reliable, no CORS) ──
   try {
-    const r2jUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
-    const res = await fetch(r2jUrl, { signal: AbortSignal.timeout(12000) });
+    const selfProxy = `/api/rss?url=${encodeURIComponent(rssUrl)}`;
+    const res = await fetch(selfProxy, { signal: AbortSignal.timeout(12000) });
     if (res.ok) {
-      const data = await res.json();
-      if (data.status === 'ok' && Array.isArray(data.items) && data.items.length) {
-        fetchedArticles = data.items.map(it => ({
-          title:   it.title?.replace(/<[^>]+>/g,'').trim() || '',
-          link:    it.link || it.guid || '#',
-          pubDate: it.pubDate || '',
-          desc:    (it.description || it.content || '')
-                     .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0, 280),
-          source:  it.author || data.feed?.title || 'Google News',
-        })).slice(0, 20);
-        fetchedOk = true;
-        statusEl.className = 'fetch-status ok';
-        statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (rss2json)`;
+      const xmlText = await res.text();
+      if (xmlText.includes('<item>')) {
+        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const items = Array.from(xml.querySelectorAll('item'));
+        if (items.length) {
+          fetchedArticles = items.map(item => ({
+            title:   (item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
+            link:    item.querySelector('link')?.textContent?.trim() ||
+                     item.querySelector('guid')?.textContent?.trim() || '#',
+            pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
+            desc:    (item.querySelector('description')?.textContent||'')
+                       .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+            source:  item.querySelector('source')?.textContent?.trim() || 'Google News',
+          })).slice(0, 20);
+          fetchedOk = true;
+          statusEl.className = 'fetch-status ok';
+          statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료`;
+        }
       }
     }
   } catch (_) {}
+
+  // ── Strategy 1: rss2json.com (JSON API) ──────────────
+  if (!fetchedOk) {
+    try {
+      const r2jUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
+      const res = await fetch(r2jUrl, { signal: AbortSignal.timeout(12000) });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.status === 'ok' && Array.isArray(data.items) && data.items.length) {
+          fetchedArticles = data.items.map(it => ({
+            title:   it.title?.replace(/<[^>]+>/g,'').trim() || '',
+            link:    it.link || it.guid || '#',
+            pubDate: it.pubDate || '',
+            desc:    (it.description || it.content || '')
+                       .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0, 280),
+            source:  it.author || data.feed?.title || 'Google News',
+          })).slice(0, 20);
+          fetchedOk = true;
+          statusEl.className = 'fetch-status ok';
+          statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (rss2json)`;
+        }
+      }
+    } catch (_) {}
+  }
 
   // ── Strategy 2: CORS proxies → raw RSS (body read once, fix bug) ─────
   if (!fetchedOk) {
