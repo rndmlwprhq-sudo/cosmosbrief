@@ -419,8 +419,17 @@
   /* ── Load published news from admin ── */
   (async function loadAdminUpdates() {
     let db = [];
-    try { const r = await fetch('/api/articles', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
-    // Fallback to localStorage if API returned nothing
+    // Try 1: GitHub Raw URL (most reliable — no serverless, no auth needed)
+    const RAW_URL = 'https://raw.githubusercontent.com/rndmlwprhq-sudo/cosmosbrief/main/data/published.json';
+    try {
+      const r = await fetch(RAW_URL + '?t=' + Date.now(), {cache:'no-store'});
+      if (r.ok) db = await r.json();
+    } catch {}
+    // Try 2: Vercel API fallback
+    if (!db || !db.length) {
+      try { const r = await fetch('/api/articles', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
+    }
+    // Try 3: localStorage fallback (same browser)
     if (!db || !db.length) {
       try { db = JSON.parse(localStorage.getItem('cb_published_news') || '[]'); } catch {}
     }
@@ -456,7 +465,7 @@
             <span class="uc-time">${relTime(item.publishedAt)}</span>
           </div>
           <div class="uc-title">${esc(item.title)}</div>
-          <div class="uc-summary">${esc(item.summary.slice(0,200))}${item.summary.length>200?'...':''}</div>
+          <div class="uc-summary">${esc((item.summary||'').slice(0,200))}${(item.summary||'').length>200?'...':''}</div>
           <div class="uc-footer">${sourceTags}${linkTags}</div>
         </div>`;
     }).join('');
