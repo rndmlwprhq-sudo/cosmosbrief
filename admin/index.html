@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -8,256 +8,152 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #08080f;
-      --surf: #111119;
-      --surf2: #17172a;
-      --border: rgba(255,255,255,0.08);
-      --border-hi: rgba(126,232,232,0.4);
-      --text: #e8e8f0;
-      --muted: #6a6a88;
-      --cyan: #7ee8e8;
-      --gold: #f7c948;
-      --green: #56e0a0;
-      --red: #e05c5c;
-      --blue: #4f8ef7;
-      --r: 10px;
-      --r-sm: 7px;
+      --bg: #08080f; --surf: #111119; --surf2: #17172a; --surf3: #1e1e35;
+      --border: rgba(255,255,255,0.08); --border-hi: rgba(126,232,232,0.4);
+      --text: #e8e8f0; --muted: #6a6a88;
+      --cyan: #7ee8e8; --gold: #f7c948; --green: #56e0a0;
+      --red: #e05c5c; --blue: #4f8ef7; --purple: #a77df7;
+      --r: 10px; --r-sm: 7px;
     }
     body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; min-height:100vh; }
-    a { color:var(--cyan); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-
-    /* ── Layout ── */
+    a { color:var(--cyan); text-decoration:none; } a:hover { text-decoration:underline; }
     .shell { display:grid; grid-template-columns:260px 1fr; grid-template-rows:52px 1fr; height:100vh; }
-
-    /* Topbar */
-    .topbar {
-      grid-column:1/-1;
-      background:var(--surf); border-bottom:1px solid var(--border);
-      display:flex; align-items:center; gap:1rem; padding:0 1.5rem;
-    }
+    .topbar { grid-column:1/-1; background:var(--surf); border-bottom:1px solid var(--border); display:flex; align-items:center; gap:1rem; padding:0 1.5rem; }
     .topbar-logo { font-weight:900; font-size:0.9rem; color:var(--cyan); letter-spacing:0.05em; }
     .topbar-badge { background:rgba(224,92,92,0.15); border:1px solid rgba(224,92,92,0.3); color:var(--red); padding:0.15rem 0.6rem; border-radius:2rem; font-size:0.7rem; font-weight:800; }
     .topbar-spacer { flex:1; }
-    .topbar-link { font-size:0.78rem; color:var(--muted); }
-    .topbar-link:hover { color:var(--cyan); }
+    .topbar-link { font-size:0.78rem; color:var(--muted); } .topbar-link:hover { color:var(--cyan); }
     .status-dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .topbar-status { display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:var(--muted); }
-
-    /* Sidebar */
-    .sidebar {
-      background:var(--surf); border-right:1px solid var(--border);
-      padding:1rem 0.75rem; overflow-y:auto;
-    }
+    .sidebar { background:var(--surf); border-right:1px solid var(--border); padding:1rem 0.75rem; overflow-y:auto; }
     .sidebar-label { font-size:0.65rem; font-weight:700; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; padding:0.5rem 0.6rem 0.35rem; }
-    .company-btn {
-      display:flex; align-items:center; gap:0.6rem; width:100%;
-      background:none; border:none; color:var(--muted);
-      padding:0.55rem 0.75rem; border-radius:var(--r-sm); cursor:pointer;
-      font-family:inherit; font-size:0.82rem; font-weight:500;
-      transition:background 0.15s, color 0.15s; text-align:left;
-    }
+    .company-btn { display:flex; align-items:center; gap:0.6rem; width:100%; background:none; border:none; color:var(--muted); padding:0.55rem 0.75rem; border-radius:var(--r-sm); cursor:pointer; font-family:inherit; font-size:0.82rem; font-weight:500; transition:background 0.15s,color 0.15s; text-align:left; }
     .company-btn:hover { background:rgba(255,255,255,0.04); color:var(--text); }
     .company-btn.active { background:rgba(126,232,232,0.1); color:var(--cyan); font-weight:700; }
     .company-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .company-badge {
-      margin-left:auto; background:rgba(255,255,255,0.07);
-      color:var(--muted); padding:0.1rem 0.4rem;
-      border-radius:1rem; font-size:0.65rem;
-    }
+    .company-badge { margin-left:auto; background:rgba(255,255,255,0.07); color:var(--muted); padding:0.1rem 0.4rem; border-radius:1rem; font-size:0.65rem; }
     .company-btn.active .company-badge { background:rgba(126,232,232,0.15); color:var(--cyan); }
-    .company-btn.has-new .company-badge { background:rgba(86,224,160,0.15); color:var(--green); }
-
     .sidebar-divider { height:1px; background:var(--border); margin:0.75rem 0.5rem; }
-
-    /* Main */
     .main-area { overflow-y:auto; display:flex; flex-direction:column; }
-    .main-inner { flex:1; padding:1.75rem 2rem; max-width:1000px; }
-
-    /* Panel */
+    .main-inner { flex:1; padding:1.75rem 2rem; max-width:960px; }
     .panel { display:none; animation:fadeUp 0.2s ease; }
     .panel.active { display:block; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-
-    /* Company header */
-    .company-header {
-      display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;
-      padding-bottom:1.25rem; border-bottom:1px solid var(--border);
-    }
-    .company-avatar {
-      width:46px; height:46px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      font-weight:900; font-size:1rem; flex-shrink:0;
-    }
-    .company-header h1 { font-size:1.25rem; font-weight:900; margin-bottom:0.2rem; }
+    .company-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+    .company-avatar { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .company-header h1 { font-size:1.2rem; font-weight:900; margin-bottom:0.2rem; }
     .company-header p  { font-size:0.78rem; color:var(--muted); }
-    .btn-row { display:flex; gap:0.6rem; margin-left:auto; }
-
-    /* Buttons */
-    .btn {
-      border:none; border-radius:var(--r-sm); padding:0.5rem 1rem;
-      font-family:inherit; font-size:0.8rem; font-weight:700;
-      cursor:pointer; transition:opacity 0.15s, transform 0.15s; white-space:nowrap;
-    }
-    .btn:hover { opacity:0.85; transform:translateY(-1px); }
-    .btn:active { transform:translateY(0); }
-    .btn:disabled { opacity:0.4; cursor:default; transform:none; }
-    .btn-cyan  { background:var(--cyan); color:#08080f; }
-    .btn-green { background:var(--green); color:#08080f; }
-    .btn-gold  { background:var(--gold); color:#08080f; }
-    .btn-ghost { background:rgba(255,255,255,0.06); color:var(--text); border:1px solid var(--border); }
-    .btn-danger{ background:rgba(224,92,92,0.15); color:var(--red); border:1px solid rgba(224,92,92,0.3); }
-    .btn-sm { padding:0.3rem 0.65rem; font-size:0.72rem; }
-    .btn-lg { padding:0.7rem 1.75rem; font-size:0.88rem; }
-
-    /* Section */
-    .sec-title {
-      font-size:0.7rem; font-weight:700; color:var(--muted);
-      letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;
-      display:flex; align-items:center; gap:0.5rem;
-    }
+    .btn-row { display:flex; gap:0.6rem; margin-left:auto; flex-wrap:wrap; }
+    .btn { border:none; border-radius:var(--r-sm); padding:0.5rem 1rem; font-family:inherit; font-size:0.8rem; font-weight:700; cursor:pointer; transition:opacity 0.15s,transform 0.15s; white-space:nowrap; }
+    .btn:hover { opacity:0.85; transform:translateY(-1px); } .btn:active { transform:translateY(0); } .btn:disabled { opacity:0.4; cursor:default; transform:none; }
+    .btn-cyan{background:var(--cyan);color:#08080f;} .btn-green{background:var(--green);color:#08080f;} .btn-gold{background:var(--gold);color:#08080f;}
+    .btn-purple{background:var(--purple);color:#fff;} .btn-ghost{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);}
+    .btn-danger{background:rgba(224,92,92,0.15);color:var(--red);border:1px solid rgba(224,92,92,0.3);}
+    .btn-sm{padding:0.3rem 0.65rem;font-size:0.72rem;} .btn-lg{padding:0.7rem 1.75rem;font-size:0.88rem;}
+    .sec-title { font-size:0.7rem; font-weight:700; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
     .sec-title::after { content:''; flex:1; height:1px; background:var(--border); }
-
-    /* Fetch status */
-    .fetch-status {
-      background:var(--surf2); border:1px solid var(--border);
-      border-radius:var(--r); padding:1rem 1.25rem;
-      margin-bottom:1.25rem;
-      font-size:0.82rem; color:var(--muted); display:flex; align-items:center; gap:0.75rem;
-    }
-    .fetch-status.loading { border-color:rgba(126,232,232,0.2); color:var(--cyan); }
-    .fetch-status.error   { border-color:rgba(224,92,92,0.25); color:var(--red); }
-    .fetch-status.ok      { border-color:rgba(86,224,160,0.25); color:var(--green); }
-    .spin { animation:spin 1s linear infinite; display:inline-block; }
-    @keyframes spin { to{transform:rotate(360deg)} }
-
-    /* Article cards */
-    .articles-grid { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem; }
-    .article-card {
-      background:var(--surf); border:1px solid var(--border);
-      border-radius:var(--r); padding:0.9rem 1rem;
-      transition:border-color 0.2s; cursor:pointer;
-    }
-    .article-card:hover { border-color:var(--border-hi); }
-    .article-card.selected { border-color:var(--cyan); background:rgba(126,232,232,0.04); }
+    .step-block { background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:1.25rem 1.4rem; margin-bottom:1.25rem; }
+    .step-block.active-step { border-color:rgba(126,232,232,0.3); }
+    .step-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
+    .step-num { width:24px; height:24px; border-radius:50%; background:var(--surf2); border:1px solid var(--border); color:var(--muted); font-size:0.72rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .step-block.active-step .step-num { background:rgba(126,232,232,0.15); border-color:var(--cyan); color:var(--cyan); }
+    .step-block.done-step .step-num { background:rgba(86,224,160,0.15); border-color:var(--green); color:var(--green); }
+    .step-label { font-size:0.88rem; font-weight:800; }
+    .step-block.active-step .step-label { color:var(--cyan); }
+    .step-block.done-step .step-label { color:var(--green); }
+    .step-sub { font-size:0.72rem; color:var(--muted); margin-left:auto; }
+    .fetch-status { background:var(--surf2); border:1px solid var(--border); border-radius:var(--r); padding:0.9rem 1.1rem; margin-bottom:1.25rem; font-size:0.82rem; color:var(--muted); display:flex; align-items:center; gap:0.75rem; }
+    .fetch-status.loading{border-color:rgba(126,232,232,0.2);color:var(--cyan);} .fetch-status.error{border-color:rgba(224,92,92,0.25);color:var(--red);} .fetch-status.ok{border-color:rgba(86,224,160,0.25);color:var(--green);}
+    .spin{animation:spin 1s linear infinite;display:inline-block;} @keyframes spin{to{transform:rotate(360deg)}}
+    .articles-grid { display:flex; flex-direction:column; gap:0.5rem; }
+    .article-card { background:var(--surf2); border:1px solid var(--border); border-radius:var(--r); padding:0.85rem 1rem; transition:border-color 0.2s; cursor:pointer; }
+    .article-card:hover { border-color:var(--border-hi); } .article-card.selected { border-color:var(--cyan); background:rgba(126,232,232,0.04); }
     .ac-top { display:flex; align-items:flex-start; gap:0.75rem; }
-    .ac-sel  { width:18px; height:18px; border-radius:4px; border:2px solid var(--border); flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:0.65rem; transition:all 0.15s; }
-    .article-card.selected .ac-sel { background:var(--cyan); border-color:var(--cyan); color:#000; }
+    .ac-radio { width:17px; height:17px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+    .article-card.selected .ac-radio { background:var(--cyan); border-color:var(--cyan); }
+    .article-card.selected .ac-radio::after { content:''; width:6px; height:6px; background:#000; border-radius:50%; }
     .ac-info { flex:1; }
-    .ac-title { font-size:0.88rem; font-weight:700; margin-bottom:0.3rem; line-height:1.45; }
-    .ac-meta  { display:flex; gap:0.75rem; font-size:0.72rem; color:var(--muted); flex-wrap:wrap; }
-    .ac-source { color:var(--cyan); font-weight:600; }
-    .ac-desc { font-size:0.8rem; color:#aaa; line-height:1.7; margin-top:0.4rem; }
-
-    /* Summary editor */
-    .summary-editor {
-      background:var(--surf2); border:1px solid var(--border);
-      border-radius:var(--r); padding:1.25rem;
-      margin-bottom:1.25rem;
-    }
-    .summary-editor label { display:block; font-size:0.75rem; font-weight:700; color:var(--muted); margin-bottom:0.5rem; }
-    .summary-editor input[type=text] {
-      width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--border);
-      border-radius:var(--r-sm); color:var(--text); font-family:inherit;
-      font-size:0.88rem; padding:0.55rem 0.8rem; outline:none; margin-bottom:0.75rem;
-      transition:border-color 0.2s;
-    }
-    .summary-editor input[type=text]:focus { border-color:var(--cyan); }
-    .summary-editor textarea {
-      width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--border);
-      border-radius:var(--r-sm); color:var(--text); font-family:inherit;
-      font-size:0.85rem; padding:0.65rem 0.8rem; outline:none; resize:vertical;
-      min-height:120px; line-height:1.75; transition:border-color 0.2s;
-    }
-    .summary-editor textarea:focus { border-color:var(--cyan); }
-    .char-count { text-align:right; font-size:0.7rem; color:var(--muted); margin-top:0.3rem; }
-
-    /* Publish panel */
-    .publish-bar {
-      display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
-      background:linear-gradient(135deg, rgba(86,224,160,0.07), rgba(126,232,232,0.04));
-      border:1px solid rgba(86,224,160,0.2);
-      border-radius:var(--r); padding:1rem 1.25rem;
-    }
-    .publish-bar-info { flex:1; }
-    .publish-bar-info strong { display:block; font-size:0.88rem; font-weight:800; color:var(--green); margin-bottom:0.15rem; }
-    .publish-bar-info span { font-size:0.75rem; color:var(--muted); }
-
-    /* Published list */
-    .published-list { display:flex; flex-direction:column; gap:0.75rem; }
-    .published-item {
-      background:var(--surf); border:1px solid var(--border);
-      border-radius:var(--r); padding:1rem 1.25rem;
-      transition:border-color 0.2s;
-    }
-    .published-item:hover { border-color:var(--border-hi); }
-    .pi-top { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; }
-    .pi-company-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
-    .pi-company { font-weight:800; font-size:0.88rem; }
-    .pi-time { font-size:0.72rem; color:var(--muted); margin-left:auto; }
-    .pi-title { font-size:0.85rem; color:var(--cyan); margin-bottom:0.4rem; font-weight:700; }
-    .pi-summary { font-size:0.82rem; color:#bbb; line-height:1.75; }
-    .pi-footer { display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap; align-items:center; }
-    .pi-tag { background:rgba(255,255,255,0.06); color:var(--muted); padding:0.1rem 0.5rem; border-radius:1rem; font-size:0.68rem; }
-    .pi-visible { background:rgba(86,224,160,0.1); border:1px solid rgba(86,224,160,0.2); color:var(--green); padding:0.1rem 0.5rem; border-radius:1rem; font-size:0.68rem; font-weight:700; }
-    .pi-actions { margin-left:auto; display:flex; gap:0.4rem; }
-
-    /* Empty */
-    .empty { text-align:center; padding:3.5rem 1rem; color:var(--muted); }
-    .empty .e-icon { font-size:2.5rem; margin-bottom:0.75rem; }
-    .empty p { font-size:0.82rem; line-height:1.8; }
-
-    /* Toast */
-    #toast {
-      position:fixed; bottom:1.75rem; right:1.75rem;
-      background:var(--surf2); border:1px solid var(--border-hi);
-      color:var(--text); padding:0.7rem 1.2rem; border-radius:var(--r);
-      font-size:0.82rem; opacity:0; transform:translateY(8px);
-      transition:all 0.25s; pointer-events:none; z-index:999;
-    }
-    #toast.show { opacity:1; transform:translateY(0); }
-
-    /* Loading overlay */
-    .loading-overlay {
-      position:absolute; inset:0; background:rgba(8,8,15,0.7);
-      backdrop-filter:blur(4px); z-index:50;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:0.75rem; border-radius:var(--r);
-    }
-    .loading-spinner { font-size:2rem; animation:spin 1s linear infinite; }
-    .loading-text { font-size:0.82rem; color:var(--muted); }
-
-    /* Stats strip */
-    .stats-strip { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-    .stat-box {
-      background:var(--surf); border:1px solid var(--border);
-      border-radius:var(--r-sm); padding:0.75rem 1.1rem; flex:1; min-width:100px;
-    }
-    .stat-box .sv { font-size:1.3rem; font-weight:900; color:var(--cyan); }
-    .stat-box .sl { font-size:0.68rem; color:var(--muted); margin-top:0.1rem; }
-
-    /* Tag pills for company */
-    .company-tag { display:inline-block; padding:0.15rem 0.5rem; border-radius:1rem; font-size:0.68rem; font-weight:700; margin-right:0.35rem; }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width:4px; }
-    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:10px; }
-
-    /* Responsive */
-    @media(max-width:768px) {
-      .shell { grid-template-columns:1fr; grid-template-rows:52px auto 1fr; }
-      .sidebar { display:flex; overflow-x:auto; overflow-y:hidden; padding:0.5rem; gap:0.3rem; }
-      .sidebar-label { display:none; }
-      .company-btn { flex-shrink:0; padding:0.4rem 0.7rem; white-space:nowrap; }
-      .sidebar-divider { width:1px; height:auto; margin:0 0.25rem; }
+    .ac-title { font-size:0.86rem; font-weight:700; margin-bottom:0.3rem; line-height:1.45; }
+    .ac-meta { display:flex; gap:0.75rem; font-size:0.71rem; color:var(--muted); flex-wrap:wrap; }
+    .ac-source{color:var(--cyan);font-weight:600;}
+    .ac-link-btn { font-size:0.7rem; color:var(--muted); background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:4px; padding:0.1rem 0.45rem; cursor:pointer; text-decoration:none; flex-shrink:0; margin-top:1px; }
+    .ac-link-btn:hover{color:var(--cyan);border-color:var(--cyan);text-decoration:none;}
+    .selected-info { background:rgba(126,232,232,0.05); border:1px solid rgba(126,232,232,0.2); border-radius:var(--r-sm); padding:0.75rem 1rem; font-size:0.82rem; display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem; }
+    .selected-info .si-title { font-weight:700; color:var(--text); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .si-open-btn { background:var(--cyan); color:#000; border:none; border-radius:5px; padding:0.3rem 0.8rem; font-size:0.75rem; font-weight:800; cursor:pointer; flex-shrink:0; }
+    .si-open-btn:hover{opacity:0.85;}
+    .orig-textarea { width:100%; background:rgba(0,0,0,0.35); border:1px solid var(--border); border-radius:var(--r-sm); color:var(--text); font-family:'Noto Sans KR',sans-serif; font-size:0.84rem; padding:0.75rem 1rem; outline:none; resize:vertical; min-height:160px; max-height:400px; line-height:1.8; transition:border-color 0.2s; }
+    .orig-textarea:focus{border-color:rgba(126,232,232,0.4);} .orig-textarea::placeholder{color:var(--muted);}
+    .orig-len{text-align:right;font-size:0.7rem;color:var(--muted);margin-top:0.35rem;}
+    .ai-status { border-radius:var(--r-sm); padding:0.7rem 1rem; font-size:0.82rem; display:flex; align-items:center; gap:0.65rem; margin-top:0.75rem; }
+    .ai-status.idle{background:rgba(255,255,255,0.03);border:1px dashed var(--border);color:var(--muted);}
+    .ai-status.loading{background:rgba(167,125,247,0.07);border:1px solid rgba(167,125,247,0.3);color:var(--purple);}
+    .ai-status.ok{background:rgba(86,224,160,0.07);border:1px solid rgba(86,224,160,0.25);color:var(--green);}
+    .ai-status.error{background:rgba(224,92,92,0.06);border:1px solid rgba(224,92,92,0.25);color:var(--red);}
+    .rte-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:0.9rem;}
+    .rte-toolbar{display:flex;gap:0.3rem;padding:0.55rem 0.75rem;background:var(--surf2);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+    .rte-btn{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);padding:0.2rem 0.55rem;border-radius:4px;cursor:pointer;font-size:0.78rem;font-family:inherit;transition:all 0.15s;}
+    .rte-btn:hover{background:rgba(255,255,255,0.1);color:var(--text);}
+    .rte-divider{width:1px;background:var(--border);margin:0 0.15rem;}
+    .rte-body{min-height:280px;max-height:520px;overflow-y:auto;padding:1.25rem 1.4rem;background:var(--surf);color:var(--text);font-size:0.88rem;line-height:1.85;outline:none;}
+    .rte-body:empty::before{content:'AI 초안이 여기에 표시됩니다. 직접 수정할 수 있어요.';color:var(--muted);pointer-events:none;}
+    .rte-body h2{font-size:1.15rem;font-weight:900;color:var(--cyan);margin:0.25rem 0 0.85rem;line-height:1.35;}
+    .rte-body h3{font-size:0.88rem;font-weight:800;color:var(--gold);margin:1.25rem 0 0.5rem;}
+    .rte-body ul{padding-left:1.4rem;margin:0.4rem 0 0.75rem;}
+    .rte-body ul li{margin-bottom:0.35rem;font-size:0.87rem;line-height:1.75;}
+    .rte-body p{margin-bottom:0.9rem;}
+    .rte-body blockquote{border-left:3px solid var(--cyan);padding-left:1rem;color:var(--muted);font-style:italic;margin:0.9rem 0;}
+    .rte-body strong{color:var(--text);font-weight:700;}
+    .publish-area{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.4rem;margin-top:1rem;}
+    .pub-field{margin-bottom:0.85rem;}
+    .pub-field label{display:block;font-size:0.72rem;font-weight:700;color:var(--muted);margin-bottom:0.4rem;letter-spacing:0.06em;text-transform:uppercase;}
+    .pub-field input[type=text]{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:inherit;font-size:0.88rem;padding:0.55rem 0.85rem;outline:none;transition:border-color 0.2s;}
+    .pub-field input:focus{border-color:var(--cyan);}
+    .photo-upload{border:1.5px dashed var(--border);border-radius:var(--r-sm);padding:1rem;text-align:center;cursor:pointer;transition:border-color 0.2s;}
+    .photo-upload:hover{border-color:rgba(126,232,232,0.3);}
+    .photo-upload input{display:none;}
+    .photo-upload p{font-size:0.78rem;color:var(--muted);margin-top:0.3rem;}
+    .photo-preview{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.6rem;}
+    .photo-thumb{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--border);cursor:pointer;}
+    .publish-final-row{display:flex;align-items:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;}
+    .publish-final-row .pfi{flex:1;font-size:0.78rem;color:var(--muted);}
+    .publish-final-row .pfi strong{color:var(--green);display:block;margin-bottom:0.15rem;font-size:0.82rem;}
+    .published-list{display:flex;flex-direction:column;gap:0.75rem;}
+    .published-item{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;transition:border-color 0.2s;}
+    .published-item:hover{border-color:var(--border-hi);}
+    .pi-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
+    .pi-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+    .pi-company{font-weight:800;font-size:0.88rem;}
+    .pi-time{font-size:0.72rem;color:var(--muted);margin-left:auto;}
+    .pi-title{font-size:0.85rem;color:var(--cyan);margin-bottom:0.4rem;font-weight:700;}
+    .pi-summary{font-size:0.82rem;color:#bbb;line-height:1.75;}
+    .pi-footer{display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;align-items:center;}
+    .pi-tag{background:rgba(255,255,255,0.06);color:var(--muted);padding:0.1rem 0.5rem;border-radius:1rem;font-size:0.68rem;}
+    .pi-visible{background:rgba(86,224,160,0.1);border:1px solid rgba(86,224,160,0.2);color:var(--green);padding:0.1rem 0.5rem;border-radius:1rem;font-size:0.68rem;font-weight:700;}
+    .pi-actions{margin-left:auto;display:flex;gap:0.4rem;}
+    .stats-strip{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+    .stat-box{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-sm);padding:0.75rem 1.1rem;flex:1;min-width:100px;}
+    .stat-box .sv{font-size:1.3rem;font-weight:900;color:var(--cyan);}
+    .stat-box .sl{font-size:0.68rem;color:var(--muted);margin-top:0.1rem;}
+    .settings-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;}
+    .api-key-input{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:monospace;font-size:0.82rem;padding:0.55rem 0.85rem;outline:none;transition:border-color 0.2s;}
+    .api-key-input:focus{border-color:var(--purple);}
+    .empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
+    .empty .e-icon{font-size:2.5rem;margin-bottom:0.75rem;}
+    .empty p{font-size:0.82rem;line-height:1.8;}
+    #toast{position:fixed;bottom:1.75rem;right:1.75rem;background:var(--surf2);border:1px solid var(--border-hi);color:var(--text);padding:0.7rem 1.2rem;border-radius:var(--r);font-size:0.82rem;opacity:0;transform:translateY(8px);transition:all 0.25s;pointer-events:none;z-index:999;}
+    #toast.show{opacity:1;transform:translateY(0);}
+    ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:10px;}
+    @media(max-width:768px){
+      .shell{grid-template-columns:1fr;grid-template-rows:52px auto 1fr;}
+      .sidebar{display:flex;overflow-x:auto;overflow-y:hidden;padding:0.5rem;gap:0.3rem;}
+      .sidebar-label{display:none;} .company-btn{flex-shrink:0;padding:0.4rem 0.7rem;white-space:nowrap;} .sidebar-divider{width:1px;height:auto;margin:0 0.25rem;}
     }
   </style>
 </head>
 <body>
-
 <div class="shell">
-  <!-- Topbar -->
   <header class="topbar">
     <span class="topbar-logo">🛰 COSMOS BRIEF</span>
     <span class="topbar-badge">관리자</span>
@@ -269,745 +165,606 @@
     <a class="topbar-link" href="../trends.html" target="_blank">← 공개 페이지</a>
   </header>
 
-  <!-- Sidebar: Company tabs -->
   <aside class="sidebar" id="sidebar">
+    <div class="sidebar-label">종합 뉴스</div>
+    <button class="company-btn" data-company="main_global" onclick="selectCompany('main_global',this)">
+      <span class="company-dot" style="background:var(--cyan)"></span> 🌌 우주 종합
+      <span class="company-badge" id="badge-main_global">0</span>
+    </button>
+    <button class="company-btn" data-company="main_ko" onclick="selectCompany('main_ko',this)">
+      <span class="company-dot" style="background:var(--gold)"></span> 🇰🇷 한국 우주
+      <span class="company-badge" id="badge-main_ko">0</span>
+    </button>
+    <div class="sidebar-divider"></div>
     <div class="sidebar-label">해외 기업 · 기관</div>
-
-    <button class="company-btn" data-company="nasa" onclick="selectCompany('nasa', this)">
+    <button class="company-btn" data-company="nasa" onclick="selectCompany('nasa',this)">
       <span class="company-dot" style="background:#4b8ef5"></span> NASA
       <span class="company-badge" id="badge-nasa">0</span>
     </button>
-    <button class="company-btn" data-company="spacex" onclick="selectCompany('spacex', this)">
+    <button class="company-btn" data-company="spacex" onclick="selectCompany('spacex',this)">
       <span class="company-dot" style="background:#ccc"></span> SpaceX
       <span class="company-badge" id="badge-spacex">0</span>
     </button>
-    <button class="company-btn" data-company="esa" onclick="selectCompany('esa', this)">
+    <button class="company-btn" data-company="esa" onclick="selectCompany('esa',this)">
       <span class="company-dot" style="background:#003399"></span> ESA
       <span class="company-badge" id="badge-esa">0</span>
     </button>
-    <button class="company-btn" data-company="blueorigin" onclick="selectCompany('blueorigin', this)">
+    <button class="company-btn" data-company="blueorigin" onclick="selectCompany('blueorigin',this)">
       <span class="company-dot" style="background:#1a7f9c"></span> Blue Origin
       <span class="company-badge" id="badge-blueorigin">0</span>
     </button>
-    <button class="company-btn" data-company="rocketlab" onclick="selectCompany('rocketlab', this)">
+    <button class="company-btn" data-company="rocketlab" onclick="selectCompany('rocketlab',this)">
       <span class="company-dot" style="background:#cb3034"></span> Rocket Lab
       <span class="company-badge" id="badge-rocketlab">0</span>
     </button>
-    <button class="company-btn" data-company="jaxa" onclick="selectCompany('jaxa', this)">
+    <button class="company-btn" data-company="jaxa" onclick="selectCompany('jaxa',this)">
       <span class="company-dot" style="background:#1e4898"></span> JAXA
       <span class="company-badge" id="badge-jaxa">0</span>
     </button>
-    <button class="company-btn" data-company="ula" onclick="selectCompany('ula', this)">
+    <button class="company-btn" data-company="ula" onclick="selectCompany('ula',this)">
       <span class="company-dot" style="background:#00508c"></span> ULA
       <span class="company-badge" id="badge-ula">0</span>
     </button>
-    <button class="company-btn" data-company="axiom" onclick="selectCompany('axiom', this)">
+    <button class="company-btn" data-company="axiom" onclick="selectCompany('axiom',this)">
       <span class="company-dot" style="background:#6a3fa3"></span> Axiom Space
       <span class="company-badge" id="badge-axiom">0</span>
     </button>
-
     <div class="sidebar-divider"></div>
     <div class="sidebar-label">한국 기업 · 기관</div>
-
-    <button class="company-btn" data-company="kasa" onclick="selectCompany('kasa', this)">
+    <button class="company-btn" data-company="kasa" onclick="selectCompany('kasa',this)">
       <span class="company-dot" style="background:#003087"></span> 우주항공청(KASA)
       <span class="company-badge" id="badge-kasa">0</span>
     </button>
-    <button class="company-btn" data-company="kari" onclick="selectCompany('kari', this)">
+    <button class="company-btn" data-company="kari" onclick="selectCompany('kari',this)">
       <span class="company-dot" style="background:#005bac"></span> KARI
       <span class="company-badge" id="badge-kari">0</span>
     </button>
-    <button class="company-btn" data-company="kasi" onclick="selectCompany('kasi', this)">
+    <button class="company-btn" data-company="kasi" onclick="selectCompany('kasi',this)">
       <span class="company-dot" style="background:#1a3a6b"></span> KASI
       <span class="company-badge" id="badge-kasi">0</span>
     </button>
-    <button class="company-btn" data-company="kai" onclick="selectCompany('kai', this)">
+    <button class="company-btn" data-company="kai" onclick="selectCompany('kai',this)">
       <span class="company-dot" style="background:#e6000a"></span> KAI
       <span class="company-badge" id="badge-kai">0</span>
     </button>
-    <button class="company-btn" data-company="hanwha" onclick="selectCompany('hanwha', this)">
+    <button class="company-btn" data-company="hanwha" onclick="selectCompany('hanwha',this)">
       <span class="company-dot" style="background:#f75c00"></span> 한화에어로스페이스
       <span class="company-badge" id="badge-hanwha">0</span>
     </button>
-
     <div class="sidebar-divider"></div>
     <div class="sidebar-label">관리</div>
-    <button class="company-btn" onclick="selectCompany('published', this)">
+    <button class="company-btn" onclick="selectCompany('published',this)">
       <span class="company-dot" style="background:var(--green)"></span> 발행된 업데이트
     </button>
-    <button class="company-btn" onclick="selectCompany('settings', this)">
-      <span class="company-dot" style="background:var(--gold)"></span> 설정
+    <button class="company-btn" onclick="selectCompany('settings',this)">
+      <span class="company-dot" style="background:var(--gold)"></span> ⚙️ 설정
     </button>
   </aside>
 
-  <!-- Main -->
   <main class="main-area">
     <div class="main-inner">
 
-      <!-- ══ PLACEHOLDER ══ -->
+      <!-- PLACEHOLDER -->
       <div class="panel active" id="panel-placeholder">
         <div class="empty">
           <div class="e-icon">🛰</div>
-          <p>왼쪽에서 기업/기관을 선택하면<br>최신 뉴스를 불러올 수 있어요</p>
+          <p>왼쪽에서 채널을 선택해주세요<br><span style="font-size:0.75rem;opacity:0.7">기사 수집 → 원문 붙여넣기 → AI 초안 생성 → 편집 → 발행</span></p>
         </div>
-        <div class="stats-strip" id="global-stats">
-          <div class="stat-box">
-            <div class="sv" id="gs-total">0</div>
-            <div class="sl">총 발행 업데이트</div>
-          </div>
-          <div class="stat-box">
-            <div class="sv" id="gs-companies">0</div>
-            <div class="sl">기업/기관 커버</div>
-          </div>
-          <div class="stat-box">
-            <div class="sv" id="gs-last">—</div>
-            <div class="sl">마지막 발행</div>
-          </div>
+        <div class="stats-strip" id="global-stats" style="margin-top:2rem;">
+          <div class="stat-box"><div class="sv" id="gs-total">0</div><div class="sl">총 발행 업데이트</div></div>
+          <div class="stat-box"><div class="sv" id="gs-companies">0</div><div class="sl">기업/기관 커버</div></div>
+          <div class="stat-box"><div class="sv" id="gs-last">—</div><div class="sl">마지막 발행</div></div>
         </div>
       </div>
 
-      <!-- ══ COMPANY PANEL (dynamic) ══ -->
+      <!-- COMPANY PANEL -->
       <div class="panel" id="panel-company">
         <div class="company-header" id="company-header">
           <div class="company-avatar" id="co-avatar">N</div>
           <div>
-            <h1 id="co-name">NASA</h1>
-            <p id="co-desc">공식 보도자료 및 뉴스 요약</p>
+            <h1 id="co-name">채널 이름</h1>
+            <p id="co-desc">설명</p>
           </div>
           <div class="btn-row">
-            <button class="btn btn-ghost" id="btn-fetch" onclick="fetchNews()">
-              🔄 뉴스 가져오기
-            </button>
-            <button class="btn btn-green btn-lg" id="btn-publish" onclick="publishUpdate()" disabled>
-              📡 업데이트 발행
-            </button>
+            <button class="btn btn-ghost" id="btn-fetch" onclick="fetchNews()">🔄 뉴스 가져오기</button>
           </div>
         </div>
 
-        <!-- Fetch status -->
         <div class="fetch-status" id="fetch-status" style="display:none;"></div>
 
-        <!-- Source info -->
-        <div id="source-info" style="margin-bottom:1rem; font-size:0.75rem; color:var(--muted);"></div>
-
-        <!-- Articles list -->
-        <div class="sec-title" id="articles-sec-title" style="display:none;">
-          수집된 기사 <span style="color:var(--muted);font-weight:400;" id="articles-count"></span>
+        <!-- STEP 1 -->
+        <div class="step-block active-step" id="step1-block">
+          <div class="step-header">
+            <div class="step-num">1</div>
+            <div class="step-label">기사 선택</div>
+            <div class="step-sub" id="articles-count"></div>
+          </div>
+          <div class="articles-grid" id="articles-grid">
+            <div class="empty" style="padding:2rem"><p>🔄 뉴스 가져오기를 눌러주세요</p></div>
+          </div>
+          <div class="selected-info" id="selected-info" style="display:none;">
+            <span class="si-title" id="si-title-text">—</span>
+            <button class="si-open-btn" onclick="openSelectedLink()">🔗 기사 열기</button>
+          </div>
         </div>
-        <div class="articles-grid" id="articles-grid"></div>
 
-        <!-- Summary editor -->
-        <div id="summary-section" style="display:none;">
-          <div class="sec-title">발행할 업데이트 내용 작성</div>
-          <div class="summary-editor">
-            <label>📌 업데이트 제목</label>
-            <input type="text" id="pub-title" placeholder="예: SpaceX, 스타십 7차 IFT 성공 발사 — 2026년 3월 동향" />
+        <!-- STEP 2 -->
+        <div class="step-block" id="step2-block">
+          <div class="step-header">
+            <div class="step-num">2</div>
+            <div class="step-label">원문 텍스트 붙여넣기</div>
+            <div class="step-sub">기사 전체 본문을 복사해서 붙여넣으세요</div>
+          </div>
+          <textarea class="orig-textarea" id="orig-text"
+            placeholder="1. 위 기사에서 '기사 열기' 클릭&#10;2. 열린 페이지에서 본문 전체 선택 → 복사&#10;3. 여기에 붙여넣기&#10;&#10;광고·내비게이션 텍스트는 제거해도 됩니다"
+            oninput="updateOrigLen()"></textarea>
+          <div class="orig-len"><span id="orig-len-val">0</span>자 입력됨</div>
+          <div style="margin-top:0.85rem;display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;">
+            <button class="btn btn-purple btn-lg" id="btn-ai" onclick="generateAiDraft()">🤖 AI 초안 생성</button>
+            <span style="font-size:0.75rem;color:var(--muted);">GPT-4o-mini · 약 10~20초</span>
+          </div>
+          <div class="ai-status idle" id="ai-status">💡 원문을 붙여넣고 'AI 초안 생성'을 누르면 자동으로 초안이 작성됩니다</div>
+        </div>
 
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.4rem;">
-              <label style="margin:0;">📝 요약 / 해설 <span style="color:var(--muted);font-weight:400">(직접 작성)</span></label>
-              <button class="btn btn-ghost" style="font-size:0.75rem; padding:0.3rem 0.8rem;" onclick="fillDraft()" title="선택한 기사의 description을 초안으로 채워줍니다. 반드시 내 말로 다시 써주세요.">✏️ 초안 가져오기</button>
-            </div>
-            <div id="draft-notice" style="display:none; font-size:0.72rem; background:rgba(247,201,72,0.1); border:1px solid rgba(247,201,72,0.25); color:var(--gold); border-radius:6px; padding:0.45rem 0.75rem; margin-bottom:0.5rem;">
-              ⚠️ 초안이 채워졌어요. RSS에서 가져온 문장이므로 <strong>반드시 내 말로 다시 써주세요</strong> — 문장 구조·표현을 바꾸면 저작권 OK!
-            </div>
-            <textarea id="pub-summary" placeholder="이 기업의 최근 동향을 직접 작성해주세요.&#10;&#10;수집된 기사 제목과 내용을 참고해서 편집장의 시각으로 요약해보세요. 원문을 그대로 붙여넣지 말고, 독자적인 해설 문장으로 써주세요.&#10;&#10;이렇게 하면 저작권 문제 없이 공개할 수 있어요 ✅"
-              oninput="updateCharCount(); draftEditCheck();"></textarea>
-            <div class="char-count"><span id="char-count">0</span>자</div>
-
-            <label style="margin-top:0.75rem;">🔗 주요 참고 링크 (선택, 쉼표 구분)</label>
-            <input type="text" id="pub-links" placeholder="https://www.nasa.gov/..., https://..." />
+        <!-- STEP 3 -->
+        <div class="step-block" id="step3-block">
+          <div class="step-header">
+            <div class="step-num">3</div>
+            <div class="step-label">초안 편집 &amp; 발행</div>
+            <div class="step-sub">AI 초안을 자유롭게 수정하세요</div>
           </div>
 
-          <div class="publish-bar">
-            <div class="publish-bar-info">
-              <strong>✅ 발행 준비 완료</strong>
-              <span>발행하면 공개 트렌드 페이지에 즉시 표시됩니다</span>
+          <div class="rte-wrap">
+            <div class="rte-toolbar">
+              <button class="rte-btn" onclick="rteCmd('bold')"><b>B</b></button>
+              <button class="rte-btn" onclick="rteCmd('italic')"><i>I</i></button>
+              <button class="rte-btn" onclick="rteCmd('underline')"><u>U</u></button>
+              <div class="rte-divider"></div>
+              <button class="rte-btn" onclick="rteBlock('h2')">H2</button>
+              <button class="rte-btn" onclick="rteBlock('h3')">H3</button>
+              <button class="rte-btn" onclick="rteBlock('p')">¶</button>
+              <button class="rte-btn" onclick="rteCmd('insertUnorderedList')">• 목록</button>
+              <button class="rte-btn" onclick="rteBlock('blockquote')">❝</button>
+              <div class="rte-divider"></div>
+              <button class="rte-btn" onclick="clearRte()" style="color:var(--red)">✕</button>
             </div>
-            <button class="btn btn-green btn-lg" id="btn-publish-bottom" onclick="publishUpdate()">
-              📡 지금 발행하기
-            </button>
+            <div class="rte-body" id="rte-body" contenteditable="true" spellcheck="false"></div>
+          </div>
+
+          <div class="publish-area">
+            <div class="pub-field">
+              <label>📌 발행 제목</label>
+              <input type="text" id="pub-title" placeholder="예: 스타십 7차 발사 성공 — 화성행 꿈이 한 걸음 더 가까워졌다" />
+            </div>
+            <div class="pub-field">
+              <label>🔗 참고 링크 (선택, 쉼표 구분)</label>
+              <input type="text" id="pub-links" placeholder="https://..." />
+            </div>
+            <div class="pub-field">
+              <label>📷 대표 이미지 (선택)</label>
+              <div class="photo-upload" onclick="document.getElementById('photo-input').click()">
+                <div style="font-size:1.5rem">📎</div>
+                <p>클릭하거나 이미지를 드래그하세요 (JPG, PNG, GIF)</p>
+                <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotoUpload(event)" />
+              </div>
+              <div class="photo-preview" id="photo-preview"></div>
+            </div>
+            <div class="publish-final-row">
+              <div class="pfi">
+                <strong>📡 발행하면 공개 트렌드 페이지에 즉시 표시됩니다</strong>
+                localStorage 기반 · 이 브라우저에서만 표시
+              </div>
+              <button class="btn btn-green btn-lg" id="btn-publish" onclick="publishUpdate()">📡 지금 발행하기</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ══ PUBLISHED ══ -->
+      <!-- PUBLISHED -->
       <div class="panel" id="panel-published">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
           <div>
-            <h1 style="font-size:1.2rem; font-weight:900; margin-bottom:0.2rem;">📡 발행된 업데이트</h1>
-            <p style="font-size:0.78rem; color:var(--muted);">공개 트렌드 페이지에 표시되는 모든 업데이트</p>
+            <h1 style="font-size:1.2rem;font-weight:900;margin-bottom:0.2rem;">📡 발행된 업데이트</h1>
+            <p style="font-size:0.78rem;color:var(--muted);">공개 트렌드 페이지에 표시되는 업데이트 목록</p>
           </div>
           <button class="btn btn-danger" onclick="clearAllPublished()">전체 삭제</button>
         </div>
         <div class="published-list" id="published-list"></div>
       </div>
 
-      <!-- ══ SETTINGS ══ -->
+      <!-- SETTINGS -->
       <div class="panel" id="panel-settings">
-        <h1 style="font-size:1.2rem; font-weight:900; margin-bottom:0.4rem;">⚙️ 설정</h1>
-        <p style="font-size:0.78rem; color:var(--muted); margin-bottom:2rem;">뉴스 수집 방식과 저작권 가이드라인 확인</p>
+        <h1 style="font-size:1.2rem;font-weight:900;margin-bottom:0.4rem;">⚙️ 설정</h1>
+        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:2rem;">AI 연동 및 데이터 관리</p>
 
-        <div style="background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
-          <div class="sec-title">뉴스 소스 방식</div>
-          <p style="font-size:0.83rem; color:#bbb; line-height:1.9;">
-            현재 이 시스템은 <strong style="color:var(--cyan);">Google News RSS 피드</strong>를 통해 각 기업/기관 관련 뉴스를 수집합니다.<br>
-            RSS는 뉴스 배포를 목적으로 공개된 피드이므로 집계 자체는 합법적이에요.<br>
-            단, <strong style="color:var(--gold);">원문 텍스트를 그대로 복사하지 말고 직접 작성한 해설로 대체</strong>해주세요.
+        <div class="settings-card">
+          <div class="sec-title" style="color:var(--purple);">🤖 OpenAI API 키</div>
+          <p style="font-size:0.82rem;color:#bbb;line-height:1.85;margin-bottom:1rem;">
+            AI 초안 생성에 <strong style="color:var(--purple);">GPT-4o-mini</strong>를 사용합니다.
+            <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>에서 발급 후 입력하세요.<br>
+            <span style="color:var(--muted);font-size:0.78rem;">키는 이 브라우저 localStorage에만 저장됩니다.</span>
           </p>
+          <div style="display:flex;gap:0.65rem;align-items:center;flex-wrap:wrap;">
+            <input type="password" class="api-key-input" id="api-key-input" placeholder="sk-..." style="flex:1;min-width:240px;" />
+            <button class="btn btn-purple" onclick="saveApiKey()">저장</button>
+            <button class="btn btn-ghost btn-sm" onclick="toggleApiKeyVisibility()">👁 보기</button>
+          </div>
+          <p style="font-size:0.7rem;color:var(--muted);margin-top:0.6rem;">Vercel 환경변수(OPENAI_API_KEY) 설정 시 키 입력 불필요.</p>
         </div>
 
-        <div style="background:rgba(86,224,160,0.05); border:1px solid rgba(86,224,160,0.2); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
-          <div class="sec-title" style="color:var(--green);">✅ 안전한 운영 원칙</div>
-          <ul style="font-size:0.82rem; color:#bbb; line-height:2.1; padding-left:1.2rem;">
-            <li>기사 원문을 그대로 쓰지 말고 <strong style="color:var(--text);">편집장 해설 형식</strong>으로 작성</li>
-            <li>수집된 기사 링크는 항상 <strong style="color:var(--text);">출처 링크로 연결</strong></li>
-            <li>인용 시 최소한으로 (헤드라인 + 1~2 문장 이내)</li>
-            <li>보도자료(Press Release)는 비교적 자유롭게 요약 가능</li>
-            <li>NASA, ESA 등 정부 공식 발표는 퍼블릭 도메인에 가까움</li>
-          </ul>
-        </div>
-
-        <div style="background:rgba(224,92,92,0.05); border:1px solid rgba(224,92,92,0.2); border-radius:var(--r); padding:1.5rem; margin-bottom:1rem;">
-          <div class="sec-title" style="color:var(--red);">⚠️ 수익화 시 주의</div>
-          <ul style="font-size:0.82rem; color:#bbb; line-height:2.1; padding-left:1.2rem;">
-            <li>광고 수익 발생 시 → 요약문을 <strong style="color:var(--text);">완전한 독자 저작물</strong>로 작성 필요</li>
-            <li>구독료 모델 → 뉴스 API 유료 라이선스 검토 (NewsAPI Business: $449/월)</li>
-            <li>수익이 월 $1,000 이상 → 법인 설립 + 저작권 정책 문서화 권장</li>
-          </ul>
-        </div>
-
-        <div style="background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:1.5rem;">
-          <div class="sec-title">데이터 관리</div>
-          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">발행된 업데이트는 브라우저 로컬스토리지에 저장됩니다.</p>
-          <div style="display:flex; gap:0.6rem;">
-            <button class="btn btn-ghost" onclick="exportData()">📤 데이터 내보내기 (JSON)</button>
-            <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 데이터 불러오기</button>
+        <div class="settings-card">
+          <div class="sec-title">💾 데이터 관리</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">발행된 업데이트는 브라우저 localStorage에 저장됩니다.</p>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+            <button class="btn btn-ghost" onclick="exportData()">📤 내보내기 (JSON)</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 불러오기</button>
             <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)" />
           </div>
         </div>
+
+        <div class="settings-card">
+          <div class="sec-title" style="color:var(--cyan);">📡 뉴스 수집 구조</div>
+          <ul style="font-size:0.82rem;color:#bbb;line-height:2.1;padding-left:1.2rem;">
+            <li><strong style="color:var(--cyan);">종합 뉴스</strong> — Google News RSS (<code style="color:var(--gold)">space astronomy exploration</code> / <code style="color:var(--gold)">우주 탐사 천문학</code>)</li>
+            <li><strong style="color:var(--cyan);">기업별 탭</strong> — Google News RSS (기업명 키워드 검색)</li>
+            <li><strong style="color:var(--gold);">원문 수집</strong> — 기사 링크 직접 열기 → 본문 복사 → 붙여넣기</li>
+            <li><strong style="color:var(--purple);">AI 초안</strong> — GPT-4o-mini가 구조화된 한국어 초안 자동 생성</li>
+          </ul>
+        </div>
       </div>
 
-    </div><!-- /main-inner -->
+    </div>
   </main>
 </div>
 
 <div id="toast"></div>
 
 <script>
-/* ═══════════════════════════════════════════
-   COMPANY CONFIG
-═══════════════════════════════════════════ */
 const COMPANIES = {
-  nasa:       { name:'NASA',               short:'NASA',  color:'#4b8ef5', icon:'🚀',
-                query:'NASA space exploration', lang:'en' },
-  spacex:     { name:'SpaceX',             short:'SpX',   color:'#cccccc', icon:'🛸',
-                query:'SpaceX launch rocket', lang:'en' },
-  esa:        { name:'ESA',                short:'ESA',   color:'#003399', icon:'🛰',
-                query:'ESA European Space Agency', lang:'en' },
-  blueorigin: { name:'Blue Origin',        short:'BO',    color:'#1a7f9c', icon:'🔵',
-                query:'Blue Origin rocket launch', lang:'en' },
-  rocketlab:  { name:'Rocket Lab',         short:'RL',    color:'#cb3034', icon:'🔴',
-                query:'"Rocket Lab" launch space', lang:'en' },
-  jaxa:       { name:'JAXA',               short:'JXA',   color:'#1e4898', icon:'🇯🇵',
-                query:'JAXA Japan space agency', lang:'en' },
-  ula:        { name:'ULA',                short:'ULA',   color:'#00508c', icon:'🚀',
-                query:'United Launch Alliance ULA', lang:'en' },
-  axiom:      { name:'Axiom Space',        short:'AX',    color:'#6a3fa3', icon:'🌌',
-                query:'Axiom Space station ISS', lang:'en' },
-  kasa:       { name:'우주항공청 (KASA)',  short:'KASA',  color:'#003087', icon:'🇰🇷',
-                query:'우주항공청 KASA 한국 우주', lang:'ko' },
-  kari:       { name:'KARI 한국항공우주연구원', short:'KARI', color:'#005bac', icon:'🛸',
-                query:'KARI 한국항공우주연구원 누리호', lang:'ko' },
-  kasi:       { name:'KASI 한국천문연구원', short:'KASI', color:'#1a3a6b', icon:'🔭',
-                query:'한국천문연구원 KASI 천문', lang:'ko' },
-  kai:        { name:'KAI 한국항공우주산업', short:'KAI', color:'#e6000a', icon:'✈️',
-                query:'KAI 한국항공우주산업 우주', lang:'ko' },
-  hanwha:     { name:'한화에어로스페이스', short:'한화',  color:'#f75c00', icon:'🔶',
-                query:'한화에어로스페이스 우주 발사체', lang:'ko' },
+  main_global:{ name:'🌌 우주 종합',  short:'SPACE', color:'#7ee8e8', icon:'🌌', query:'space astronomy exploration rocket launch 2026', lang:'en' },
+  main_ko:    { name:'🇰🇷 한국 우주', short:'KR',    color:'#f7c948', icon:'🇰🇷', query:'우주 탐사 천문학 로켓 발사 위성 2026', lang:'ko' },
+  nasa:       { name:'NASA',           short:'NASA',  color:'#4b8ef5', icon:'🚀', query:'NASA space exploration', lang:'en' },
+  spacex:     { name:'SpaceX',         short:'SpX',   color:'#cccccc', icon:'🛸', query:'SpaceX launch Starship Falcon', lang:'en' },
+  esa:        { name:'ESA',            short:'ESA',   color:'#003399', icon:'🛰', query:'ESA European Space Agency mission', lang:'en' },
+  blueorigin: { name:'Blue Origin',    short:'BO',    color:'#1a7f9c', icon:'🔵', query:'Blue Origin New Glenn rocket', lang:'en' },
+  rocketlab:  { name:'Rocket Lab',     short:'RL',    color:'#cb3034', icon:'🔴', query:'"Rocket Lab" Electron launch', lang:'en' },
+  jaxa:       { name:'JAXA',           short:'JXA',   color:'#1e4898', icon:'🇯🇵', query:'JAXA Japan space mission', lang:'en' },
+  ula:        { name:'ULA',            short:'ULA',   color:'#00508c', icon:'🚀', query:'United Launch Alliance Vulcan', lang:'en' },
+  axiom:      { name:'Axiom Space',    short:'AX',    color:'#6a3fa3', icon:'🌌', query:'Axiom Space station mission', lang:'en' },
+  kasa:       { name:'우주항공청 (KASA)',        short:'KASA', color:'#003087', icon:'🇰🇷', query:'우주항공청 KASA 한국 우주', lang:'ko' },
+  kari:       { name:'KARI 한국항공우주연구원',  short:'KARI', color:'#005bac', icon:'🛸', query:'KARI 한국항공우주연구원 누리호', lang:'ko' },
+  kasi:       { name:'KASI 한국천문연구원',      short:'KASI', color:'#1a3a6b', icon:'🔭', query:'한국천문연구원 KASI 천문', lang:'ko' },
+  kai:        { name:'KAI 한국항공우주산업',     short:'KAI',  color:'#e6000a', icon:'✈️', query:'KAI 한국항공우주산업', lang:'ko' },
+  hanwha:     { name:'한화에어로스페이스',        short:'한화',  color:'#f75c00', icon:'🔶', query:'한화에어로스페이스 우주 발사체', lang:'ko' },
 };
 
-/* ═══════════════════════════════════════════
-   STATE
-═══════════════════════════════════════════ */
 let currentCompany = null;
 let fetchedArticles = [];
-let selectedArticles = new Set();
-
+let selectedArticleIndex = -1;
+let uploadedPhotos = [];
 const DB_KEY = 'cb_published_news';
+const API_KEY_STORE = 'cb_openai_key';
 
-function loadPublished() {
-  try { return JSON.parse(localStorage.getItem(DB_KEY) || '[]'); } catch { return []; }
-}
-function savePublished(data) { localStorage.setItem(DB_KEY, JSON.stringify(data)); }
+function loadPublished() { try { return JSON.parse(localStorage.getItem(DB_KEY)||'[]'); } catch { return []; } }
+function savePublished(d) { localStorage.setItem(DB_KEY, JSON.stringify(d)); }
+function loadApiKey() { return localStorage.getItem(API_KEY_STORE)||''; }
 
-/* ═══════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════ */
-function selectCompany(companyId, btn) {
+function selectCompany(id, btn) {
   document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
-
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  if (id === 'published') { document.getElementById('panel-published').classList.add('active'); renderPublished(); return; }
+  if (id === 'settings')  { document.getElementById('panel-settings').classList.add('active'); loadApiKeyUI(); return; }
 
-  if (companyId === 'published') {
-    document.getElementById('panel-published').classList.add('active');
-    renderPublished();
-    return;
-  }
-  if (companyId === 'settings') {
-    document.getElementById('panel-settings').classList.add('active');
-    return;
-  }
-
-  currentCompany = companyId;
-  fetchedArticles = [];
-  selectedArticles = new Set();
-
-  const co = COMPANIES[companyId];
+  currentCompany = id; fetchedArticles = []; selectedArticleIndex = -1; uploadedPhotos = [];
+  const co = COMPANIES[id];
   document.getElementById('panel-company').classList.add('active');
 
-  // Set header
   const av = document.getElementById('co-avatar');
   av.textContent = co.icon;
   av.style.background = hexToRgba(co.color, 0.15);
-  av.style.border = `1px solid ${hexToRgba(co.color, 0.3)}`;
+  av.style.border = '1px solid ' + hexToRgba(co.color, 0.3);
   document.getElementById('co-name').textContent = co.name;
-  document.getElementById('co-desc').textContent = `"${co.query}" 키워드로 최신 뉴스 수집`;
-  document.getElementById('source-info').innerHTML =
-    `🔗 수집 출처: <strong>Google News RSS</strong> — <code style="color:var(--cyan);font-size:0.72rem;">${co.query}</code>`;
+  document.getElementById('co-desc').textContent = 'RSS 키워드: "' + co.query + '"';
 
-  // Reset UI
   document.getElementById('fetch-status').style.display = 'none';
-  document.getElementById('articles-sec-title').style.display = 'none';
-  document.getElementById('articles-grid').innerHTML = '';
-  document.getElementById('summary-section').style.display = 'none';
-  document.getElementById('btn-publish').disabled = true;
-  document.getElementById('btn-publish-bottom') && (document.getElementById('btn-publish-bottom').disabled = false);
+  document.getElementById('articles-count').textContent = '';
+  document.getElementById('articles-grid').innerHTML = '<div class="empty" style="padding:2rem"><p>🔄 뉴스 가져오기를 눌러주세요</p></div>';
+  document.getElementById('selected-info').style.display = 'none';
+  document.getElementById('orig-text').value = '';
+  document.getElementById('orig-len-val').textContent = '0';
+  document.getElementById('rte-body').innerHTML = '';
   document.getElementById('pub-title').value = '';
-  document.getElementById('pub-summary').value = '';
   document.getElementById('pub-links').value = '';
-  updateCharCount();
+  document.getElementById('photo-preview').innerHTML = '';
+  setAiStatus('idle', '💡 원문을 붙여넣고 AI 초안 생성 버튼을 누르면 자동으로 초안이 작성됩니다');
+  resetSteps(); setStepActive(1);
 }
 
-/* ═══════════════════════════════════════════
-   RSS FETCH
-═══════════════════════════════════════════ */
+function resetSteps() {
+  [1,2,3].forEach(n => {
+    const el = document.getElementById('step'+n+'-block');
+    el.classList.remove('active-step','done-step');
+  });
+}
+function setStepActive(n) {
+  resetSteps();
+  for (let i=1;i<=3;i++) {
+    const el = document.getElementById('step'+i+'-block');
+    if (i < n) el.classList.add('done-step');
+    else if (i === n) el.classList.add('active-step');
+  }
+}
+
 async function fetchNews() {
   if (!currentCompany) return;
   const co = COMPANIES[currentCompany];
   const btn = document.getElementById('btn-fetch');
   const statusEl = document.getElementById('fetch-status');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spin">⟳</span> 수집 중...';
-
   statusEl.style.display = 'flex';
   statusEl.className = 'fetch-status loading';
-  statusEl.innerHTML = '<span class="spin">⟳</span> Google News에서 최신 기사를 가져오는 중... (CORS 프록시 경유)';
+  statusEl.innerHTML = '<span class="spin">⟳</span> 뉴스를 가져오는 중...';
+  btn.disabled = true; btn.innerHTML = '<span class="spin">⟳</span> 수집 중...';
 
-  const hl = co.lang === 'ko' ? 'ko' : 'en';
-  const gl = co.lang === 'ko' ? 'KR' : 'US';
-  const ceid = co.lang === 'ko' ? 'KR:ko' : 'US:en';
-  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(co.query)}&hl=${hl}&gl=${gl}&ceid=${ceid}`;
-
+  const hl=co.lang==='ko'?'ko':'en', gl=co.lang==='ko'?'KR':'US', ceid=co.lang==='ko'?'KR:ko':'US:en';
+  const rssUrl = 'https://news.google.com/rss/search?q='+encodeURIComponent(co.query)+'&hl='+hl+'&gl='+gl+'&ceid='+ceid;
   let fetchedOk = false;
 
-  // ── Strategy 0: Self-hosted Vercel API proxy (most reliable, no CORS) ──
   try {
-    const selfProxy = `/api/rss?url=${encodeURIComponent(rssUrl)}`;
-    const res = await fetch(selfProxy, { signal: AbortSignal.timeout(12000) });
+    const res = await fetch('/api/rss?url='+encodeURIComponent(rssUrl), {signal:AbortSignal.timeout(12000)});
     if (res.ok) {
       const xmlText = await res.text();
       if (xmlText.includes('<item>')) {
-        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const xml = new DOMParser().parseFromString(xmlText,'text/xml');
         const items = Array.from(xml.querySelectorAll('item'));
         if (items.length) {
           fetchedArticles = items.map(item => ({
-            title:   (item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
-            link:    item.querySelector('link')?.textContent?.trim() ||
-                     item.querySelector('guid')?.textContent?.trim() || '#',
-            pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
-            desc:    (item.querySelector('description')?.textContent||'')
-                       .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
-            source:  item.querySelector('source')?.textContent?.trim() || 'Google News',
-          })).slice(0, 20);
+            title:(item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
+            link:item.querySelector('link')?.textContent?.trim()||item.querySelector('guid')?.textContent?.trim()||'#',
+            pubDate:item.querySelector('pubDate')?.textContent?.trim()||'',
+            desc:(item.querySelector('description')?.textContent||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+            source:item.querySelector('source')?.textContent?.trim()||'Google News',
+          })).slice(0,20);
           fetchedOk = true;
           statusEl.className = 'fetch-status ok';
-          statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료`;
+          statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
         }
       }
     }
-  } catch (_) {}
+  } catch(_) {}
 
-  // ── Strategy 1: rss2json.com (JSON API) ──────────────
   if (!fetchedOk) {
     try {
-      const r2jUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
-      const res = await fetch(r2jUrl, { signal: AbortSignal.timeout(12000) });
+      const r2j = 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rssUrl)+'&count=20';
+      const res = await fetch(r2j,{signal:AbortSignal.timeout(12000)});
       if (res.ok) {
         const data = await res.json();
-        if (data.status === 'ok' && Array.isArray(data.items) && data.items.length) {
+        if (data.status==='ok' && data.items?.length) {
           fetchedArticles = data.items.map(it => ({
-            title:   it.title?.replace(/<[^>]+>/g,'').trim() || '',
-            link:    it.link || it.guid || '#',
-            pubDate: it.pubDate || '',
-            desc:    (it.description || it.content || '')
-                       .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0, 280),
-            source:  it.author || data.feed?.title || 'Google News',
-          })).slice(0, 20);
+            title:it.title?.replace(/<[^>]+>/g,'').trim()||'',
+            link:it.link||it.guid||'#', pubDate:it.pubDate||'',
+            desc:(it.description||it.content||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+            source:it.author||data.feed?.title||'Google News',
+          })).slice(0,20);
           fetchedOk = true;
           statusEl.className = 'fetch-status ok';
-          statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (rss2json)`;
+          statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집 완료';
         }
       }
-    } catch (_) {}
+    } catch(_) {}
   }
 
-  // ── Strategy 2: CORS proxies → raw RSS (body read once, fix bug) ─────
   if (!fetchedOk) {
     const proxies = [
-      { url: `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`, name: 'allorigins' },
-      { url: `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,              name: 'corsproxy'  },
-      { url: `https://thingproxy.freeboard.io/fetch/${rssUrl}`,                  name: 'thingproxy' },
+      'https://api.allorigins.win/get?url='+encodeURIComponent(rssUrl),
+      'https://corsproxy.io/?'+encodeURIComponent(rssUrl),
     ];
-    for (const proxy of proxies) {
+    for (const px of proxies) {
+      if (fetchedOk) break;
       try {
-        const res = await fetch(proxy.url, { signal: AbortSignal.timeout(10000) });
+        const res = await fetch(px,{signal:AbortSignal.timeout(10000)});
         if (!res.ok) continue;
-        const rawText = await res.text();           // read body ONCE
+        const raw = await res.text();
         let xmlText = null;
-        try {
-          const j = JSON.parse(rawText);            // allorigins wraps in {contents}
-          if (j?.contents?.includes('<rss')) xmlText = j.contents;
-        } catch {}
-        if (!xmlText && (rawText.includes('<rss') || rawText.includes('<feed'))) xmlText = rawText;
+        try { const j=JSON.parse(raw); if(j?.contents?.includes('<rss')) xmlText=j.contents; } catch {}
+        if (!xmlText && (raw.includes('<rss')||raw.includes('<feed'))) xmlText=raw;
         if (!xmlText) continue;
-
-        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const xml = new DOMParser().parseFromString(xmlText,'text/xml');
         const items = Array.from(xml.querySelectorAll('item'));
         if (!items.length) continue;
-
         fetchedArticles = items.map(item => ({
-          title:   (item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
-          link:    item.querySelector('link')?.textContent?.trim() ||
-                   item.querySelector('guid')?.textContent?.trim() || '#',
-          pubDate: item.querySelector('pubDate')?.textContent?.trim() || '',
-          desc:    (item.querySelector('description')?.textContent||'')
-                     .replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
-          source:  item.querySelector('source')?.textContent?.trim() || 'Google News',
-        })).slice(0, 20);
+          title:(item.querySelector('title')?.textContent||'').replace(/<[^>]+>/g,'').trim(),
+          link:item.querySelector('link')?.textContent?.trim()||'#',
+          pubDate:item.querySelector('pubDate')?.textContent?.trim()||'',
+          desc:(item.querySelector('description')?.textContent||'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim().slice(0,280),
+          source:item.querySelector('source')?.textContent?.trim()||'Google News',
+        })).slice(0,20);
         fetchedOk = true;
         statusEl.className = 'fetch-status ok';
-        statusEl.innerHTML = `✅ ${fetchedArticles.length}개 기사 수집 완료 (${proxy.name})`;
-        break;
-      } catch (_) { continue; }
+        statusEl.innerHTML = '✅ '+fetchedArticles.length+'개 기사 수집';
+      } catch(_) {}
     }
   }
 
-  btn.disabled = false;
-  btn.innerHTML = '🔄 뉴스 가져오기';
-
+  btn.disabled = false; btn.innerHTML = '🔄 뉴스 가져오기';
   if (!fetchedOk) {
     statusEl.className = 'fetch-status error';
-    statusEl.innerHTML = `⚠️ 뉴스 수집 실패 (rss2json + CORS 프록시 3개 모두 실패).<br>
-      <small style="color:var(--muted)">잠시 후 다시 시도하거나 →
-      <a href="${rssUrl}" target="_blank" style="color:var(--cyan)">RSS 직접 열기</a></small>`;
+    statusEl.innerHTML = '⚠️ 수집 실패 — <a href="'+rssUrl+'" target="_blank" style="color:var(--cyan)">RSS 직접 열기</a>';
     return;
   }
-
   renderArticles();
-  document.getElementById('articles-sec-title').style.display = 'flex';
-  document.getElementById('summary-section').style.display = 'block';
-  document.getElementById('btn-publish').disabled = false;
-
-  // Update badge
-  const badge = document.getElementById('badge-' + currentCompany);
-  if (badge) { badge.textContent = fetchedArticles.length; badge.parentElement.classList.add('has-new'); }
-  document.getElementById('last-fetch-text').textContent = `최근 수집: ${co.name} — ${new Date().toLocaleTimeString('ko-KR')}`;
-
-  // Auto-suggest title
-  if (!document.getElementById('pub-title').value) {
-    document.getElementById('pub-title').value =
-      `${co.name} — ${new Date().toLocaleDateString('ko-KR')} 동향 업데이트`;
-  }
-
-  toast(`✅ ${fetchedArticles.length}개 기사를 가져왔어요`);
+  const badge = document.getElementById('badge-'+currentCompany);
+  if (badge) badge.textContent = fetchedArticles.length;
+  document.getElementById('last-fetch-text').textContent = COMPANIES[currentCompany].name+' — '+new Date().toLocaleTimeString('ko-KR');
+  setStepActive(1);
+  toast('✅ '+fetchedArticles.length+'개 기사 수집 완료');
 }
 
-/* ═══════════════════════════════════════════
-   RENDER ARTICLES
-═══════════════════════════════════════════ */
 function renderArticles() {
   const grid = document.getElementById('articles-grid');
-  document.getElementById('articles-count').textContent = `${fetchedArticles.length}개`;
-
-  if (!fetchedArticles.length) {
-    grid.innerHTML = '<div class="empty" style="padding:1.5rem"><p>수집된 기사가 없어요</p></div>';
-    return;
-  }
-
-  grid.innerHTML = fetchedArticles.map((a, i) => {
-    const d = parseDate(a.pubDate);
-    return `
-    <div class="article-card" id="ac-${i}" onclick="toggleArticle(${i})">
-      <div class="ac-top">
-        <div class="ac-sel" id="sel-${i}">✓</div>
-        <div class="ac-info">
-          <div class="ac-title"><a href="${escHtml(a.link)}" target="_blank" onclick="e=>e.stopPropagation()">${escHtml(a.title)}</a></div>
-          <div class="ac-meta">
-            <span class="ac-source">${escHtml(a.source)}</span>
-            <span>${d}</span>
-          </div>
-          ${a.desc ? `<div class="ac-desc">${escHtml(a.desc)}</div>` : ''}
-        </div>
-      </div>
-    </div>`;
+  document.getElementById('articles-count').textContent = fetchedArticles.length+'개';
+  if (!fetchedArticles.length) { grid.innerHTML='<div class="empty" style="padding:1.5rem"><p>수집된 기사가 없어요</p></div>'; return; }
+  grid.innerHTML = fetchedArticles.map((a,i) => {
+    return '<div class="article-card" id="ac-'+i+'" onclick="selectArticle('+i+')">'
+      +'<div class="ac-top"><div class="ac-radio"></div><div class="ac-info">'
+      +'<div class="ac-title">'+escHtml(a.title)+'</div>'
+      +'<div class="ac-meta"><span class="ac-source">'+escHtml(a.source)+'</span><span>'+parseDate(a.pubDate)+'</span></div>'
+      +'</div><a class="ac-link-btn" href="'+escHtml(a.link)+'" target="_blank" onclick="event.stopPropagation()">🔗</a>'
+      +'</div></div>';
   }).join('');
 }
 
-function toggleArticle(i) {
-  if (selectedArticles.has(i)) selectedArticles.delete(i);
-  else selectedArticles.add(i);
-  const card = document.getElementById('ac-' + i);
-  const sel  = document.getElementById('sel-' + i);
-  card.classList.toggle('selected', selectedArticles.has(i));
+function selectArticle(i) {
+  selectedArticleIndex = i;
+  document.querySelectorAll('.article-card').forEach((c,idx) => c.classList.toggle('selected', idx===i));
+  const a = fetchedArticles[i];
+  document.getElementById('si-title-text').textContent = a.title;
+  document.getElementById('selected-info').style.display = 'flex';
+  if (!document.getElementById('pub-links').value) document.getElementById('pub-links').value = a.link;
+  setStepActive(2);
+  document.getElementById('step2-block').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-let _draftOriginal = null;
-function draftEditCheck() {
-  const notice = document.getElementById('draft-notice');
-  if (!notice || notice.style.display === 'none') return;
-  const current = document.getElementById('pub-summary').value;
-  // If user has changed at least 10 chars compared to draft, consider it edited → turn green
-  if (_draftOriginal && current !== _draftOriginal && Math.abs(current.length - _draftOriginal.length) >= 5) {
-    notice.style.background = 'rgba(86,224,160,0.1)';
-    notice.style.borderColor = 'rgba(86,224,160,0.3)';
-    notice.style.color = 'var(--green)';
-    notice.innerHTML = '✅ 직접 수정됐어요 — 이 정도면 게시해도 괜찮아요!';
+function openSelectedLink() {
+  if (selectedArticleIndex >= 0) window.open(fetchedArticles[selectedArticleIndex].link, '_blank');
+}
+
+async function generateAiDraft() {
+  const text = document.getElementById('orig-text').value.trim();
+  if (text.length < 80) { toast('⚠️ 원문 텍스트가 너무 짧습니다. 기사 본문 전체를 붙여넣어주세요.'); setAiStatus('error','⚠️ 원문이 너무 짧습니다. 기사 본문 전체(80자 이상)를 붙여넣어주세요.'); return; }
+  const apiKey = loadApiKey();
+  setAiStatus('loading','<span class="spin">⟳</span> GPT-4o-mini가 초안을 작성 중입니다... (10~20초)');
+  document.getElementById('btn-ai').disabled = true;
+  try {
+    const res = await fetch('/api/ai-summary', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text, apiKey}), signal:AbortSignal.timeout(50000),
+    });
+    const data = await res.json();
+    if (!res.ok) { setAiStatus('error','❌ '+(data.error||'AI 요청 실패')); return; }
+    renderAiDraft(data);
+    setAiStatus('ok','✅ AI 초안이 생성됐어요! 아래 에디터에서 자유롭게 수정하세요.');
+    setStepActive(3);
+    document.getElementById('step3-block').scrollIntoView({behavior:'smooth',block:'nearest'});
+    if (data.title && !document.getElementById('pub-title').value) document.getElementById('pub-title').value = data.title;
+    toast('✅ AI 초안 생성 완료!');
+  } catch(e) {
+    setAiStatus('error','❌ 오류: '+e.message);
+  } finally {
+    document.getElementById('btn-ai').disabled = false;
   }
 }
 
-function fillDraft() {
-  // Use selected articles, or all if none selected
-  const indices = selectedArticles.size > 0
-    ? [...selectedArticles]
-    : fetchedArticles.map((_, i) => i);
-
-  const parts = indices
-    .map(i => fetchedArticles[i])
-    .filter(a => a && a.desc)
-    .map(a => `[${a.source}] ${a.title}\n${a.desc}`);
-
-  if (!parts.length) {
-    toast('⚠️ 기사를 먼저 선택하거나 뉴스를 가져와주세요');
-    return;
+function renderAiDraft(data) {
+  const rte = document.getElementById('rte-body');
+  let html = '';
+  if (data.title) html += '<h2>'+escHtml(data.title)+'</h2>';
+  if (Array.isArray(data.summary) && data.summary.length) {
+    html += '<h3>📌 3줄 요약</h3><ul>';
+    data.summary.forEach(s => { html += '<li>'+escHtml(s)+'</li>'; });
+    html += '</ul>';
   }
-
-  const draft = parts.join('\n\n');
-  const textarea = document.getElementById('pub-summary');
-  textarea.value = draft;
-  _draftOriginal = draft;   // track original so draftEditCheck can compare
-  updateCharCount();
-
-  const notice = document.getElementById('draft-notice');
-  if (notice) notice.style.display = 'block';
-
-  textarea.focus();
-  textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  toast('✏️ 초안 채워짐 — 꼭 내 말로 다시 써주세요!');
+  if (data.insight) html += '<h3>🌍 인류학적 통찰</h3><p>'+escHtml(data.insight)+'</p>';
+  if (data.body) {
+    html += '<h3>📖 상세 설명</h3>';
+    data.body.split(/\n\n+/).forEach(para => { const p=para.trim(); if(p) html += '<p>'+escHtml(p)+'</p>'; });
+  }
+  rte.innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
-   PUBLISH
-═══════════════════════════════════════════ */
+function setAiStatus(type, msg) {
+  const el = document.getElementById('ai-status');
+  el.className = 'ai-status '+type;
+  el.innerHTML = msg;
+}
+
+function rteCmd(cmd) { document.getElementById('rte-body').focus(); document.execCommand(cmd,false,null); }
+function rteBlock(tag) { document.getElementById('rte-body').focus(); document.execCommand('formatBlock',false,tag); }
+function clearRte() { if (!confirm('에디터 내용을 지우시겠어요?')) return; document.getElementById('rte-body').innerHTML=''; }
+
+function handlePhotoUpload(e) {
+  const preview = document.getElementById('photo-preview');
+  Array.from(e.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      uploadedPhotos.push(ev.target.result);
+      const img = document.createElement('img');
+      img.src = ev.target.result; img.className = 'photo-thumb'; img.title='클릭하여 제거';
+      img.onclick = () => { uploadedPhotos = uploadedPhotos.filter(p=>p!==ev.target.result); img.remove(); };
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function publishUpdate() {
-  const title   = document.getElementById('pub-title').value.trim();
-  const summary = document.getElementById('pub-summary').value.trim();
-  const links   = document.getElementById('pub-links').value.trim();
-
-  if (!title) { toast('⚠️ 제목을 입력해주세요'); return; }
-  if (!summary) { toast('⚠️ 요약 내용을 직접 작성해주세요'); return; }
-
   const co = COMPANIES[currentCompany];
-  const selected = fetchedArticles.filter((_, i) => selectedArticles.has(i));
-
-  const entry = {
-    id: Date.now(),
-    company: currentCompany,
-    companyName: co.name,
-    companyColor: co.color,
-    companyIcon: co.icon,
-    title,
-    summary,
-    links: links ? links.split(',').map(s => s.trim()).filter(Boolean) : [],
-    articles: selected.map(a => ({ title: a.title, link: a.link, source: a.source })),
-    publishedAt: new Date().toISOString(),
-    publishedAtDisplay: new Date().toLocaleString('ko-KR'),
-    visible: true,
-  };
-
-  const db = loadPublished();
-  db.unshift(entry);
-  savePublished(db);
-
-  toast(`📡 "${co.name}" 업데이트가 발행됐어요!`);
-  updateGlobalStats();
-
-  // Reset form
-  document.getElementById('pub-title').value = '';
-  document.getElementById('pub-summary').value = '';
-  document.getElementById('pub-links').value = '';
-  updateCharCount();
-  fetchedArticles = [];
-  selectedArticles = new Set();
-  document.getElementById('articles-grid').innerHTML = '';
-  document.getElementById('articles-sec-title').style.display = 'none';
-  document.getElementById('summary-section').style.display = 'none';
-  document.getElementById('fetch-status').style.display = 'none';
-  document.getElementById('btn-publish').disabled = true;
-  const badge = document.getElementById('badge-' + currentCompany);
-  if (badge) { badge.textContent = '✓'; badge.parentElement.classList.remove('has-new'); }
+  const title = document.getElementById('pub-title').value.trim();
+  const links = document.getElementById('pub-links').value.trim().split(',').map(s=>s.trim()).filter(Boolean);
+  const contentHtml = document.getElementById('rte-body').innerHTML.trim();
+  const summaryText = document.getElementById('rte-body').textContent.trim().slice(0,400);
+  if (!title) { toast('⚠️ 발행 제목을 입력해주세요'); return; }
+  if (!contentHtml) { toast('⚠️ 에디터에 내용이 없습니다'); return; }
+  const pub = loadPublished();
+  const now = new Date();
+  pub.unshift({
+    id:Date.now(), company:currentCompany, companyName:co.name, companyColor:co.color, companyIcon:co.icon,
+    title, summary:summaryText, content:contentHtml, photos:uploadedPhotos, links,
+    articles:selectedArticleIndex>=0?[fetchedArticles[selectedArticleIndex]].map(a=>({title:a.title,link:a.link,source:a.source})):[],
+    publishedAt:now.toISOString(), publishedAtDisplay:now.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'}), visible:true,
+  });
+  savePublished(pub); updateGlobalStats();
+  document.getElementById('rte-body').innerHTML='';
+  document.getElementById('pub-title').value=''; document.getElementById('pub-links').value='';
+  document.getElementById('photo-preview').innerHTML=''; uploadedPhotos=[];
+  setAiStatus('idle','💡 원문을 붙여넣고 AI 초안 생성 버튼을 누르면 자동으로 초안이 작성됩니다');
+  setStepActive(1);
+  toast('📡 발행 완료! 공개 트렌드 페이지에 표시됩니다');
 }
 
-/* ═══════════════════════════════════════════
-   PUBLISHED LIST
-═══════════════════════════════════════════ */
 function renderPublished() {
-  const db = loadPublished();
-  const list = document.getElementById('published-list');
-
-  if (!db.length) {
-    list.innerHTML = '<div class="empty"><div class="e-icon">📡</div><p>아직 발행된 업데이트가 없어요.<br>기업을 선택하고 뉴스를 수집한 뒤 발행해보세요!</p></div>';
-    return;
-  }
-
-  list.innerHTML = db.map(item => `
-    <div class="published-item" id="pi-${item.id}">
-      <div class="pi-top">
-        <span class="pi-company-dot" style="background:${item.companyColor}"></span>
-        <span class="pi-company">${item.companyIcon} ${item.companyName}</span>
-        <span class="pi-visible">${item.visible ? '공개 중' : '비공개'}</span>
-        <span class="pi-time">${item.publishedAtDisplay}</span>
-      </div>
-      <div class="pi-title">${escHtml(item.title)}</div>
-      <div class="pi-summary">${escHtml(item.summary.slice(0, 200))}${item.summary.length > 200 ? '...' : ''}</div>
-      <div class="pi-footer">
-        <div class="pi-tags">
-          ${item.articles.map(a => `<span class="pi-tag">${escHtml(a.source||'')}</span>`).join('')}
-          ${item.links.map(l => `<a href="${escHtml(l)}" target="_blank" class="pi-tag" style="color:var(--cyan)">🔗 링크</a>`).join('')}
-        </div>
-        <div class="pi-actions">
-          <button class="btn btn-ghost btn-sm" onclick="toggleVisible(${item.id})">${item.visible ? '숨기기' : '공개'}</button>
-          <button class="btn btn-danger btn-sm" onclick="deletePublished(${item.id})">삭제</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  const list = loadPublished();
+  const el = document.getElementById('published-list');
+  if (!list.length) { el.innerHTML='<div class="empty"><div class="e-icon">📭</div><p>발행된 업데이트가 없어요</p></div>'; return; }
+  el.innerHTML = list.map(item =>
+    '<div class="published-item">'
+    +'<div class="pi-top"><div class="pi-dot" style="background:'+item.companyColor+'"></div>'
+    +'<span class="pi-company">'+escHtml(item.companyName)+'</span>'
+    +'<span style="font-size:1rem">'+item.companyIcon+'</span>'
+    +'<span class="pi-time">'+item.publishedAtDisplay+'</span></div>'
+    +'<div class="pi-title">'+escHtml(item.title)+'</div>'
+    +'<div class="pi-summary">'+escHtml((item.summary||'').slice(0,200))+'...</div>'
+    +'<div class="pi-footer"><span class="pi-visible">✅ 공개 중</span>'
+    +(item.links||[]).slice(0,2).map(l=>'<a class="pi-tag" href="'+escHtml(l)+'" target="_blank">🔗 링크</a>').join('')
+    +'<div class="pi-actions"><button class="btn btn-danger btn-sm" onclick="deletePublished('+item.id+')">삭제</button></div>'
+    +'</div></div>'
+  ).join('');
 }
 
-function toggleVisible(id) {
-  const db = loadPublished().map(e => e.id === id ? { ...e, visible: !e.visible } : e);
-  savePublished(db);
-  renderPublished();
-  toast('✅ 공개 상태가 변경됐어요');
-}
 function deletePublished(id) {
-  if (!confirm('이 업데이트를 삭제할까요?')) return;
-  savePublished(loadPublished().filter(e => e.id !== id));
-  document.getElementById('pi-' + id)?.remove();
-  toast('🗑️ 삭제됐어요');
-  updateGlobalStats();
+  if (!confirm('이 업데이트를 삭제하시겠어요?')) return;
+  savePublished(loadPublished().filter(i=>i.id!==id)); renderPublished(); updateGlobalStats(); toast('🗑 삭제됐어요');
 }
 function clearAllPublished() {
-  if (!confirm('모든 발행 업데이트를 삭제할까요? 공개 페이지에서도 사라져요.')) return;
-  savePublished([]);
-  renderPublished();
-  updateGlobalStats();
-  toast('🗑️ 전체 삭제됐어요');
+  if (!confirm('모든 발행 데이터를 삭제하시겠어요?')) return;
+  savePublished([]); renderPublished(); updateGlobalStats(); toast('🗑 전체 삭제 완료');
 }
 
-/* ═══════════════════════════════════════════
-   STATS
-═══════════════════════════════════════════ */
-function updateGlobalStats() {
-  const db = loadPublished();
-  document.getElementById('gs-total').textContent = db.length;
-  const companies = new Set(db.map(e => e.company)).size;
-  document.getElementById('gs-companies').textContent = companies;
-  const last = db[0];
-  document.getElementById('gs-last').textContent = last
-    ? new Date(last.publishedAt).toLocaleDateString('ko-KR')
-    : '—';
-}
+function loadApiKeyUI() { const k=loadApiKey(); if(k) document.getElementById('api-key-input').value=k; }
+function saveApiKey() { const k=document.getElementById('api-key-input').value.trim(); if(!k){toast('⚠️ API 키를 입력해주세요');return;} localStorage.setItem(API_KEY_STORE,k); toast('✅ API 키 저장 완료'); }
+function toggleApiKeyVisibility() { const el=document.getElementById('api-key-input'); el.type=el.type==='password'?'text':'password'; }
 
-/* ═══════════════════════════════════════════
-   DATA EXPORT / IMPORT
-═══════════════════════════════════════════ */
-function exportData() {
-  const data = { published: loadPublished(), exported: new Date().toISOString() };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `cosmos-brief-news-${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-}
-function importData(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    try {
-      const data = JSON.parse(ev.target.result);
-      if (data.published) {
-        const existing = loadPublished();
-        const merged = [...data.published, ...existing]
-          .filter((v, i, a) => a.findIndex(x => x.id === v.id) === i);
-        savePublished(merged);
-        toast(`✅ ${data.published.length}개 업데이트 불러왔어요`);
-        updateGlobalStats();
-      }
-    } catch { toast('⚠️ JSON 파일 형식이 올바르지 않아요'); }
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-}
+function exportData() { const blob=new Blob([JSON.stringify(loadPublished(),null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='cosmos-brief-'+Date.now()+'.json'; a.click(); }
+function importData(e) { const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!Array.isArray(d)) throw 0; savePublished(d); updateGlobalStats(); toast('✅ '+d.length+'개 불러오기 완료');}catch{toast('⚠️ 파일 형식 오류');}}; reader.readAsText(file); }
 
-/* ═══════════════════════════════════════════
-   CHAR COUNT
-═══════════════════════════════════════════ */
-function updateCharCount() {
-  const len = (document.getElementById('pub-summary')?.value || '').length;
-  document.getElementById('char-count').textContent = len;
-}
-
-/* ═══════════════════════════════════════════
-   UTILS
-═══════════════════════════════════════════ */
-function escHtml(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function hexToRgba(hex, a) {
-  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
-  return `rgba(${r},${g},${b},${a})`;
-}
-function parseDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
-  } catch { return dateStr.slice(0,16); }
-}
-
+function updateOrigLen() { document.getElementById('orig-len-val').textContent=document.getElementById('orig-text').value.length.toLocaleString(); }
+function updateGlobalStats() { const pub=loadPublished(); document.getElementById('gs-total').textContent=pub.length; const co=new Set(pub.map(i=>i.company)); document.getElementById('gs-companies').textContent=co.size; document.getElementById('gs-last').textContent=pub[0]?pub[0].publishedAtDisplay.replace(/\d{4}년 /,''):'—'; }
+function parseDate(str) { if(!str) return '날짜 미상'; const d=new Date(str); if(isNaN(d)) return str.slice(0,16); const diff=(Date.now()-d)/1000; if(diff<3600) return Math.round(diff/60)+'분 전'; if(diff<86400) return Math.round(diff/3600)+'시간 전'; if(diff<604800) return Math.round(diff/86400)+'일 전'; return d.toLocaleDateString('ko-KR'); }
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function hexToRgba(hex,a) { try{const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return 'rgba('+r+','+g+','+b+','+a+')';}catch{return hex;} }
 let toastTimer;
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
-}
+function toast(msg,dur=3200) { const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),dur); }
 
-/* Init */
 updateGlobalStats();
 </script>
 </body>
