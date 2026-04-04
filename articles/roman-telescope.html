@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF</title>
+  <meta name="description" content="제임스웹의 다음 주자, NASA 낸시 그레이스 로먼 우주망원경이 2026년 가을 발사를 앞두고 있습니다. 허블보다 100배 넓은 시야로 우주를 탐색합니다." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF" />
+  <meta property="og:description" content="제임스웹의 다음 주자, 2026년 가을 발사 확정. 허블보다 100배 넓은 시야." />
+  <meta property="og:url" content="https://cosmosbrief.vercel.app/articles/roman-telescope.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI', system-ui, sans-serif;
+      background: #06060e;
+      color: #fff;
+      height: 100dvh;
+      overflow: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem 0.5rem;
+      background: linear-gradient(to bottom, rgba(6,6,14,0.9) 60%, transparent);
+      pointer-events: none;
+    }
+    .top-bar > * { pointer-events: auto; }
+
+    .btn-back {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 1rem;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.22); }
+
+    .top-logo {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+      color: #60d8ff;
+      flex: 1;
+      text-align: center;
+    }
+    .top-logo span { color: rgba(255,255,255,0.45); }
+
+    .btn-share {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.7rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-share:hover { background: rgba(255,255,255,0.18); }
+
+    /* ── Carousel Container ── */
+    .carousel-wrap {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* Desktop: letterbox 4:5 */
+    @media (min-width: 600px) {
+      body { display: flex; align-items: center; justify-content: center; background: #030308; }
+      .carousel-wrap {
+        position: relative;
+        width: min(420px, 90vw);
+        height: min(100dvh, calc(min(420px, 90vw) * 1.28));
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 0 80px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.06);
+      }
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%; height: 100%;
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    /* ── Individual Slide ── */
+    .slide {
+      min-width: 100%; height: 100%;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .slide-bg {
+      position: absolute; inset: 0;
+      background: #0d1128;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);  /* slight zoom to avoid white edges on load */
+      transition: transform 8s ease-out, opacity 0.5s;
+    }
+    .slide-bg.loaded { transform: scale(1); }
+
+    /* shimmer while loading */
+    .slide-bg.loading {
+      background: linear-gradient(135deg, #0c1328 25%, #162040 50%, #0c1328 75%);
+      background-size: 400% 400%;
+      animation: bgShimmer 2s linear infinite;
+    }
+    @keyframes bgShimmer {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Overlays */
+    .ov-bottom {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(3,3,12,0.96) 0%,
+        rgba(3,3,12,0.65) 30%,
+        rgba(3,3,12,0.18) 60%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+    .ov-top {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(to bottom, rgba(3,3,12,0.6), transparent);
+      pointer-events: none;
+    }
+
+    /* NASA credit */
+    .img-credit {
+      position: absolute;
+      top: 4.8rem; right: 0.75rem;
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.07em;
+      pointer-events: none;
+    }
+
+    /* Tap hotspots for mobile */
+    .tap-l, .tap-r {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 38%;
+      z-index: 10;
+      cursor: pointer;
+    }
+    .tap-l { left: 0; }
+    .tap-r { right: 0; }
+
+    /* ── COVER Slide ── */
+    .cover-body {
+      position: absolute;
+      bottom: 5rem; left: 0; right: 0;
+      padding: 0 1.75rem;
+      text-align: center;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center; gap: 0.4rem;
+      background: rgba(96,216,255,0.12);
+      border: 1px solid rgba(96,216,255,0.3);
+      color: #60d8ff;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+
+    .cover-icon {
+      font-size: 3.6rem;
+      margin-bottom: 0.7rem;
+      display: block;
+      filter: drop-shadow(0 0 22px rgba(96,216,255,0.4));
+    }
+
+    .cover-title {
+      font-size: clamp(1.65rem, 6vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.75);
+      margin-bottom: 0.45rem;
+    }
+
+    .cover-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+
+    .cover-meta {
+      display: flex; gap: 0.55rem;
+      justify-content: center; align-items: center;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .swipe-hint {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.32);
+      letter-spacing: 0.06em;
+      animation: hintPulse 2.3s ease-in-out infinite;
+    }
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.32; transform: translateX(0); }
+      50% { opacity: 0.75; transform: translateX(5px); }
+    }
+
+    /* ── Content Slides ── */
+    .content-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.5rem 5.5rem;
+    }
+
+    .slide-label {
+      display: inline-block;
+      background: rgba(96,216,255,0.1);
+      border: 1px solid rgba(96,216,255,0.22);
+      color: #60d8ff;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.65rem;
+      border-radius: 10px;
+      margin-bottom: 0.65rem;
+    }
+
+    .slide-headline {
+      font-size: clamp(1.3rem, 4.8vw, 1.8rem);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.95);
+      margin-bottom: 0.95rem;
+    }
+
+    .facts { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+    .facts li {
+      font-size: clamp(0.82rem, 2.7vw, 0.93rem);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.87);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.98);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .facts li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: rgba(96,216,255,0.45);
+      font-size: 0.62em;
+      top: 0.22em;
+    }
+
+    /* ── Highlights ── */
+    .hl {
+      color: #60d8ff;
+      text-decoration: underline;
+      text-decoration-color: rgba(96,216,255,0.38);
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+    .hl-gold {
+      color: #ffc938;
+      font-weight: 700;
+    }
+
+    /* ── Progress Dots ── */
+    .dots-wrap {
+      position: fixed;
+      bottom: 1.45rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 5px; align-items: center;
+      z-index: 200;
+    }
+    .dot {
+      height: 5px; border-radius: 3px;
+      background: rgba(255,255,255,0.28);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      width: 5px;
+    }
+    .dot.active { background: #60d8ff; width: 20px; }
+
+    /* ── Slide Counter ── */
+    .slide-counter {
+      position: fixed;
+      bottom: 1.5rem; right: 1.2rem;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.3);
+      z-index: 200;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Desktop Arrow Buttons ── */
+    .nav-btn {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 200;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .nav-btn:disabled { opacity: 0.15; pointer-events: none; }
+    .nav-btn.prev { left: 1.2rem; }
+    .nav-btn.next { right: 1.2rem; }
+    @media (max-width: 599px) { .nav-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- ── Top Bar ── -->
+<header class="top-bar">
+  <button class="btn-back" onclick="goBack()" aria-label="뒤로">←</button>
+  <div class="top-logo">COSMOS <span>BRIEF</span></div>
+  <button class="btn-share" id="btnShare" onclick="handleShare()">🔗 공유</button>
+</header>
+
+<!-- ── Carousel ── -->
+<div class="carousel-wrap" id="cWrap">
+  <div class="carousel-track" id="cTrack">
+
+    <!-- ══ SLIDE 0: Cover ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg0"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="cover-body">
+        <div class="cover-badge">🔭 우주망원경 · NASA</div>
+        <span class="cover-icon">🌌</span>
+        <h1 class="cover-title">낸시 그레이스<br>로먼 우주망원경</h1>
+        <p class="cover-sub">제임스웹의 다음 주자</p>
+        <div class="cover-meta">
+          <span>NASA 보도자료</span><span>·</span><span>2026.03.12</span>
+        </div>
+        <p class="swipe-hint">옆으로 넘기세요 →</p>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 1: 발사 확정 ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg1"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="content-body">
+        <span class="slide-label">01 · 발사 확정</span>
+        <h2 class="slide-headline"><span class="hl-gold">2026년 가을</span><br>발사 공식 확정</h2>
+        <ul class="facts">
+          <li>최종 <span class="hl">극저온 진공 테스트</span> 성공적 통과</li>
+          <li>NASA가 발사 일정 <span class="hl-gold">공식 발표</span></li>
+          <li>허블의 후계자, 드디어 현실이 됩니다</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 2: 허블 vs 로먼 ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg2"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA / ESA</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="content-body">
+        <span class="slide-label">02 · 성능 비교</span>
+        <h2 class="slide-headline">같은 주경,<br>시야는 <span class="hl-gold">100배</span></h2>
+        <ul class="facts">
+          <li>허블과 동일한 <span class="hl">2.4m 주경</span></li>
+          <li>노출 1회에 허블 <span class="hl-gold">수천 장</span> 분량의 하늘 커버</li>
+          <li>대규모 <span class="hl">우주 지도 제작</span>에 최적화된 설계</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 3: 3대 목표 ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg3"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="content-body">
+        <span class="slide-label">03 · 과학 목표</span>
+        <h2 class="slide-headline">3가지 핵심<br>과학 임무</h2>
+        <ul class="facts">
+          <li>① <span class="hl">100만+</span> 외계행성 통계 조사</li>
+          <li>② <span class="hl">암흑에너지</span> 성질 규명</li>
+          <li>③ 적외선 <span class="hl">광시야 탐사</span> (WFSS)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 4: 극저온 테스트 ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg4"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA GSFC</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="content-body">
+        <span class="slide-label">04 · 기술 검증</span>
+        <h2 class="slide-headline">영하 <span class="hl-gold">234°C</span><br>극저온 테스트 통과</h2>
+        <ul class="facts">
+          <li><span class="hl">-234°C (39K)</span>에서 전 검출기 정상 작동</li>
+          <li><span class="hl-gold">230메가픽셀</span> 광시야 카메라(WFI) 목표 상회</li>
+          <li>고다드 우주비행센터 최종 검증 완료 ✅</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 5: 임무 개요 ══ -->
+    <div class="slide">
+      <div class="slide-bg loading" id="bg5"></div>
+      <div class="ov-bottom"></div>
+      <div class="ov-top"></div>
+      <div class="img-credit">Image: NASA</div>
+      <div class="tap-l" onclick="navigate(-1)"></div>
+      <div class="tap-r" onclick="navigate(1)"></div>
+      <div class="content-body">
+        <span class="slide-label">05 · 임무 개요</span>
+        <h2 class="slide-headline"><span class="hl">L2 궤도</span>에서<br>최대 <span class="hl-gold">10년</span> 임무</h2>
+        <ul class="facts">
+          <li><span class="hl">팰컨 헤비</span> 탑재 → 태양-지구 L2 라그랑주점</li>
+          <li>주 임무 <span class="hl-gold">5년</span>, 연장 포함 최대 <span class="hl-gold">10년</span></li>
+          <li>웹은 <span class="hl">깊게</span>, 로먼은 <span class="hl">넓게</span> — 완벽한 콤비</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /track -->
+</div><!-- /wrap -->
+
+<!-- Desktop arrows -->
+<button class="nav-btn prev" id="btnPrev" onclick="navigate(-1)" disabled aria-label="이전">‹</button>
+<button class="nav-btn next" id="btnNext" onclick="navigate(1)" aria-label="다음">›</button>
+
+<!-- Progress dots -->
+<div class="dots-wrap" id="dotsWrap"></div>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter">1 / 6</div>
+
+<script>
+  // ── State ──────────────────────────────────────────────
+  const TOTAL = 6;
+  let cur = 0;
+
+  const track    = document.getElementById('cTrack');
+  const btnPrev  = document.getElementById('btnPrev');
+  const btnNext  = document.getElementById('btnNext');
+  const counter  = document.getElementById('slideCounter');
+  const dotsWrap = document.getElementById('dotsWrap');
+
+  // ── Build dots ─────────────────────────────────────────
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.id = 'dot' + i;
+    dotsWrap.appendChild(d);
+  }
+
+  // ── Navigate ────────────────────────────────────────────
+  function goTo(idx) {
+    if (idx < 0 || idx >= TOTAL) return;
+    document.getElementById('dot' + cur).classList.remove('active');
+    cur = idx;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    document.getElementById('dot' + cur).classList.add('active');
+    counter.textContent = (cur + 1) + ' / ' + TOTAL;
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === TOTAL - 1;
+  }
+  function navigate(dir) { goTo(cur + dir); }
+
+  // ── Touch / Swipe ───────────────────────────────────────
+  let sx = 0, sy = 0, moved = false;
+  const wrap = document.getElementById('cWrap');
+
+  wrap.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    moved = false;
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', () => { moved = true; }, { passive: true });
+
+  wrap.addEventListener('touchend', e => {
+    if (!moved) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) navigate(dx < 0 ? 1 : -1);
+  });
+
+  // ── Keyboard ────────────────────────────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
+  });
+
+  // ── Back ────────────────────────────────────────────────
+  function goBack() {
+    if (document.referrer && document.referrer.includes(location.hostname)) {
+      history.back();
+    } else {
+      location.href = '../trends.html';
+    }
+  }
+
+  // ── Share ────────────────────────────────────────────────
+  function handleShare() {
+    const btn = document.getElementById('btnShare');
+    if (navigator.share) {
+      navigator.share({
+        title: '낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF',
+        text:  '제임스웹의 다음 주자, 2026년 가을 발사 확정',
+        url:   location.href
+      });
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(() => {
+        btn.textContent = '✅ 복사완료';
+        setTimeout(() => btn.textContent = '🔗 공유', 2000);
+      });
+    }
+  }
+
+  // ── NASA Image API ──────────────────────────────────────
+  // One query per slide — all free public domain (NASA)
+  const queries = [
+    'roman space telescope survey wide field',
+    'rocket launch pad kennedy space center',
+    'hubble space telescope deep field galaxy',
+    'exoplanet star system dark energy',
+    'space telescope mirror clean room testing',
+    'spacecraft orbit earth lagrange deep space'
+  ];
+
+  // Rich gradient fallbacks (deep-space feel) shown instantly,
+  // replaced by real NASA photo once loaded
+  const fallbacks = [
+    'radial-gradient(ellipse at 40% 30%, #0c1f5a 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 60% 60%, #081e3c 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 50% 40%, #1c0948 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 35% 55%, #001638 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 65% 35%, #0b2238 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 50% 50%, #091630 0%, #03040d 70%)'
+  ];
+
+  async function loadImage(idx, query) {
+    const el = document.getElementById('bg' + idx);
+    // Apply fallback immediately so slide never looks blank
+    el.style.background = fallbacks[idx];
+
+    try {
+      const r = await fetch(
+        `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}&media_type=image`,
+        { signal: AbortSignal.timeout(8000) }
+      );
+      if (!r.ok) throw new Error();
+      const data = await r.json();
+      const items = data.collection?.items;
+      if (!items || items.length === 0) throw new Error();
+
+      // Pick a varied item per slide to avoid all slides showing same photo
+      const pick = items[Math.min(idx, items.length - 1)];
+      const href = pick?.links?.[0]?.href;
+      if (!href) throw new Error();
+
+      await new Promise((res, rej) => {
+        const img = new Image();
+        img.onload = res;
+        img.onerror = rej;
+        img.src = href;
+      });
+
+      el.style.backgroundImage = `url('${href}')`;
+      el.classList.remove('loading');
+      el.classList.add('loaded');
+    } catch {
+      el.classList.remove('loading');
+      // fallback gradient already applied above
+    }
+  }
+
+  queries.forEach((q, i) => loadImage(i, q));
+</script>
+
+</body>
+</html>

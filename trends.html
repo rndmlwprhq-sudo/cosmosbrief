@@ -520,7 +520,7 @@
       </div>
 
       <!-- 12: roman-telescope 2026.03.12 -->
-      <div class="article-card" data-key="roman-telescope" data-category="science" style="cursor:pointer;">
+      <div class="article-card" data-key="roman-telescope" data-category="science" data-link="/articles/roman-telescope.html" style="cursor:pointer;">
         <div class="article-img-placeholder">🔭</div>
         <div class="article-body">
           <div class="article-tags">
@@ -1015,6 +1015,8 @@
 
   document.querySelectorAll('.article-card').forEach(function(card) {
     card.addEventListener('click', function() {
+      var link = card.getAttribute('data-link');
+      if (link) { window.open(link, '_blank'); return; }
       var key = card.getAttribute('data-key');
       var data = key ? STATIC_ARTICLES[key] : null;
       var title    = data ? '' : ((card.querySelector('.article-title') || {}).textContent || '');
