@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF</title>
-  <meta name="description" content="제임스웹의 다음 주자, NASA 낸시 그레이스 로먼 우주망원경이 2026년 가을 발사를 앞두고 있습니다. 허블보다 100배 넓은 시야로 우주를 탐색합니다." />
+  <title>아르테미스 II — 50년 만에 인류가 다시 달로 COSMOS BRIEF</title>
+  <meta name="description" content="아르테미스 II, 50년 만에 인류가 다시 달 궤도로. 4명의 승무원이 오리온 캡슐을 타고 달 궤도를 돌고 귀환하는 역사적인 임무 전체 이야기." />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF" />
-  <meta property="og:description" content="제임스웹의 다음 주자, 2026년 가을 발사 확정. 허블보다 100배 넓은 시야." />
-  <meta property="og:url" content="https://cosmosbrief.vercel.app/articles/roman-telescope.html" />
+  <meta property="og:title" content="아르테미스 II — 50년 만에 인류가 다시 달로" />
+  <meta property="og:url" content="https://cosmosbrief.vercel.app/articles/artemis2.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
@@ -58,7 +57,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.16em;
       font-weight: 700;
-      color: #60d8ff;
+      color: #ffd070;
       flex: 1;
       text-align: center;
     }
@@ -105,7 +104,6 @@
       will-change: transform;
     }
 
-    /* ── Individual Slide ── */
     .slide {
       min-width: 100%; height: 100%;
       position: relative;
@@ -118,14 +116,13 @@
       background: #0d1128;
       background-size: cover;
       background-position: center;
-      transform: scale(1.04);  /* slight zoom to avoid white edges on load */
+      transform: scale(1.04);
       transition: transform 8s ease-out, opacity 0.5s;
     }
     .slide-bg.loaded { transform: scale(1); }
 
-    /* shimmer while loading */
     .slide-bg.loading {
-      background: linear-gradient(135deg, #0c1328 25%, #162040 50%, #0c1328 75%);
+      background: linear-gradient(135deg, #0d1a30 25%, #1e2e4a 50%, #0d1a30 75%);
       background-size: 400% 400%;
       animation: bgShimmer 2s linear infinite;
     }
@@ -135,14 +132,13 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Overlays */
     .ov-bottom {
       position: absolute; inset: 0;
       background: linear-gradient(
         to top,
-        rgba(3,3,12,0.96) 0%,
-        rgba(3,3,12,0.65) 30%,
-        rgba(3,3,12,0.18) 60%,
+        rgba(3,3,15,0.97) 0%,
+        rgba(3,3,15,0.68) 30%,
+        rgba(3,3,15,0.2) 60%,
         transparent 100%
       );
       pointer-events: none;
@@ -150,11 +146,10 @@
     .ov-top {
       position: absolute;
       top: 0; left: 0; right: 0; height: 140px;
-      background: linear-gradient(to bottom, rgba(3,3,12,0.6), transparent);
+      background: linear-gradient(to bottom, rgba(3,3,15,0.65), transparent);
       pointer-events: none;
     }
 
-    /* NASA credit */
     .img-credit {
       position: absolute;
       top: 4.8rem; right: 0.75rem;
@@ -164,7 +159,6 @@
       pointer-events: none;
     }
 
-    /* Tap hotspots for mobile */
     .tap-l, .tap-r {
       position: absolute;
       top: 0; bottom: 0;
@@ -186,9 +180,9 @@
     .cover-badge {
       display: inline-flex;
       align-items: center; gap: 0.4rem;
-      background: rgba(96,216,255,0.12);
-      border: 1px solid rgba(96,216,255,0.3);
-      color: #60d8ff;
+      background: rgba(255,208,112,0.12);
+      border: 1px solid rgba(255,208,112,0.32);
+      color: #ffd070;
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -201,7 +195,7 @@
       font-size: 3.6rem;
       margin-bottom: 0.7rem;
       display: block;
-      filter: drop-shadow(0 0 22px rgba(96,216,255,0.4));
+      filter: drop-shadow(0 0 22px rgba(255,208,112,0.45));
     }
 
     .cover-title {
@@ -248,9 +242,9 @@
 
     .slide-label {
       display: inline-block;
-      background: rgba(96,216,255,0.1);
-      border: 1px solid rgba(96,216,255,0.22);
-      color: #60d8ff;
+      background: rgba(255,208,112,0.1);
+      border: 1px solid rgba(255,208,112,0.22);
+      color: #ffd070;
       font-size: 0.58rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -281,7 +275,7 @@
     .facts li::before {
       content: '▸';
       position: absolute; left: 0;
-      color: rgba(96,216,255,0.45);
+      color: rgba(255,208,112,0.5);
       font-size: 0.62em;
       top: 0.22em;
     }
@@ -295,7 +289,7 @@
       font-weight: 600;
     }
     .hl-gold {
-      color: #ffc938;
+      color: #ffd070;
       font-weight: 700;
     }
 
@@ -313,9 +307,8 @@
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
       width: 5px;
     }
-    .dot.active { background: #60d8ff; width: 20px; }
+    .dot.active { background: #ffd070; width: 20px; }
 
-    /* ── Slide Counter ── */
     .slide-counter {
       position: fixed;
       bottom: 1.5rem; right: 1.2rem;
@@ -325,7 +318,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── Desktop Arrow Buttons ── */
     .nav-btn {
       position: fixed; top: 50%; transform: translateY(-50%);
       background: rgba(255,255,255,0.1);
@@ -368,18 +360,18 @@
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="cover-body">
-        <div class="cover-badge">🔭 우주망원경 · NASA</div>
-        <span class="cover-icon">🌌</span>
-        <h1 class="cover-title">낸시 그레이스<br>로먼 우주망원경</h1>
-        <p class="cover-sub">제임스웹 다음, 우주를 <em>넓게</em> 본다</p>
+        <div class="cover-badge">🌙 유인탐사 · NASA</div>
+        <span class="cover-icon">🚀</span>
+        <h1 class="cover-title">아르테미스 II</h1>
+        <p class="cover-sub">50년 만에 인류가 다시 달로 향하다</p>
         <div class="cover-meta">
-          <span>NASA 보도자료</span><span>·</span><span>2026.03.12</span>
+          <span>NASA 공식</span><span>·</span><span>2026.04.09</span>
         </div>
         <p class="swipe-hint">옆으로 넘기세요 →</p>
       </div>
     </div>
 
-    <!-- ══ SLIDE 1: 발사 확정 ══ -->
+    <!-- ══ SLIDE 1: 역사적 맥락 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg1"></div>
       <div class="ov-bottom"></div>
@@ -388,38 +380,38 @@
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">01 · 발사 확정</span>
-        <h2 class="slide-headline"><span class="hl-gold">2026년 가을</span><br>발사 공식 확정</h2>
+        <span class="slide-label">01 · 역사적 맥락</span>
+        <h2 class="slide-headline"><span class="hl-gold">54년</span>의 기다림<br>끝에</h2>
         <ul class="facts">
-          <li>2026년 3월 12일 — 최종 <span class="hl">극저온 진공 테스트</span> 통과</li>
-          <li>NASA, 가을 발사 일정 <span class="hl-gold">공식 발표</span></li>
-          <li>허블 이후 가장 기대받는 망원경이 드디어 현실이 됩니다</li>
-          <li>발사 플랫폼: <span class="hl">팰컨 헤비</span> 또는 ULA 벌컨</li>
+          <li>1972년 <span class="hl">아폴로 17호</span> — 마지막으로 인류가 달을 밟은 날</li>
+          <li>그 이후 54년간, 인류는 달 궤도 근처에도 가지 못했습니다</li>
+          <li>2026년, <span class="hl-gold">아르테미스 II</span>가 그 긴 침묵을 깨러 갑니다</li>
+          <li>달 착륙은 아니지만 — 유인 달 비행 재개의 <span class="hl">역사적 첫 걸음</span></li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 2: 허블 vs 로먼 — 주경 비교 ══ -->
+    <!-- ══ SLIDE 2: 임무 개요 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg2"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: NASA / ESA</div>
+      <div class="img-credit">Image: NASA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">02 · 성능 비교</span>
-        <h2 class="slide-headline">같은 크기,<br>시야는 <span class="hl-gold">100배</span></h2>
+        <span class="slide-label">02 · 임무 개요</span>
+        <h2 class="slide-headline">달을 <span class="hl">돌고</span><br>지구로 귀환</h2>
         <ul class="facts">
-          <li>허블과 동일한 <span class="hl">2.4m 주경(거울)</span> 사용</li>
-          <li>그런데 <span class="hl-gold">시야각이 약 100배 더 넓습니다</span></li>
-          <li>같은 크기 주경으로 100배 넓은 하늘을 담는 비결은 — 훨씬 커진 검출기 배열</li>
-          <li>허블은 깊고 좁게, 로먼은 <span class="hl">넓고 균등하게</span></li>
+          <li><span class="hl">자유귀환 궤도</span> — 달 뒤편을 돌아 지구로 귀환하는 경로</li>
+          <li>달 표면 착륙은 없음 — 궤도 비행 후 귀환</li>
+          <li>총 비행 시간: 약 <span class="hl-gold">10일</span></li>
+          <li>지구-달 최대 거리: 약 <span class="hl">40만 km 이상</span> — 역대 유인 우주선 최원거리 기록 경신 예상</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 3: 넓은 시야의 의미 ══ -->
+    <!-- ══ SLIDE 3: 승무원 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg3"></div>
       <div class="ov-bottom"></div>
@@ -428,78 +420,78 @@
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">03 · 넓은 시야의 힘</span>
-        <h2 class="slide-headline">노출 <span class="hl-gold">1번</span>으로<br>허블 수천 장 분량</h2>
+        <span class="slide-label">03 · 4명의 승무원</span>
+        <h2 class="slide-headline">역사를 쓸<br><span class="hl-gold">네 명</span></h2>
         <ul class="facts">
-          <li>단 하나의 노출에 <span class="hl">허블이 수천 번 찍어야 할 하늘</span>을 한 번에 촬영</li>
-          <li>이 덕분에 수년 안에 <span class="hl-gold">전체 하늘의 절반 지도</span>를 완성할 수 있습니다</li>
-          <li>개별 천체 연구가 아닌 <span class="hl">대규모 통계 연구</span>에 최적화</li>
-          <li>은하 수십억 개를 한꺼번에 측정 → 우주 역사 해독</li>
+          <li>🧑‍✈️ <span class="hl">리드 와이즈먼</span> — 지휘관, NASA</li>
+          <li>👨‍✈️ <span class="hl">빅터 글로버</span> — 조종사, 최초 흑인 달 궤도 비행사</li>
+          <li>👩‍🚀 <span class="hl">크리스티나 코크</span> — 임무전문가, 최초 여성 달 궤도 비행사</li>
+          <li>🇨🇦 <span class="hl">제레미 한센</span> — 임무전문가, 캐나다 최초 달 궤도 비행사</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 4: 과학 목표 ① 외계행성 ══ -->
+    <!-- ══ SLIDE 4: 발사체와 우주선 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg4"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: NASA / JPL</div>
+      <div class="img-credit">Image: NASA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">04 · 과학 목표 ①</span>
-        <h2 class="slide-headline"><span class="hl">100만 개</span><br>외계행성 찾기</h2>
+        <span class="slide-label">04 · 발사체 & 우주선</span>
+        <h2 class="slide-headline"><span class="hl">SLS</span> + <span class="hl-gold">오리온</span><br>완성</h2>
         <ul class="facts">
-          <li><span class="hl">미시중력렌즈(Microlensing)</span> 기법으로 별 앞을 지나치는 행성 탐지</li>
-          <li>지금까지 발견된 외계행성 5,500개 — 로먼은 <span class="hl-gold">100만 개 이상</span> 목표</li>
-          <li>지구형 소형 행성도 탐지 가능 — 생명 가능 행성 목록 대폭 확대</li>
-          <li>통계가 쌓이면 행성 형성 이론 자체가 새로 써질 수 있습니다</li>
+          <li><span class="hl">SLS(Space Launch System)</span> — NASA 역대 최강 로켓, 달까지 보낼 수 있는 유일한 현역 로켓</li>
+          <li><span class="hl-gold">오리온 캡슐</span> — 최대 4인 승무원, 10일 자급 생명유지, 재진입 내열 방패</li>
+          <li>SLS 2호기는 <span class="hl">케네디우주센터 VAB</span>에서 조립 완료</li>
+          <li>오리온과의 통합도 완료 — 발사 30일 전 최종 카운트다운 준비 중</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 5: 과학 목표 ② 암흑에너지 ══ -->
+    <!-- ══ SLIDE 5: 과학·기술 목표 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg5"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: NASA / JPL</div>
+      <div class="img-credit">Image: NASA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">05 · 과학 목표 ②③</span>
-        <h2 class="slide-headline"><span class="hl-gold">암흑에너지</span>의<br>정체를 밝혀라</h2>
+        <span class="slide-label">05 · 임무 목표</span>
+        <h2 class="slide-headline">달 착륙을 위한<br><span class="hl-gold">필수 검증</span></h2>
         <ul class="facts">
-          <li>우주 팽창을 <span class="hl">가속</span>시키는 정체불명의 힘 — 암흑에너지</li>
-          <li>수십억 은하의 분포 패턴(BAO)을 측정해 <span class="hl-gold">암흑에너지 상태 방정식</span> 도출</li>
-          <li>③ <span class="hl">WFSS(적외선 슬릿리스 분광)</span>: 은하 스펙트럼 수억 개 동시 측정</li>
-          <li>제임스웹이 좁게 깊이 보면, 로먼은 <span class="hl">넓게 훑으며 우주 전체 구조</span>를 그립니다</li>
+          <li>① <span class="hl">오리온 생명유지장치</span> 장기(10일) 실전 운용 검증</li>
+          <li>② 심우주 <span class="hl-gold">방사선 피폭</span> 데이터 수집 — 화성 임무에도 필요</li>
+          <li>③ <span class="hl">유인 조작 인터페이스</span> 실전 점검</li>
+          <li>④ 달 궤도 근방에서의 통신·항법 시스템 검증</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 6: 극저온 테스트 상세 ══ -->
+    <!-- ══ SLIDE 6: 아르테미스 프로그램 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg6"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: NASA GSFC</div>
+      <div class="img-credit">Image: NASA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">06 · 기술 검증</span>
-        <h2 class="slide-headline">영하 <span class="hl-gold">234°C</span><br>에서 완벽 작동</h2>
+        <span class="slide-label">06 · 아르테미스 전체 그림</span>
+        <h2 class="slide-headline">II 다음은<br><span class="hl-gold">달 착륙</span></h2>
         <ul class="facts">
-          <li>센서 온도를 <span class="hl">-234°C (39K)</span>로 낮춘 극저온 테스트 통과</li>
-          <li>극저온이 필요한 이유: 적외선 관측 시 망원경 자체 열이 간섭을 일으키기 때문</li>
-          <li>모든 <span class="hl-gold">감지기(Detector)</span>가 설계 성능 유지 — 합격</li>
-          <li>고다드 우주비행센터(GSFC) 진공 챔버에서 수개월 검증 완료</li>
+          <li><span class="hl">아르테미스 I</span>(2022) — 무인 시험 비행, 오리온 캡슐 재진입 검증</li>
+          <li><span class="hl-gold">아르테미스 II</span>(2026) — 유인 달 궤도 비행 ← 지금 여기</li>
+          <li><span class="hl">아르테미스 III</span>(2027) — 달 남극 유인 착륙, SpaceX 스타십 사용</li>
+          <li>목표: 달에 <span class="hl-gold">지속 가능한 인류 기지</span> 구축 → 화성으로</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 7: WFI 카메라 ══ -->
+    <!-- ══ SLIDE 7: 달 남극과 물 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg7"></div>
       <div class="ov-bottom"></div>
@@ -508,53 +500,53 @@
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">07 · 핵심 장비</span>
-        <h2 class="slide-headline"><span class="hl-gold">230메가픽셀</span><br>광시야 카메라</h2>
+        <span class="slide-label">07 · 왜 달 남극인가</span>
+        <h2 class="slide-headline">빛도 없는 곳에<br><span class="hl-gold">얼음</span>이 있다</h2>
         <ul class="facts">
-          <li>WFI(Wide Field Instrument) — <span class="hl">230메가픽셀</span> 적외선 카메라</li>
-          <li>노이즈 특성이 설계 목표치를 <span class="hl-gold">크게 상회</span>하며 우수 판정</li>
-          <li>18개의 H4RG-10 적외선 검출기 타일 배열로 구성</li>
-          <li>단일 노출 촬영 범위: 보름달 크기의 <span class="hl">약 100배 넓이</span></li>
+          <li>달 남극의 <span class="hl">영구 음영 지역(PSR)</span> — 수십억 년간 햇빛 한 줌 없는 크레이터 내부</li>
+          <li>그 안에 <span class="hl-gold">물 얼음이 대량 매장</span>되어 있다는 과학적 증거</li>
+          <li>얼음 → 전기분해 → <span class="hl">수소(연료) + 산소(호흡)</span> — 달 기지 자립의 열쇠</li>
+          <li>아르테미스 III의 목표 착륙 지점은 남위 89°S 근방</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 8: 발사 및 궤도 ══ -->
+    <!-- ══ SLIDE 8: 국제 협력 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg8"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: SpaceX / NASA</div>
+      <div class="img-credit">Image: NASA / ESA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">08 · 발사 계획</span>
-        <h2 class="slide-headline"><span class="hl">L2</span> 라그랑주점<br>목적지</h2>
+        <span class="slide-label">08 · 국제 협력</span>
+        <h2 class="slide-headline">함께 가는<br><span class="hl-gold">달 탐험</span></h2>
         <ul class="facts">
-          <li>발사체: <span class="hl">SpaceX 팰컨 헤비</span> 또는 ULA 벌컨 센타우르</li>
-          <li>목적지: <span class="hl-gold">태양-지구 L2</span> 라그랑주점 (지구에서 약 150만 km)</li>
-          <li>제임스웹과 같은 궤도 — 지구 그늘에 가려 상시 태양 차폐 가능</li>
-          <li>발사 후 약 2~3개월 내 목적지 도착 예정</li>
+          <li>아르테미스 협정 서명국 <span class="hl">40개국 이상</span> — 한국도 포함</li>
+          <li>캐나다: 오리온 서비스 모듈 <span class="hl">로봇팔 기여</span>, 승무원 한 명 탑승 권리</li>
+          <li>ESA: <span class="hl-gold">오리온 서비스 모듈(ESM) 제작</span> — 유럽 역할 핵심</li>
+          <li>JAXA: 달 게이트웨이 구성 요소 기여 예정</li>
         </ul>
       </div>
     </div>
 
-    <!-- ══ SLIDE 9: 임무 기간 + 웹&로먼 콤비 ══ -->
+    <!-- ══ SLIDE 9: 인문학적 메시지 ══ -->
     <div class="slide">
       <div class="slide-bg loading" id="bg9"></div>
       <div class="ov-bottom"></div>
       <div class="ov-top"></div>
-      <div class="img-credit">Image: NASA / STScI</div>
+      <div class="img-credit">Image: NASA</div>
       <div class="tap-l" onclick="navigate(-1)"></div>
       <div class="tap-r" onclick="navigate(1)"></div>
       <div class="content-body">
-        <span class="slide-label">09 · 운용 비전</span>
-        <h2 class="slide-headline">웹+로먼,<br><span class="hl-gold">황금 콤비</span></h2>
+        <span class="slide-label">09 · 우리에게 달은</span>
+        <h2 class="slide-headline">달은 끝이 아니라<br><span class="hl-gold">시작</span>이에요</h2>
         <ul class="facts">
-          <li>주 임무 <span class="hl">5년</span>, 최대 <span class="hl-gold">10년</span> 연장 운용 예정</li>
-          <li>제임스웹: 수십억 광년의 특정 천체를 <span class="hl">극도로 깊게</span> 관측</li>
-          <li>로먼: 하늘 전체를 <span class="hl">넓게 스캔</span>하며 최적 타깃 제공</li>
-          <li>두 망원경이 협력하면 — <span class="hl-gold">우주의 과거부터 현재까지</span> 완전한 그림 완성</li>
+          <li>인류는 항상 새로운 지평선을 향해 나아갔습니다 — 대륙에서, 바다에서, 이제 우주에서</li>
+          <li>아르테미스는 그리스 신화 달의 여신 — <span class="hl">아폴로의 쌍둥이 자매</span></li>
+          <li>이번엔 여성과 다양성을 품은 더 넓은 인류가 달로 향합니다</li>
+          <li>달에 발 딛는 순간은 <span class="hl-gold">우리 모두의 이야기</span>가 됩니다 🌕</li>
         </ul>
       </div>
     </div>
@@ -643,8 +635,8 @@
     const btn = document.getElementById('btnShare');
     if (navigator.share) {
       navigator.share({
-        title: '낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF',
-        text:  '제임스웹의 다음 주자, 2026년 가을 발사 확정',
+        title: '아르테미스 II — 50년 만에 인류가 다시 달로',
+        text:  '4명의 승무원이 달 궤도를 향해 출발합니다. 2026년 가장 역사적인 우주 임무.',
         url:   location.href
       });
     } else if (navigator.clipboard) {
@@ -656,38 +648,34 @@
   }
 
   // ── NASA Image API ──────────────────────────────────────
-  // One query per slide — all free public domain (NASA)
   const queries = [
-    'roman space telescope nasa wide field survey',
-    'rocket launch falcon heavy kennedy florida',
-    'hubble space telescope deep field compare galaxy',
-    'milky way galaxy stars wide angle infrared',
-    'exoplanet transit planet star microlensing',
-    'dark energy dark matter galaxy cluster cosmic web',
-    'clean room space telescope cryogenic testing engineer',
-    'camera sensor detector array silicon chip space',
-    'falcon heavy rocket launch space exploration',
-    'james webb space telescope orbit lagrange l2'
+    'artemis moon mission NASA rocket launch',
+    'apollo moon historical astronaut mission',
+    'moon orbit lunar nasa spacecraft',
+    'astronaut portrait space station nasa crew',
+    'orion spacecraft SLS rocket assembly',
+    'artemis moon landing south pole mission',
+    'artemis program nasa moon gateway station',
+    'moon south pole crater ice water',
+    'international space station earth orbit cooperation',
+    'moon earth pale blue dot astronaut perspective'
   ];
 
-  // Rich gradient fallbacks (deep-space feel) shown instantly,
-  // replaced by real NASA photo once loaded
   const fallbacks = [
-    'radial-gradient(ellipse at 40% 30%, #0c1f5a 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 60% 60%, #081e3c 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 50% 40%, #1c0948 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 35% 55%, #001638 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 65% 35%, #0b2238 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 50% 50%, #091630 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 45% 40%, #0c2030 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 55% 60%, #14203a 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 30% 50%, #081828 0%, #03040d 70%)',
-    'radial-gradient(ellipse at 70% 40%, #0d1e3c 0%, #03040d 70%)'
+    'radial-gradient(ellipse at 50% 70%, #1a0e2e 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 40% 40%, #0f1028 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 60% 50%, #141028 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 50% 30%, #101428 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 35% 60%, #0c1232 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 65% 45%, #0e1030 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 45% 55%, #0c1030 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 55% 35%, #121020 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 40% 60%, #10122c 0%, #03040d 70%)',
+    'radial-gradient(ellipse at 60% 40%, #0a1020 0%, #03040d 70%)'
   ];
 
   async function loadImage(idx, query) {
     const el = document.getElementById('bg' + idx);
-    // Apply fallback immediately so slide never looks blank
     el.style.background = fallbacks[idx];
 
     try {
@@ -700,7 +688,6 @@
       const items = data.collection?.items;
       if (!items || items.length === 0) throw new Error();
 
-      // Pick a varied item per slide to avoid all slides showing same photo
       const pick = items[Math.min(idx, items.length - 1)];
       const href = pick?.links?.[0]?.href;
       if (!href) throw new Error();
@@ -717,7 +704,6 @@
       el.classList.add('loaded');
     } catch {
       el.classList.remove('loading');
-      // fallback gradient already applied above
     }
   }
 

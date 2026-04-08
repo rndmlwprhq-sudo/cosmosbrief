@@ -229,6 +229,177 @@
 })();
 
 /* ============================================
+   KNOWLEDGE ARTICLES
+   itemId → { title, tags, readTime, difficulty, date, body }
+   ============================================ */
+const KNOWLEDGE_ARTICLES = {
+
+  /* ── 태양계 개요 ── */
+  'solar-overview': {
+    title: '태양계 개요 — 우리의 우주적 집',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '8', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>지금 이 순간, 우리는 우주 공간 어딘가를 여행하고 있어요. 초속 약 <span class="hl">30km</span>로 태양 주위를 도는 지구에 올라타서요. 그리고 그 태양도 우리 은하 중심을 향해 초속 <span class="hl">220km</span>로 달려가고 있죠. 우리가 가만히 앉아있는 것처럼 느껴지지만, 우주적 관점에서는 엄청난 속도로 이동 중이에요.</p>
+
+      <div class="callout"><span class="callout-icon">🌌 태양계의 구성</span>태양(1개) + 행성(8개) + 왜소행성(수십 개) + 소행성(100만 개 이상) + 혜성(수백만 개 이상) + 성간 먼지와 가스 — 이 모든 것이 <span class="hl-gold">태양의 중력 아래 묶여 있어요.</span></div>
+
+      <p>태양계는 약 <span class="hl">46억 년 전</span>, 거대한 성간 가스와 먼지 구름이 중력에 의해 수축하면서 형성됐어요. 수축 과정에서 회전이 시작되고, 원반 모양으로 납작해졌죠. 가운데 모인 질량이 태양이 됐고, 나머지 부분에서 행성들이 뭉쳐서 만들어졌어요.</p>
+
+      <p>8개 행성은 두 그룹으로 나눌 수 있어요. 태양에 가까운 <span class="hl">암석형 행성</span>(수성, 금성, 지구, 화성)과 멀리 있는 <span class="hl-gold">가스 거인</span>(목성, 토성, 천왕성, 해왕성)이에요. 암석형 행성은 단단하고 작고 밀도가 높아요. 가스 거인은 엄청나게 크지만 대부분 기체나 얼음으로 이루어져 있죠.</p>
+
+      <div class="callout"><span class="callout-icon">📏 태양계의 크기</span>만약 태양을 농구공(약 24cm) 크기로 줄이면, 지구는 2mm짜리 구슬이고 태양에서 <span class="hl">약 26m</span> 떨어진 곳에 있어요. 명왕성은 1km 이상 떨어진 곳에 있는 작은 모래알이에요. 태양계는 정말 거의 대부분이 빈 공간이에요.</div>
+
+      <p>행성 너머에는 <span class="hl">카이퍼 벨트</span>(해왕성 궤도 밖, 얼음 천체들의 집), 그리고 가장 바깥쪽에는 <span class="hl">오르트 구름</span>(혜성의 고향, 태양에서 최대 1광년 거리)이 있어요. 오르트 구름까지 포함하면 태양계의 영향권은 실로 어마어마하죠.</p>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>우리가 사는 이 작은 행성은 우주의 광대함 속에서 한 알의 티끌에 불과해요. 하지만 <span class="hl-gold">이 티끌 위에서 우주를 이해하려는 인류</span>의 호기심과 탐구심은, 그 어떤 별보다 밝게 빛납니다.</p></div>
+    `
+  },
+
+  /* ── 태양 ── */
+  'sun': {
+    title: '태양 — 생명을 주는 별, 그리고 언젠가 죽는 별',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '9', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>지금 이 순간 태양 중심에서는 <span class="hl">매초 6억 2000만 톤의 수소</span>가 헬륨으로 바뀌고 있어요. 이 과정에서 태양 질량의 약 0.7%가 에너지로 변환되고 — 바로 그 에너지가 지구로 날아와 식물을 자라게 하고, 우리 피부를 따뜻하게 해요. 지금 당신이 느끼는 온기가 바로 핵융합의 결과예요.</p>
+
+      <div class="callout"><span class="callout-icon">☀️ 태양 기본 정보</span>지름: 지구의 <span class="hl">109배</span> (약 139만 km) · 질량: 태양계 전체의 <span class="hl-gold">99.86%</span> · 표면 온도: 5,500°C · 중심 온도: 약 1500만°C · 나이: 약 46억 년 · 수명: 약 100억 년 (앞으로 50억 년 남음)</div>
+
+      <p>태양의 에너지는 중심부에서 만들어져 표면까지 전달되는 데 약 <span class="hl">10만 년</span>이 걸려요. 그렇게 표면에 도달한 빛이 지구까지 날아오는 데는 단 <span class="hl">8분 20초</span>. 즉 지금 당신이 보는 태양빛은 10만 년 전에 만들어진 에너지예요.</p>
+
+      <p>태양 표면에는 흑점, 홍염, 플레어 같은 활동이 있어요. 특히 <span class="hl">태양 플레어(Solar Flare)</span>가 크게 발생하면 강력한 입자들이 지구로 쏟아져 위성 통신을 방해하고 오로라를 만들죠. 이 '우주 날씨'는 우리 일상과 점점 더 깊이 연결되어 있어요.</p>
+
+      <div class="callout"><span class="callout-icon">🔴 태양의 미래</span>약 50억 년 후, 태양은 수소를 다 소진하고 <span class="hl">적색거성</span>으로 부풀어 올라요. 그 크기가 지금의 100~200배 — 지구 궤도까지 팽창할 가능성이 있어요. 그 후 외층은 <span class="hl-gold">행성상 성운</span>으로 흩어지고, 중심엔 <span class="hl">백색왜성</span>이 남을 거예요.</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>태양도 언젠가 죽어요. 50억 년이라는 시간이 너무 멀게 느껴지지만 — 사실 우주의 나이(138억 년) 관점에서 보면 얼마 남지 않았어요. 모든 빛나는 것들이 그렇듯, 태양도 <span class="hl-gold">유한하기 때문에 아름다운지도 몰라요.</span></p></div>
+    `
+  },
+
+  /* ── 화성 ── */
+  'mars': {
+    title: '화성 — 인류가 100년 뒤 이민 갈 붉은 행성',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '10', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>화성은 왜 붉게 보일까요? 표면 전체가 <span class="hl">산화철(녹)</span>로 덮여 있기 때문이에요. 즉, 화성 전체가 녹슨 행성이에요. 이 붉은 색이 고대인들에게는 피의 색, 전쟁의 색으로 보였고, 그래서 <span class="hl-gold">전쟁의 신 마르스(Mars)</span>의 이름을 붙였죠.</p>
+
+      <div class="callout"><span class="callout-icon">🔴 화성 기본 정보</span>지름: 지구의 약 <span class="hl">53%</span> · 하루: 24시간 37분 · 1년: 지구의 687일 · 표면 온도: -125°C ~ +20°C · 대기압: 지구의 <span class="hl-gold">0.6%</span> (거의 진공) · 위성: 포보스, 디모스</div>
+
+      <p>화성에는 태양계 최대의 화산 <span class="hl">올림푸스 몬스(Olympus Mons)</span>가 있어요. 높이가 무려 21km — 에베레스트의 2.5배예요. 그리고 태양계 최대의 협곡 <span class="hl">발레스 마리네리스(Valles Marineris)</span>도 있는데, 길이가 4,000km로 미국 대륙 너비와 비슷해요.</p>
+
+      <p>무엇보다 흥미로운 건 화성의 <span class="hl">과거</span>예요. 30억~40억 년 전에는 강이 흐르고, 바다가 있었다는 증거가 쌓이고 있어요. 지금도 극지방에는 <span class="hl-gold">드라이아이스와 물 얼음</span>이 있고, 지하에도 물이 있을 가능성이 있죠. 물이 있다면 — 과거나 현재에 생명체가 있었을 가능성도 완전히 배제할 수 없어요.</p>
+
+      <div class="callout"><span class="callout-icon">🚀 현재 화성 탐사</span>현재 화성에서 활동 중인 탐사 로버는 NASA의 <span class="hl">퍼서비어런스(Perseverance)</span>예요. 암석 샘플을 채취하고 있으며, 2030년대에 지구로 가져올 계획이에요. 또 소형 헬리콥터 <span class="hl-gold">인지뉴어티(Ingenuity)</span>는 화성에서 처음으로 비행한 항공기가 됐어요.</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>일론 머스크는 2050년까지 화성에 100만 명을 정착시키겠다고 해요. 터무니없어 보이지만, 100년 전 사람들은 달을 밟는 것도 불가능하다고 했죠. <span class="hl-gold">인류의 이야기는 언제나 불가능해 보이는 꿈에서 시작했어요.</span></p></div>
+    `
+  },
+
+  /* ── 항성 ── */
+  'star': {
+    title: '항성 — 스스로 빛나는 우주의 등불들',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '9', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>밤하늘에 빛나는 별들은 모두 '항성(恒星)'이에요 — 스스로 핵융합을 통해 에너지를 만들어 빛을 내는 거대한 가스 덩어리죠. 우리 태양도 항성이에요. 일반적으로 태양은 평범한 별 중 하나지만, 우리에겐 물론 <span class="hl-gold">우주에서 가장 소중한 별</span>이에요.</p>
+
+      <div class="callout"><span class="callout-icon">⭐ 항성의 분류 (OBAFGKM)</span>천문학자들은 별 표면 온도에 따라 분류해요: <span class="hl">O형(파란색, 3만°C+)</span> → B → A → F → G → K → <span class="hl-gold">M형(적색, 3천°C)</span>. 우리 태양은 <span class="hl">G형</span>이에요. 기억법: "Oh Be A Fine Girl, Kiss Me!"</div>
+
+      <p>별들의 일생을 살펴보면 흥미로워요. 모든 별은 <span class="hl">성운</span>(가스와 먼지 구름)에서 태어나요. 질량에 따라 운명이 달라지는데 — 태양 질량의 별은 적색거성이 된 후 <span class="hl">백색왜성</span>으로 조용히 마무리해요. 반면 태양 질량의 8배 이상인 별은 초신성 폭발 후 <span class="hl-gold">중성자별</span>이나 <span class="hl-gold">블랙홀</span>이 돼요.</p>
+
+      <p>별의 색깔이 온도를 나타낸다는 사실도 알고 계셨나요? <span class="hl">파란 별</span>이 가장 뜨겁고(30,000°C 이상), <span class="hl">빨간 별</span>이 가장 차가워요(3,000°C 정도). 사람 눈으로도 별 색깔을 구별할 수 있어요 — 겨울밤 오리온자리의 베텔게우스(붉은색)와 리겔(파란색)을 비교해보세요!</p>
+
+      <div class="callout"><span class="callout-icon">💀 별의 죽음이 우리를 만들었어요</span>인간 몸속의 철, 칼슘, 산소 등 탄소보다 무거운 원소들은 모두 <span class="hl">초신성 폭발</span>에서 만들어진 거예요. 우리는 문자 그대로 <span class="hl-gold">별의 무덤에서 태어난 존재</span>예요. 천문학자 칼 세이건이 말했죠: "우리는 별의 물질로 만들어졌다(We are made of star stuff)".</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>밤하늘의 별을 올려다볼 때, 그 빛들은 수십에서 수천 년 전에 출발한 빛이에요. <span class="hl-gold">과거의 빛이 지금 당신의 눈에 닿는 순간</span>, 그 별의 역사 전체가 당신에게로 와 닿는 거예요.</p></div>
+    `
+  },
+
+  /* ── 은하 ── */
+  'galaxy': {
+    title: '은하 — 수천억 별들의 도시, 우리는 어디에 사나?',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '10', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>우리 은하 '밀키웨이(Milky Way)'는 <span class="hl">약 3000억 개의 별</span>로 이루어진 거대한 나선 은하예요. 지름은 약 10만 광년 — 빛의 속도로 달려도 10만 년이 걸리는 거리예요. 우리 태양은 이 거대한 원반 가장자리 근처, 중심에서 약 <span class="hl">2만 6000광년</span> 떨어진 곳에 있어요.</p>
+
+      <div class="callout"><span class="callout-icon">🌌 은하의 종류</span><span class="hl">나선 은하</span>(우리 은하처럼 팔이 나선형으로 뻗음) · <span class="hl">타원 은하</span>(공 모양, 오래된 별만 있음) · <span class="hl-gold">불규칙 은하</span>(형태가 없음, 충돌 영향 받은 경우 많음). 관측 가능한 우주에는 이런 은하가 약 <span class="hl">2조 개</span>!</div>
+
+      <p>우리 은하 중심부에는 <span class="hl">태양 질량의 400만 배</span>에 달하는 초질량 블랙홀 '궁수자리 A*'가 있어요. 2022년 인류는 처음으로 이 블랙홀의 이미지를 포착했죠. 엄청난 질량 때문에 주변 별들의 공전에 영향을 미쳐 그 존재를 알 수 있었어요.</p>
+
+      <p>우리 은하는 혼자가 아니에요. 안드로메다 은하, 마젤란 성운 등과 함께 <span class="hl">국부 은하군(Local Group)</span>을 형성하고 있어요. 약 <span class="hl-gold">45억 년 후</span>에는 우리 은하와 안드로메다 은하가 충돌할 예정이에요. 하지만 두 은하는 대부분 빈 공간이라 별끼리의 직접 충돌 확률은 매우 낮아요.</p>
+
+      <div class="callout"><span class="callout-icon">📸 역사적인 사진</span>2022년 EHT(Event Horizon Telescope) 팀이 공개한 '궁수자리 A*' 블랙홀 이미지는 전 세계를 뒤흔들었어요. 우리 은하 중심의 블랙홀을 <span class="hl">직접 시각적으로 확인</span>한 첫 번째 사건이었죠. 지구 곳곳에 설치된 8개 전파 망원경을 하나처럼 연결해서 달걀 하나를 볼 수 있을 만큼의 <span class="hl-gold">초고해상도</span>를 만들어냈어요.</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>2조 개의 은하, 각각 3000억 개의 별 — 이 숫자는 인간의 뇌가 진정으로 이해하기 어려운 스케일이에요. 하지만 그 광대한 우주 안에서 <span class="hl-gold">호기심 하나로 별을 세고 싶어 하는 인간</span>이 있다는 것도, 어쩌면 우주에서 가장 경이로운 사실일지 몰라요.</p></div>
+    `
+  },
+
+  /* ── 망원경의 역사 ── */
+  'telescope-history': {
+    title: '망원경의 역사 — 갈릴레오부터 제임스 웹까지',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '11', difficulty: '⭐⭐ 중급', date: '2026년',
+    body: `
+      <p>1609년 어느 날, 갈릴레오 갈릴레이는 손수 만든 망원경을 밤하늘로 향했어요. 그가 본 것은 충격이었죠 — 달에는 완벽한 구 모양이 아닌 <span class="hl">산과 계곡</span>이 있었고, 목성에는 <span class="hl-gold">4개의 위성</span>이 공전하고 있었어요. 이 관찰 하나가 "지구가 우주의 중심"이라는 수천 년의 믿음을 무너뜨리기 시작했어요.</p>
+
+      <div class="callout"><span class="callout-icon">🔭 망원경의 종류</span><span class="hl">굴절 망원경</span>(렌즈로 빛을 모음, 갈릴레오가 사용) · <span class="hl">반사 망원경</span>(거울로 빛을 반사, 뉴턴이 발명, 현대 대형 망원경의 기본) · <span class="hl-gold">전파 망원경</span>(가시광선 외 전파를 관측, 블랙홀 이미지에 사용) · 적외선·X선 망원경 등</div>
+
+      <p>1990년 발사된 <span class="hl">허블 우주 망원경</span>은 지구 대기 밖에서 촬영하는 최초의 대형 우주망원경이에요. 발사 후 거울 제작 오류로 흐릿한 사진을 찍어 실망을 안겼지만, 1993년 우주 비행사들이 직접 수리했어요 — 마치 안경을 씌워주듯이요. 이후 허블은 <span class="hl-gold">수십억 광년 밖 은하 사진</span>을 보내오며 인류의 우주관을 바꿨어요.</p>
+
+      <p>2021년 발사된 <span class="hl">제임스 웹 우주망원경(JWST)</span>은 허블의 후계자예요. 주경 지름이 6.5m — 허블(2.4m)의 2.7배예요. 적외선 관측에 특화되어 있어 우주 초기, <span class="hl">빅뱅 이후 수억 년 내의 최초 은하</span>를 관측할 수 있어요. 2022년 첫 이미지 공개 때 전 세계가 놀랐죠.</p>
+
+      <div class="callout"><span class="callout-icon">🌟 다음 단계: 로먼 우주망원경</span>2026년 발사 예정인 <span class="hl">낸시 그레이스 로먼 우주망원경</span>은 허블과 같은 2.4m 거울을 가지지만 시야각이 <span class="hl-gold">100배</span>예요. 허블이 맞춤정장이라면, 로먼은 광각 드론 카메라예요. 단 한 번의 노출로 허블 수천 장 분량을 찍을 수 있어요.</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>갈릴레오는 종교재판을 받으면서도 진실을 포기하지 않았어요. 그로부터 400년이 지난 지금, 우리는 138억 광년 밖을 보고 있어요. <span class="hl-gold">인류의 시야는 멈추지 않았어요</span> — 그리고 앞으로도.</p></div>
+    `
+  },
+
+  /* ── 외계생명체 ── */
+  'alien': {
+    title: '외계생명체 찾기 — 우리는 우주에서 혼자일까?',
+    tags: [{ cls: 'intermediate', label: '⭐⭐ 중급' }],
+    readTime: '10', difficulty: '⭐⭐ 중급', date: '2026년',
+    body: `
+      <p>1950년, 물리학자 엔리코 페르미가 점심을 먹다가 이런 말을 했어요. "그래서, 다들 어디 있는 거야?(But where is everybody?)" — 우주가 이렇게 광대하고 별이 이렇게 많다면, 외계 문명들은 왜 아직 연락이 없는 걸까요? 이것이 바로 <span class="hl">페르미 역설(Fermi Paradox)</span>이에요.</p>
+
+      <div class="callout"><span class="callout-icon">🧮 드레이크 방정식</span>1961년 천문학자 프랭크 드레이크는 우리 은하 내 교신 가능한 문명 수를 추정하는 공식을 만들었어요. 낙관적으로 계산하면 수만~수백만 개의 문명이, 비관적으로 계산하면 우리만 있을 수도 있어요. 방정식 자체보다 <span class="hl-gold">무엇을 모르는지 명확히 해주는 도구</span>로서 가치가 있어요.</div>
+
+      <p>현재 가장 유력한 외계생명체 후보지는 어디일까요? 놀랍게도 우리 태양계 안에도 있어요. 목성의 위성 <span class="hl">유로파(Europa)</span>는 얼음 지각 아래 광대한 액체 바다가 있고, 토성의 위성 <span class="hl-gold">엔셀라두스(Enceladus)</span>는 바다에서 수증기와 유기물을 우주로 뿜어내고 있어요. 생명에 필요한 조건인 '물 + 에너지 + 유기물'이 모두 있죠.</p>
+
+      <p>1977년 오하이오주립대 전파망원경이 포착한 <span class="hl">'와우! 신호(Wow! Signal)'</span>는 아직도 미스터리예요. 72초 동안 잡힌 강력한 전파 신호는 그 이후 다시는 나타나지 않았어요. 자연 현상인지, 외계 문명의 신호인지 확인되지 않은 채로 남아 있죠.</p>
+
+      <div class="callout"><span class="callout-icon">🔭 현재 SETI 활동</span><span class="hl">SETI(Search for Extra-Terrestrial Intelligence)</span> 연구소와 NASA는 지금도 외계 문명을 탐색하고 있어요. 제임스 웹 망원경은 외계행성 대기에서 <span class="hl-gold">산소나 메탄 같은 생명 징표</span>를 찾을 수 있을 정도로 정밀해요. 2025년 이후 발표될 결과가 기대됩니다.</div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>만약 우리가 정말로 우주에서 유일한 지적 생명체라면? 그것은 굉장히 외로운 사실이에요. 하지만 반대로 — <span class="hl-gold">이 광대한 우주를 이해하려는 책임이 우리에게만 있다는 뜻</span>이기도 해요. 그건 어쩌면 굉장히 경이로운 사명 아닐까요?</p></div>
+    `
+  },
+
+  /* ── 위대한 천문학자들 ── */
+  'famous-astronomers': {
+    title: '위대한 천문학자들 — 코페르니쿠스부터 호킹까지',
+    tags: [{ cls: 'beginner', label: '⭐ 입문' }],
+    readTime: '10', difficulty: '⭐ 입문', date: '2026년',
+    body: `
+      <p>"그래도 지구는 돈다(E pur si muove)." 갈릴레오 갈릴레이의 이 말은 실제로 그가 종교재판 후 했다는 전설이지만, 그 정신은 진짜예요 — <span class="hl">진리 앞에서는 권위에 굴복하지 않는다</span>는 정신. 천문학의 역사는 이런 불굴의 인물들로 가득해요.</p>
+
+      <div class="callout"><span class="callout-icon">📜 시대를 바꾼 인물들</span>
+        <strong>코페르니쿠스(1473–1543)</strong> — 지동설 이론 정립 · <strong>갈릴레오(1564–1642)</strong> — 망원경 관측으로 지동설 증명 시작 · <strong>케플러(1571–1630)</strong> — 행성 운동 3법칙 · <strong>뉴턴(1643–1727)</strong> — 만유인력 법칙으로 천체운동 통합 · <strong>허블(1889–1953)</strong> — 우주 팽창 발견 · <strong>호킹(1942–2018)</strong> — 블랙홀 이론, 호킹 복사</div>
+
+      <p>에드윈 허블은 1929년 은하들이 우리에게서 <span class="hl">멀어지고 있다</span>는 걸 발견했어요. 더 멀리 있을수록 더 빠르게 멀어지죠. 이것이 <span class="hl-gold">우주 팽창의 증거</span>이며, 역으로 추산하면 약 138억 년 전 모든 것이 한 점에서 시작됐다는 — 빅뱅 이론의 관측적 기초가 됐어요.</p>
+
+      <p>루게릭병으로 전신이 마비된 <span class="hl">스티븐 호킹</span>은 어떻게요? 그는 뺨 근육 하나로 컴퓨터를 제어하며 블랙홀, 시간, 빅뱅 등 우주의 근본 질문들을 평생 탐구했어요. 물리적 한계가 지적 한계가 아님을 온 몸으로 보여준 사람이에요.</p>
+
+      <div class="callout"><span class="callout-icon">👩‍🔬 숨겨진 영웅들</span><span class="hl">헨리에타 레빗</span>은 세페이드 변광성으로 우주 거리 측정법을 발견했고, <span class="hl">세실리아 페인</span>은 별이 주로 수소로 이루어졌다는 걸 밝혔어요. 하지만 오랫동안 인정받지 못했죠. <span class="hl-gold">숨겨진 기여자들의 발굴도 과학사의 중요한 역할이에요.</span></div>
+
+      <div class="humanistic-close"><span class="hc-label">💫 생각해보기</span><p>코페르니쿠스부터 호킹까지, 그들이 공통으로 가진 것은 <span class="hl-gold">'모른다는 용기'</span>였어요. 당연하게 여겨진 것들에 의문을 품고, 틀릴 수도 있다는 두려움을 이기고 나아간 사람들 — 과학은 그 용기의 축적이에요.</p></div>
+    `
+  }
+
+};
+
+/* ============================================
    KNOWLEDGE HUB DATA
    카테고리 → 소주제 → 티저 → 글
    ============================================ */
