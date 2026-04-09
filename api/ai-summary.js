@@ -9,11 +9,11 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { text, apiKey } = req.body || {};
-  const key = process.env.OPENAI_API_KEY || apiKey;
+  const { text } = req.body || {};
+  const key = process.env.OPENAI_API_KEY;
 
   if (!key) {
-    res.status(400).json({ error: 'API 키가 없습니다. 설정(⚙️)에서 OpenAI API 키를 입력해주세요.' });
+    res.status(500).json({ error: 'AI 기능이 서버에 구성되지 않았습니다. Vercel 환경변수(OPENAI_API_KEY)를 등록해 주세요.' };
     return;
   }
   if (!text || text.trim().length < 80) {
@@ -71,6 +71,7 @@ ${trimmed}
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).json(parsed);
   } catch (e) {
-    res.status(500).json({ error: e.message || '서버 오류' });
+    console.error('[ai-summary]', e);
+    res.status(500).json({ error: '서버 오류가 발생했습니다.' });
   }
 }

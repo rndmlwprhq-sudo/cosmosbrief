@@ -36,6 +36,7 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate'); // 5-min CDN cache
     return res.send(xml);
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    console.error('[rss]', err);
+    return res.status(500).json({ error: '뉴스 수집 중 오류가 발생했습니다.' });
   }
 }
