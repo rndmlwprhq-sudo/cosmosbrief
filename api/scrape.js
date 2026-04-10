@@ -180,7 +180,7 @@ export default async function handler(req, res) {
 
   const { company } = req.query;
   if (!company || !CONFIGS[company]) {
-    return res.status(400).json({ error: `Unknown company: ${company}` });
+    return res.status(400).json({ error: 'Invalid company parameter' });
   }
 
   const cfg = CONFIGS[company];

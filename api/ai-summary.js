@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') { res.status(200).end(); return; }
   if (req.method !== 'POST') {
@@ -9,11 +9,20 @@ export default async function handler(req, res) {
     return;
   }
 
+  // ── Auth check ──
+  const secret = process.env.ADMIN_SECRET;
+  if (secret) {
+    const auth = req.headers['authorization'];
+    if (!auth || auth !== `Bearer ${secret}`) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+  }
+
   const { text } = req.body || {};
   const key = process.env.OPENAI_API_KEY;
 
   if (!key) {
-    res.status(500).json({ error: 'AI 기능이 서버에 구성되지 않았습니다. Vercel 환경변수(OPENAI_API_KEY)를 등록해 주세요.' };
+    res.status(500).json({ error: '서버 구성 오류가 발생했습니다.' });
     return;
   }
   if (!text || text.trim().length < 80) {
@@ -59,9 +68,8 @@ ${trimmed}
     });
 
     if (!response.ok) {
-      let errMsg = 'OpenAI API 오류';
-      try { const e = await response.json(); errMsg = e.error?.message || errMsg; } catch {}
-      res.status(response.status).json({ error: errMsg });
+      console.error('[ai-summary] OpenAI error:', response.status);
+      res.status(502).json({ error: 'AI 초안 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' });
       return;
     }
 

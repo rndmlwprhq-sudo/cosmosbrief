@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
   <style>
     /* ── Published news from admin ── */
     .live-updates-wrap { max-width:1280px; margin:0 auto; padding:0 2rem 1.5rem; }
@@ -1105,7 +1106,7 @@
       `<span class="modal-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>`+
       `<span class="modal-time">${item.publishedAtDisplay||''} &nbsp;·&nbsp; ${relTime(item.publishedAt)}</span>`;
     document.getElementById('modal-title').textContent = item.title||'';
-    document.getElementById('modal-body').innerHTML = item.content || ('<p>'+esc(item.summary||'')+'</p>');
+    document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(item.content || ('<p>'+esc(item.summary||'')+'</p>'));
     const links = (item.links||[]).concat((item.articles||[]).map(a=>a.link)).filter(Boolean);
     document.getElementById('modal-footer').innerHTML = links.slice(0,4)
       .map(l=>`<a href="${esc(l)}" target="_blank" rel="noopener" class="modal-link">🔗 원문 보기</a>`).join('');
@@ -1453,8 +1454,8 @@
         '<span class="modal-time" style="margin-left:auto">' + date.trim() + '</span>';
       document.getElementById('modal-title').textContent = title.trim();
       document.getElementById('modal-body').innerHTML =
-        (tagsHTML ? '<div class="article-tags" style="margin-bottom:1.25rem">' + tagsHTML + '</div>' : '') +
-        bodyHTML;
+        DOMPurify.sanitize((tagsHTML ? '<div class="article-tags" style="margin-bottom:1.25rem">' + tagsHTML + '</div>' : '') +
+        bodyHTML);
       document.getElementById('modal-footer').innerHTML = '';
       document.getElementById('article-modal-bg').classList.add('open');
       document.body.style.overflow = 'hidden';

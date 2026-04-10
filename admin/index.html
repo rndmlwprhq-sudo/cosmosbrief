@@ -720,7 +720,8 @@ async function generateAiDraft() {
   document.getElementById('btn-ai').disabled = true;
   try {
     const res = await fetch('/api/ai-summary', {
-      method:'POST', headers:{'Content-Type':'application/json'},
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+getAdminSecret()},
       body:JSON.stringify({text}), signal:AbortSignal.timeout(50000),
     });
     const data = await res.json();
