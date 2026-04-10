@@ -287,6 +287,19 @@
       .teaser-box { padding: 2rem 1.5rem; }
       #teaser-name { font-size: 1.3rem; }
     }
+
+    /* ── Chapter navigation system ── */
+    .chapter-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin:3rem 0 1.5rem; padding-top:2rem; border-top:1px solid var(--color-border); }
+    .chapter-nav-title { width:100%; font-size:0.72rem; font-weight:700; color:var(--color-accent-gold); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.25rem; }
+    .chapter-btn { background:rgba(255,255,255,0.04); border:1px solid var(--color-border); color:var(--color-text-muted); border-radius:8px; padding:0.45rem 0.9rem; font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans KR',sans-serif; }
+    .chapter-btn:hover { color:#fff; border-color:rgba(255,255,255,0.25); }
+    .chapter-btn.active { background:rgba(126,232,232,0.1); border-color:var(--color-accent-cyan); color:var(--color-accent-cyan); }
+    .chapter-body { animation:fadeChapter 0.22s ease; }
+    @keyframes fadeChapter { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .chapter-breadcrumb { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem; color:var(--color-text-muted); margin-bottom:1rem; cursor:pointer; transition:color 0.2s; }
+    .chapter-breadcrumb:hover { color:#fff; }
+    .term-note { display:block; font-size:0.75rem; color:#666; margin-top:-1rem; margin-bottom:1.25rem; font-style:italic; line-height:1.6; }
+    .term-note::before { content:'▸ '; color:#555; }
   </style>
 </head>
 <body>
