@@ -113,7 +113,7 @@
     .hl-gold { background:rgba(247,201,72,0.15);  border-bottom:1px solid rgba(247,201,72,0.4);  border-radius:3px; padding:0 3px; color:#f7c948; }
     .hl-blue { background:rgba(79,142,247,0.15);  border-bottom:1px solid rgba(79,142,247,0.4);  border-radius:3px; padding:0 3px; color:#7fb5ff; }
     .term-note { display:block; font-size:0.72rem; color:#777; margin-top:-0.55rem; margin-bottom:0.9rem; font-style:italic; line-height:1.6; }
-    .term-note::before { content:'??'; color:#555; }
+    .term-note::before { content:'\2192 \A0'; color:#555; }
 
     /* ?? Mobile modal fullscreen ?? */
     @media (max-width:768px) {
@@ -192,12 +192,12 @@
   <ul class="nav-links">
     <li><a href="index.html" class="nav-link">홈</a></li>
     <li><a href="trends.html" class="nav-link active">최신 동향</a></li>
-    <li><a href="knowledge.html" class="nav-link">泥쒕Ц 吏??/a></li>
+    <li><a href="knowledge.html" class="nav-link">지식 허브</a></li>
     <li><a href="index.html#about" class="nav-link">소개</a></li>
   </ul>
-  <a href="knowledge.html" class="nav-cta">泥쒕Ц 吏????/a>
+  <a href="knowledge.html" class="nav-cta">지식 허브 &#x2192;</a>
   <button class="btn-login" onclick="alert('로그인 기능은 추후 업데이트 예정입니다 :)')">✦ 로그인</button>
-  <button class="nav-mobile-toggle" aria-label="硫붾돱">
+  <button class="nav-mobile-toggle" aria-label="메뉴">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -725,7 +725,7 @@
     document.getElementById('modal-meta').innerHTML =
       `<span class="uc-dot" style="background:${esc(item.companyColor||'#7ee8e8')}"></span>`+
       `<span class="modal-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>`+
-      `<span class="modal-time">${item.publishedAtDisplay||''} &nbsp;쨌&nbsp; ${relTime(item.publishedAt)}</span>`;
+      `<span class="modal-time">${item.publishedAtDisplay||''} &nbsp;·&nbsp; ${relTime(item.publishedAt)}</span>`;
     document.getElementById('modal-title').textContent = item.title||'';
     document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(item.content || ('<p>'+esc(item.summary||'')+'</p>'));
     const links = (item.links||[]).concat((item.articles||[]).map(a=>a.link)).filter(Boolean);
