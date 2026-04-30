@@ -167,6 +167,60 @@
     .article-card.needs-review-card:hover { border-color:rgba(248,113,113,0.5); }
     .article-card.fact-error-card { border-color:rgba(239,68,68,0.4) !important; }
     .article-card.fact-error-card:hover { border-color:rgba(239,68,68,0.7) !important; }
+
+    /* ── Paged-hidden cards (initial state for load-more) ── */
+    .article-card[data-page-hidden] { display: none; }
+
+    /* ── Card thumbnail image ── */
+    .card-thumb-wrap { position:relative; overflow:hidden; }
+    .card-thumb-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .article-card:hover .card-thumb-img { transform:scale(1.04); }
+
+    /* ── Modal featured image ── */
+    .modal-article-img-wrap { margin:0 -2.25rem 1.5rem; overflow:hidden; }
+    .modal-article-img { width:100%; max-height:280px; object-fit:cover; display:block; }
+    .modal-img-caption { padding:0.45rem 2.25rem 0; font-size:0.7rem; color:#666; line-height:1.5; }
+    .modal-img-credit { font-size:0.68rem; color:#555; margin-left:0.3rem; }
+    @media (max-width:768px) {
+      .modal-article-img-wrap { margin:0 -1.1rem 1.25rem; }
+      .modal-article-img { max-height:200px; }
+      .modal-img-caption { padding-left:1.1rem; padding-right:1.1rem; }
+    }
+
+    /* ── Modal: 출처 및 검증 section ── */
+    .modal-verify-section {
+      margin-top:2rem; padding-top:1rem;
+      border-top:1px solid rgba(255,255,255,0.07);
+    }
+    .modal-verify-title {
+      font-size:0.68rem; font-weight:800; color:#555;
+      text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.7rem;
+    }
+    .modal-verify-row {
+      display:flex; align-items:center; gap:0.5rem;
+      margin-bottom:0.35rem; font-size:0.75rem; color:#777;
+    }
+    .modal-verify-label { min-width:52px; font-size:0.68rem; color:#4a4a5a; flex-shrink:0; }
+    .modal-verify-link { color:#7ee8e8; text-decoration:none; font-size:0.75rem; }
+    .modal-verify-link:hover { text-decoration:underline; }
+    .modal-verify-note {
+      margin-top:0.65rem; font-size:0.72rem; color:#888; line-height:1.6;
+      padding:0.45rem 0.7rem;
+      background:rgba(126,232,232,0.04);
+      border-left:2px solid rgba(126,232,232,0.2);
+      border-radius:0 4px 4px 0;
+    }
+
+    /* ── Load more button ── */
+    .load-more-wrap { text-align:center; margin:2rem 0 1rem; }
+    .btn-load-more {
+      background:rgba(126,232,232,0.07); border:1px solid rgba(126,232,232,0.25);
+      color:#7ee8e8; padding:0.55rem 1.75rem; border-radius:2rem;
+      font-size:0.85rem; font-weight:700; cursor:pointer;
+      transition:background 0.2s, border-color 0.2s;
+    }
+    .btn-load-more:hover { background:rgba(126,232,232,0.15); border-color:rgba(126,232,232,0.5); }
+    .no-more-articles-msg { font-size:0.78rem; color:#555; padding:0.5rem; }
   </style>
 </head>
 <body>
@@ -423,6 +477,12 @@
     <!-- JS로 동적 렌더링됨 -->
     </div>
 
+    <!-- 더보기 버튼 -->
+    <div class="load-more-wrap" id="load-more-wrap">
+      <button class="btn-load-more" id="btn-load-more" onclick="loadMoreArticles()">기사 더보기 ↓</button>
+      <div class="no-more-articles-msg" id="no-more-articles-msg" style="display:none">더 이상 불러올 기사가 없습니다</div>
+    </div>
+
     <!-- 검토 중 기사 토글 버튼 -->
     <div style="text-align:center; margin:2.5rem 0 0.5rem;" class="reveal" id="review-section-wrap" style="display:none">
       <button class="btn-secondary" id="btn-show-review" onclick="toggleReviewArticles()">
@@ -511,16 +571,27 @@
       return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    function makeCard(item) {
+    const INIT_SHOW = 6;
+
+    function makeThumb(item) {
+      const img = item.image;
+      if (img && img.url) {
+        return `<div class="article-img-placeholder card-thumb-wrap"><img class="card-thumb-img" src="${esc(img.url)}" alt="${esc(img.alt || item.title)}" loading="lazy" /></div>`;
+      }
+      return `<div class="article-img-placeholder">${esc(item.icon)}</div>`;
+    }
+
+    function makeCard(item, idx) {
       const isReview = item.status === 'needs_review' || item.reliability === 'unverified';
       const isFactError = item.id === 'juice-jupiter';
       const cardClass = isFactError ? 'article-card fact-error-card' : (isReview ? 'article-card needs-review-card' : 'article-card');
       const dateDisp = item.date ? item.date.replace(/-/g, '.') : '';
       const srcInitial = (item.sourceName || '?').charAt(0).toUpperCase();
       const tagsHtml = (item.tags || []).map(t => `<span class="article-tag tag-mission">${esc(t)}</span>`).join('');
+      const pagedAttr = (typeof idx === 'number' && idx >= INIT_SHOW) ? ' data-page-hidden="1"' : '';
 
-      return `<div class="${cardClass}" data-key="${esc(item.id)}" data-category="${esc(item.category)}" style="cursor:pointer;" data-trends-id="${esc(item.id)}">
-        <div class="article-img-placeholder">${esc(item.icon)}</div>
+      return `<div class="${cardClass}" data-key="${esc(item.id)}" data-category="${esc(item.category)}" style="cursor:pointer;" data-trends-id="${esc(item.id)}"${pagedAttr}>
+        ${makeThumb(item)}
         <div class="article-body">
           <div class="card-badge-row">
             <span class="badge ${RELIABILITY_CLASS[item.reliability] || 'badge-unverified'}">${RELIABILITY_LABEL[item.reliability] || item.reliability}</span>
@@ -541,16 +612,19 @@
     const review    = data.filter(d => d.status === 'needs_review' || d.reliability === 'unverified');
 
     const container = document.getElementById('articles-container');
-    if (container) container.innerHTML = confirmed.map(makeCard).join('');
+    if (container) container.innerHTML = confirmed.map((item, idx) => makeCard(item, idx)).join('');
 
     const reviewContainer = document.getElementById('articles-review');
-    if (reviewContainer) reviewContainer.innerHTML = review.map(makeCard).join('');
+    if (reviewContainer) reviewContainer.innerHTML = review.map(item => makeCard(item)).join('');
 
     const reviewWrap = document.getElementById('review-section-wrap');
     if (reviewWrap && review.length > 0) {
       reviewWrap.style.display = '';
       reviewWrap.querySelector('button').textContent = `⚠️ 검토 중 기사 보기 ↓ (${review.length}개)`;
     }
+
+    // Apply initial paging visibility (hides cards with data-page-hidden)
+    updateCardVisibility();
 
     // Attach click handlers
     document.querySelectorAll('[data-trends-id]').forEach(function(card) {
@@ -573,10 +647,13 @@
 
         let bodyHtml = '';
 
-        // Editor note
-        if (item.editorNote) {
-          const errClass = item.id === 'juice-jupiter' ? ' editor-note-fact-error' : '';
-          bodyHtml += `<div class="editor-note${errClass}">${esc(item.editorNote)}</div>`;
+        // Featured image (url must be verified public domain / CC — see image policy in data/trends.js)
+        const img = item.image;
+        if (img && img.url) {
+          const captionHtml = img.caption
+            ? `<div class="modal-img-caption">${esc(img.caption)}${img.credit ? ` <span class="modal-img-credit">© ${esc(img.credit)}</span>` : ''}</div>`
+            : '';
+          bodyHtml += `<div class="modal-article-img-wrap"><img class="modal-article-img" src="${esc(img.url)}" alt="${esc(img.alt || item.title)}" />${captionHtml}</div>`;
         }
 
         // Why it matters
@@ -592,10 +669,22 @@
         // Body
         bodyHtml += item.body || '';
 
-        // Fact checked date
-        if (item.lastFactChecked) {
-          bodyHtml += `<p style="font-size:0.7rem;color:#555;margin-top:1.5rem">마지막 팩트체크: ${esc(item.lastFactChecked)}</p>`;
+        // 출처 및 검증 section (editorNote 는 여기에 표시 — 기사 상단에서 제거)
+        let verifyRows = '';
+        if (item.sourceUrl) {
+          verifyRows += `<div class="modal-verify-row"><span class="modal-verify-label">출처</span><a href="${esc(item.sourceUrl)}" target="_blank" rel="noopener" class="modal-verify-link">${esc(item.sourceName)} ↗</a></div>`;
+        } else {
+          verifyRows += `<div class="modal-verify-row"><span class="modal-verify-label">출처</span><span>${esc(item.sourceName)}</span></div>`;
         }
+        verifyRows += `<div class="modal-verify-row"><span class="modal-verify-label">신뢰도</span><span class="badge ${reliabilityClass}">${reliabilityLabel}</span></div>`;
+        verifyRows += `<div class="modal-verify-row"><span class="modal-verify-label">상태</span><span class="badge ${statusClass}">${statusLabel}</span></div>`;
+        if (item.lastFactChecked) {
+          verifyRows += `<div class="modal-verify-row"><span class="modal-verify-label">팩트체크</span><span>${esc(item.lastFactChecked)}</span></div>`;
+        }
+        const editorNoteHtml = item.editorNote
+          ? `<div class="modal-verify-note">${esc(item.editorNote)}</div>`
+          : '';
+        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}</div>`;
 
         document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(bodyHtml);
 
@@ -637,7 +726,40 @@
       btn.textContent = isHidden ? `⚠️ 검토 중 기사 접기 ↑` : `⚠️ 검토 중 기사 보기 ↓ (${count}개)`;
     }
   }
+  /* ── Pagination helpers ── */
+  var _loadMoreInteracted = false;
 
+  function updateCardVisibility() {
+    var activeBtn = document.querySelector('.filter-bar .filter-btn.active');
+    var activeCat = activeBtn ? activeBtn.dataset.filter : 'all';
+    var pagedMatchCount = 0;
+    document.querySelectorAll('#articles-container .article-card').forEach(function(card) {
+      var isPaged = card.hasAttribute('data-page-hidden');
+      var matchesCat = activeCat === 'all' || card.dataset.category === activeCat;
+      card.style.display = (isPaged || !matchesCat) ? 'none' : '';
+      if (isPaged && matchesCat) pagedMatchCount++;
+    });
+    var loadBtn = document.getElementById('btn-load-more');
+    var noMoreMsg = document.getElementById('no-more-articles-msg');
+    if (loadBtn) loadBtn.style.display = pagedMatchCount > 0 ? '' : 'none';
+    if (noMoreMsg) noMoreMsg.style.display = (pagedMatchCount === 0 && _loadMoreInteracted) ? '' : 'none';
+  }
+
+  function loadMoreArticles() {
+    _loadMoreInteracted = true;
+    var BATCH = 6;
+    var activeBtn = document.querySelector('.filter-bar .filter-btn.active');
+    var activeCat = activeBtn ? activeBtn.dataset.filter : 'all';
+    var shown = 0;
+    document.querySelectorAll('#articles-container .article-card[data-page-hidden]').forEach(function(card) {
+      if (shown >= BATCH) return;
+      if (activeCat === 'all' || card.dataset.category === activeCat) {
+        card.removeAttribute('data-page-hidden');
+        shown++;
+      }
+    });
+    updateCardVisibility();
+  }
   /* ?? Load published news from admin ?? */
   (async function loadAdminUpdates() {
     let db = [];
@@ -741,18 +863,14 @@
   }
   document.addEventListener('keydown', e => { if(e.key==='Escape') { document.getElementById('article-modal-bg').classList.remove('open'); document.body.style.overflow=''; } });
 
-  // Trends page specific: category filter
+  // Trends page specific: category filter (delegates to updateCardVisibility for paging compat)
   (function categoryFilter() {
     const filterBtns = document.querySelectorAll('.filter-bar .filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const cat = btn.dataset.filter;
-        // Re-query after dynamic render
-        document.querySelectorAll('.article-card[data-category]').forEach(card => {
-          card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
-        });
+        updateCardVisibility();
       });
     });
   })();
