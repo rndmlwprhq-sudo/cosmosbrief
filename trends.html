@@ -134,6 +134,11 @@
     .badge-scheduled      { background:rgba(167,119,247,0.15); color:#c49fff; border:1px solid rgba(167,119,247,0.35); }
     .badge-developing     { background:rgba(251,146,60,0.15);  color:#fb923c; border:1px solid rgba(251,146,60,0.35); }
     .badge-needs-review   { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.35); }
+    .badge-low-confidence { background:rgba(213,160,67,0.15); color:#d4a843; border:1px solid rgba(213,160,67,0.35); }
+    .article-card.low-confidence-card { border-color:rgba(213,160,67,0.25); }
+    .article-card.low-confidence-card:hover { border-color:rgba(213,160,67,0.55); }
+    .hl-warn { background:rgba(245,158,11,0.12); border-bottom:1px solid rgba(245,158,11,0.35); border-radius:3px; padding:0 3px; color:#fbbf24; }
+    .hl-good { background:rgba(52,211,153,0.12); border-bottom:1px solid rgba(52,211,153,0.35); border-radius:3px; padding:0 3px; color:#34d399; }
 
     /* ── Editor note banner ── */
     .editor-note {
@@ -345,114 +350,55 @@
     <div class="trends-section reveal">
       <div class="trends-header">
         <div class="trends-title">
-          📊 2026년 3월 키워드 분석
+          📊 오늘의 우주개발 키워드 분석
           <span class="live-badge">LIVE</span>
         </div>
-        <div style="font-size:0.82rem; color:var(--color-text-muted);">9개 출처 · 2,314개 기사 분석 기반 · 2026.03.29 업데이트 <span style="font-size:0.72rem;color:#f87171;font-style:italic">(편집자 추정치 — 실제 통계 아님)</span></div>
+        <div style="font-size:0.82rem; color:var(--color-text-muted);">분석 기준: 2026.05.01 / 공개 기사 및 낮은 신뢰도 기사 태그 기준 <span style="font-size:0.72rem;color:#fb923c;font-style:italic">(이 사이트 수록 기사 태그 기반)</span></div>
       </div>
 
       <div class="trends-grid">
-        <div class="keyword-chart">
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🚀 스타십 궤도 운용 (Starship Orbital Ops)</span>
-              <span class="keyword-count">412</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-1" style="width:91%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🌕 달 탐사 · 달자원 채취 (Artemis / Lunar ISRU)</span>
-              <span class="keyword-count">334</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-2" style="width:82%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🔭 NASA 우주 망원경 (Nancy Grace Roman)</span>
-              <span class="keyword-count">287</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-3" style="width:76%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">📡 상업용 발사 시장 (Launch Market 2026)</span>
-              <span class="keyword-count">251</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-4" style="width:68%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">☀️ 우주 기상 현상 (Space Weather)</span>
-              <span class="keyword-count">193</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-5" style="width:59%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🇰🇷 한국우주항공청 (KASA)</span>
-              <span class="keyword-count">168</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-6" style="width:51%"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🪐 목성계 탐사 JUICE / 유로파</span>
-              <span class="keyword-count">142</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-1" style="width:44%; opacity:0.7"></div></div>
-          </div>
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">🤖 우주 AI · 위성 운용 (Space AI)</span>
-              <span class="keyword-count">118</span>
-            </div>
-            <div class="keyword-bar-track"><div class="keyword-bar-fill kw-2" style="width:37%; opacity:0.7"></div></div>
-          </div>
-        </div>
+        <!-- keyword bars — rendered by renderKeywordChart() below -->
+        <div id="keyword-chart-container" class="keyword-chart"></div>
 
-        <!-- Monthly Timeline -->
+        <!-- Timeline -->
         <div>
-          <p style="font-size:0.8rem; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem;">📅 2026년 3월 주요 이벤트</p>
+          <p style="font-size:0.8rem; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem;">📅 4월~5월 주요 이벤트</p>
           <div class="timeline-preview">
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">3월 3일 · Blue Origin</div>
-                <div class="timeline-text">New Glenn 3차 발사 성공 — GEO 통신위성 2기 투입, 통신 서비스 정상화</div>
+                <div class="timeline-date">4월 1일 · NASA</div>
+                <div class="timeline-text">아르테미스 II 발사 — 54년 만의 유인 달 궤도 비행</div>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">3월 12일 · NASA</div>
-                <div class="timeline-text">로만 우주 망원경 최종 조립 완료 테스트 진행 — 2026년 하반기 발사 예정</div>
+                <div class="timeline-date">4월 10일 · NASA</div>
+                <div class="timeline-text">아르테미스 II 귀환 착수 성공</div>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">3월 18일 · SpaceX</div>
-                <div class="timeline-text">스타십 IFT-8 비행 성공 — 단분리 및 재진입 완료, 궤도 도달 가능성 테스트 단계</div>
+                <div class="timeline-date">4월 7일 · ESA</div>
+                <div class="timeline-text">우주잔해 케슬러 신드롬 임계 경고 보고서 발표</div>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">3월 25일 · KASA</div>
-                <div class="timeline-text">우주항공청 설립 1주년 — 독자 달 탐사 2032년 목표 로드맵 계획 발표</div>
+                <div class="timeline-date">5월 예정 · NASA</div>
+                <div class="timeline-text">로먼 우주망원경 케네디 우주센터 인도 준비 (6월 목표)</div>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">3월 28일 · ESA</div>
-                <div class="timeline-text">JUICE 화성 플라이바이 경유 완료 — 목성 도착은 2031년 예정 <span style="font-size:0.7em;color:#f87171;" title="팩트 수정: JUICE 목성 궤도 진입은 2031년 예정입니다">⚠️ 수정됨</span></div>
+                <div class="timeline-date">2026년 하반기 예정 · NASA</div>
+                <div class="timeline-text">Nancy Grace Roman ST 발사 목표 (2026년 9월)</div>
               </div>
             </div>
-          </div>
-          <div style="margin-top:1.5rem; padding:1rem; background:rgba(79,142,247,0.06); border:1px solid rgba(79,142,247,0.12); border-radius:12px; font-size:0.82rem; color:var(--color-text-muted);">
-            📅 <strong style="color:var(--color-text-secondary);">2026년 4월 주요 예정</strong>: NASA 로만 망원경 발사 준비 (4/21) · Rocket Lab Electron 60번째 발사 · 유인 달 탐사 우주인 최종 훈련 예정
           </div>
         </div>
       </div>
@@ -546,13 +492,15 @@
       official:       '공식 출처',
       reliable_media: '신뢰 매체',
       analysis:       '분석 자료',
-      unverified:     '미검증'
+      unverified:     '미검증',
+      low_confidence: '낮은 신뢰도'
     };
     const RELIABILITY_CLASS = {
       official:       'badge-official',
       reliable_media: 'badge-reliable-media',
       analysis:       'badge-analysis',
-      unverified:     'badge-unverified'
+      unverified:     'badge-unverified',
+      low_confidence: 'badge-low-confidence'
     };
     const STATUS_LABEL = {
       confirmed:    '확인됨',
@@ -584,7 +532,8 @@
     function makeCard(item, idx) {
       const isReview = item.status === 'needs_review' || item.reliability === 'unverified';
       const isFactError = item.id === 'juice-jupiter';
-      const cardClass = isFactError ? 'article-card fact-error-card' : (isReview ? 'article-card needs-review-card' : 'article-card');
+      const isLowConf = item.reliability === 'low_confidence';
+      const cardClass = isFactError ? 'article-card fact-error-card' : (isReview ? 'article-card needs-review-card' : (isLowConf ? 'article-card low-confidence-card' : 'article-card'));
       const dateDisp = item.date ? item.date.replace(/-/g, '.') : '';
       const srcInitial = (item.sourceName || '?').charAt(0).toUpperCase();
       const tagsHtml = (item.tags || []).map(t => `<span class="article-tag tag-mission">${esc(t)}</span>`).join('');
@@ -608,7 +557,7 @@
       </div>`;
     }
 
-    const confirmed = data.filter(d => d.status !== 'needs_review' && d.reliability !== 'unverified');
+    const confirmed = data.filter(d => ['official','reliable_media','analysis','low_confidence'].includes(d.reliability) && d.status !== 'needs_review');
     const review    = data.filter(d => d.status === 'needs_review' || d.reliability === 'unverified');
 
     const container = document.getElementById('articles-container');
@@ -885,6 +834,49 @@
     if (btn) btn.textContent = isHidden ? '지난 기사 더 보기 ↓' : '지난 기사 접기 ↑';
   }
 
+  // ── Dynamic Keyword Chart ────────────────────────────────────────
+  (function renderKeywordChart() {
+    const PUBLIC_RELIABILITIES = ['official','reliable_media','analysis','low_confidence'];
+    const publicData = (window.TRENDS_DATA || []).filter(function(d) {
+      return PUBLIC_RELIABILITIES.includes(d.reliability) && d.status !== 'needs_review';
+    });
+    var tagMap = {};
+    publicData.forEach(function(d) {
+      (d.tags || []).forEach(function(t) { tagMap[t] = (tagMap[t] || 0) + 1; });
+    });
+    var sorted = Object.entries(tagMap).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 10);
+    var maxCount = sorted.length ? sorted[0][1] : 1;
+
+    var TAG_ICONS = {
+      '발사체': '🚀', 'NASA': '🛸', 'ESA': '🇪🇺', 'SpaceX': '⭐', '유인탐사': '👨‍🚀',
+      '탐사': '🔭', '달탐사': '🌕', '스타십': '🚀', '아르테미스': '🌙',
+      '위성군집': '📡', '위성': '🛰', '외계행성': '🪐', 'JWST': '🔭',
+      'KASA': '🇰🇷', 'ISRO': '🇮🇳', '우주관광': '🌍', '정책': '📋',
+      'Blue Origin': '🔵', 'Rocket Lab': '🔴', 'CNSA': '🇨🇳',
+      '우주잔해': '⚠️', '케슬러신드롬': '♻️', '투자': '💰', 'MSR': '🔴',
+      'ULA': '🔷', '지구관측': '🌍', 'KARI': '🇰🇷', 'SLS': '🚀',
+      '스타링크': '🛰', 'Electron': '🔴', '달과학': '🌕', 'MMX': '🪐',
+      'Neutron': '🔴', 'Polaris': '⭐', 'Amazon': '📦', '아리안6': '🇪🇺'
+    };
+
+    var KW_COLORS = ['kw-1','kw-2','kw-3','kw-4','kw-5','kw-6','kw-1','kw-2','kw-3','kw-4'];
+    var container = document.getElementById('keyword-chart-container');
+    if (!container) return;
+
+    container.innerHTML = sorted.map(function(entry, i) {
+      var tag = entry[0], count = entry[1];
+      var pct = Math.round((count / maxCount) * 95);
+      var icon = TAG_ICONS[tag] || '🔹';
+      var opacity = i >= 6 ? ' opacity:0.7' : '';
+      return '<div class="keyword-bar-item">'
+        + '<div class="keyword-bar-header">'
+        + '<span class="keyword-name">' + icon + ' ' + tag + '</span>'
+        + '<span class="keyword-count">' + count + '</span>'
+        + '</div>'
+        + '<div class="keyword-bar-track"><div class="keyword-bar-fill ' + KW_COLORS[i] + '" style="width:' + pct + '%;' + opacity + '"></div></div>'
+        + '</div>';
+    }).join('');
+  })();
 </script>
 </body>
 </html>
