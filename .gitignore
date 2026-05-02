@@ -1,0 +1,16 @@
+# Local-only review/draft data — never deploy to GitHub or Vercel
+data/review-trends.local.js
+*.local.js
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+package-lock.json

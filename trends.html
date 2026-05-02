@@ -134,9 +134,7 @@
     .badge-scheduled      { background:rgba(167,119,247,0.15); color:#c49fff; border:1px solid rgba(167,119,247,0.35); }
     .badge-developing     { background:rgba(251,146,60,0.15);  color:#fb923c; border:1px solid rgba(251,146,60,0.35); }
     .badge-needs-review   { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.35); }
-    .badge-low-confidence { background:rgba(213,160,67,0.15); color:#d4a843; border:1px solid rgba(213,160,67,0.35); }
-    .article-card.low-confidence-card { border-color:rgba(213,160,67,0.25); }
-    .article-card.low-confidence-card:hover { border-color:rgba(213,160,67,0.55); }
+    /* low_confidence cards no longer rendered on public pages */
     .hl-warn { background:rgba(245,158,11,0.12); border-bottom:1px solid rgba(245,158,11,0.35); border-radius:3px; padding:0 3px; color:#fbbf24; }
     .hl-good { background:rgba(52,211,153,0.12); border-bottom:1px solid rgba(52,211,153,0.35); border-radius:3px; padding:0 3px; color:#34d399; }
 
@@ -353,7 +351,7 @@
           📊 오늘의 우주개발 키워드 분석
           <span class="live-badge">LIVE</span>
         </div>
-        <div style="font-size:0.82rem; color:var(--color-text-muted);">분석 기준: 2026.05.01 / 공개 기사 및 낮은 신뢰도 기사 태그 기준 <span style="font-size:0.72rem;color:#fb923c;font-style:italic">(이 사이트 수록 기사 태그 기반)</span></div>
+        <div style="font-size:0.82rem; color:var(--color-text-muted);">분석 기준: 2026.05.01 / 공개 기사(공식·신뢰 매체·분석) 태그 기준 <span style="font-size:0.72rem;color:#fb923c;font-style:italic">(이 사이트 수록 기사 태그 기반)</span></div>
       </div>
 
       <div class="trends-grid">
@@ -429,17 +427,7 @@
       <div class="no-more-articles-msg" id="no-more-articles-msg" style="display:none">더 이상 불러올 기사가 없습니다</div>
     </div>
 
-    <!-- 검토 중 기사 토글 버튼 -->
-    <div style="text-align:center; margin:2.5rem 0 0.5rem;" class="reveal" id="review-section-wrap" style="display:none">
-      <button class="btn-secondary" id="btn-show-review" onclick="toggleReviewArticles()">
-        ⚠️ 검토 중 기사 보기 ↓
-      </button>
-    </div>
 
-    <!-- 검토 중 기사 (기본 숨김) -->
-    <div class="articles-grid reveal" id="articles-review" style="display:none; margin-top:1.25rem;">
-    <!-- JS로 동적 렌더링됨 -->
-    </div>
 
   </div>
   <!-- ============ FOOTER ============ -->
@@ -492,15 +480,13 @@
       official:       '공식 출처',
       reliable_media: '신뢰 매체',
       analysis:       '분석 자료',
-      unverified:     '미검증',
-      low_confidence: '낮은 신뢰도'
+      unverified:     '미검증'
     };
     const RELIABILITY_CLASS = {
       official:       'badge-official',
       reliable_media: 'badge-reliable-media',
       analysis:       'badge-analysis',
-      unverified:     'badge-unverified',
-      low_confidence: 'badge-low-confidence'
+      unverified:     'badge-unverified'
     };
     const STATUS_LABEL = {
       confirmed:    '확인됨',
@@ -532,8 +518,7 @@
     function makeCard(item, idx) {
       const isReview = item.status === 'needs_review' || item.reliability === 'unverified';
       const isFactError = item.id === 'juice-jupiter';
-      const isLowConf = item.reliability === 'low_confidence';
-      const cardClass = isFactError ? 'article-card fact-error-card' : (isReview ? 'article-card needs-review-card' : (isLowConf ? 'article-card low-confidence-card' : 'article-card'));
+      const cardClass = isFactError ? 'article-card fact-error-card' : (isReview ? 'article-card needs-review-card' : 'article-card');
       const dateDisp = item.date ? item.date.replace(/-/g, '.') : '';
       const srcInitial = (item.sourceName || '?').charAt(0).toUpperCase();
       const tagsHtml = (item.tags || []).map(t => `<span class="article-tag tag-mission">${esc(t)}</span>`).join('');
@@ -557,20 +542,13 @@
       </div>`;
     }
 
-    const confirmed = data.filter(d => ['official','reliable_media','analysis','low_confidence'].includes(d.reliability) && d.status !== 'needs_review');
-    const review    = data.filter(d => d.status === 'needs_review' || d.reliability === 'unverified');
+    const confirmed = data.filter(d =>
+      ['official','reliable_media','analysis'].includes(d.reliability) &&
+      ['confirmed','scheduled','developing'].includes(d.status)
+    );
 
     const container = document.getElementById('articles-container');
     if (container) container.innerHTML = confirmed.map((item, idx) => makeCard(item, idx)).join('');
-
-    const reviewContainer = document.getElementById('articles-review');
-    if (reviewContainer) reviewContainer.innerHTML = review.map(item => makeCard(item)).join('');
-
-    const reviewWrap = document.getElementById('review-section-wrap');
-    if (reviewWrap && review.length > 0) {
-      reviewWrap.style.display = '';
-      reviewWrap.querySelector('button').textContent = `⚠️ 검토 중 기사 보기 ↓ (${review.length}개)`;
-    }
 
     // Apply initial paging visibility (hides cards with data-page-hidden)
     updateCardVisibility();
@@ -652,29 +630,7 @@
     });
   })();
 
-  /* ── Review articles toggle ── */
-  function toggleReviewArticles() {
-    const reviewGrid = document.getElementById('articles-review');
-    const btn = document.getElementById('btn-show-review');
-    if (!reviewGrid) return;
-    const isHidden = reviewGrid.style.display === 'none';
-    if (isHidden) {
-      // Show header first
-      const existingHeader = document.getElementById('review-header');
-      if (!existingHeader) {
-        const header = document.createElement('div');
-        header.id = 'review-header';
-        header.className = 'review-section-header';
-        header.innerHTML = '<span>⚠️ 검토 중 기사</span><small>날짜·내용 검증이 필요한 기사입니다. 출처 확인 후 판단하세요.</small>';
-        reviewGrid.before(header);
-      }
-    }
-    reviewGrid.style.display = isHidden ? '' : 'none';
-    if (btn) {
-      const count = (window.TRENDS_DATA || []).filter(d => d.status === 'needs_review' || d.reliability === 'unverified').length;
-      btn.textContent = isHidden ? `⚠️ 검토 중 기사 접기 ↑` : `⚠️ 검토 중 기사 보기 ↓ (${count}개)`;
-    }
-  }
+  /* toggleReviewArticles removed — review articles are not shown on public pages */
   /* ── Pagination helpers ── */
   var _loadMoreInteracted = false;
 
@@ -836,9 +792,10 @@
 
   // ── Dynamic Keyword Chart ────────────────────────────────────────
   (function renderKeywordChart() {
-    const PUBLIC_RELIABILITIES = ['official','reliable_media','analysis','low_confidence'];
+    const PUBLIC_RELIABILITIES = ['official','reliable_media','analysis'];
     const publicData = (window.TRENDS_DATA || []).filter(function(d) {
-      return PUBLIC_RELIABILITIES.includes(d.reliability) && d.status !== 'needs_review';
+      return PUBLIC_RELIABILITIES.includes(d.reliability) &&
+             ['confirmed','scheduled','developing'].includes(d.status);
     });
     var tagMap = {};
     publicData.forEach(function(d) {
