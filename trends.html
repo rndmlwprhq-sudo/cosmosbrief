@@ -348,15 +348,25 @@
     <div class="trends-section reveal">
       <div class="trends-header">
         <div class="trends-title">
-          📊 오늘의 우주개발 키워드 분석
-          <span class="live-badge">LIVE</span>
+          � 글로벌 우주 키워드 트렌드
         </div>
-        <div style="font-size:0.82rem; color:var(--color-text-muted);">분석 기준: 2026.05.01 / 공개 기사(공식·신뢰 매체·분석) 태그 기준 <span style="font-size:0.72rem;color:#fb923c;font-style:italic">(이 사이트 수록 기사 태그 기반)</span></div>
+        <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">수집된 글로벌 우주 뉴스에서 반복적으로 등장한 키워드 &nbsp;·&nbsp; 분석 기준: 2026.04.09–2026.05.01</div>
+      </div>
+
+      <!-- pipeline status banner -->
+      <div id="kw-pipeline-banner" style="
+        display:flex; align-items:center; gap:0.6rem;
+        background:rgba(251,146,60,0.07); border:1px solid rgba(251,146,60,0.2);
+        border-radius:8px; padding:0.6rem 0.9rem; margin-bottom:1.25rem;
+        font-size:0.78rem; color:#fb923c; line-height:1.6;
+      ">
+        <span style="font-size:1rem;">⏳</span>
+        <span>아직 실제 기사 수집 파이프라인이 연결되지 않았습니다. 아래 키워드는 편집자가 수동으로 선정한 트렌드 후보이며, 수치는 수집 전 상태입니다.</span>
       </div>
 
       <div class="trends-grid">
-        <!-- keyword bars — rendered by renderKeywordChart() below -->
-        <div id="keyword-chart-container" class="keyword-chart"></div>
+        <!-- keyword cards — rendered by renderGlobalKeywordTrends() -->
+        <div id="keyword-global-container"></div>
 
         <!-- Timeline -->
         <div>
@@ -386,19 +396,31 @@
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">5월 예정 · NASA</div>
-                <div class="timeline-text">로먼 우주망원경 케네디 우주센터 인도 준비 (6월 목표)</div>
+                <div class="timeline-date">4월 29일 · NASA/Roscosmos</div>
+                <div class="timeline-text">ISS Zvezda 모듈 PrK 균열 문제 미해결 보고</div>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <div class="timeline-date">2026년 하반기 예정 · NASA</div>
-                <div class="timeline-text">Nancy Grace Roman ST 발사 목표 (2026년 9월)</div>
+                <div class="timeline-date">5월 1일 · NASA</div>
+                <div class="timeline-text">CLPS 계약 상한 $4.2B으로 증액 — 달 착륙 가속화</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2026년 9월 예정 · NASA</div>
+                <div class="timeline-text">Nancy Grace Roman ST 발사 목표</div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- methodology footnote -->
+      <div style="margin-top:1.25rem; padding:0.6rem 0.9rem; border-left:2px solid rgba(126,232,232,0.2); font-size:0.72rem; color:#555; line-height:1.7;">
+        키워드 수치는 수집된 기사 제목·요약·본문 일부에서 키워드와 동의어가 등장한 횟수를 기준으로 계산됩니다. 전체 인터넷의 절대 관심도가 아니라, 선택한 뉴스 데이터 소스 기준의 관심도 지표입니다.
       </div>
     </div>
   </div>
@@ -470,6 +492,7 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="data/keyword-trends.js"></script>
 <script src="data/trends.js"></script>
 <script>
   /* ── Render articles from TRENDS_DATA ── */
@@ -790,49 +813,98 @@
     if (btn) btn.textContent = isHidden ? '지난 기사 더 보기 ↓' : '지난 기사 접기 ↑';
   }
 
-  // ── Dynamic Keyword Chart ────────────────────────────────────────
-  (function renderKeywordChart() {
-    const PUBLIC_RELIABILITIES = ['official','reliable_media','analysis'];
-    const publicData = (window.TRENDS_DATA || []).filter(function(d) {
-      return PUBLIC_RELIABILITIES.includes(d.reliability) &&
-             ['confirmed','scheduled','developing'].includes(d.status);
-    });
-    var tagMap = {};
-    publicData.forEach(function(d) {
-      (d.tags || []).forEach(function(t) { tagMap[t] = (tagMap[t] || 0) + 1; });
-    });
-    var sorted = Object.entries(tagMap).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 10);
-    var maxCount = sorted.length ? sorted[0][1] : 1;
-
-    var TAG_ICONS = {
-      '발사체': '🚀', 'NASA': '🛸', 'ESA': '🇪🇺', 'SpaceX': '⭐', '유인탐사': '👨‍🚀',
-      '탐사': '🔭', '달탐사': '🌕', '스타십': '🚀', '아르테미스': '🌙',
-      '위성군집': '📡', '위성': '🛰', '외계행성': '🪐', 'JWST': '🔭',
-      'KASA': '🇰🇷', 'ISRO': '🇮🇳', '우주관광': '🌍', '정책': '📋',
-      'Blue Origin': '🔵', 'Rocket Lab': '🔴', 'CNSA': '🇨🇳',
-      '우주잔해': '⚠️', '케슬러신드롬': '♻️', '투자': '💰', 'MSR': '🔴',
-      'ULA': '🔷', '지구관측': '🌍', 'KARI': '🇰🇷', 'SLS': '🚀',
-      '스타링크': '🛰', 'Electron': '🔴', '달과학': '🌕', 'MMX': '🪐',
-      'Neutron': '🔴', 'Polaris': '⭐', 'Amazon': '📦', '아리안6': '🇪🇺'
-    };
-
-    var KW_COLORS = ['kw-1','kw-2','kw-3','kw-4','kw-5','kw-6','kw-1','kw-2','kw-3','kw-4'];
-    var container = document.getElementById('keyword-chart-container');
+  // ── Global Keyword Trends (data/keyword-trends.js) ──────────────
+  // TODO: Connect real data pipeline:
+  //   - GDELT DOC API or NewsAPI Everything endpoint
+  //   - Date-range space-news fetch, deduplicate by URL
+  //   - Search titles/summaries for each keyword + aliases
+  //   - Compute mentionCount, articleCount, trendScore
+  //   - Auto-update keyword-trends.js (scripts/updateKeywordTrends.js)
+  (function renderGlobalKeywordTrends() {
+    var kt = window.KEYWORD_TRENDS;
+    var container = document.getElementById('keyword-global-container');
+    var banner = document.getElementById('kw-pipeline-banner');
     if (!container) return;
 
-    container.innerHTML = sorted.map(function(entry, i) {
-      var tag = entry[0], count = entry[1];
-      var pct = Math.round((count / maxCount) * 95);
-      var icon = TAG_ICONS[tag] || '🔹';
-      var opacity = i >= 6 ? ' opacity:0.7' : '';
-      return '<div class="keyword-bar-item">'
-        + '<div class="keyword-bar-header">'
-        + '<span class="keyword-name">' + icon + ' ' + tag + '</span>'
-        + '<span class="keyword-count">' + count + '</span>'
+    // Show/hide pipeline banner based on whether totals are collected
+    if (kt && kt.articleCountTotal !== null) {
+      if (banner) banner.style.display = 'none';
+    }
+
+    if (!kt || !kt.keywords || !kt.keywords.length) {
+      container.innerHTML = '<p style="font-size:0.82rem;color:#555;">키워드 데이터를 불러올 수 없습니다.</p>';
+      return;
+    }
+
+    var hasRealData = kt.keywords.some(function(k) {
+      return k.mentionCount !== null || k.trendScore !== null;
+    });
+
+    // Header row: article count summary
+    var summaryHtml = '';
+    if (kt.articleCountTotal !== null) {
+      summaryHtml = '<div style="font-size:0.78rem;color:#888;margin-bottom:1rem;">'
+        + '분석 기사 수: <strong style="color:#ccc;">' + kt.articleCountTotal.toLocaleString() + '개</strong>'
+        + (kt.deduplicatedArticleCount !== null ? ' / 중복 제거 후: <strong style="color:#ccc;">' + kt.deduplicatedArticleCount.toLocaleString() + '개</strong>' : '')
+        + '</div>';
+    } else {
+      summaryHtml = '<div style="font-size:0.75rem;color:#555;margin-bottom:1rem;">자동 수집 준비 중 — 수치는 파이프라인 연결 후 업데이트됩니다.</div>';
+    }
+
+    // Keyword cards
+    var KW_COLORS = ['#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0',
+                     '#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0',
+                     '#7ee8e8','#7fb5ff','#f7c948'];
+
+    // Compute bar widths only when real scores exist
+    var maxScore = 0;
+    if (hasRealData) {
+      kt.keywords.forEach(function(k) {
+        var s = k.trendScore || k.articleCount || k.mentionCount || 0;
+        if (s > maxScore) maxScore = s;
+      });
+    }
+
+    var cardsHtml = kt.keywords.map(function(kw, i) {
+      var color = KW_COLORS[i % KW_COLORS.length];
+      var aliasText = kw.aliases && kw.aliases.length
+        ? '<span style="font-size:0.65rem;color:#555;"> · ' + kw.aliases.slice(0,3).join(', ') + '</span>'
+        : '';
+
+      var countHtml;
+      if (kw.mentionCount !== null) {
+        countHtml = '<span style="font-size:0.72rem;color:#888;">언급 ' + kw.mentionCount + '회</span>';
+      } else if (kw.articleCount !== null) {
+        countHtml = '<span style="font-size:0.72rem;color:#888;">관련 ' + kw.articleCount + '건</span>';
+      } else {
+        countHtml = '<span style="font-size:0.68rem;color:#444;background:rgba(255,255,255,0.04);padding:0.1rem 0.4rem;border-radius:2rem;border:1px solid rgba(255,255,255,0.08);">수집 대기</span>';
+      }
+
+      var barHtml = '';
+      if (hasRealData && maxScore > 0) {
+        var score = kw.trendScore || kw.articleCount || kw.mentionCount || 0;
+        var pct = Math.round((score / maxScore) * 90);
+        barHtml = '<div style="margin-top:0.4rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;">'
+          + '<div style="height:3px;width:' + pct + '%;background:' + color + ';border-radius:2px;opacity:0.6;"></div>'
+          + '</div>';
+      }
+
+      return '<div style="'
+        + 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'
+        + 'border-left:3px solid ' + color + '33;'
+        + 'border-radius:8px;padding:0.65rem 0.85rem;margin-bottom:0.55rem;'
+        + '">'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;">'
+        + '<span style="font-size:0.85rem;font-weight:800;color:' + color + ';">' + kw.keyword + '</span>'
+        + aliasText
+        + '<span style="margin-left:auto;flex-shrink:0;">' + countHtml + '</span>'
         + '</div>'
-        + '<div class="keyword-bar-track"><div class="keyword-bar-fill ' + KW_COLORS[i] + '" style="width:' + pct + '%;' + opacity + '"></div></div>'
+        + (kw.explanation ? '<div style="font-size:0.74rem;color:#666;margin-top:0.3rem;line-height:1.55;">' + kw.explanation + '</div>' : '')
+        + barHtml
         + '</div>';
     }).join('');
+
+    container.innerHTML = summaryHtml + cardsHtml;
   })();
 </script>
 </body>
