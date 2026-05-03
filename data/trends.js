@@ -413,9 +413,11 @@ window.TRENDS_DATA = [
       { name: 'SpaceX 발사 기록', url: 'https://www.spacex.com/launches/', type: 'official', usedFor: 'IFT-8 날짜·재진입·열차폐재 결과 확인' },
       { name: 'SpaceX Starship', url: 'https://www.spacex.com/starship', type: 'background', usedFor: '스타십 우주선 재사용·Mechazilla 포쉝 배경' }
     ],
-    body: `<p>SpaceX의 스타십이 제8차 통합비행시험(<span class="hl">IFT-8</span>)에서 상단부(Ship)의 대기권 재진입 통제에 완벽히 성공하며 완전 재사용 능력을 입증했습니다.</p>
-<p>이번 비행에서 수퍼헤비 부스터는 발사대 <span class="hl">Mechazilla</span> 팔에 다시 정확히 포착됐으며, 스타십 상단은 인도양 목표 지점에 정밀 착수하는 데 성공했습니다. <span class="hl-good">IFT-6와 달리 이번에는 재진입 시 열차폐 타일 손상이 거의 없었다</span>는 점이 주목됩니다.</p>
-<p>SpaceX는 다음 단계로 <span class="hl">궤도상 연료 보급(In-Space Refueling)</span> 테스트를 진행할 계획이라고 밝혔습니다.</p>`,
+    body: `<p>SpaceX의 <span class="hl">스타십(Starship)</span>이 제8차 통합비행시험(IFT-8)에서 상단부(Ship)의 대기권 재진입을 완료했습니다. 수퍼헤비 부스터는 발사대 <span class="hl">Mechazilla</span> 팔에 포착됐으며, SpaceX는 재진입 시 열차폐 타일 손상이 이전 비행에 비해 크게 줄었다고 밝혔습니다. 세부 결과는 SpaceX 공식 발표를 통한 독립 확인이 권장됩니다.</p>
+<p>스타십은 1단인 <span class="hl">수퍼헤비(Super Heavy)</span>와 2단인 스타십 상단(Ship)으로 구성된 완전 재사용 2단형 발사체입니다. 33기의 랩터(Raptor) 엔진을 탑재한 수퍼헤비는 이제까지 개발된 발사체 중 최대 추력 수준을 제공하며, 상단부는 지구 궤도 진입, 달·화성 비행, 대용량 화물 수송을 목표로 합니다.</p>
+<p>IFT 시리즈는 빠른 반복 시험을 통한 기술 개선이 핵심 철학입니다. 초기 비행에서 비정상 상황이 발생해도 SpaceX는 이를 데이터 수집 기회로 활용하며 빠르게 개선합니다. IFT-5에서는 수퍼헤비 부스터의 Mechazilla 포착에, IFT-6에서는 완전 궤도 비행에 성공하는 등 비행마다 주요 이정표를 달성해 왔습니다. <span class="hl-good">IFT-8에서는 재진입 열차폐 성능 개선이 확인</span>됐습니다.</p>
+<p>이번 비행의 의미는 스타십의 핵심 임무와 직결됩니다. NASA 아르테미스 III의 <span class="hl">달 착륙선(HLS, Human Landing System)</span>으로 스타십이 선정돼 있어, 재진입·재사용 신뢰성은 유인 달 임무 인증의 전제 조건입니다. 또한 지구 궤도에서 연료를 보충한 뒤 달이나 화성으로 향하는 장기 목표에도 재사용 성능이 필수적입니다.</p>
+<p>SpaceX가 밝힌 다음 단계는 <span class="hl">궤도상 연료 보급(In-Space Refueling)</span> 시험입니다. 이 기술은 스타십이 달과 화성에 충분한 연료를 갖고 도달하기 위해 반드시 검증해야 하는 항목입니다. 연료 보급 기술의 완성 시점과 아르테미스 HLS 인증 일정이 어떻게 맞물릴지가 앞으로 가장 중요한 변수입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -457,8 +459,11 @@ window.TRENDS_DATA = [
       { name: 'CNSA 중국국가항천국', url: 'https://www.cnsa.gov.cn/', type: 'official', usedFor: '선저우-22 발사 날짜·도킹 확인' },
       { name: 'China Manned Space (CMS)', url: 'https://www.cmse.gov.cn/', type: 'background', usedFor: '선저우·틈궁 운용·늬 탐사 관련 배경' }
     ],
-    body: `<p>중국국가항천국(CNSA)이 <span class="hl">선저우-22호(神舟二十二號)</span> 유인 우주선을 지우취안 위성발사센터에서 발사했습니다. 약 <span class="hl-warn">6.5시간</span> 추적 비행 끝에 천궁 우주정거장(天宮) 핵심 모듈 톈허(天和)에 정확히 도킹했습니다.</p>
-<p>중국은 이번 임무와 병행해 <span class="hl">달 탐사 핵심 기술인 랑데부·도킹 자동화</span>와 장기 유인 체류 의학 데이터 수집을 수행합니다. CNSA는 <span class="hl-warn">2030년 달 유인 탐사, 2035년 달 기지 초기 구축</span>을 목표로 하고 있습니다.</p>`,
+    body: `<p>중국국가항천국(CNSA)이 <span class="hl">선저우-22호(神舟二十二號)</span> 유인 우주선을 지우취안 위성발사센터에서 발사했습니다. 약 <span class="hl-warn">6.5시간</span>의 추적 비행 끝에 천궁 우주정거장 핵심 모듈 톈허(天和)에 정확히 도킹하며, 3명의 우주비행사가 약 6개월의 장기 체류 임무를 시작했습니다.</p>
+<p><span class="hl">선저우(神舟) 프로그램</span>은 중국의 유인 우주비행 프로그램으로, 1999년 무인 시험 비행을 시작으로 2003년 선저우-5에서 첫 유인 비행에 성공했습니다. 발사체는 장정 2F(長征二F) 로켓을 사용하며, 우주선은 귀환 캡슐·궤도 모듈·추진 모듈의 3단 구조로 이루어집니다.</p>
+<p>천궁 우주정거장은 핵심 모듈 <span class="hl">톈허(天和)</span>와 실험 모듈 원톈(問天)·멍톈(夢天)으로 구성된 T자형 구조입니다. 2021년부터 단계적으로 조립돼 2022년 말 기본 구성이 완료됐습니다. 선저우 유인선과 톈저우 화물선이 정기적으로 도킹해 승무원 교대와 물자 보급을 수행하며, 현재 상주 승무원 <span class="hl-warn">3명</span> 체제로 운용 중입니다.</p>
+<p>이번 임무가 중요한 이유는 중국이 독자 우주정거장 운용 역량을 꾸준히 축적하고 있기 때문입니다. ISS는 <span class="hl-warn">2030년 전후</span> 운용 종료가 예상되는 가운데, 독자 우주정거장의 안정적 유지는 장기 우주 체류 기술의 핵심 기반입니다. CNSA는 이를 바탕으로 <span class="hl">2030년 달 유인 탐사</span>를 목표로 하고 있습니다.</p>
+<p>앞으로 주목할 점은 달 탐사와의 연결입니다. 천궁에서 축적되는 랑데부·도킹 자동화, 장기 우주 체류 의학 데이터, 우주 유영 기술은 달 임무를 위한 전제 조건입니다. 중국의 <span class="hl">창어 7·8호</span> 달 착륙·기지 구축 계획과 선저우 시리즈의 유인 체류 경험이 어떻게 연결될지가 장기적 관점에서 주목됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -506,9 +511,11 @@ window.TRENDS_DATA = [
       { name: 'NASA Artemis III 미션', url: 'https://www.nasa.gov/mission/artemis-iii/', type: 'official', usedFor: '아르테미스 III 일정·착륙 지점·승무원 확인' },
       { name: 'SpaceX Starship HLS', url: 'https://www.spacex.com/starship', type: 'background', usedFor: '스타십 HLS 달 착륙선 역할·EVA 계획 배경' }
     ],
-    body: `<p>NASA가 아르테미스 III 달 착륙 임무의 시행 일정을 <span class="hl-warn">2027년 7월</span>로 공식 발표했습니다. 아폴로 17호(1972년) 이후 <span class="hl-warn">55년</span> 만에 인류가 다시 달 표면을 밟게 되는 역사적인 임무입니다.</p>
-<p>아르테미스 III는 최초의 <span class="hl">여성 우주비행사와 유색인종 우주비행사</span>가 달 표면에 내리는 것이 특징입니다. 착륙 지점은 달 남극 약 89°S 부근의 영구 음영 지역(PSR) 가장자리로, 수분 함유 얼음이 매장됐을 것으로 예상됩니다.</p>
-<p>임무 구성은 <span class="hl">SLS 로켓 + 오리온 캡슐</span>로 달 궤도에 도착 후, SpaceX 스타십 HLS에 탑재된 2명의 승무원이 달 표면으로 하강하는 방식입니다. 달 체류 시간은 약 <span class="hl-warn">6.5일</span>이며, EVA(선외활동) 2~4회를 실시할 계획입니다.</p>`,
+    body: `<p>NASA가 <span class="hl">아르테미스 III</span> 달 착륙 임무 시행 일정을 <span class="hl-warn">2027년 7월</span>로 공식 발표했습니다. 이 임무가 성공하면 아폴로 17호(1972년) 이후 <span class="hl-warn">55년</span> 만에 인류가 다시 달 표면을 밟게 됩니다. 착륙 지점은 달 남극 약 89°S 부근 영구 음영 지역(PSR) 가장자리로 예정돼 있습니다.</p>
+<p>아르테미스 III는 바로 앞선 아르테미스 II와 핵심적으로 다릅니다. 아르테미스 II는 4명이 달 궤도 근처를 비행한 뒤 귀환한 임무였지만, 아르테미스 III에서는 2명이 실제로 달 표면에 하강합니다. 이번 임무에서는 <span class="hl">최초의 여성 우주비행사와 유색인종 우주비행사</span>가 달 표면을 걷는 역사적 기록도 세우게 됩니다.</p>
+<p>임무 아키텍처는 두 단계로 이루어집니다. <span class="hl">SLS 로켓과 오리온 캡슐</span>로 달 궤도에 도달한 뒤, 미리 달 궤도에 대기 중인 SpaceX 스타십 HLS(달 착륙선)에 탑승해 달 표면으로 하강합니다. 달 체류 시간은 약 <span class="hl-warn">6.5일</span>이며, EVA(선외활동) 2~4회와 달 남극 물 얼음 샘플 채취가 계획돼 있습니다. NASA의 새 월면 우주복 AxEMU도 이 임무에서 처음 사용됩니다.</p>
+<p>이 임무가 중요한 이유는 단순 복귀 이상입니다. 달 남극의 <span class="hl">영구 음영 지역(PSR)</span>에 물 얼음이 매장됐을 가능성이 높으며, 직접 채취·분석하면 미래 달 기지의 현지 자원 활용(ISRU) 가능성을 검증할 수 있습니다. 아르테미스 III는 과학 탐사이자 장기 달 체류를 향한 핵심 시험대입니다.</p>
+<p>앞으로 주목할 변수는 여러 가지입니다. <span class="hl-warn">2027년 7월</span> 일정은 스타십 HLS 인증 진행 상황과 궤도상 연료 보급 기술 검증 결과에 따라 조정될 수 있습니다. 새 우주복(AxEMU)의 달 표면 적합성 인증도 남아 있으며, SLS 3호 제작 일정도 변수입니다. NASA는 아르테미스 II 데이터 분석 결과를 반영해 최종 일정을 확정할 예정입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -530,8 +537,11 @@ window.TRENDS_DATA = [
       { name: 'ESA Ariane 6', url: 'https://www.esa.int/Enabling_Support/Space_Transportation/Ariane_6', type: 'official', usedFor: '아리안 6 3차 발사 성공·엔진 재점화 개선 확인' },
       { name: 'ArianeGroup', url: 'https://www.ariane.group/', type: 'background', usedFor: '아리안스페이스 발사 계약·A64 생산 무리 배경' }
     ],
-    body: `<p>유럽의 차세대 대형 발사체 <span class="hl">아리안 6(Ariane 6)</span>가 세 번째 비행에서 두 기의 상업 통신 위성을 <span class="hl">정지천이궤도(GTO)</span>에 성공적으로 투입했습니다. <span class="hl-good">이번 성공으로 2020년 아리안 5 퇴역 이후 공백이 있었던 유럽의 대형 발사체 서비스가 완전히 복구</span>됐습니다.</p>
-<p>초기 1·2차 비행에서 발생한 <span class="hl">상단 엔진 재점화 실패</span> 문제를 개선한 것이 이번 성공의 핵심이었습니다. 아리안스페이스는 A62·A64 합산 <span class="hl-warn">12건</span>의 발사 계약을 보유하고 있으며, <span class="hl-warn">2027년까지 연간 6회</span> 발사를 목표로 생산 라인을 확장할 계획입니다.</p>`,
+    body: `<p>유럽의 차세대 대형 발사체 <span class="hl">아리안 6(Ariane 6)</span>가 세 번째 비행에서 두 기의 상업 통신 위성을 <span class="hl">정지천이궤도(GTO)</span>에 투입하는 데 성공했습니다. 초기 1·2차 비행에서 문제가 됐던 상단 엔진 재점화 결함이 개선됐으며, 이를 통해 유럽의 대형 발사체 상업 서비스가 안정적으로 재개됐습니다.</p>
+<p><span class="hl">아리안 6</span>는 ESA와 ArianeGroup이 개발한 모듈형 발사체입니다. 하단 코어 스테이지에 Vulcain 2.1 엔진 1기를 탑재하며, A62는 SRB 2기, A64는 SRB 4기를 붙인 두 가지 구성이 있습니다. 상단에는 재점화 가능한 Vinci 엔진을 장착해 여러 궤도에 순차 투입하거나 임무 종료 후 자체 디오비팅이 가능합니다. 프랑스령 기아나 쿠루의 ELA-4 발사대에서 운용됩니다.</p>
+<p>아리안 6 개발은 아리안 5의 높은 비용과 SpaceX Falcon 9의 저가 공세에 대응하기 위해 2014년 결정됐습니다. 그러나 개발 지연이 거듭됐고, 아리안 5는 <span class="hl-warn">2023년 7월</span> 마지막 비행 후 퇴역했습니다. 이 공백 기간 동안 Vega-C 발사체도 2022년 임무 실패 후 운용 중단됐으며, 러시아-우크라이나 전쟁으로 <span class="hl">소유즈 발사 서비스</span>도 사용 불가 상태가 됐습니다.</p>
+<p>3차 비행 성공이 중요한 이유는 유럽의 우주 접근 독립성 회복을 의미하기 때문입니다. 독자 발사 능력은 안보·과학·경제적 자주성의 핵심입니다. <span class="hl-good">아리안 6의 안정적 운용이 궤도에 오르면서 유럽 발사체 공백이 사실상 해소됐다고 평가됩니다.</span></p>
+<p>앞으로 주목할 것은 상업 경쟁력 확보 속도입니다. 아리안스페이스는 A62·A64 합산 <span class="hl-warn">12건</span> 이상의 발사 계약을 보유하고 있으며 <span class="hl-warn">2027년까지 연간 6회</span> 발사를 목표로 합니다. 그러나 SpaceX Falcon 9의 빠른 재사용 주기와 낮은 가격에 비해 비용 경쟁력을 어떻게 확보할지가 장기적 과제입니다. ArianeGroup은 향후 재사용 요소 도입도 검토하고 있습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -553,8 +563,11 @@ window.TRENDS_DATA = [
       { name: 'Rocket Lab 공식', url: 'https://www.rocketlabusa.com/', type: 'official', usedFor: 'Electron 60차 발사 날짜·페이로드 확인' },
       { name: 'Rocket Lab Electron', url: 'https://www.rocketlabusa.com/launch/electron/', type: 'background', usedFor: 'Electron 기체·재사용 전략 배경' }
     ],
-    body: `<p>뉴질랜드 마히아 반도 발사장에서 Rocket Lab의 <span class="hl">Electron 로켓</span>이 <span class="hl-warn">60번째</span> 발사에 성공했습니다. <span class="hl-warn">2017년</span> 데뷔 이후 약 9년 만에 달성한 누적 기록으로, 소형 발사체 분야에서 독보적인 신뢰성을 입증했습니다.</p>
-<p>Rocket Lab은 1단 로켓을 헬기로 회수하는 <span class="hl">재사용 방식</span>도 점차 고도화하고 있습니다. <span class="hl-good">CEO 피터 벡은 "60번은 소형 위성 고객들이 믿고 맡길 수 있는 정시 배달 능력의 증거"라고 밝혔습니다.</span></p>`,
+    body: `<p>뉴질랜드 마히아 반도 발사장에서 Rocket Lab의 <span class="hl">Electron 로켓</span>이 <span class="hl-warn">60번째</span> 발사에 성공했습니다. <span class="hl-warn">2017년</span> 첫 비행 이후 약 9년 만에 달성한 누적 기록으로, 소형 전용 발사 시장에서 꾸준한 신뢰성을 쌓아온 발사체임을 보여줍니다.</p>
+<p><span class="hl">Electron</span>은 높이 약 17m의 2단형 소형 발사체로, 저궤도(LEO)에 최대 약 300kg의 페이로드를 투입할 수 있습니다. 1·2단 모두 3D 프린팅으로 제작된 Rutherford 엔진을 사용하며, 이는 제작 시간 단축과 비용 절감에 기여합니다. 소형 위성 전용 발사 서비스로, 고객이 원하는 시기에 원하는 궤도로 정확히 투입하는 유연성이 특징입니다.</p>
+<p>Rocket Lab은 2015년 설립된 뉴질랜드·미국 발사 기업으로, 2018년부터 상업 발사를 시작했습니다. 초기 시험 비행을 거쳐 점진적으로 발사 성공률을 높였으며, 1단 로켓을 <span class="hl">헬기 공중 포획 방식</span>으로 회수하는 재사용 프로그램도 진행해 왔습니다. 마히아 반도 외에도 버지니아주 왈롭스 섬 발사장을 운용해 미국 정부·방위 고객도 지원합니다.</p>
+<p>60번째 발사가 의미 있는 이유는 소형 발사체 전용 시장에서 신뢰성이 얼마나 중요한지 보여주기 때문입니다. 소형 위성 운용 기업들은 대형 발사체의 라이드셰어보다 <span class="hl">전용 발사(dedicated launch)</span>를 선호하는 경우가 많습니다. 원하는 궤도·고도·발사 시간을 보장받을 수 있기 때문입니다. 누적 발사 기록이 쌓일수록 고객의 신뢰도 비례해 높아집니다.</p>
+<p>앞으로 주목할 것은 <span class="hl">Neutron 중형 발사체</span> 개발입니다. Rocket Lab은 약 8톤급 재사용 중형 발사체 Neutron을 개발 중이며, 소형 위성 전용 시장을 넘어 중형 위성 및 승무원 수송 시장 진입을 목표로 합니다. Neutron이 언제 첫 비행에 나설지, 그리고 Falcon 9와 같은 기성 중형 발사체와 어떻게 경쟁할지가 앞으로 지켜볼 주요 변수입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
