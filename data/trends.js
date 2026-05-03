@@ -591,7 +591,10 @@ window.TRENDS_DATA = [
     ],
     body: `<p>SpaceX의 스타십이 제6차 통합비행시험(<span class="hl">IFT-6</span>)에서 완전한 궤도 비행을 달성하며 우주 발사 역사에 새로운 이정표를 세웠습니다.</p>
 <p>이번 비행에서 수퍼헤비 부스터는 발사 약 <span class="hl-warn">7분</span> 후 발사 기지로 돌아와 <span class="hl">Mechazilla 포착 팔</span>에 정확히 안착됐으며, 스타십 상단부는 궤도를 <span class="hl-warn">1.25바퀴</span> 돌고 인도양 목표 지점에 수직 하강으로 정밀 착수했습니다.</p>
-<p><span class="hl-good">1단 및 2단 모두 회수에 성공한 것은 완전 재사용 발사체 개발의 핵심 이정표</span>입니다.</p>`,
+<p>스타십은 높이 약 <span class="hl-warn">120m</span>의 <span class="hl">Super Heavy 부스터</span>(1단)와 <span class="hl">Ship</span>(2단)으로 구성된 완전 재사용 발사 시스템입니다. 저궤도 기준 최대 페이로드 <span class="hl-warn">150톤</span>을 목표로 설계됐으며, 두 단 모두 회수해 재비행하는 것이 핵심 설계 목표입니다. 이는 팰컨 9처럼 1단만 재사용하는 방식을 넘어서는 완전 재사용 개념입니다.</p>
+<p>스타십 통합비행시험은 <span class="hl-warn">2023년 4월</span> IFT-1 이후 단계적으로 진행됐습니다. IFT-1·2는 비행 중 비정상 종료됐고, IFT-3(2024년 3월)부터 비행 거리가 점진적으로 늘었습니다. IFT-5(2024년 10월)에서 Super Heavy의 Mechazilla 포착이 처음 시도됐으며, <span class="hl-good">IFT-6는 부스터와 상단부 양쪽의 회수를 모두 확인한 비행</span>으로 보고됐습니다.</p>
+<p>스타십은 <span class="hl">NASA Artemis HLS(Human Landing System)</span> 계약 발사체로 선정돼, Artemis III 달 착륙 임무에서 우주인을 달 표면에 내려보낼 착륙선으로 활용될 예정입니다. 화성 임무를 위한 <span class="hl">궤도 급유(on-orbit refueling)</span> 기술 검증도 앞으로의 핵심 과제로, 두 스타십이 궤도에서 연결해 연료를 보충하는 방식입니다.</p>
+<p>앞으로 주목할 점은 실제 페이로드(Starlink 위성 등) 투입 비행으로의 전환, 궤도 급유 시험 일정, 그리고 Artemis HLS 인증 심사 진행 상황입니다. 매 비행마다 <span class="hl">FAA 발사 허가</span> 취득 과정도 변수로 작용하며, 시험 데이터 분석 결과가 인증 타임라인에 직접 영향을 미칩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -719,9 +722,11 @@ window.TRENDS_DATA = [
       { name: 'ISRO 공식', url: 'https://www.isro.gov.in/', type: 'official', usedFor: 'PSLV-C61 / EOS-09 발사 날짜·궤도 확인' },
       { name: 'ISRO Chandrayaan', url: 'https://www.isro.gov.in/Chandrayaan4.html', type: 'background', usedFor: '시차라얄-4 달 남극 다음 임무 배경' }
     ],
-    body: `<p>인도우주연구기구(ISRO)가 <span class="hl">PSLV-C61 로켓</span>으로 지구관측 위성 <span class="hl">EOS-09</span>(Earth Observation Satellite-09)를 <span class="hl-warn">태양동기궤도(SSO) 528km</span>에 성공적으로 투입했습니다.</p>
-<p>EOS-09는 <span class="hl">C-Band 합성개구레이더(SAR)</span>를 탑재하여 주야·악천후 관계없이 지표면을 관측할 수 있습니다. 해상도는 <span class="hl-warn">1m급</span>으로 농업 작황 예측, 홍수 및 산사태 모니터링에 활용됩니다.</p>
-<p><span class="hl-good">ISRO는 2026년 하반기에 달 남극 착륙을 시도하는 찬드라얀-4 임무도 준비 중입니다.</span></p>`,
+    body: `<p>인도우주연구기구(<span class="hl">ISRO</span>)가 <span class="hl">PSLV-C61 로켓</span>으로 지구관측 위성 <span class="hl">EOS-09</span>(Earth Observation Satellite-09)를 <span class="hl-warn">태양동기궤도(SSO) 528km</span>에 성공적으로 투입했습니다. EOS-09는 <span class="hl">C-Band 합성개구레이더(SAR)</span>를 탑재해 주야간·악천후 관계없이 지표면을 관측할 수 있는 지구관측 위성입니다.</p>
+<p><span class="hl">PSLV(Polar Satellite Launch Vehicle)</span>는 인도가 독자 개발한 중형 발사체로, 4단 추진 방식(고체-액체-고체-액체)을 채택합니다. 태양동기궤도와 저궤도에 <span class="hl-warn">1~1.8톤</span>급 위성을 투입할 수 있으며, ISRO의 발사체 중 가장 많이 사용되는 주력 로켓입니다.</p>
+<p>PSLV는 <span class="hl-warn">1993년 첫 비행</span> 이후 수십 회의 발사를 통해 높은 신뢰도를 쌓아 왔습니다. 인도 정부 위성뿐 아니라 외국 상업 위성도 다수 탑재 발사하면서 <span class="hl-good">소형·중형 위성 발사 시장에서 경쟁력 있는 발사 서비스 제공자</span>로 자리잡았으며, Cartosat·RISAT 등 EOS 계열 위성을 꾸준히 궤도에 올려왔습니다.</p>
+<p>EOS-09의 C-Band SAR는 <span class="hl-warn">1m급 해상도</span>로 농업 작황 예측, 산림 자원 조사, 홍수·산사태 피해 파악, 국경 감시 등 다양한 분야에 활용됩니다. 독자 위성 관측 역량은 타국 데이터 의존도를 줄이고 인도의 안보·재난 대응 주권을 강화하는 데 기여합니다.</p>
+<p>ISRO는 PSLV 외에도 대형 위성 전용 <span class="hl">LVM3(GSLV Mk III)</span>, 소형 위성 전용 <span class="hl">SSLV</span>를 운용하며 발사체 다양성을 확보하고 있습니다. 앞으로 주목할 점은 PSLV의 상업 발사 서비스 확대, 정부 EOS 계열 위성 추가 발사 계획, 그리고 달 남극 탐사를 목표로 하는 <span class="hl">찬드라얀-4 임무</span> 준비 진행 상황입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
 
@@ -745,8 +750,11 @@ window.TRENDS_DATA = [
       { name: 'ULA Vulcan', url: 'https://www.ulalaunch.com/rockets/vulcan', type: 'official', usedFor: 'Vulcan 2차 발사 날짜·NSSL Phase 3 계약 확인' },
       { name: 'Blue Origin BE-4 엔진', url: 'https://www.blueorigin.com/engines', type: 'background', usedFor: 'BE-4 엔진 사양·Vulcan 1단 구성 배경' }
     ],
-    body: `<p><span class="hl">ULA(United Launch Alliance)의 Vulcan Centaur 로켓</span>이 두 번째 비행에서 성공을 거두며 미국 국가 안보 우주 발사(<span class="hl">NSSL Phase 3</span>) 계약의 본격적인 이행에 나섰습니다.</p>
-<p>Vulcan Centaur의 핵심: <span class="hl-warn">BE-4 엔진(Blue Origin 개발, 액체산소/메탄 연료)</span> 2기를 1단에 탑재. ULA는 NSSL Phase 3 계약으로 <span class="hl-warn">2027~2034년</span> 미 군사·정보 위성 발사를 수행합니다.</p>`,
+    body: `<p><span class="hl">ULA(United Launch Alliance)</span>의 차세대 발사체 <span class="hl">Vulcan Centaur</span>가 두 번째 비행에서 성공을 거두며 미국 국가안보 우주 발사(<span class="hl">NSSL Phase 3</span>) 계약 이행을 본격화했습니다. 이번 임무에서 미국 국가정찰국(<span class="hl">NRO</span>) 위성을 고고도 궤도에 투입했습니다.</p>
+<p>Vulcan Centaur는 <span class="hl">Blue Origin이 개발한 BE-4 엔진</span>(액체산소/액화메탄, 2기) 기반 1단 부스터와 고성능 <span class="hl">Centaur V 상단</span>을 결합한 2단 발사체입니다. 저궤도 <span class="hl-warn">27.2톤</span>, 정지천이궤도(GTO) <span class="hl-warn">7.7톤</span> 투입 능력을 갖추며, ULA의 이전 발사체인 Atlas V와 Delta IV를 대체하도록 설계됐습니다.</p>
+<p>ULA는 보잉과 록히드마틴의 합작 발사 서비스 회사로, <span class="hl-warn">2006년</span> 창립 이후 Atlas V와 Delta IV로 미국 정부·군사 위성을 발사해 왔습니다. Atlas V는 러시아제 RD-180 엔진을 사용했는데, 러시아 침공 이후 미국 의회가 국내산 엔진 전환을 촉구했고 Vulcan은 <span class="hl-good">BE-4 기반의 완전 미국산 발사체</span>로 개발됐습니다.</p>
+<p>NSSL Phase 3 계약은 국가안보 위성 발사 임무를 SpaceX Falcon Heavy와 ULA Vulcan에 배분하는 구조입니다. Vulcan 2차 비행 성공은 반복 운용 전 단계인 인증 진전을 보여주는 데이터를 제공합니다. 1단 부스터는 회수·재사용 설계가 없어 SpaceX 대비 단가 경쟁력이 제한적이나, 고성능 페이로드 투입 능력과 신뢰성을 앞세웁니다.</p>
+<p>앞으로 주목할 점은 Vulcan의 NSSL Phase 3 인증 공식 완료 시기, 연간 발사 빈도 확대 계획, 그리고 <span class="hl">BE-4 엔진</span> 공급 안정성입니다. SpaceX Falcon 9·Falcon Heavy와의 시장 경쟁, 미국 국가안보 발사의 공급 다변화 정책 지속 여부가 Vulcan의 장기적 역할을 결정하는 핵심 변수입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -768,8 +776,11 @@ window.TRENDS_DATA = [
       { name: 'Polaris Program', url: 'https://polarisprogram.com/', type: 'official', usedFor: 'Polaris Dawn 2 승무원·목표 고도·일정 확인' },
       { name: 'SpaceX Crew Dragon', url: 'https://www.spacex.com/human-spaceflight/crew/', type: 'background', usedFor: 'Crew Dragon 기체·EVA 스유트 배경' }
     ],
-    body: `<p>억만장자 Jared Isaacman이 이끄는 민간 우주 탐사 프로그램 <span class="hl">Polaris</span>의 두 번째 임무 Polaris Dawn 2의 승무원 4명이 공식 확정됐습니다. 목표 고도 <span class="hl-warn">1,400km</span> — 역대 최고도 민간 유인 우주 비행이 될 전망입니다.</p>
-<p>고도 1,400km는 <span class="hl">반 앨런 방사선대(Van Allen Belt) 내대</span> 바로 아래로, 이번 임무의 핵심 과학 목표 중 하나가 고강도 방사선 환경에서 인체에 미치는 영향을 측정하는 것입니다. Polaris 프로그램은 <span class="hl">스타십 첫 유인 비행(Polaris Dawn 3)으로 이어질 예정</span>입니다.</p>`,
+    body: `<p>억만장자 <span class="hl">Jared Isaacman</span>이 이끄는 민간 우주 탐사 프로그램 <span class="hl">Polaris</span>의 두 번째 임무인 <span class="hl">Polaris Dawn 2</span> 승무원 4명이 공식 확정됐습니다. 목표 고도 <span class="hl-warn">1,400km</span>는 아폴로 시대 이후 인간이 도달하는 가장 높은 궤도 중 하나가 될 전망입니다.</p>
+<p><span class="hl">Polaris 프로그램</span>은 민간 자금으로 운영되는 유인 우주 탐사 이니셔티브로, Crew Dragon을 활용한 단계적 심우주 비행 시험을 거쳐 최종적으로 <span class="hl">스타십 첫 유인 비행(Polaris Dawn 3)</span>까지 이어지도록 설계됐습니다. 과학 데이터 수집, EVA 기술 발전, 방사선 환경 측정 등 민간 주도의 심우주 비행 연구를 목표로 합니다.</p>
+<p>첫 번째 임무인 <span class="hl">Polaris Dawn</span>은 <span class="hl-warn">2024년 9월</span> 발사돼 Crew Dragon으로 고도 약 <span class="hl-warn">1,400km</span>까지 상승했습니다. 이 비행에서 <span class="hl-good">사상 최초의 민간인 우주 유영(EVA)</span>이 수행됐으며, 새로 개발된 SpaceX EVA 우주복의 실제 비행 검증도 이루어졌습니다. 반 앨런 방사선대를 통과하는 고도 비행 중 방사선 측정 데이터도 수집됐습니다.</p>
+<p>Polaris Dawn 2의 핵심 목표는 첫 번째 임무에서 축적한 데이터를 바탕으로 더욱 심도 있는 <span class="hl">방사선 측정</span>과 EVA 시험을 수행하는 것으로 알려져 있습니다. 반 앨런 내대 인근 고도에서 인체에 미치는 방사선 영향 데이터는 화성처럼 자기권 보호가 없는 환경에서의 장기 유인 임무를 위한 필수 기초 자료입니다.</p>
+<p>앞으로 주목할 점은 최종 발사 일정 확정, 과학 실험 및 EVA 계획의 구체적 발표입니다. Polaris Dawn 3는 스타십의 첫 유인 비행으로 계획돼 있으나, 구체적 시기와 내용은 <span class="hl">스타십 개발 진행 상황</span>과 FAA 인증 절차에 달려 있습니다. 민간 자금으로 운영되는 이 프로그램이 NASA 주도 심우주 탐사를 어떻게 보완하는지도 지켜볼 대목입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -791,8 +802,11 @@ window.TRENDS_DATA = [
       { name: 'Blue Origin New Shepard', url: 'https://www.blueorigin.com/new-shepard', type: 'official', usedFor: 'NS-33 임무·탑재 내용·회수 확인' },
       { name: 'NASA Flight Opportunities', url: 'https://www1.nasa.gov/directorates/spacetech/flightopportunities/index.html', type: 'background', usedFor: '준궤도 미세중력 과학 실험 정책 배경' }
     ],
-    body: `<p>Blue Origin의 준궤도 로켓 <span class="hl">New Shepard NS-33</span> 임무가 성공적으로 완료됐습니다. 탑승객 없이 순수 과학 실험 탑재체 6종만을 싣고 비행한 무인 임무였습니다. 캡슐은 발사 후 약 11분간 비행하며 최고 고도 <span class="hl-warn">107km</span>(<span class="hl">카르만 선</span>, 우주 경계)를 넘었고, 재사용 캡슐과 부스터가 모두 안전하게 회수됐습니다.</p>
-<p><span class="hl-good">NS-33은 재사용 캡슐의 12번째 비행</span>. Blue Origin은 과학 연구 탑재체 정기 발사 서비스를 연 6~8회로 확대할 계획입니다.</p>`,
+    body: `<p>Blue Origin의 준궤도 로켓 <span class="hl">New Shepard NS-33</span> 임무가 성공적으로 완료됐습니다. 탑승객 없이 순수 과학 실험 탑재체 <span class="hl-warn">6종</span>만을 싣고 비행한 무인 임무로, 최고 고도 <span class="hl-warn">107km</span>를 돌파하며 캡슐과 부스터 모두 안전하게 회수됐습니다.</p>
+<p><span class="hl">New Shepard</span>는 준궤도(suborbital) 비행 전용 발사체입니다. 준궤도 비행은 우주 경계선인 <span class="hl-warn">카르만 선(100km)</span>을 넘지만, 지구를 일주하는 궤도 속도에는 도달하지 않습니다. 전체 비행 시간은 약 <span class="hl-warn">11분</span>으로 짧고, 그 중 약 4분간 승객과 탑재체가 무중력 상태를 경험합니다.</p>
+<p>Blue Origin은 <span class="hl-warn">2015년</span> New Shepard의 첫 수직 착륙 시험에 성공했으며, 이후 무인·유인 비행을 반복하며 준궤도 재사용 발사체의 안정성을 입증해 왔습니다. <span class="hl-warn">2021년 7월</span> Jeff Bezos와 승무원이 탑승한 첫 유인 비행(NS-16) 이후 상업 우주관광 비행도 진행됐습니다. <span class="hl-good">NS-33은 재사용 캡슐의 반복 운용 실적을 추가로 쌓은 비행</span>입니다.</p>
+<p>NS-33처럼 탑승객 없이 과학 실험 탑재체만 싣는 비행은 <span class="hl">NASA Flight Opportunities 프로그램</span>을 통해 연구기관이 미세중력 실험을 수행하는 데 활용됩니다. 궤도 실험에 비해 비용과 대기 시간이 적어 소규모 연구팀이나 대학도 접근하기 쉬우며, 재사용 캡슐 덕분에 실험 반복 횟수를 늘릴 수 있습니다.</p>
+<p>Blue Origin은 준궤도의 New Shepard와 별개로, 궤도급 대형 발사체 <span class="hl">New Glenn</span>도 운용 중입니다. New Shepard가 우주관광·소형 실험 플랫폼에 특화된 반면, New Glenn은 대형 상업 위성 및 정부 임무를 수행합니다. 앞으로 주목할 점은 New Shepard의 유인 비행 빈도 확대, 과학 탑재체 서비스의 상업화, 그리고 Blue Origin 전체 사업이 <span class="hl">New Glenn</span> 중심으로 어떻게 이동하는지입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
