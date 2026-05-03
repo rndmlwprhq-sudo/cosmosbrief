@@ -35,32 +35,192 @@ window.TRENDS_DATA = [
      같은 날짜라면 official > reliable_media > analysis > low_confidence
   ================================================================ */
 
+  // ── 2026-05-xx ───────────────────────────────────────────────────
+  {
+    id: 'nasa-clps-increase',
+    icon: '🌕',
+    title: 'NASA, CLPS 달 착륙선 계약 한도 42억 달러로 상향 추진',
+    summary: 'NASA가 민간 달 착륙선 계약(CLPS) 상한을 기존 26억 달러에서 42억 달러로 증액하는 조달 계획을 공개했다. 2027~2028년 연간 10회 가까운 착륙을 목표로 하는 달기지(Moon Base) 계획을 지원하기 위한 조치다.',
+    date: '2026-05-01',
+    sourceName: 'SpaceNews',
+    sourceUrl: 'https://spacenews.com/nasa-to-increase-value-of-clps-contract-to-support-surge-of-lunar-lander-missions/',
+    reliability: 'reliable_media',
+    status: 'developing',
+    category: 'explore',
+    tags: ['nasa', 'clps', 'moon', 'lunar-lander', 'commercial', 'lunar-base'],
+    whyItMatters: '달 착륙선 상업 시장의 계약 규모가 62% 확대될 전망. 달기지 계획 실현 가능성과 민간 우주기업의 달 착륙 산업화 속도를 가늠하는 지표다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '증액은 4월 27일 SAM.gov 조달 공고 기반. 의회 승인·예산 집행까지는 추가 절차가 필요하며, 실제 임무 발주 수와 타이밍은 유동적이다.',
+    sources: [
+      { name: 'SpaceNews — NASA to increase value of CLPS contract', url: 'https://spacenews.com/nasa-to-increase-value-of-clps-contract-to-support-surge-of-lunar-lander-missions/', type: 'reliable_media', usedFor: '계약 상한 변경 금액·배경·업계 반응 확인' },
+      { name: 'NASA CLPS 프로그램 공식 페이지', url: 'https://www.nasa.gov/commercial-lunar-payload-services/', type: 'official', usedFor: 'CLPS 프로그램 개요·참여 기업 목록 배경 정보' }
+    ],
+    body: `<p>NASA는 <span class="hl-warn">2026년 4월 27일</span> SAM.gov 조달 공고를 통해 상업 달 화물 착륙 서비스 계약인 <span class="hl">CLPS(Commercial Lunar Payload Services)</span>의 최대 계약 금액을 <span class="hl-warn">26억 달러에서 42억 달러</span>로 늘릴 계획을 공개했다. 이는 NASA가 3월 발표한 달기지(Moon Base) 계획에 따라 2027년 9회, 2028년 10회 달 착륙이라는 목표를 지원하기 위한 조치다. 계획 자체는 발표됐으나, 실제 증액 집행까지는 의회 승인 및 추가 절차가 필요하다.</p>
+<p><span class="hl">CLPS</span>는 NASA가 달 표면에 과학 장비와 기술 시험품을 보내기 위해 민간 착륙선 기업들을 활용하는 계약 체계다. 2018년 출범 이후 현재까지 <span class="hl-warn">13개</span> 기업이 CLPS 적격 공급자로 등록돼 있다. NASA가 탑재물과 목적지를 지정하면 기업들이 경쟁 제안을 통해 개별 임무를 수주하는 방식이다. 착륙선 자체를 NASA가 개발하는 대신 민간에 맡겨 비용을 줄이고 다양성을 확보하는 것이 핵심 개념이다.</p>
+<p>CLPS는 출범 이후 느린 속도로 비판을 받기도 했다. <span class="hl-warn">2025년</span>에는 파이어플라이 에어로스페이스와 인튜이티브 머신스가 각각 1회씩 착륙해 총 2회 임무가 이뤄졌다. <span class="hl-warn">2026년</span>에는 아스트로보틱·블루 오리진·파이어플라이·인튜이티브 머신스 등 최대 4개사의 임무가 계획돼 있다. 블루 오리진의 첫 <span class="hl">Blue Moon Mark 1</span> 착륙선 '엔듀런스'는 존슨 우주센터에서 열진공 시험을 마치고 플로리다 공장으로 복귀해 후속 준비 중이며, 파이어플라이는 <span class="hl">Blue Ghost 2·3·4</span>를 동시 생산 중이다.</p>
+<p>이번 계약 증액이 중요한 이유는 NASA의 달기지 계획이 상업 착륙선 없이는 실현 불가능하기 때문이다. 인간이 달 표면에 장기 거주하려면 수분·산소·연료를 달에서 직접 조달(ISRU)해야 하고, 그 전 단계로 달 남극 수빙 탐사와 대형 장비 사전 배치가 필요하다. 이 모든 것이 다수의 착륙선 임무를 전제로 한다. NASA 조달 공고에서는 "달기지를 향한 높은 착륙 빈도에 맞춰 지금 당장 수요를 늘려야 한다"고 명시했다.</p>
+<p>그러나 산업계에서는 목표 달성 가능성에 대한 회의도 나온다. 착륙선 제작과 공급망 구축에는 시간이 걸리며, 2027년 9회 착륙 목표는 현재 성능의 수배에 해당한다. 파이어플라이·블루 오리진·아스트로보틱·인튜이티브 머신스 등 기업들은 증설 의지를 밝히면서도 구체적인 물량 약속을 제시하지는 않았다. 앞으로 지켜볼 핵심 변수는 실제 임무 발주 건수, 발사 일정 준수율, 그리고 CLPS 2.0 후속 계약의 윤곽이다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'darpa-lasso',
+    icon: '🛰️',
+    title: 'DARPA, 달 수빙 탐사 초저궤도 위성 LASSO 연구 3사 선정',
+    summary: 'DARPA가 달 수빙을 탐색하는 초저궤도 소형 위성 프로그램 LASSO의 Phase 1 연구기관으로 Benchmark Space Systems·Quantum Space·Revolution Space를 선정했다.',
+    date: '2026-05-01',
+    sourceName: 'SpaceNews',
+    sourceUrl: 'https://spacenews.com/darpa-selects-three-companies-for-lunar-orbiter-studies/',
+    reliability: 'reliable_media',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['darpa', 'moon', 'lunar-orbiter', 'water-ice', 'cislunar', 'commercial'],
+    whyItMatters: '달 수빙은 달 탐사 기지에서 물·산소·로켓 연료로 활용 가능한 핵심 자원이다. DARPA의 참여는 달 공간이 민간·과학을 넘어 국가안보 전략 영역으로 확장되고 있음을 보여준다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '계약 금액은 미공개. Revolution Space의 설계 접근법도 현재 공개되지 않았다. 4월 30일 DARPA 대변인이 3사 선정을 SpaceNews에 확인했다.',
+    sources: [
+      { name: 'SpaceNews — DARPA selects three companies for lunar orbiter studies', url: 'https://spacenews.com/darpa-selects-three-companies-for-lunar-orbiter-studies/', type: 'reliable_media', usedFor: '3사 선정·LASSO 프로그램 구조·각사 설계 접근법 확인' },
+      { name: 'NASA CLPS 배경 정보', url: 'https://www.nasa.gov/commercial-lunar-payload-services/', type: 'background', usedFor: '달 수빙·ISRU와 상업 달 탐사 연관성 배경' }
+    ],
+    body: `<p>미국 방위고등연구계획국(DARPA)은 <span class="hl-warn">2026년 4월 30일</span> <span class="hl">LASSO(Lunar Assay via Small Satellite Orbiter)</span> 프로그램 Phase 1 연구기관으로 <span class="hl">Benchmark Space Systems, Quantum Space, Revolution Space</span> 3개사를 선정했다고 밝혔다. LASSO는 달 초저궤도(very low lunar orbit)에서 수빙 농도 5% 이상 지점을 탐색하는 소형 위성 임무를 개발하는 프로그램이다. 계약 금액은 공개되지 않았다.</p>
+<p><span class="hl">달 초저궤도 유지</span>는 일반 위성 운용보다 훨씬 어렵다. 달에는 대기가 거의 없어 마찰 감속을 이용할 수 없고, 달의 중력장은 불균일해(질량 집중체, mascon) 궤도가 자연스럽게 무너지기 쉽다. 10~30km 고도의 초저궤도를 수십 시간 이상 유지하려면 정밀한 자율 기동이 필수다. LASSO는 이 기술을 시연하는 동시에 수빙 데이터를 수집하는 이중 목적을 갖는다.</p>
+<p>달 수빙 탐사는 2000년대 이후 여러 임무에서 간접 증거가 축적됐다. <span class="hl-warn">2009년</span> NASA의 <span class="hl">LCROSS</span> 탐사선이 달 남극 카비우스 분화구 충돌에서 물 분자를 직접 검출했고, <span class="hl">인도 찬드라얀-1</span>의 탑재 레이더도 영구 음영 지역의 수빙 흔적을 포착했다. 그러나 분포 밀도와 접근 가능 여부는 여전히 불확실하며, LASSO 수준의 초저궤도 정밀 관측은 이 데이터 공백을 채울 수 있다.</p>
+<p>DARPA가 달 영역에 관심을 갖는 배경에는 <span class="hl">시스루나(cislunar) 공간</span>의 전략적 가치 증대가 있다. 달과 지구 사이의 공간은 향후 군사 위성·통신 자산·우주 기지 등의 무대가 될 수 있으며, 이 공간에서 작전을 수행하려면 달 초저궤도 지속 기동 능력이 필수다. LASSO는 달 자원 탐사라는 과학적 목적과 시스루나 기동 기술 시연이라는 국방 목적을 결합한 프로그램이다.</p>
+<p>앞으로 3사는 각각 <span class="hl-warn">6개월</span> Phase 1A 개념 설계를 진행하고, 이후 <span class="hl-warn">18개월</span> Phase 1B에서 핵심 설계 검토(CDR)까지 진행한다. Phase 2에서는 실제 위성 제작과 발사가 이루어질 예정이다. Benchmark는 화학+전기 복합 추진 방식의 'Sapphire' 아키텍처, Quantum Space는 하이브리드 추진체 탑재 'Ranger' 기반 설계를 제안했으며, Revolution Space는 아직 설계를 공개하지 않았다. 어느 기업이 Phase 2 비행 계약까지 이어질지는 설계 심사 결과에 달려 있다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'amazon-leo-300',
+    icon: '📡',
+    title: '아마존 레오 위성 302기 배치 완료 — FCC 기한까지 1,300기 이상 남아',
+    summary: '아마존이 아틀라스 5(4월 27일)·아리안 64(4월 30일) 2회 발사로 총 302기의 레오(Project Kuiper) 위성을 배치했다. 전체 목표(3,232기)의 약 9%이며, 7월 30일 FCC 절반 배치 기한을 맞추기 어려울 것으로 예상된다.',
+    date: '2026-05-01',
+    sourceName: 'SpaceNews',
+    sourceUrl: 'https://spacenews.com/amazon-leo-passes-300-satellites-with-atlas-and-ariane-launches/',
+    reliability: 'reliable_media',
+    status: 'confirmed',
+    category: 'satellite',
+    tags: ['amazon', 'kuiper', 'leo', 'satellite', 'ariane6', 'atlas5', 'broadband'],
+    whyItMatters: '아마존 레오는 스타링크에 맞서는 최대 규모의 저궤도 위성 인터넷 경쟁 사업이다. 발사 속도·FCC 규제·공급망 위기가 향후 서비스 출시 일정을 결정한다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: 'FCC 기한 면제/연장 신청은 1월 제출됐으나 결과 미발표. Vulcan과 New Glenn 운항 중단으로 당분간 아틀라스 5와 아리안 6에 의존해야 하는 상황이다.',
+    sources: [
+      { name: 'SpaceNews — Amazon Leo passes 300 satellites', url: 'https://spacenews.com/amazon-leo-passes-300-satellites-with-atlas-and-ariane-launches/', type: 'reliable_media', usedFor: '302기 배치 확인·발사 날짜·FCC 현황·공급망 이슈' },
+      { name: 'SpaceNews — Amazon buys 10 more Falcon 9 launches', url: 'https://spacenews.com/amazon-buys-10-more-falcon-9-launches/', type: 'background', usedFor: 'FCC 연장 신청 배경·팔콘 9 추가 계약 내용' }
+    ],
+    body: `<p>아마존의 저궤도 위성 인터넷 사업 <span class="hl">아마존 레오(Amazon Leo, 구 Project Kuiper)</span>가 이번 주 2회 연속 발사로 배치 위성을 <span class="hl-good">302기</span>로 늘렸다. <span class="hl-warn">4월 27일</span> ULA 아틀라스 5로 29기(LA-06 임무), <span class="hl-warn">4월 30일</span> 아리안스페이스 아리안 64로 32기(VA 268/LE-02 임무)를 각각 465km 파킹 궤도에 배치했다. 전체 목표 <span class="hl-warn">3,232기</span>의 약 9%에 해당한다.</p>
+<p><span class="hl">저궤도(LEO) 위성 인터넷</span>은 수백~수천 기의 소형 위성을 고도 500~1,200km에 촘촘히 배치해 지구 전역에 고속 인터넷을 제공하는 방식이다. 지상 케이블이나 정지궤도 위성보다 지연 시간(latency)이 짧고, 외딴 지역과 해상에서도 사용할 수 있다는 장점이 있다. 아마존 레오는 스페이스X <span class="hl">스타링크(Starlink)</span>에 이어 두 번째 대규모 LEO 브로드밴드 메가 컨스텔레이션이다.</p>
+<p>아마존은 <span class="hl-warn">2022년</span> ULA 벌컨 <span class="hl-warn">38기</span>, 블루 오리진 뉴 글렌 <span class="hl-warn">24기</span>(+옵션 15기 포함), 아리안스페이스 아리안 6 등 다양한 발사체를 확보했다. 최근 팔콘 9 10기도 추가 계약했다. 그러나 현재 공급망에 심각한 차질이 생겼다. 벌컨은 <span class="hl-warn">2월 발사</span> 때 고체 로켓 부스터 파편 사고로 운항이 중단된 상태이고, 뉴 글렌은 <span class="hl-warn">4월 19일</span> 3차 비행에서 상단 엔진 고장으로 AST SpaceMobile 위성을 저궤도에 손실했다. 당분간 발사 주력은 아틀라스 5와 아리안 6로 제한된다.</p>
+<p>FCC 규정상 아마존은 <span class="hl-warn">2026년 7월 30일</span>까지 전체 3,232기의 절반인 <span class="hl-warn">1,616기</span>를 배치해야 하는 의무가 있다. 현재 302기 배치 상황에서 이 기한을 맞추는 것은 사실상 불가능하다. 아마존은 올해 1월 FCC에 2년 기한 연장 또는 면제를 신청했으나 아직 결과가 나오지 않았다. 전체 배치 기한인 <span class="hl-warn">2029년 7월</span>은 연장 요청 없이 유지된다.</p>
+<p>아마존은 <span class="hl-warn">2026년 말</span> 베타 서비스를 시작하겠다는 목표를 계속 유지하고 있다. 다음 발사는 아틀라스 5로 <span class="hl-warn">5월 22일</span> 예정이며, 이후 아리안 6 업그레이드 모터(P160C)를 탑재한 첫 발사에서는 위성 탑재 수량이 늘어날 예정이다. 스타링크가 이미 7,000기 이상의 위성을 운용하며 수백만 명의 가입자를 확보한 상황에서, 아마존 레오가 경쟁력 있는 서비스를 제때 출시할 수 있을지는 발사 빈도 회복 속도에 달려 있다.</p>
+<p>LEO 위성 인터넷 경쟁은 단순한 기술 경쟁을 넘어 <span class="hl">궤도·주파수 자원 선점 게임</span>이기도 하다. FCC와 ITU 규정에서는 특정 주파수대역과 궤도 슬롯을 먼저 사용하는 사업자에게 우선권이 주어지는 구조여서, 발사 속도가 느릴수록 경쟁자에게 불리해진다. 아마존 레오의 이번 300기 돌파는 가시적인 이정표이지만, 실질적인 서비스 경쟁력은 아직 시험대 위에 있다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'iss-prk-cracking',
+    icon: '🛸',
+    title: 'ISS 즈베즈다 모듈 PrK 균열 — 누기는 멈췄지만 원인 규명은 미완',
+    summary: '국제우주정거장(ISS)의 러시아 구역 즈베즈다 서비스 모듈 전실(前室) PrK에서 진행 중인 균열 문제가 최신 점검에서도 근본 원인이 규명되지 않았다. 최근 밀봉제 적용으로 누기는 일단 멈췄으나, NASA와 로스코스모스는 균열의 심각성 평가에서 여전히 이견을 보이고 있다.',
+    date: '2026-04-29',
+    sourceName: 'SpaceNews',
+    sourceUrl: 'https://spacenews.com/iss-module-cracking-still-unresolved-despite-stopping-air-leaks/',
+    reliability: 'reliable_media',
+    status: 'developing',
+    category: 'satellite',
+    tags: ['iss', 'nasa', 'roscosmos', 'zvezda', 'safety', 'low-earth-orbit'],
+    whyItMatters: 'ISS 구조 건전성 문제는 2030년대 퇴역 혹은 수명 연장 결정과 직결된다. 양 기관의 균열 원인 평가 불일치는 전체 스테이션 안전 관리에서 중요한 변수다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '4월 29일 ISS 자문위원회 발표 내용 기반. NASA와 로스코스모스의 공식 입장 차이는 신중하게 사실 중심으로 서술했음. 미래 퇴역 결정 시점은 현재 논의 중이다.',
+    sources: [
+      { name: 'SpaceNews — ISS module cracking still unresolved', url: 'https://spacenews.com/iss-module-cracking-still-unresolved-despite-stopping-air-leaks/', type: 'reliable_media', usedFor: '자문위원회 발표 내용·균열 원인 후보·양 기관 이견 내용 확인' },
+      { name: 'NASA ISS 공식 페이지', url: 'https://www.nasa.gov/international-space-station/', type: 'background', usedFor: 'ISS 구조·즈베즈다 모듈 역할 배경 정보' }
+    ],
+    body: `<p><span class="hl-warn">2026년 4월 29일</span> 열린 <span class="hl">ISS 자문위원회(ISSAC)</span> 회의에서 위원장 밥 카바나는 <span class="hl">즈베즈다(Zvezda) 서비스 모듈</span>의 전실(前室) <span class="hl">PrK</span> 균열 문제가 여전히 해결되지 않았다고 밝혔다. NASA와 로스코스모스 기술팀이 올해 3월 합동 위원회에서 논의를 진행했지만 단일한 근본 원인에 합의하지 못했다. 밀봉제를 균열 부위에 적용한 이후 현재 누기(air leak)는 없는 상태이지만, 균열 자체가 해결됐다는 의미는 아니다.</p>
+<p><span class="hl">국제우주정거장(ISS)</span>은 1998년부터 조립이 시작된 인류 최대의 유인 우주 시설이다. <span class="hl">즈베즈다</span>는 러시아가 제공한 핵심 모듈로, ISS의 초기 거주 공간, 추진 장치, 도킹 포트 역할을 담당한다. <span class="hl">PrK</span>는 즈베즈다 모듈과 도킹 포트를 연결하는 전실로, 프로그레스 화물선 같은 러시아 방문 차량이 정박할 때 이 구역을 통해 접근한다. 비좁고 하중이 집중되는 구조여서 균열이 발생하면 기압 유지에 직접 영향을 준다.</p>
+<p>PrK 균열 문제는 수년 전부터 소규모 누기로 확인됐다. 러시아 우주비행사들이 밀봉제를 적용하며 관리해왔으나 근본 원인은 두 가지 가설이 경쟁 중이다. 하나는 펌프 진동에 의한 <span class="hl">고주기 피로(high-cycle fatigue)</span>, 다른 하나는 <span class="hl">환경 보조 균열(environmental-assisted cracking)</span>이다. NASA와 로스코스모스 기술팀은 두 가설에 대한 분석을 계속하고 있지만, 두 기관의 심각성 평가가 일치하지 않는 문제가 장기화되고 있다. NASA는 PrK 가압 시간을 최소화하는 보수적 접근을 요청하고 있으나, <span class="hl-warn">2025년 8월</span> 체결된 저압 유지 의정서가 항상 준수되는 것은 아니라고 밝혔다.</p>
+<p>이 문제가 주목받는 이유는 ISS 수명과 직결되기 때문이다. ISS의 다자간 통제위원회는 퇴역 또는 수명 연장 결정을 <span class="hl-warn">2026년 말</span>까지 내리기를 요청하고 있다. 미국은 공식적으로 <span class="hl-warn">2030년 퇴역</span>을 계획하고 있지만, 미 상원 법안에서는 <span class="hl-warn">2032년까지</span> NASA 운용 수권을 연장하는 방안도 검토 중이다. 또 이번 회의에서는 보잉 스타라이너의 복귀 일정 불확실성이 승무원 교대와 훈련 계획에 차질을 주고 있다는 점도 논의됐다.</p>
+<p>앞으로 주목할 점은 다음 합동 위원회에서 NASA와 로스코스모스가 균열 원인에 합의할 수 있을지 여부다. 합의가 이뤄지지 않으면 PrK 운용 방식을 둘러싼 이견이 계속될 것이다. 미국의 ISS 퇴역 결정은 러시아의 독자 우주정거장 건설 일정과도 연동돼 있어, 올해 말 양국 정책 결정이 향후 저궤도 유인 우주 운용 체계에 큰 영향을 미칠 것으로 보인다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'falcon9-lunar-impact',
+    icon: '🌑',
+    title: '팔콘 9 상단 스테이지, 2026년 8월 5일 달 충돌 예측',
+    summary: '2025년 1월 Firefly Blue Ghost·ispace Resilience를 실어 나른 팔콘 9 상단(2025-010D)이 2026년 8월 5일 달 서쪽 아인슈타인 분화구 부근에 충돌할 것으로 예측됐다. 비의도적 달 충돌이 확인될 경우 2022년 사례 이후 두 번째다.',
+    date: '2026-04-29',
+    sourceName: 'SpaceNews',
+    sourceUrl: 'https://spacenews.com/falcon-9-rocket-stage-projected-to-impact-moons-near-side-in-august/',
+    reliability: 'reliable_media',
+    status: 'developing',
+    category: 'policy',
+    tags: ['space-debris', 'falcon9', 'moon', 'spacex', 'lunar-impact'],
+    whyItMatters: '비의도적 달 충돌은 달 표면 오염과 과학 관측 방해를 일으킬 수 있다. 달 주변 우주 환경 청결도와 잔해 추적 의무화 논의에 불을 지핀다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '충돌 예측은 Bill Gray(Project Pluto)가 1,053회 관측 데이터를 기반으로 계산한 값이다. 태양 복사압 등 소규모 힘의 영향으로 오차가 있을 수 있으며, 8월에 가까워질수록 예측 정밀도가 높아질 것이다.',
+    sources: [
+      { name: 'SpaceNews — Falcon 9 stage to impact moon', url: 'https://spacenews.com/falcon-9-rocket-stage-projected-to-impact-moons-near-side-in-august/', type: 'reliable_media', usedFor: '충돌 예측 일시·충돌 위치·스테이지 제원·추적 경위 확인' },
+      { name: 'Project Pluto — Bill Gray 궤도 분석', url: 'https://www.projectpluto.com/25010d.htm', type: 'background', usedFor: '1,053회 관측 기반 궤도 계산 원본 데이터' }
+    ],
+    body: `<p>독립 궤도 분석가 빌 그레이(Project Pluto)는 <span class="hl-warn">2025년 1월 15일</span> 달 착륙선 Firefly Blue Ghost와 ispace Resilience를 동시에 실어 나른 팔콘 9의 상단 스테이지(국제 식별자: <span class="hl">2025-010D</span>)가 <span class="hl-warn">2026년 8월 5일 02:44 EDT(06:44 UTC)</span> 달 서쪽 가장자리 근면(近面)의 <span class="hl">아인슈타인 분화구</span> 부근에 충돌할 것으로 예측했다. 이 계산은 소행성 관측 네트워크와 망원경이 수집한 <span class="hl-warn">1,053회</span> 관측 데이터에 기반한다.</p>
+<p>로켓 상단 스테이지는 위성을 궤도에 올려놓은 뒤 연료를 모두 소진해 독립적인 비행 능력을 잃은 금속 덩어리가 된다. 이 스테이지는 발사 이후 달과 지구를 여러 차례 근접 통과하며 고도로 비대칭적인 장타원 궤도를 돌고 있었고, 결국 달의 중력에 붙잡혀 충돌 경로로 진입하게 됐다. 길이 <span class="hl-warn">13.8m</span>, 무게 약 <span class="hl-warn">4,000kg</span>의 스테이지가 <span class="hl-warn">초속 2.43km(시속 약 8,700km)</span>로 충돌하면 일정 크기의 새 분화구가 형성될 것으로 보인다.</p>
+<p>달에 인공 물체가 비의도적으로 충돌한 사례는 매우 드물다. 가장 최근의 비교 사례는 <span class="hl-warn">2022년</span> 중국의 창어-5T1(2014년 발사)에서 분리된 장정 3B 상단 스테이지가 달 뒷면에 충돌해 이중 분화구를 만든 것이다. 그 전에도 빌 그레이는 이 스테이지를 처음에는 스페이스X의 DSCOVR 발사 팔콘 9으로 오인 식별하는 오류를 범하기도 했다. 이번 2025-010D는 처음부터 추적이 이뤄진 만큼 데이터가 더 풍부하다.</p>
+<p>비의도적 달 충돌이 문제가 되는 이유는 달이 단순한 빈 공간이 아니기 때문이다. NASA·ESA·중국·인도 등이 이미 달 남극 지역을 집중 탐사 대상으로 삼고 있으며, 아직 탐사되지 않은 지역의 오염은 과학 데이터를 오염시킬 수 있다. 또한 달에는 지구의 대기층 같은 자정(自淨) 기제가 없어 충돌 잔해가 수십만 년간 그대로 남는다. 의도치 않은 충돌이 반복되면 달 표면 자원 탐사와 유인 기지 설치 계획에 지장을 줄 수 있다는 우려도 제기된다.</p>
+<p>이번 사례는 달 주변 우주 잔해 추적과 국제 규범 논의를 다시 수면 위로 끌어올렸다. UN 우주평화이용위원회(COPUOS)와 아르테미스 협정은 지속 가능한 탐사 원칙을 명시하고 있지만, 달 충돌 방지에 관한 구속력 있는 국제 규범은 아직 없다. 스위스 우주 상황 인식 기업 s2A systems는 스테이지의 회전(tumbling) 모습을 포착한 영상을 제공했으며, 8월에 가까워질수록 충돌 예측 좌표는 더 정확해질 예정이다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'esa-smile-delay',
+    icon: '☀️',
+    title: 'ESA·중국과학원 SMILE 위성, Vega-C 부품 결함으로 발사 5월 19일로 연기',
+    summary: '태양풍과 지구 자기권의 상호작용을 관측하는 ESA·CAS 공동 SMILE 위성이 Vega-C 발사체의 부품 생산라인 기술 결함으로 4월 9일 발사가 취소됐다. 새 발사일은 5월 19일로 재조정됐다.',
+    date: '2026-04-24',
+    sourceName: 'ESA',
+    sourceUrl: 'https://www.esa.int/Science_Exploration/Space_Science/Smile/Smile_set_to_launch_on_19_May',
+    reliability: 'official',
+    status: 'scheduled',
+    category: 'science',
+    tags: ['esa', 'smile', 'vega-c', 'solar-wind', 'magnetosphere', 'space-weather', 'china'],
+    whyItMatters: '태양풍이 지구 자기권을 어떻게 변형시키는지 최초로 X선 영상으로 촬영하는 임무. 우주 날씨 예보 정확도 향상과 지구 인프라 보호에 기여할 데이터를 제공한다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '5월 19일 발사는 ESA 4월 24일 발표 기준. 아직 실행되지 않은 예정 발사이므로 성공 여부는 불확실하다. ESA 공식 채널에서 최신 상태 확인 권장.',
+    sources: [
+      { name: 'ESA SMILE 발사 연기 안내 (4월 6일)', url: 'https://www.esa.int/Science_Exploration/Space_Science/Smile/T-20_days_Smile_to_launch_on_9_April', type: 'official', usedFor: '4월 6일 Vega-C 부품 결함 연기 사유 및 5월 19일 재조정 공지 확인' },
+      { name: 'ESA SMILE 임무 개요', url: 'https://www.esa.int/Science_Exploration/Space_Science/Smile', type: 'official', usedFor: 'SMILE 임무 목표·탑재 장비·ESA-CAS 협력 구조 배경 정보' }
+    ],
+    body: `<p>ESA와 중국과학원(CAS)이 공동 개발한 태양물리 관측 위성 <span class="hl">SMILE(Solar wind Magnetosphere Ionosphere Link Explorer)</span>이 <span class="hl-warn">2026년 4월 6일</span> 발사 연기를 공식 발표했다. 연기 이유는 Vega-C 로켓(VV29 발사) 통합 과정에서 서브시스템 부품 생산라인의 기술 결함이 발견됐기 때문이다. 이후 <span class="hl-warn">4월 24일</span> ESA는 새 발사일을 <span class="hl-warn">2026년 5월 19일</span>로 재조정한다고 발표했다. 아직 발사가 이루어지지 않았으며 예정된 일정이다.</p>
+<p><span class="hl">SMILE</span>은 지구 자기권이 태양풍에 반응하는 방식을 처음으로 연속 영상(X선·자외선)으로 촬영하는 임무다. 4개의 과학 장비 — 소프트 X선 이미저(SXI), 자외선 이미저(UVI), 이온 분석기, 자력계 — 를 통해 지구 자기권계면(magnetopause)과 오로라를 동시에 관측한다. 특히 SXI는 지구 자기권 경계를 X선으로 직접 촬영하는 최초의 기기다. 목표 궤도는 북극 위 <span class="hl-warn">121,000km</span>에서 남극 위 <span class="hl-warn">5,000km</span> 사이를 오가는 비대칭 타원 궤도로, 한 번 공전에 약 <span class="hl-warn">51시간</span>이 걸려 오로라를 최대 <span class="hl-warn">45시간 연속</span> 관측할 수 있다.</p>
+<p>SMILE은 ESA의 <span class="hl">Cosmic Vision</span> 프로그램의 일환으로 2015년 선정됐다. ESA는 탑재체 모듈(SXI 포함)과 발사체를 제공하고, CAS는 위성 본체와 나머지 3개 장비를 제공한다. 임무 설계와 운용 책임은 ESA가 담당한다. 발사체 Vega-C는 유럽의 소형 발사체로, <span class="hl-warn">2022년 12월</span> Arianespace 위성 발사 실패 이후 수정·복구 과정을 거쳐 <span class="hl-warn">2024년</span> 비행 재개에 성공했다. 이번 연기는 비행 하드웨어 결함이 아닌 부품 생산 공정의 문제로, 기술 적용 후 5주 만에 새 날짜를 확정할 수 있었다.</p>
+<p>SMILE의 관측 데이터는 우주 날씨 예보 정확도 향상에 기여할 것으로 기대된다. 강한 태양 폭풍은 지구 자기권을 압축·변형시켜 지상 전력망 교란, GPS 오류, 위성 수명 단축, 항공기 통신 두절 등을 일으킬 수 있다. 현재 우주 날씨 예보는 태양풍 측정 위성에서 실측된 데이터를 모델에 입력하는 방식인데, 자기권 자체의 반응 과정을 실시간 영상으로 촬영하면 모델의 정확도를 높일 수 있다. 특히 오로라와 자기권계면의 동시 관측 데이터는 기존에 없던 새로운 과학적 정보다.</p>
+<p>5월 19일 발사 예정이 현재 계획이지만, 발사 전까지는 추가 점검과 일기·기술 조건이 충족돼야 한다. 성공적으로 발사될 경우 Vega-C의 4단이 약 <span class="hl-warn">57분</span> 후 SMILE을 저궤도에 투입하고, <span class="hl-warn">63분</span> 후 태양 전지판 전개가 확인되면 발사 성공으로 간주된다. 이후 수 개월의 궤도 전이를 거쳐 임무 궤도에 진입하면 과학 관측이 시작된다. ESA와 CAS의 공동 우주과학 임무가 Vega-C의 안정적 운용과 맞물려 어떤 결과를 낼지 주목된다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+
   // ── 2026-04-xx ───────────────────────────────────────────────────
   {
     id: 'artemis2-launch',
     icon: '🌕',
-    title: '아르테미스 II 귀환 이후 — 유인 달 비행 후속 분석 단계',
-    summary: 'NASA 아르테미스 II 유인 달 궤도 비행(2026.04.01 발사, 04.10 귀환)이 성공적으로 완료. 오리온 캡슐과 4명 승무원 무사 귀환 후 데이터 분석 단계 진입.',
+    title: '아르테미스 II 임무 완료 — 4명 승무원, 달 비행 후 태평양 귀환',
+    summary: 'NASA 아르테미스 II 유인 달 비행 임무가 2026년 4월 10일 태평양 착수로 완료됐다. 4명의 승무원은 약 10일간 비행하며 달 근접통과를 마쳤고, ESA 유럽 서비스 모듈이 핵심 추진 역할을 수행했다.',
     date: '2026-04-10',
-    sourceName: 'NASA 공식',
-    sourceUrl: 'https://www.nasa.gov/mission/artemis-ii/',
+    sourceName: 'NASA / ESA 공식',
+    sourceUrl: 'https://www.esa.int/Newsroom/Press_Releases/Splashdown_for_Artemis_II',
     reliability: 'official',
     status: 'confirmed',
     category: 'explore',
-    tags: ['유인탐사', 'NASA', '아르테미스'],
-    whyItMatters: '아폴로 17호(1972) 이후 54년 만의 유인 달 궤도 비행 성공. 아르테미스 III 달 착륙(2027년 7월)의 핵심 전제 조건 완료.',
-    lastFactChecked: '2026-05-01',
-    editorNote: '⚠️ 2026.04.01 발사 및 04.10 귀환은 공식 NASA 발표를 기반으로 기재됨. 세부 데이터는 NASA 공식 사이트에서 최종 확인 권장.',
+    tags: ['유인탐사', 'NASA', 'ESA', '아르테미스', 'SLS', '오리온'],
+    whyItMatters: '아폴로 17호(1972) 이후 처음으로 인간이 달 근처를 비행하고 무사 귀환한 임무. 오리온 캡슐과 ESA 유럽 서비스 모듈의 유인 비행 성능이 실제 환경에서 검증됐으며, 이후 유인 달 탐사 계획의 기술적 토대가 마련됐다.',
+    lastFactChecked: '2026-05-04',
+    editorNote: '발사 일시·귀환 일시·ESM 연소 세부 데이터는 ESA 공식 보도자료(N°18-2026, N°19-2026) 기반. NASA 공식 미션 페이지 및 임무 밀스톤 요약에서 교차 확인 권장.',
     sources: [
-      { name: 'NASA Artemis II 미션', url: 'https://www.nasa.gov/mission/artemis-ii/', type: 'official', usedFor: '임무 일정·귀환 결과 확인' },
-      { name: 'ESA 보도자료 — Splashdown for Artemis II', url: 'https://www.esa.int/Newsroom/Press_Releases/Splashdown_for_Artemis_II', type: 'official', usedFor: 'ESM 역할·귀환 시각·한센 승무원 정보 확인' }
+      { name: 'ESA 보도자료 — Splashdown for Artemis II', url: 'https://www.esa.int/Newsroom/Press_Releases/Splashdown_for_Artemis_II', type: 'official', usedFor: '귀환 시각·ESM 분리 연소 시각 확인' },
+      { name: 'ESA 보도자료 — Europe powers Artemis II mission to the Moon', url: 'https://www.esa.int/Newsroom/Press_Releases/Europe_powers_Artemis_II_mission_to_the_Moon', type: 'official', usedFor: 'ESM 주엔진 350초 연소·궤도수정 취소 세부 내용' },
+      { name: 'NASA Artemis II Mission Milestones', url: 'https://www.nasa.gov/centers-and-facilities/johnson/artemis-ii-mission-milestones-an-image-and-video-recap/', type: 'official', usedFor: '임무 전체 타임라인·승무원 활동 이미지 자료' }
     ],
-    body: `<p><span class="hl">아르테미스 II</span> 임무가 2026년 4월 1일 케네디우주센터에서 발사돼 <span class="hl-warn">4월 10일</span> 태평양에 착수하며 성공적으로 완료됐습니다. NASA와 ESA의 공식 발표에 따르면 4명의 승무원은 약 10일간의 유인 달 궤도 비행을 마치고 모두 무사히 귀환했습니다. 아폴로 17호(1972년) 이후 54년 만에 인류가 달 궤도 근처를 비행한 임무입니다.</p>
-<p><span class="hl">아르테미스 프로그램</span>은 SLS 로켓과 오리온 캡슐을 핵심 기반으로, 인류를 달로 돌려보내고 장기적으로 달에 상주 거점을 구축하는 것이 목표입니다. ESA가 개발한 유럽 서비스 모듈(ESM)이 오리온의 추진·전력·열 조절을 담당합니다. 아르테미스 I(2022년 11월, 무인)이 발사체와 캡슐의 기본 성능을 검증했다면, 아르테미스 II는 처음으로 승무원을 태우고 달 궤도 근처를 비행한 단계로서 두 임무의 가장 큰 차이입니다.</p>
-<p>4명의 승무원 — <span class="hl">리드 와이즈먼(지휘관), 빅터 글로버(조종사), 크리스티나 코크, 제레미 한센(캐나다)</span> — 은 각각 역사적 기록을 남겼습니다. 크리스티나 코크는 여성으로서, 빅터 글로버는 흑인으로서 처음으로 달 궤도 비행에 참여했습니다. 캐나다 우주비행사 제레미 한센의 참가는 아르테미스가 단순한 미국 프로젝트가 아닌 <span class="hl-good">국제 협력 임무</span>임을 상징합니다.</p>
-<p>귀환 이후 NASA는 오리온 캡슐의 <span class="hl">열차폐재 재진입 성능, 생명유지장치 10일 연속 운용 데이터, 심우주 방사선 피폭 측정값</span>을 분석하고 있습니다. 이 데이터는 아르테미스 III 달 착륙(<span class="hl-warn">2027년 7월 예정</span>)의 승무원 안전 기준과 임무 설계에 직접 반영됩니다.</p>
-<p>다음 단계인 <span class="hl">아르테미스 III</span>에서는 오리온이 달 궤도에서 SpaceX 스타십 HLS와 랑데부한 뒤 2명이 달 남극으로 하강할 예정입니다. 그 이후로는 달 궤도정거장 <span class="hl">루나 게이트웨이(Lunar Gateway)</span> 건설이 계획되어 있으며, 이는 달과 심우주 탐사의 중간 허브 역할을 맡게 됩니다.</p>
-<p><span class="hl-good">아르테미스 II의 성공은 아폴로 이후 반세기 만에 다시 시작된 유인 달 탐사가 실제 비행 단계로 진입했음을 확인한 사건</span>입니다. 미국·유럽·캐나다·일본 등 아르테미스 협정 참여국의 협력 체계가 임무를 통해 처음으로 실증됐다는 점에서 국제 우주 협력의 새로운 지평도 열렸습니다.</p>`,
+    body: `<p><span class="hl">아르테미스 II</span> 임무가 <span class="hl-warn">2026년 4월 1일(미 동부시 기준)</span> 케네디우주센터에서 발사돼 <span class="hl-warn">4월 10일</span> 태평양에 착수하며 완료됐다. ESA의 공식 발표에 따르면 4명의 승무원은 약 10일간의 비행을 마치고 모두 무사히 귀환했다. 임무 기간 중 <span class="hl-warn">4월 6일</span>에는 달 근접통과가 이루어졌으며, ESA의 <span class="hl">유럽 서비스 모듈(ESM)</span> 주엔진이 <span class="hl-warn">350초</span> 동안 연소해 오리온을 달 방향으로 보내는 경로 설정을 담당했다. 연소 정밀도가 매우 높아 예정된 궤도 수정 기동 3회 중 2회가 불필요해졌다.</p>
+<p><span class="hl">아르테미스 프로그램</span>은 SLS 로켓과 오리온 캡슐을 핵심으로 인류를 달로 돌려보내는 것이 목표다. ESA가 개발한 <span class="hl">유럽 서비스 모듈(ESM)</span>은 오리온의 주 추진력·전력·열 조절·생명유지 지원을 담당한다. 독일 브레멘의 에어버스가 제작하며 13개 ESA 회원국, 20개 주요 협력사, 100개 이상의 공급업체가 참여했다. 아르테미스 I(2022년 11월, 무인)이 발사체와 캡슐의 기본 성능을 검증했다면, 아르테미스 II는 처음으로 승무원을 태우고 달 근처를 비행하며 유인 운용 능력을 확인한 단계다.</p>
+<p>4명의 승무원은 <span class="hl">리드 와이즈먼(지휘관, NASA), 빅터 글로버(조종사, NASA), 크리스티나 코크(NASA), 제레미 한센(CSA, 캐나다)</span>이다. 캐나다 우주비행사 제레미 한센의 참가는 아르테미스 협정을 통한 국제 협력을 상징한다. ESA는 ESTEC(네덜란드)·존슨 우주센터(미국)·유럽 우주비행사 센터(독일)에서 임무를 지원했다. 아르테미스 II는 아폴로 17호(1972년) 이후 <span class="hl-good">처음으로 인간이 달 근처를 비행하고 돌아온 임무</span>로서, 유인 심우주 비행 재개의 이정표가 됐다.</p>
+<p>귀환 후 NASA와 ESA는 오리온 캡슐의 <span class="hl">열차폐재 재진입 성능, 생명유지장치 10일 연속 운용 데이터, 심우주 방사선 피폭 측정값</span>을 분석하고 있다. ESM은 오리온 분리 후 예정대로 대기권에서 소각됐다. 이번 임무에서 얻은 데이터는 오리온 시스템 개선과 이후 유인 임무의 안전 기준 수립에 활용될 예정이다.</p>
+<p>아르테미스 II 완료 이후 국제 달 탐사 협정인 <span class="hl">아르테미스 협정</span> 서명국이 빠르게 늘어나는 흐름도 나타나고 있다. 이번 임무 이후 약 10일 만에 라트비아(4월 20일), 요르단(4월 23일), 모로코(4월 29일) 등 3개국이 새로 서명했으며, 2026년 들어서만 5개국이 합류해 전체 서명국이 <span class="hl-warn">64개국</span>으로 늘었다. 아르테미스 II의 가시적 성공이 국제 우주 협력 참여 확대에 영향을 미쳤다는 평가가 나온다.</p>
+<p>다음 단계인 <span class="hl">아르테미스 III</span>는 2026년 2월 NASA가 임무 프로파일을 수정 발표한 바 있다. 현재 NASA는 아르테미스 III 관련 세부 계획을 구체화하는 단계이며, 공식 발표를 통해 최신 일정과 임무 구성을 확인할 것을 권장한다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
