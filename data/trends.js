@@ -109,9 +109,11 @@ window.TRENDS_DATA = [
       { name: 'ESA Solar Orbiter', url: 'https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter', type: 'official', usedFor: '임무 현황·최근접 통과 데이터 확인' },
       { name: 'NASA Solar Orbiter', url: 'https://www.nasa.gov/solar-orbiter/', type: 'official', usedFor: 'NASA 공동 운용·EUI 장비 사양 배경' }
     ],
-    body: `<p>ESA와 NASA가 공동 운용하는 태양 탐사선 <span class="hl">Solar Orbiter</span>가 태양에서 불과 <span class="hl-warn">4,200만 km</span>(태양-지구 거리의 약 0.28배) 지점을 통과하며 사상 최고 해상도의 태양 코로나 영상을 지구로 전송했습니다.</p>
-<p>이번 관측에서 Solar Orbiter는 <span class="hl">태양 코로나 가열(Coronal Heating)</span> 문제의 실마리인 '캠프파이어(campfire)'라 불리는 미소 폭발 현상을 수만 개 기록했습니다. 태양 표면 온도는 약 5,500°C인데, 대기층 코로나는 <span class="hl-warn">100만°C 이상</span>이라는 오래된 수수께끼를 푸는 데 이 데이터가 핵심 역할을 할 것으로 기대됩니다.</p>
-<p>Solar Orbiter의 <span class="hl">EUI(고해상도 자외선 이미저)</span>로 55km 해상도의 태양 표면 영상을 촬영했습니다. <span class="hl-good">우주 날씨 예보(Space Weather Forecasting)의 핵심 데이터원</span>으로 활용됩니다.</p>`,
+    body: `<p>ESA와 NASA가 공동 운용하는 태양 탐사선 <span class="hl">Solar Orbiter</span>가 태양에서 불과 <span class="hl-warn">4,200만 km</span>(태양-지구 거리의 약 0.28배) 지점을 통과하며 사상 최고 해상도의 태양 코로나 영상을 지구로 전송했습니다. 이번 관측에서 코로나 가열 메커니즘의 실마리인 '캠프파이어(campfire)'라 불리는 미소 폭발 현상을 수만 개 기록했습니다.</p>
+<p><span class="hl">Solar Orbiter</span>는 ESA가 주도하고 NASA가 참여한 태양 관측 우주선으로, <span class="hl-warn">2020년 2월</span> 발사됐습니다. 태양 주위를 타원 궤도로 돌며 최근접 시 태양-지구 거리(약 1억 5천만 km)의 <span class="hl-warn">4분의 1 이하</span>까지 접근합니다. 4개의 원격 감지 기기(EUI·PHI·SPICE·STIX 등)와 4개의 현장 측정 기기를 모두 탑재해 태양을 영상·분광·입자 등 다각도로 관측합니다.</p>
+<p>태양 탐사 역사에서 Solar Orbiter의 독특한 점은 <span class="hl">태양 극지 관측</span>입니다. 지구는 태양 적도면에 거의 붙어 있어, 태양 극지는 기존 탐사선으로 관측하기 어려웠습니다. Solar Orbiter는 임무 후반으로 갈수록 궤도 기울기를 점차 높여 <span class="hl-warn">최대 33도</span> 기울기로 극지 상공을 관측할 예정입니다. NASA의 <span class="hl">Parker Solar Probe</span>가 태양에 훨씬 더 가까이 접근해 입자·자기장을 측정하는 반면, Solar Orbiter는 원격 고해상도 영상 관측에 강점을 두어 두 임무는 상호 보완 관계입니다.</p>
+<p>태양 코로나 온도가 표면보다 수백 배 뜨거운 이유, 그리고 태양풍이 어떻게 형성·가속되는지는 수십 년 된 미해결 문제입니다. <span class="hl">우주 날씨(Space Weather)</span>는 태양 폭풍이 지구 자기권과 충돌할 때 전력망 교란, GPS 오류, 위성 궤도 감쇠, 항공기 통신 두절 등을 일으킬 수 있습니다. Solar Orbiter의 데이터가 태양풍 기원을 더 정확히 이해하게 되면, 수일 전 예보 정확도를 높여 <span class="hl-good">지구 인프라 보호에 직접 기여</span>할 수 있습니다.</p>
+<p>앞으로 주목할 점은 Solar Orbiter가 점차 궤도 기울기를 높이며 태양 극지에 더 가까이 다가가는 관측 단계, 그리고 EUI·PHI 데이터의 논문 발표 시점입니다. 태양 극지 자기장 구조가 처음으로 고해상도로 포착되면 태양 활동 주기(약 11년) 예측 정확도에도 기여할 수 있습니다. Parker Solar Probe와의 동시 관측 데이터 결합이 어떤 새로운 그림을 만들어낼지도 태양 물리학계의 최대 관심사입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -133,9 +135,11 @@ window.TRENDS_DATA = [
       { name: 'NASA JWST 미션', url: 'https://www.nasa.gov/missions/webb/', type: 'official', usedFor: 'JWST 55 Cancri e 관측 결과 기반 확인' },
       { name: 'STScI (Space Telescope Science Institute)', url: 'https://www.stsci.edu/', type: 'official', usedFor: 'JWST 관측 데이터 분석·용암 세계 유형 분류 배경' }
     ],
-    body: `<p>제임스웹 우주망원경(JWST)이 <span class="hl">55 Cancri e</span>(지구에서 <span class="hl-warn">41광년</span> 떨어진 슈퍼-지구)의 대기에서 <span class="hl">이산화규소(SiO₂) 증기</span>와 마그네슘 황화물(MgS) 구름 성분을 처음으로 직접 관측했습니다.</p>
-<p>55 Cancri e는 질량이 지구의 약 <span class="hl-warn">8.6배</span>인 슈퍼-지구로 별에 매우 가까워 표면 온도가 <span class="hl-warn">2,000°C 이상</span>입니다. <span class="hl">JWST NIRSpec 분광관측</span>을 통해 이 특이한 대기 구성이 확인됐습니다.</p>
-<p>이번 발견은 외계행성 연구의 새로운 유형인 <span class="hl-good">'용암 세계(Lava World)'의 대기 특성을 처음으로 밝혀낸 것</span>으로, 암석 행성 진화 연구에 중요한 단서를 제공합니다.</p>`,
+    body: `<p>제임스웹 우주망원경(<span class="hl">JWST</span>)이 지구에서 <span class="hl-warn">41광년</span> 떨어진 슈퍼-지구 <span class="hl">55 Cancri e</span>의 대기에서 이산화규소(SiO₂) 증기와 마그네슘 황화물(MgS) 구름 성분을 처음으로 직접 관측했다는 연구가 발표됐습니다. 55 Cancri e는 별에 극도로 가까이 붙어 표면 온도가 <span class="hl-warn">2,000°C 이상</span>인 '용암 세계(Lava World)'형 행성으로, 암석 행성 대기 직접 관측의 새로운 사례입니다.</p>
+<p>JWST의 외계행성 대기 관측은 <span class="hl">트랜짓 분광법(Transit Spectroscopy)</span>을 기반으로 합니다. 행성이 별 앞을 지나갈 때, 별빛 일부가 행성 대기를 통과하면서 각 분자가 특정 파장 빛을 흡수합니다. 이 흡수 패턴을 분석하면 대기 성분을 알 수 있습니다. JWST의 <span class="hl">NIRSpec·MIRI 기기</span>는 허블·스피처 우주망원경보다 훨씬 넓은 적외선 파장 범위와 높은 감도를 제공해 이전에는 불가능했던 분자 신호 탐지가 가능해졌습니다.</p>
+<p>허블 우주망원경 시대에는 수소·헬륨처럼 흡수 신호가 강한 기체만 일부 탐지할 수 있었고, 물(H₂O) 신호도 제한적으로 포착되는 수준이었습니다. <span class="hl-good">JWST는 CO₂·CH₄·SO₂·SiO₂ 같은 복잡한 분자를 중적외선 영역에서 구별하는 감도를 최초로 확보</span>했으며, 55 Cancri e는 그 능력을 처음으로 잘 보여준 암석 행성 사례 중 하나입니다.</p>
+<p>이번 관측의 의의는 외계 암석 행성에 실제로 대기가 존재하며, 그 성분이 지구 대기와 전혀 다른 규산염 증기 기반일 수 있음을 직접 확인했다는 점입니다. 그러나 이 발견이 '생명체 탐색'과 직접 연결되지는 않습니다. 55 Cancri e는 온도가 극단적으로 높아 생명체 거주 가능성과는 거리가 멀며, 이번 연구는 암석 행성의 <span class="hl">맨틀·지각 조성과 행성 진화</span>를 이해하는 데 기여합니다.</p>
+<p>JWST의 외계행성 대기 연구는 이제 시작 단계입니다. 향후 과제는 거주 가능 구역 내 암석 행성(지구 크기)의 대기 존재 여부와 성분 파악입니다. 별의 활동성(항성 플레어 등)이 관측 신호에 영향을 줄 수 있어 <span class="hl">항성 오염 보정</span>이 해석의 핵심 변수로 남습니다. 후속 관측과 독립 검증, 이론 대기 모델과의 비교를 통해 결론이 점진적으로 정교해지는 과정 자체가 외계행성 과학의 발전을 이끌게 됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -828,8 +832,11 @@ window.TRENDS_DATA = [
       { name: 'NASA ISS Expeditions', url: 'https://www.nasa.gov/international-space-station/expeditions/', type: 'official', usedFor: 'Crew-11 승무원·도킹 일정 확인' },
       { name: 'SpaceX Crew Dragon', url: 'https://www.spacex.com/human-spaceflight/crew/', type: 'background', usedFor: 'Crew Dragon 연속 성공 실적·ISS 2030 이양 배경' }
     ],
-    body: `<p>SpaceX <span class="hl">Crew Dragon 캡슐</span>이 Crew-11 승무원 4명을 탑재하고 케네디우주센터에서 발사, 약 <span class="hl-warn">27시간</span> 비행 후 국제우주정거장(ISS)에 도킹했습니다.</p>
-<p>SpaceX는 Crew-11을 포함해 지금까지 팰컨 9으로 유인 발사를 수행하며 <span class="hl-good">100% 성공률을 유지</span>하고 있습니다. NASA는 ISS 운용을 <span class="hl-warn">2030년</span>까지 유지하고 이후 민간에 이양하는 방향으로 검토 중입니다.</p>`,
+    body: `<p>SpaceX <span class="hl">Crew Dragon 캡슐</span>이 Crew-11 승무원 4명을 탑재하고 케네디우주센터에서 발사, 약 <span class="hl-warn">27시간</span> 비행 후 국제우주정거장(ISS)에 도킹했습니다. 미국·일본·러시아·캐나다 4개국 승무원으로 구성된 다국적 팀이 <span class="hl-warn">약 6개월</span>간의 ISS 체류 임무를 시작했습니다.</p>
+<p><span class="hl">Commercial Crew Program(상업 승무원 프로그램)</span>은 NASA가 민간 기업에 유인 우주선 개발·운용을 맡기는 방식으로, <span class="hl-warn">2011년 우주왕복선 퇴역</span> 이후 러시아 소유즈에 의존하던 미국 독자 유인 발사 역량을 회복하기 위해 추진됐습니다. SpaceX Crew Dragon은 <span class="hl-warn">2020년 5월</span> Demo-2 비행으로 첫 유인 임무를 수행하며 이 프로그램의 핵심 발사 수단이 됐습니다.</p>
+<p>ISS 장기 체류 임무(보통 6개월)에서 승무원은 <span class="hl">미세중력 과학 실험, 우주 의학 연구, 기술 검증, 지구 관측</span> 등 다양한 활동을 수행합니다. 뼈 밀도 감소·근육 위축·심혈관 변화 같은 장기 우주 체류 의학 데이터는 미래 화성 임무를 위한 핵심 정보로 활용됩니다. ISS에는 항상 <span class="hl-warn">6~7명</span>의 승무원이 교대로 체류하며, Crew Dragon과 소유즈 캡슐이 승무원 교대 역할을 나누고 있습니다.</p>
+<p>Crew-11 도킹은 SpaceX가 <span class="hl-good">Commercial Crew 유인 발사에서 연속 성공 실적</span>을 쌓고 있음을 보여줍니다. 이는 미국이 자국 로켓으로 자국 우주인을 보내는 역량을 안정적으로 운용하고 있다는 신호이기도 합니다. ISS 내에 상시 체류하는 다국적 팀은 국제 과학 협력의 상징이자, 유인 우주 비행 기술의 지속 검증 플랫폼 역할을 합니다.</p>
+<p>앞으로 주목할 점은 ISS 운용 종료 예정 시점과 그 이후의 전환입니다. NASA는 ISS를 <span class="hl-warn">2030년경</span> 퇴역시키고, Axiom Space·Starlab 등 민간 우주정거장으로 저궤도 연구 기능을 이전하는 계획을 검토 중입니다. Crew Dragon의 후속 세대, 스타십의 유인 비행 가능성, 그리고 <span class="hl">저궤도 경제(LEO Economy)</span>가 어떻게 형성될지가 ISS 이후 시대의 핵심 변수입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -851,8 +858,11 @@ window.TRENDS_DATA = [
       { name: 'JAXA MMX 미션', url: 'https://www.isas.jaxa.jp/en/missions/spacecraft/current/mmx.html', type: 'official', usedFor: 'MMX 포보스 근접 촬영·샘플 저넥 일정 확인' },
       { name: 'ESA MMX', url: 'https://www.esa.int/Science_Exploration/Space_Science/Hera/MMX', type: 'background', usedFor: 'MMX ESA 파트너십·포보스 기원 연구 배경' }
     ],
-    body: `<p>일본항공우주연구개발기구(JAXA)의 화성 위성 탐사선 <span class="hl">MMX(Martian Moons eXploration)</span>가 화성 내위성 포보스(Phobos) 표면 <span class="hl-warn">50km 상공</span>에서 최고 해상도 지형 촬영에 성공했습니다.</p>
-<p>포보스는 지름 약 <span class="hl-warn">22km</span>의 작고 불규칙한 위성입니다. <span class="hl">터치다운 방식</span>으로 표면에 잠깐 접촉해 샘플을 채취합니다. <span class="hl-good">MMX의 샘플 귀환 예정 연도는 2031년</span>입니다.</p>`,
+    body: `<p>일본항공우주연구기구(JAXA)의 화성 위성 탐사선 <span class="hl">MMX(Martian Moons eXploration)</span>가 화성 내위성 <span class="hl">포보스(Phobos)</span> 표면 <span class="hl-warn">50km 상공</span>에서 지금까지 중 최고 해상도의 지형 촬영에 성공했습니다. 이 데이터를 바탕으로 샘플 채취 착륙 후보 지점 선정 작업이 시작됐습니다.</p>
+<p><span class="hl">MMX</span>는 화성의 두 위성, 포보스와 데이모스를 탐사하고 포보스 표면 샘플을 지구로 가져오는 임무입니다. 포보스는 지름 약 <span class="hl-warn">22km</span>의 작고 불규칙한 천체로, 화성에서 불과 <span class="hl-warn">6,000km</span> 거리에서 공전합니다. 샘플 채취는 탐사선이 표면에 잠깐 접촉하는 <span class="hl">터치다운 방식</span>으로, JAXA의 하야부사 시리즈에서 쌓은 기술을 계승합니다.</p>
+<p>포보스와 데이모스의 기원은 아직 밝혀지지 않은 행성과학의 미스터리입니다. 크게 두 가지 가설이 경쟁합니다. 하나는 소행성이 화성 중력에 포획됐다는 <span class="hl">소행성 포획설</span>이고, 다른 하나는 과거 대형 천체가 화성과 충돌하면서 파편이 모여 위성이 됐다는 <span class="hl">거대 충돌설</span>입니다. 포보스 샘플은 두 가설을 구분할 수 있는 동위원소·광물 조성 데이터를 제공할 수 있습니다. 일본은 <span class="hl">하야부사(2010년)</span>와 <span class="hl">하야부사2(2020년)</span>로 소행성 류구 샘플 귀환에 성공하며 샘플 귀환 기술 분야의 선두에 있습니다.</p>
+<p>화성 탐사에서 '위성'을 연구하는 것은 '화성 본체'를 직접 탐사하는 것과 다른 방식의 접근입니다. 포보스는 화성 중력권 안에 있어, 만약 포획된 소행성이라면 태양계 초기 소행성대의 물질을 보존하고 있을 수 있습니다. 반대로 거대 충돌 기원이라면 화성 지각 물질이 담겨 있을 것입니다. <span class="hl-good">포보스 샘플은 이 두 기원 중 어느 쪽인지를 결정할 수 있는 유일한 직접 증거</span>가 될 수 있습니다.</p>
+<p>앞으로 주목할 점은 착륙 후보 지점 최종 선정, 터치다운 시도 일정, 그리고 샘플을 담은 귀환 캡슐의 지구 귀환 예정 시점입니다. MMX는 이미 일정이 여러 차례 변경된 이력이 있으므로, 공식 JAXA 발표를 통해 최신 임무 상황을 확인하는 것이 중요합니다. ESA도 MMX에 착륙기를 탑재하는 방식으로 참여하고 있어, 국제 협력 샘플 귀환 임무로서의 의미도 있습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -874,8 +884,11 @@ window.TRENDS_DATA = [
       { name: 'Rocket Lab Neutron', url: 'https://www.rocketlabusa.com/launch/neutron/', type: 'official', usedFor: 'Neutron 첫 비행 일정·Archimedes 엔진 시험 현황 확인' },
       { name: 'Rocket Lab 공식', url: 'https://www.rocketlabusa.com/', type: 'background', usedFor: 'Neutron 중형 재사용 발사체 시장 주의 배경' }
     ],
-    body: `<p>Rocket Lab이 개발 중인 중형 재사용 발사체 <span class="hl">Neutron</span>의 엔진 <span class="hl">Archimedes(아르키메데스)</span>가 버지니아주 왈롭스 섬 시험장에서 정적 연소 시험을 성공적으로 완료했습니다. 첫 비행은 <span class="hl-warn">2026년 4분기</span>를 목표로 합니다.</p>
-<p>Neutron은 <span class="hl-warn">LEO 기준 13톤</span> 탑재 능력을 목표로 합니다. Archimedes 엔진은 <span class="hl">액체산소/메탄 연료</span>를 사용하는 풀 플로우 단계 연소 사이클 엔진입니다.</p>`,
+    body: `<p>Rocket Lab이 개발 중인 중형 재사용 발사체 <span class="hl">Neutron</span>의 주 엔진 <span class="hl">Archimedes(아르키메데스)</span>가 버지니아주 왈롭스 섬 시험장에서 정적 연소 시험을 성공적으로 완료했습니다. 이는 첫 비행을 위한 중요한 개발 이정표입니다. 목표 탑재 능력은 <span class="hl-warn">저궤도 기준 13톤</span>이며, 1단 재사용을 설계에 포함하고 있습니다.</p>
+<p>Neutron은 Rocket Lab의 소형 발사체 <span class="hl">Electron</span>(탑재 능력 약 300kg)과는 완전히 다른 발사체입니다. Electron이 소형 전용 위성 발사에 특화된 반면, Neutron은 중형 위성 군집(constellation), 국가안보 화물, 중형 탑재물 시장을 겨냥합니다. Archimedes 엔진은 <span class="hl">액체산소/메탄 연료</span>를 사용하며, SpaceX Raptor·Blue Origin BE-4와 같은 계열의 연료 조합입니다.</p>
+<p>Rocket Lab은 <span class="hl-warn">2017년</span> Electron 첫 발사 이후 소형 위성 전용 발사 시장에서 빠르게 성장했습니다. <span class="hl-good">Electron은 60회 이상의 비행을 통해 높은 발사 성공률을 쌓은</span> 소형 발사체입니다. Rocket Lab이 Neutron 개발에 나선 배경에는 소형 발사만으로는 성장에 한계가 있고, 대형 위성 군집 발사 수요가 급증하고 있다는 시장 판단이 있습니다. 뉴질랜드와 버지니아에 발사장을 보유하고 있으며, Neutron은 버지니아 왈롭스에서 발사될 예정입니다.</p>
+<p>중형 재사용 발사체 시장에서 Neutron이 갖는 의미는 SpaceX Falcon 9에 대한 대안 공급자 역할입니다. 현재 중형 발사 시장은 Falcon 9이 압도적 점유율을 보이며, 국가안보 발사 분야에서도 SpaceX 의존도가 높아지고 있습니다. Neutron이 경쟁력 있는 단가와 발사 빈도를 확보한다면, 위성 군집 운영사와 정부 기관에게 <span class="hl">공급망 다변화</span> 선택지를 제공할 수 있습니다.</p>
+<p>앞으로 주목할 점은 Archimedes 엔진의 추가 시험 결과, 1단 재사용 착륙 기술 검증 계획, 그리고 실제 첫 비행 일정입니다. 첫 비행 목표 시점은 공식 발표 기준으로 확인이 필요하며, 발사체 개발 특성상 일정이 조정될 수 있습니다. Rocket Lab이 <span class="hl">Electron과 Neutron</span>을 동시 운용하는 복합 발사 서비스 기업으로 어떻게 자리잡을지가 중형 발사 시장의 향후 경쟁 지형을 좌우하는 변수입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   }
 ];
