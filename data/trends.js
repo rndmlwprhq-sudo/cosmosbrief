@@ -55,10 +55,12 @@ window.TRENDS_DATA = [
       { name: 'NASA Artemis II 미션', url: 'https://www.nasa.gov/mission/artemis-ii/', type: 'official', usedFor: '임무 일정·귀환 결과 확인' },
       { name: 'ESA 보도자료 — Splashdown for Artemis II', url: 'https://www.esa.int/Newsroom/Press_Releases/Splashdown_for_Artemis_II', type: 'official', usedFor: 'ESM 역할·귀환 시각·한센 승무원 정보 확인' }
     ],
-    body: `<p><span class="hl">아르테미스 II</span> 임무가 2026년 4월 1일 발사, <span class="hl-warn">4월 10일</span> 태평양 귀환·착수로 성공적으로 완료됐습니다. 아폴로 17호(1972년) 이후 약 54년 만에 인류가 달 궤도 근처를 비행한 역사적인 임무입니다.</p>
-<p>4명의 승무원 — <span class="hl">리드 와이즈먼(지휘관), 빅터 글로버(조종사), 크리스티나 코크, 제레미 한센(캐나다)</span> — 은 약 10일간의 비행을 마치고 무사히 귀환했습니다. 크리스티나 코크는 최초의 여성 달 궤도 비행사, 빅터 글로버는 최초의 흑인 달 궤도 비행사 기록을 세웠습니다.</p>
-<p>귀환 이후 NASA는 오리온 캡슐의 <span class="hl">열차폐재 재진입 성능, 생명유지장치 10일 연속 운용 데이터, 심우주 방사선 피폭 측정값</span>을 분석 중입니다. 이 데이터는 아르테미스 III 달 착륙(<span class="hl-warn">2027년 7월 예정</span>)의 안전 기준 수립에 직접 활용됩니다.</p>
-<p><span class="hl-good">SpaceX 스타십 HLS(달 착륙선) 통합 훈련이 이미 병행 진행</span>되고 있으며, NASA는 아르테미스 II의 성공을 바탕으로 III 일정을 유지할 것이라고 밝혔습니다.</p>`,
+    body: `<p><span class="hl">아르테미스 II</span> 임무가 2026년 4월 1일 케네디우주센터에서 발사돼 <span class="hl-warn">4월 10일</span> 태평양에 착수하며 성공적으로 완료됐습니다. NASA와 ESA의 공식 발표에 따르면 4명의 승무원은 약 10일간의 유인 달 궤도 비행을 마치고 모두 무사히 귀환했습니다. 아폴로 17호(1972년) 이후 54년 만에 인류가 달 궤도 근처를 비행한 임무입니다.</p>
+<p><span class="hl">아르테미스 프로그램</span>은 SLS 로켓과 오리온 캡슐을 핵심 기반으로, 인류를 달로 돌려보내고 장기적으로 달에 상주 거점을 구축하는 것이 목표입니다. ESA가 개발한 유럽 서비스 모듈(ESM)이 오리온의 추진·전력·열 조절을 담당합니다. 아르테미스 I(2022년 11월, 무인)이 발사체와 캡슐의 기본 성능을 검증했다면, 아르테미스 II는 처음으로 승무원을 태우고 달 궤도 근처를 비행한 단계로서 두 임무의 가장 큰 차이입니다.</p>
+<p>4명의 승무원 — <span class="hl">리드 와이즈먼(지휘관), 빅터 글로버(조종사), 크리스티나 코크, 제레미 한센(캐나다)</span> — 은 각각 역사적 기록을 남겼습니다. 크리스티나 코크는 여성으로서, 빅터 글로버는 흑인으로서 처음으로 달 궤도 비행에 참여했습니다. 캐나다 우주비행사 제레미 한센의 참가는 아르테미스가 단순한 미국 프로젝트가 아닌 <span class="hl-good">국제 협력 임무</span>임을 상징합니다.</p>
+<p>귀환 이후 NASA는 오리온 캡슐의 <span class="hl">열차폐재 재진입 성능, 생명유지장치 10일 연속 운용 데이터, 심우주 방사선 피폭 측정값</span>을 분석하고 있습니다. 이 데이터는 아르테미스 III 달 착륙(<span class="hl-warn">2027년 7월 예정</span>)의 승무원 안전 기준과 임무 설계에 직접 반영됩니다.</p>
+<p>다음 단계인 <span class="hl">아르테미스 III</span>에서는 오리온이 달 궤도에서 SpaceX 스타십 HLS와 랑데부한 뒤 2명이 달 남극으로 하강할 예정입니다. 그 이후로는 달 궤도정거장 <span class="hl">루나 게이트웨이(Lunar Gateway)</span> 건설이 계획되어 있으며, 이는 달과 심우주 탐사의 중간 허브 역할을 맡게 됩니다.</p>
+<p><span class="hl-good">아르테미스 II의 성공은 아폴로 이후 반세기 만에 다시 시작된 유인 달 탐사가 실제 비행 단계로 진입했음을 확인한 사건</span>입니다. 미국·유럽·캐나다·일본 등 아르테미스 협정 참여국의 협력 체계가 임무를 통해 처음으로 실증됐다는 점에서 국제 우주 협력의 새로운 지평도 열렸습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -152,9 +154,11 @@ window.TRENDS_DATA = [
       { name: 'CNSA 중국국가항천국', url: 'https://www.cnsa.gov.cn/', type: 'official', usedFor: '창어 7호 착륙 지점·임무 구성 발표 확인' },
       { name: 'NASA Moon to Mars', url: 'https://www.nasa.gov/moon-to-mars/', type: 'background', usedFor: '아르테미스 착륙 후보 지점과의 자원 경쟁 배경' }
     ],
-    body: `<p>중국국가항천국(CNSA)이 달 남극 탐사 미션 <span class="hl">창어 7호(嫦娥七號)</span>의 착륙 지점을 <span class="hl">샤클턴 크레이터(Shackleton Crater)</span> 인근으로 최종 선정했습니다. 아르테미스 계획 착륙 후보 지점과 불과 수십 km 이내 거리에 있어 자원 선점 경쟁이 예고됩니다.</p>
-<p>창어 7호는 <span class="hl-warn">궤도선·착륙선·로버·소형 비행체</span> 4개 요소로 구성됩니다. 특히 호핑 소형 비행체(Mini Flying Detector)는 로버가 접근하기 어려운 <span class="hl">영구 음영 크레이터</span> 내부로 직접 비행해 물 얼음을 채취하는 임무를 수행합니다.</p>
-<p>창어 7호 발사는 창정 5호 로켓으로 <span class="hl-warn">2026년 하반기</span>에 계획됩니다. <span class="hl-good">창어 6호(2024년)는 이미 달 뒷면 샘플 귀환에 성공해 인류 첫 달 뒷면 샘플을 지구로 가져왔습니다.</span></p>`,
+    body: `<p>중국국가항천국(CNSA)이 달 남극 탐사 미션 <span class="hl">창어 7호(嫦娥七號)</span>의 착륙 지점을 달 남극 <span class="hl">샤클턴 크레이터(Shackleton Crater)</span> 인근으로 최종 선정했습니다. 이 지점은 NASA의 아르테미스 달 착륙 후보 지역과 수십 km 이내 거리에 있어, 달 남극 자원을 둘러싼 선점 경쟁이 가시화되고 있습니다.</p>
+<p>창어 7호는 <span class="hl-warn">궤도선·착륙선·로버·소형 비행체</span> 4개 요소로 구성된 복합 탐사 시스템입니다. 이 중 가장 주목받는 것은 일반 로버가 접근하기 어려운 영구 음영 크레이터(PSR) 내부로 직접 비행해 물 얼음 샘플을 채취하는 <span class="hl">소형 호핑 비행체(Mini Flying Detector)</span>입니다. 발사체는 창정 5호 로켓이며, <span class="hl-warn">2026년 하반기</span> 발사가 계획되어 있습니다.</p>
+<p><span class="hl">창어 프로그램</span>은 단계적으로 달 탐사 역량을 구축해왔습니다. 창어 1·2호(2007·2010년)는 달 궤도 탐사선으로 달 지도를 제작했고, 창어 3호(2013년)는 아폴로 이후 최초의 달 연착륙에 성공했습니다. 창어 4호(2019년)는 역사상 최초로 달 뒷면에 연착륙했으며, 창어 5호(2020년)는 달 표면 샘플을 지구로 귀환시켰습니다. <span class="hl-good">창어 6호(2024년)는 달 뒷면 샘플 귀환이라는 인류 최초의 성과를 달성했습니다.</span></p>
+<p>달 남극의 영구 음영 크레이터 내부에는 <span class="hl">물 얼음(water ice)</span>이 매장되어 있을 가능성이 높습니다. 이 얼음은 식수·호흡용 산소·수소 로켓 연료로 분리될 수 있어, 지구에서 자원을 모두 운반해야 하는 비용을 줄이는 현지 자원 활용(ISRU)의 핵심입니다. 달 남극 탐사는 순수 과학 임무를 넘어 장기 달 기지 건설의 실현 가능성을 가늠하는 전략적 시험대이기도 합니다.</p>
+<p>중국은 러시아와 함께 <span class="hl">국제 달 연구기지(ILRS)</span> 구축을 추진하며 <span class="hl-warn">2035년 이후</span> 달 남극 상주 기지를 목표로 합니다. 미국 주도의 아르테미스 체계와 중국·러시아 주도의 ILRS라는 두 틀이 동시에 진행되는 가운데, 창어 7호의 성공 여부는 달 남극 탐사 경쟁에서 중국의 입지를 결정짓는 중요한 분기점이 될 것입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -274,9 +278,12 @@ window.TRENDS_DATA = [
       { name: 'NASA Mars Sample Return', url: 'https://mars.nasa.gov/msr/', type: 'official', usedFor: 'MSR 재설계안·예산·2031년 귀환 일정 확인' },
       { name: 'ESA Mars Sample Return', url: 'https://www.esa.int/Science_Exploration/Space_Science/Mars_Sample_Return', type: 'official', usedFor: '유럽 측 지구 귀환 우주선(ERO) 역할 배경' }
     ],
-    body: `<p>NASA와 ESA가 공동으로 추진하는 화성 샘플 귀환(<span class="hl">Mars Sample Return, MSR</span>) 미션의 재설계안이 최종 승인됐습니다. 2022년 비용 급등(최대 <span class="hl-warn">110억 달러</span> 예상)으로 한차례 중단됐던 프로젝트가 예산을 <span class="hl-warn">80억 달러 이내</span>로 줄이고 일정을 최적화해 재출발합니다.</p>
-<p>이미 <span class="hl">퍼서비어런스 탐사차</span>가 화성 예제로 크레이터에서 <span class="hl-warn">43개</span> 티타늄 샘플 튜브를 수집해 캐시(cache)로 보관 중입니다. 샘플 귀환 일정은 <span class="hl-warn">2031년</span>으로 확정됐습니다.</p>
-<p>이 임무가 성공하면 화성 생명체 존재 여부에 대한 결정적 단서를 얻을 수 있습니다. 특히 예제로 크레이터는 고대 호수 삼각주로, <span class="hl-good">생명체 흔적(바이오시그니처)이 보존됐을 가능성이 높은 지역</span>입니다.</p>`,
+    body: `<p>NASA와 ESA가 공동으로 추진하는 <span class="hl">화성 샘플 귀환(Mars Sample Return, MSR)</span> 임무의 재설계안이 최종 승인됐습니다. 2022년 독립 검토 보고서에서 비용이 최대 <span class="hl-warn">110억 달러</span>까지 치솟을 수 있다는 경고가 나온 이후 중단됐던 프로젝트가, 예산을 <span class="hl-warn">80억 달러 이내</span>로 줄이고 <span class="hl-warn">2031년</span> 지구 귀환을 목표로 재출발합니다.</p>
+<p>MSR 임무는 복잡한 릴레이 구조로 이루어집니다. 먼저 <span class="hl">샘플 귀환 착륙선(SRL)</span>이 화성에 내려 퍼서비어런스가 수집해둔 샘플 튜브를 소형 상승 로켓(MAV)으로 화성 궤도에 올립니다. 이후 ESA가 제공하는 <span class="hl">지구 귀환 궤도선(ERO)</span>이 궤도에서 샘플을 포획해 지구로 가져옵니다. 인류가 처음으로 다른 행성에서 로켓을 발사하는 역사적인 도전이기도 합니다.</p>
+<p>현재 화성의 예제로 크레이터에는 <span class="hl">퍼서비어런스 탐사차</span>가 수집한 <span class="hl-warn">43개</span> 티타늄 샘플 튜브가 두 곳의 캐시 지점에 보관되어 있습니다. 예제로 크레이터는 <span class="hl-warn">35~38억 년</span> 전 고대 호수와 삼각주가 있었던 곳으로, 유기물과 생명 흔적이 보존되기에 적합한 환경으로 꼽힙니다.</p>
+<p>MSR 재설계의 배경에는 예산 문제만 있지 않습니다. MAV 소형 로켓의 신뢰성 확보, 궤도 랑데부·샘플 포획 기술, 그리고 지구로 가져올 때의 생물학적 오염 방지(격리 시설) 등 기술 난도가 매우 높습니다. <span class="hl-good">재설계안은 임무 아키텍처를 단순화하고 민간 기업 참여를 늘리는 방향으로 수정됐습니다.</span></p>
+<p>화성 암석 샘플을 지구 실험실에서 분석하면 얻을 수 있는 정보는 어떤 탐사선 원격 장비로도 대체할 수 없습니다. <span class="hl">동위원소 연대 측정</span>으로 화성의 지질 역사를 정밀하게 복원하고, 유기물 분자와 광물 조성 분석으로 수십억 년 전 화성에 생명 활동이 있었는지 직접 검증할 수 있습니다. 이것이 MSR을 인류 역사상 가장 중요한 과학 임무 중 하나로 부르는 이유입니다.</p>
+<p>앞으로 주목할 변수는 세 가지입니다. ① <span class="hl">미국 의회의 예산 승인</span> 여부(MSR은 매년 NASA 예산 심의에서 논란이 됩니다), ② <span class="hl-warn">2031년</span> 귀환 일정 달성을 위한 SRL 제작 계획 확정, ③ 대체 아키텍처(민간 기업 참여 확대) 채택 여부입니다. 어느 방향이든 이 임무의 성패는 향후 수십 년간 화성 탐사의 방향을 결정짓게 됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -458,9 +465,11 @@ window.TRENDS_DATA = [
       { name: 'NASA Roman Space Telescope', url: 'https://roman.gsfc.nasa.gov/', type: 'official', usedFor: '로먼 망원경 발사 일정·WFI 테스트·과학 목표 확인' },
       { name: 'STScI Roman', url: 'https://www.stsci.edu/roman', type: 'background', usedFor: '로먼 WFI 사양·외계행성 통계 조사 배경' }
     ],
-    body: `<p>NASA의 <span class="hl">낸시 그레이스 로먼 우주망원경(Nancy Grace Roman Space Telescope)</span>이 최종 극저온 진공 테스트를 성공적으로 통과했습니다. <span class="hl-warn">2026년 6월 케네디 우주센터 인도, 9월 발사</span>를 목표로 마지막 준비 단계에 있습니다.</p>
-<p>로먼 망원경은 허블 우주망원경과 동일한 <span class="hl-warn">2.4m 주경</span>을 가지지만 시야각이 약 <span class="hl-warn">100배</span> 넓습니다. 주요 과학 목표는 ① 100만 개 이상 외계행성 통계 조사 ② 암흑에너지 성질 규명 ③ 적외선 넓은 시야 탐사.</p>
-<p>고다드 우주비행센터에서 진행된 극저온 테스트에서 <span class="hl-warn">230메가픽셀</span> 광시야 카메라(WFI)의 노이즈 특성이 <span class="hl-good">목표치를 크게 상회</span>했습니다.</p>`,
+    body: `<p>NASA의 <span class="hl">낸시 그레이스 로먼 우주망원경(Nancy Grace Roman Space Telescope)</span>이 최종 극저온 진공 테스트를 성공적으로 통과했습니다. 고다드 우주비행센터에서 진행된 이 시험에서 <span class="hl-warn">230메가픽셀</span> 광시야 카메라(WFI)의 노이즈 성능이 목표치를 상회했으며, <span class="hl-warn">2026년 6월 케네디우주센터 인도, 9월 발사</span>를 향한 마지막 준비 단계에 들어갔습니다.</p>
+<p>로먼 망원경은 허블 우주망원경과 동일한 <span class="hl-warn">2.4m 주경</span>을 사용하지만 시야각이 약 <span class="hl-warn">100배</span> 넓습니다. 허블이 특정 천체를 좁고 깊게 보는 망원경이라면, 로먼은 한 번에 넓은 하늘 영역을 담는 역할입니다. JWST가 개별 천체의 세밀한 적외선 관측에 특화됐다면, <span class="hl">로먼은 광대한 우주를 동시에 조망하는 통계 조사 도구</span>입니다. 이 차이가 로먼이 채울 수 있는 고유한 과학적 빈칸을 결정합니다.</p>
+<p>망원경의 이름은 <span class="hl">낸시 그레이스 로먼(Nancy Grace Roman)</span>에서 따왔습니다. 로먼은 NASA 최초의 천문학 수석(Chief of Astronomy)으로, 1960년대에 허블 우주망원경 계획을 최초로 제안한 선구자입니다. 이 망원경은 원래 WFIRST(Wide Field Infrared Survey Telescope)로 불렸으며, 2020년 NASA의 결정으로 현재 이름이 됐습니다.</p>
+<p>로먼의 세 가지 핵심 과학 목표는 ① <span class="hl">마이크로렌징 탐사</span>를 통한 외계행성 100만 개 이상 통계 분석 ② 초신성 조사를 통한 암흑에너지 성질 정밀 측정 ③ 우리 은하와 이웃 은하의 적외선 광시야 지도 제작입니다. 특히 마이크로렌징 방식은 JWST나 Kepler로도 감지하기 어려운 자유 부유 행성(항성 없이 표류하는 행성)을 탐지할 수 있어 주목받습니다.</p>
+<p>발사가 예정대로 진행된다면 <span class="hl-good">로먼 망원경은 허블·스피처·JWST로 이어진 NASA 대형 우주망원경 라인업에 합류</span>하며 설계 수명 최소 5년의 운용을 시작합니다. 2027년 이후 로먼과 JWST가 동시에 가동되면 서로 보완적인 관측 체계를 이루게 됩니다. 발사 일정은 공식 NASA 로먼 사이트에서 최신 상태를 확인하는 것이 권장됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -655,9 +664,12 @@ window.TRENDS_DATA = [
       { name: 'Nature Astronomy', url: 'https://www.nature.com/natastron/', type: 'paper', usedFor: 'K2-18b CO₂·CH₄·DMS 검출 논문 원문 확인' },
       { name: 'NASA JWST 미션', url: 'https://www.nasa.gov/missions/webb/', type: 'official', usedFor: 'JWST NIRSpec 분광관측 배경·K2-18b 화학 조성 설명' }
     ],
-    body: `<p>제임스웹 우주망원경(JWST)이 지구로부터 약 <span class="hl-warn">40광년</span> 떨어진 외계행성 <span class="hl">K2-18b</span>의 대기에서 이산화탄소(CO₂)와 메탄(CH₄)을 동시 검출했습니다. 이 분자 조합은 지구 같은 생명체가 존재하는 환경을 시사하는 '바이오시그니처' 후보로 주목받고 있습니다.</p>
-<p>K2-18b는 지구 질량의 약 <span class="hl-warn">8.6배</span>인 '슈퍼-지구'로, 별의 생명 가능Zone(habitable zone)에 위치합니다. 연구진은 또한 <span class="hl">디메틸설파이드(DMS)</span>의 약한 신호도 감지됐다고 밝혔습니다.</p>
-<p>다만 연구진은 비생물학적 화학 반응으로도 이 분자들이 만들어질 수 있으므로 <span class="hl">'생명체 발견'이 아닌 '유망 후보 확인'</span>이라고 신중하게 표현했습니다. 이번 발견은 Nature Astronomy에 게재됐습니다.</p>`,
+    body: `<p>제임스웹 우주망원경(<span class="hl">JWST</span>)이 지구로부터 약 <span class="hl-warn">40광년</span> 떨어진 외계행성 <span class="hl">K2-18b</span>의 대기에서 이산화탄소(CO₂)와 메탄(CH₄)을 동시 검출하고, 생물학적 기원 가능성이 있는 <span class="hl">디메틸설파이드(DMS)</span>의 약한 신호도 포착했다는 연구가 Nature Astronomy에 게재됐습니다.</p>
+<p>K2-18b는 지구 질량의 약 <span class="hl-warn">8.6배</span>인 슈퍼-지구로, 적색왜성 K2-18을 공전합니다. 연구진은 K2-18b를 <span class="hl">하이션 세계(Hycean world)</span>의 후보로 분류합니다. 하이션 세계란 두꺼운 수소-헬륨 대기 아래 광대한 액체 바다가 존재할 가능성이 있는 행성 유형으로, 지구형 암석 행성이나 가스 거성과는 구별되는 제3의 유형입니다.</p>
+<p>K2-18b는 항성으로부터 적절한 거리에 위치한 <span class="hl">거주 가능 구역(habitable zone)</span> 안에 있습니다. JWST의 <span class="hl">NIRSpec 분광기</span>는 행성이 별 앞을 지날 때 별빛이 행성 대기를 통과하면서 각 분자가 특정 파장의 빛을 흡수하는 것을 측정해 대기 성분을 분석합니다. CO₂와 CH₄가 함께 존재하면, 지구 대기처럼 생명 활동이 유지하는 화학적 불평형 상태일 수 있습니다.</p>
+<p>이번 논쟁의 핵심은 <span class="hl">DMS(디메틸설파이드)</span> 신호입니다. 지구에서 DMS는 주로 해양 식물성 플랑크톤이 생성하는 분자로 알려져 있습니다. 그러나 K2-18b에서의 신호는 미약하며, 연구진 자신도 잠정적인 탐지라고 명시했습니다. 비생물적 화학 반응으로도 DMS가 만들어질 수 있는지는 학계에서 여전히 검토 중입니다.</p>
+<p>연구진은 이번 발견을 <span class="hl">'생명체 발견'이 아닌 '유망 후보 확인'</span>으로 명확히 표현했습니다. CO₂·CH₄의 동시 존재는 생명 활동이 아닌 지질 과정으로도 설명될 수 있으므로, 결론보다는 <span class="hl-good">외계행성 대기 관측 역사에서 가장 주목할 만한 바이오시그니처 후보 데이터</span>로 평가하는 것이 적절합니다.</p>
+<p>앞으로 JWST의 <span class="hl">MIRI 중적외선 기기</span>를 이용한 후속 관측과 다른 연구팀의 독립 검증이 핵심 과제입니다. '생명체가 사는 외계행성'이라는 결론을 내리기까지는 여러 단계의 추가 검증이 필요하며, 이 과정 자체가 외계생명체 탐색 과학의 발전을 이끌게 될 것입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
