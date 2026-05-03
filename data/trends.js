@@ -82,9 +82,12 @@ window.TRENDS_DATA = [
       { name: 'ESA Space Debris', url: 'https://www.esa.int/Space_Safety/Space_Debris', type: 'official', usedFor: '잔해 현황·수치·케슬러 신드롬 정의 확인' },
       { name: 'ESA Space Safety', url: 'https://www.esa.int/Space_Safety', type: 'background', usedFor: 'ESA 정책 권고안·5년 재진입 의무화 배경' }
     ],
-    body: `<p>유럽우주국(ESA)이 최신 우주잔해 현황 보고서를 통해 저궤도(LEO) 우주잔해 밀도가 <span class="hl">케슬러 신드롬(Kessler Syndrome)</span> 임계치에 근접하고 있다고 공식 경고했습니다. 케슬러 신드롬이란 궤도 위 오염이 너무 심각해지면 위성들이 서로 충돌하며 연쇄 반응으로 더 많은 파편을 만들어내는 악순환입니다.</p>
-<p>현재 지구 궤도에는 <span class="hl-warn">10cm 이상 추적 가능 파편 40,000개 이상, 1cm 이상 추정 파편 100만 개 이상, 1mm 이상 미소 파편 1억 3천만 개 이상</span>이 분포합니다. 1cm 크기 파편도 충돌 시 총알의 10배 에너지로 위성을 파괴할 수 있습니다.</p>
-<p>ESA는 특히 스타링크·원웹 등 <span class="hl">대형 위성군집(메가 컨스텔레이션)</span>의 급속한 팽창을 주요 위험 요인으로 지목했습니다. ESA의 핵심 제안: ① 임무 종료 후 <span class="hl-warn">5년 이내 대기권 재진입 의무화</span> ② 능동적 잔해 제거(ADR) 기술 표준화 ③ 충돌 위험 데이터 국제 공유 의무화.</p>`,
+    body: `<p>유럽우주국(ESA)이 2026년 4월 최신 우주잔해 현황 보고서를 발표하며 저궤도(LEO) 우주잔해 밀도가 <span class="hl">케슬러 신드롬(Kessler Syndrome)</span> 임계치에 근접하고 있다고 공식 경고했습니다. ESA는 이 문제가 방치될 경우 특정 궤도 구간이 수십 년 내에 사실상 사용 불가능해질 수 있다고 지적합니다.</p>
+<p><span class="hl">케슬러 신드롬</span>은 1978년 NASA 과학자 도널드 케슬러가 예측한 시나리오입니다. 궤도 파편 밀도가 임계점을 넘으면, 파편이 위성과 충돌해 더 많은 파편을 생성하고 이 파편이 또 다른 위성과 충돌하는 연쇄 반응이 멈추지 않게 됩니다. 현재 지구 궤도에는 <span class="hl-warn">10cm 이상 추적 가능 파편 40,000개 이상, 1cm 이상 추정 파편 100만 개 이상</span>이 분포하며, 1cm 파편도 충돌 시 위성을 치명적으로 손상시킬 수 있습니다.</p>
+<p>우주잔해 문제는 오래전부터 예고됐습니다. <span class="hl-warn">2007년</span> 중국의 기상위성 FY-1C 요격 실험과 <span class="hl-warn">2009년</span> 이리듐 33–코스모스 2251 위성 충돌 사고가 파편 수를 크게 늘렸습니다. 최근에는 <span class="hl">스타링크·원웹 등 메가 컨스텔레이션</span>의 급속한 확장으로 저궤도 위성 수가 빠르게 증가하면서 충돌 위험도 높아지고 있습니다.</p>
+<p>이 문제가 중요한 이유는 현대 디지털 인프라와 직결되기 때문입니다. GPS 위성, 기상 위성, 통신 위성은 모두 지구 궤도에 위치합니다. 연쇄 충돌이 현실화되면 <span class="hl-warn">항법·통신·기상 예보 등 일상 인프라 전반</span>이 영향을 받습니다. ESA는 특히 고도 550~1,200km 저궤도 구간이 가장 취약하다고 지목합니다.</p>
+<p>ESA가 제안하는 핵심 대응책은 세 가지입니다: ① 임무 종료 후 <span class="hl-warn">5년 이내 대기권 재진입 의무화</span> ② 위성을 궤도에서 직접 끌어내리는 능동 잔해 제거(ADR) 기술 개발·표준화 ③ 충돌 위험 데이터의 국제 공유 의무화. 현재는 국가마다 규정이 달라 일관된 집행이 어렵습니다.</p>
+<p>앞으로 주목할 점은 국제 규범 형성 속도입니다. UN 우주평화이용위원회(COPUOS) 차원의 논의가 진행 중이지만 구속력 있는 국제 조약은 아직 없습니다. <span class="hl">각국의 자발적 이행</span>에 기댈 수밖에 없는 현 구조에서, ESA의 이번 경고가 실질적인 정책 변화로 이어질지 지켜볼 필요가 있습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -305,9 +308,12 @@ window.TRENDS_DATA = [
       { name: 'KASA 한국우주항공청', url: 'https://www.kasa.go.kr/', type: 'official', usedFor: '달 탐사 로드맵·예산·목표 연도 확인' },
       { name: 'KARI 한국항공우주연구원', url: 'https://www.kari.re.kr/', type: 'background', usedFor: '누리호 개량형·차세대발사체 기술 배경' }
     ],
-    body: `<p>대한민국 우주항공청(KASA)이 설립 1주년을 맞아 '한국형 달 탐사 중장기 로드맵'을 공식 발표했습니다. <span class="hl-warn">2032년 달 궤도선 투입, 2035년 달 착륙</span>을 핵심 목표로 삼는 이 계획은 약 <span class="hl-warn">3조 원</span> 규모의 예산을 포함합니다.</p>
-<p>로드맵의 핵심 내용: ① 2028년 <span class="hl">누리호 성능 개량형</span> 달 궤도 시범 발사 ② 2030년 차세대발사체(KSLV-III) 1차 비행 ③ 2032년 달 궤도 랑데부 검증 ④ 2035년 달 남극 착륙. KASA는 아르테미스 협정 체계 내에서 NASA, ESA와의 공동 임무도 적극 검토하고 있습니다.</p>
-<p><span class="hl-good">국내 우주 산업계는 KASA 설립 1년간 총 4,200억 원의 관련 계약을 수주</span>하며 산업 생태계 활성화 효과가 나타나고 있습니다.</p>`,
+    body: `<p>한국우주항공청(<span class="hl">KASA</span>)이 설립 1주년을 맞아 '한국형 달 탐사 중장기 로드맵'을 공식 발표했습니다. <span class="hl-warn">2032년 달 궤도선 투입, 2035년 달 착륙</span>을 핵심 목표로 삼는 이 계획은 약 <span class="hl-warn">3조 원</span> 규모의 예산을 포함하며, 한국이 독자적인 달 탐사 역량을 갖추겠다는 의지를 공식화한 것입니다.</p>
+<p>KASA는 <span class="hl-warn">2024년 5월</span> 출범한 정부 기관으로, 기존 한국항공우주연구원(KARI)이 담당하던 국가 우주개발 총괄 기능을 이어받았습니다. 우주항공청 설립은 우주개발을 연구 중심에서 정책·산업 중심으로 전환하려는 의도를 반영합니다. KARI는 연구개발 기관으로 계속 존재하면서 기술 개발을 담당합니다.</p>
+<p>한국의 우주개발은 단계적으로 이루어져 왔습니다. <span class="hl">누리호(KSLV-II)</span>는 한국이 독자 기술로 개발한 첫 우주발사체로, 2022년 2차 발사에서 실용 위성 궤도 투입에 성공했습니다. 달 궤도선 <span class="hl-good">다누리(KPLO)는 2022년 8월 발사되어 2022년 말 달 궤도에 성공적으로 진입했고 현재도 운용 중</span>입니다. 이 두 성과가 이번 달 탐사 로드맵의 출발점입니다.</p>
+<p>이번 로드맵은 그 다음 단계를 구체화합니다: ① <span class="hl-warn">2028년</span> 누리호 성능 개량형으로 달 궤도 시범 발사 ② 2030년 차세대발사체(KSLV-III) 1차 비행 ③ 2032년 달 궤도 랑데부 검증 ④ 2035년 달 남극 착륙. KASA는 아르테미스 협정 체계에서 NASA·ESA와의 공동 임무도 검토하고 있습니다.</p>
+<p>앞으로 주목할 변수는 세 가지입니다. 첫째, <span class="hl-warn">3조 원</span> 규모 예산이 실제로 연도별 국회 심의를 통과하고 집행될 수 있는지입니다. 둘째, 차세대발사체 개발 일정입니다. 2030년 1차 비행은 누리호 대비 훨씬 높은 기술 수준을 요구합니다. 셋째, 국내 민간 우주기업의 역량이 얼마나 빠르게 성장하느냐입니다.</p>
+<p>한국의 달 탐사 로드맵은 미국 아르테미스, 중국 창어 시리즈, 인도 찬드라얀이 경쟁하는 글로벌 달 탐사 흐름과 맞닿아 있습니다. <span class="hl">독자 달 착륙 역량 확보</span>는 과학 성과를 넘어 우주 강국으로서의 입지를 공고히 하는 전략적 의미를 가집니다. <span class="hl-good">KASA 설립 1년간 국내 우주 산업계의 관련 계약 수주가 4,200억 원에 달했다</span>는 점은 산업 생태계 활성화 조짐으로 긍정적으로 평가됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -329,8 +335,11 @@ window.TRENDS_DATA = [
       { name: 'NASA SLS 미션', url: 'https://www.nasa.gov/exploration/systems/sls/', type: 'official', usedFor: 'SLS 2호 조립 완료·열차폐재 개선 사항 확인' },
       { name: 'NASA Artemis II', url: 'https://www.nasa.gov/mission/artemis-ii/', type: 'background', usedFor: 'SLS 2호와 아르테미스 II 발사 연계 배경' }
     ],
-    body: `<p>NASA의 케네디우주센터 <span class="hl">Vehicle Assembly Building(VAB)</span>에서 아르테미스 II 임무용 우주발사시스템(SLS) 2호 로켓의 조립이 완료됐습니다. SLS Block 1B 구성으로, 1호 대비 페이로드 능력이 약 <span class="hl-warn">10%</span> 향상된 버전입니다.</p>
-<p>이번 조립에서는 1호 비행에서 발견된 <span class="hl">열차폐재 박리</span> 문제를 해결하기 위해 코어 스테이지 상단 접합부 설계가 변경됐습니다. <span class="hl-good">아르테미스 II 임무는 이후 계획대로 2026년 4월 발사됐습니다.</span></p>`,
+    body: `<p>NASA의 케네디우주센터 <span class="hl">Vehicle Assembly Building(VAB)</span>에서 아르테미스 II 임무용 우주발사시스템(SLS) 2호 로켓의 조립이 완료됐습니다. 2022년 아르테미스 I에서 발견된 오리온 캡슐 열차폐재 박리 문제를 개선하고 발사 준비를 마무리한 단계입니다.</p>
+<p><span class="hl">SLS(Space Launch System)</span>는 아르테미스 프로그램의 핵심 발사체입니다. 4기의 RS-25 주 엔진과 2기의 고체로켓부스터(SRB)가 조합되어 달 방향 궤도에 유인 캡슐을 투입할 수 있는 NASA의 초대형 발사체입니다. RS-25는 원래 우주왕복선(Space Shuttle)에 사용된 엔진을 개량한 것입니다. SLS 로켓에 오리온 캡슐과 ESA가 제공하는 <span class="hl">유럽 서비스 모듈(ESM)</span>이 결합되어 아르테미스 임무의 핵심 조합을 이룹니다.</p>
+<p>SLS 개발은 2011년 시작돼 당초 예정보다 수년 지연됐습니다. 첫 비행인 <span class="hl">아르테미스 I</span>은 <span class="hl-warn">2022년 11월</span> 무인 달 궤도 비행으로 완료됐습니다. 당시 재진입 단계에서 오리온 열차폐재 일부가 예상보다 크게 박리된 것이 확인됐고, NASA는 약 2년에 걸쳐 접합부 설계를 수정했습니다.</p>
+<p>이번 SLS 2호의 핵심 변경점은 <span class="hl">오리온 열차폐재 접합 방식 개선</span>입니다. NASA는 박리 원인을 분석해 코어 스테이지와 오리온 캡슐 연결부의 설계를 수정했습니다. <span class="hl-good">아르테미스 II 임무는 이후 2026년 4월 계획대로 발사됐으며, 4명의 승무원이 달 궤도 근처를 비행하고 무사 귀환했습니다.</span></p>
+<p>앞으로의 SLS 일정에서 주목할 점은 생산 지속성입니다. SLS는 엔진을 재사용하지 않는 소모형 발사체로 발사마다 새로 제작해야 합니다. 아르테미스 III(<span class="hl-warn">2027년 7월 예정</span>)을 위한 SLS 3호 준비도 이미 진행 중이지만, 높은 제작 비용과 생산 속도 문제는 장기적으로 해결해야 할 과제로 꼽힙니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -345,15 +354,18 @@ window.TRENDS_DATA = [
     status: 'developing',
     category: 'satellite',
     tags: ['위성군집', 'SpaceX', '스타링크'],
-    whyItMatters: '스타링크 v3는 v2 대비 용량 2.3배 증가. 2027년까지 평균 속도 400Mbps 목표.',
+    whyItMatters: '저궤도 위성군이 오지·해양·항공기에 인터넷 접근을 확대하는 한편, 궤도 혼잡·천문 관측 방해 등 과제도 동시에 제기.',
     lastFactChecked: '2026-05-01',
-    editorNote: '⚠️ v3 위성 발사 날짜 및 누적 위성 수는 SpaceX 공식 발사 기록 페이지에서 재확인 권장.',
+    editorNote: '⚠️ v3 위성 발사 날짜 및 누적 위성 수는 SpaceX 공식 발사 기록 페이지에서 재확인 권장. v3 용량 수치(2.3배 등) 공식 출처 독립 확인 필요.',
     sources: [
       { name: 'SpaceX 발사 기록', url: 'https://www.spacex.com/launches/', type: 'official', usedFor: 'Starlink v3 발사 날짜·위성 수 확인' },
       { name: 'Starlink 공식', url: 'https://www.starlink.com/', type: 'background', usedFor: 'Starlink 서비스 현황·v3 용량 개선 배경' }
     ],
-    body: `<p>SpaceX가 3세대 스타링크(Starlink v3) 위성 <span class="hl-warn">50기</span>를 팰컨 9 로켓으로 한꺼번에 발사하는 데 성공했습니다. 총 누적 운용 위성 수가 <span class="hl-warn">8,200기</span>를 돌파했습니다.</p>
-<p>스타링크 v3는 E-Band 주파수를 추가 활용해 단일 위성당 데이터 처리 용량이 기존 v2 대비 <span class="hl-warn">2.3배</span>로 증가했습니다. 현재 스타링크는 전 세계 <span class="hl">120개국 이상</span>에서 400만 명 이상이 사용 중입니다.</p>`,
+    body: `<p>SpaceX가 3세대 스타링크(<span class="hl">Starlink v3</span>) 위성 <span class="hl-warn">50기</span>를 팰컨 9 로켓으로 일괄 발사하는 데 성공했습니다. 누적 운용 위성 수가 <span class="hl-warn">8,200기</span>를 돌파하며 단일 사업자 기준 역대 최대 규모의 위성군을 운용하게 됐습니다.</p>
+<p><span class="hl">스타링크(Starlink)</span>는 SpaceX가 구축 중인 저궤도 위성 인터넷 서비스입니다. 수천 기의 위성을 고도 <span class="hl-warn">540~570km</span> 저궤도에 배치해 지상 기지국이 없는 오지·해양·항공기에도 광대역 인터넷을 제공하는 것이 목표입니다. 현재 전 세계 100개국 이상에서 서비스 중입니다.</p>
+<p>스타링크는 2019년 첫 발사 이후 빠르게 세대 교체를 거쳤습니다. v1.5부터 위성 간 레이저 링크(ISL)가 도입됐고, v2부터는 위성 크기와 용량이 대폭 늘어났습니다. v3는 이전 세대 대비 단일 위성당 처리 용량이 향상된 것으로 알려져 있으나, <span class="hl">구체적인 성능 수치는 SpaceX 공식 발표로 독립 확인이 필요</span>합니다. v3는 향후 스타십으로 대량 발사하는 것도 설계 목표 중 하나입니다.</p>
+<p>스타링크 확장에는 긍정적 측면과 우려가 공존합니다. 전 세계 인터넷 소외 지역 해소와 재난·분쟁 지역 통신 유지라는 공익적 효과가 있는 반면, 천문학계는 <span class="hl-warn">위성 밝기와 전파 간섭</span>이 지상 망원경 관측을 방해한다고 지속적으로 문제를 제기합니다. 저궤도 혼잡과 충돌 위험도 함께 높아지고 있습니다.</p>
+<p>앞으로 주목할 변수는 스타십과의 결합입니다. 스타십이 대량 발사 역할을 본격적으로 맡기 시작하면 위성 투입 비용이 더 낮아지고 군집 규모도 빠르게 늘어날 수 있습니다. <span class="hl">아마존 카이퍼, 유텔샛 원웹</span> 등 경쟁 서비스도 성장하면서 저궤도 위성 인터넷 시장 경쟁이 본격화되고 있습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
@@ -375,8 +387,11 @@ window.TRENDS_DATA = [
       { name: 'KARI 한국항공우주연구원', url: 'https://www.kari.re.kr/', type: 'official', usedFor: 'CAS500-3 운용 개시·센서 스펙 확인' },
       { name: 'KASA 한국우주항공청', url: 'https://www.kasa.go.kr/', type: 'background', usedFor: '위성 활용·수요 기관 연계 배경' }
     ],
-    body: `<p>한국항공우주연구원(KARI)이 독자 개발한 <span class="hl">차세대 중형위성 3호(CAS500-3)</span>가 정상 운용에 돌입했습니다. 2025년 발사 후 약 1년의 궤도 검증을 마치고 공식 임무 운용을 시작했습니다.</p>
-<p>차세대 중형위성 3호는 해상도 <span class="hl-warn">0.5m급</span> 광학 카메라와 <span class="hl-warn">0.8m급</span> 열적외선(TIR) 센서를 탑재했습니다. <span class="hl-good">광학과 열적외선의 동시 관측으로 화재 감지 정확도가 이전 위성 대비 40% 향상</span>됐습니다.</p>`,
+    body: `<p>한국항공우주연구원(KARI)이 독자 개발한 <span class="hl">차세대중형위성 3호(CAS500-3)</span>가 약 1년의 궤도 검증 기간을 마치고 정식 운용에 돌입했습니다. <span class="hl-warn">0.5m급</span> 광학 카메라와 <span class="hl-warn">0.8m급</span> 열적외선(TIR) 센서를 복합 탑재한 국산 지구관측 위성입니다.</p>
+<p><span class="hl">차세대중형위성(CAS500) 사업</span>은 한국이 독자적인 500kg급 표준 위성 플랫폼을 개발하는 프로젝트입니다. 위성 본체(버스)와 핵심 부품의 국산화를 통해 개발 비용을 낮추고, 다양한 임무 장비(탑재체)를 교체 탑재할 수 있는 유연한 구조를 목표로 합니다. 이 표준 플랫폼이 안정화되면 다양한 임무의 위성을 더 빠르게 반복 생산할 수 있게 됩니다.</p>
+<p>한국 위성 개발은 1999년 <span class="hl">아리랑 1호(KOMPSAT-1)</span> 발사 이후 KOMPSAT 시리즈로 이어져 왔으나, 상당 부분이 외국 기술 협력이나 해외 발사체에 의존했습니다. <span class="hl-good">CAS500-1이 2021년 3월, CAS500-2가 2022년 3월 발사되며 국산 표준 플랫폼의 기반을 확립</span>했습니다. CAS500-3은 앞선 두 위성의 경험을 바탕으로 광학과 열적외선을 동시 탑재한 복합 관측 위성으로 발전했습니다.</p>
+<p>이 위성이 중요한 이유는 활용 범위 때문입니다. 광학과 열적외선 복합 관측은 산불·홍수 등 재난 조기 감지, 농업·산림 현황 파악, 도시 열섬 모니터링 등에 활용될 수 있습니다. <span class="hl">국토교통부·환경부 등 수요 기관</span>에 위성 영상을 공급해 국가 위성정보 자립도를 높이는 효과도 있습니다.</p>
+<p>앞으로 주목할 것은 민간 산업으로의 기술 이전입니다. CAS500 사업의 목표 중 하나는 위성 제작 기술을 국내 산업체에 이전해 민간 우주산업 생태계를 육성하는 것입니다. 국내 기업들이 위성 개발에 참여하면서 이전보다 넓은 산업 기반이 형성되고 있으며, <span class="hl">KASA 달 탐사 로드맵</span>의 목표를 실현하려면 이러한 위성 기술 기반의 지속적 강화가 선행 조건이 됩니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
   },
   {
