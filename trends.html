@@ -634,7 +634,23 @@
         const editorNoteHtml = item.editorNote
           ? `<div class="modal-verify-note">${esc(item.editorNote)}</div>`
           : '';
-        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}</div>`;
+        // 참고 출처 (item.sources[])
+        let sourcesHtml = '';
+        if (item.sources && item.sources.length) {
+          const TYPE_LABELS = { official: '공식', paper: '논문', reliable_media: '신뢰 미디어', background: '배경', image: '이미지' };
+          sourcesHtml += '<div class="modal-verify-title" style="margin-top:0.75rem;">🔗 참고 출처</div>';
+          item.sources.forEach(function(s) {
+            const typeLabel = TYPE_LABELS[s.type] || esc(s.type);
+            sourcesHtml += `<div class="modal-verify-row">`
+              + `<span class="modal-verify-label">${typeLabel}</span>`
+              + (s.url
+                ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" class="modal-verify-link">${esc(s.name)} ↗</a>`
+                : `<span>${esc(s.name)}</span>`)
+              + (s.usedFor ? ` <span style="font-size:0.68rem;color:#555;">${esc(s.usedFor)}</span>` : '')
+              + `</div>`;
+          });
+        }
+        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
 
         document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(bodyHtml);
 

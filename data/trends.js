@@ -51,6 +51,10 @@ window.TRENDS_DATA = [
     whyItMatters: '아폴로 17호(1972) 이후 54년 만의 유인 달 궤도 비행 성공. 아르테미스 III 달 착륙(2027년 7월)의 핵심 전제 조건 완료.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 2026.04.01 발사 및 04.10 귀환은 공식 NASA 발표를 기반으로 기재됨. 세부 데이터는 NASA 공식 사이트에서 최종 확인 권장.',
+    sources: [
+      { name: 'NASA Artemis II 미션', url: 'https://www.nasa.gov/mission/artemis-ii/', type: 'official', usedFor: '임무 일정·귀환 결과 확인' },
+      { name: 'ESA 보도자료 — Splashdown for Artemis II', url: 'https://www.esa.int/Newsroom/Press_Releases/Splashdown_for_Artemis_II', type: 'official', usedFor: 'ESM 역할·귀환 시각·한센 승무원 정보 확인' }
+    ],
     body: `<p><span class="hl">아르테미스 II</span> 임무가 2026년 4월 1일 발사, <span class="hl-warn">4월 10일</span> 태평양 귀환·착수로 성공적으로 완료됐습니다. 아폴로 17호(1972년) 이후 약 54년 만에 인류가 달 궤도 근처를 비행한 역사적인 임무입니다.</p>
 <p>4명의 승무원 — <span class="hl">리드 와이즈먼(지휘관), 빅터 글로버(조종사), 크리스티나 코크, 제레미 한센(캐나다)</span> — 은 약 10일간의 비행을 마치고 무사히 귀환했습니다. 크리스티나 코크는 최초의 여성 달 궤도 비행사, 빅터 글로버는 최초의 흑인 달 궤도 비행사 기록을 세웠습니다.</p>
 <p>귀환 이후 NASA는 오리온 캡슐의 <span class="hl">열차폐재 재진입 성능, 생명유지장치 10일 연속 운용 데이터, 심우주 방사선 피폭 측정값</span>을 분석 중입니다. 이 데이터는 아르테미스 III 달 착륙(<span class="hl-warn">2027년 7월 예정</span>)의 안전 기준 수립에 직접 활용됩니다.</p>
@@ -72,6 +76,10 @@ window.TRENDS_DATA = [
     whyItMatters: '위성 충돌 연쇄 반응은 GPS·인터넷·기상 위성 전체를 위협. 모든 현대 디지털 인프라에 영향.',
     lastFactChecked: '2026-05-01',
     editorNote: null,
+    sources: [
+      { name: 'ESA Space Debris', url: 'https://www.esa.int/Space_Safety/Space_Debris', type: 'official', usedFor: '잔해 현황·수치·케슬러 신드롬 정의 확인' },
+      { name: 'ESA Space Safety', url: 'https://www.esa.int/Space_Safety', type: 'background', usedFor: 'ESA 정책 권고안·5년 재진입 의무화 배경' }
+    ],
     body: `<p>유럽우주국(ESA)이 최신 우주잔해 현황 보고서를 통해 저궤도(LEO) 우주잔해 밀도가 <span class="hl">케슬러 신드롬(Kessler Syndrome)</span> 임계치에 근접하고 있다고 공식 경고했습니다. 케슬러 신드롬이란 궤도 위 오염이 너무 심각해지면 위성들이 서로 충돌하며 연쇄 반응으로 더 많은 파편을 만들어내는 악순환입니다.</p>
 <p>현재 지구 궤도에는 <span class="hl-warn">10cm 이상 추적 가능 파편 40,000개 이상, 1cm 이상 추정 파편 100만 개 이상, 1mm 이상 미소 파편 1억 3천만 개 이상</span>이 분포합니다. 1cm 크기 파편도 충돌 시 총알의 10배 에너지로 위성을 파괴할 수 있습니다.</p>
 <p>ESA는 특히 스타링크·원웹 등 <span class="hl">대형 위성군집(메가 컨스텔레이션)</span>의 급속한 팽창을 주요 위험 요인으로 지목했습니다. ESA의 핵심 제안: ① 임무 종료 후 <span class="hl-warn">5년 이내 대기권 재진입 의무화</span> ② 능동적 잔해 제거(ADR) 기술 표준화 ③ 충돌 위험 데이터 국제 공유 의무화.</p>`,
@@ -92,6 +100,10 @@ window.TRENDS_DATA = [
     whyItMatters: '태양 폭풍은 지구 전력망과 위성 운용에 심각한 피해를 줄 수 있어 우주 날씨 예보의 핵심 데이터원.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 최근접 통과 정확 날짜(2026.04.05) 공식 ESA 발표와 대조 권장. Solar Orbiter 임무 자체는 진행 중이며 여러 차례 최근접 통과를 수행 중임.',
+    sources: [
+      { name: 'ESA Solar Orbiter', url: 'https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter', type: 'official', usedFor: '임무 현황·최근접 통과 데이터 확인' },
+      { name: 'NASA Solar Orbiter', url: 'https://www.nasa.gov/solar-orbiter/', type: 'official', usedFor: 'NASA 공동 운용·EUI 장비 사양 배경' }
+    ],
     body: `<p>ESA와 NASA가 공동 운용하는 태양 탐사선 <span class="hl">Solar Orbiter</span>가 태양에서 불과 <span class="hl-warn">4,200만 km</span>(태양-지구 거리의 약 0.28배) 지점을 통과하며 사상 최고 해상도의 태양 코로나 영상을 지구로 전송했습니다.</p>
 <p>이번 관측에서 Solar Orbiter는 <span class="hl">태양 코로나 가열(Coronal Heating)</span> 문제의 실마리인 '캠프파이어(campfire)'라 불리는 미소 폭발 현상을 수만 개 기록했습니다. 태양 표면 온도는 약 5,500°C인데, 대기층 코로나는 <span class="hl-warn">100만°C 이상</span>이라는 오래된 수수께끼를 푸는 데 이 데이터가 핵심 역할을 할 것으로 기대됩니다.</p>
 <p>Solar Orbiter의 <span class="hl">EUI(고해상도 자외선 이미저)</span>로 55km 해상도의 태양 표면 영상을 촬영했습니다. <span class="hl-good">우주 날씨 예보(Space Weather Forecasting)의 핵심 데이터원</span>으로 활용됩니다.</p>`,
@@ -112,6 +124,10 @@ window.TRENDS_DATA = [
     whyItMatters: '암석 행성 대기 직접 관측의 첫 사례. 외계행성 연구의 새로운 유형 "용암 세계" 분류 확립.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 55 Cancri e 관련 JWST 논문은 2024년 Nature에 실제 게재됨. 이 기사의 2026.04.05 날짜가 최신 후속 발표인지 STScI 공식 발표 페이지에서 재확인 권장.',
+    sources: [
+      { name: 'NASA JWST 미션', url: 'https://www.nasa.gov/missions/webb/', type: 'official', usedFor: 'JWST 55 Cancri e 관측 결과 기반 확인' },
+      { name: 'STScI (Space Telescope Science Institute)', url: 'https://www.stsci.edu/', type: 'official', usedFor: 'JWST 관측 데이터 분석·용암 세계 유형 분류 배경' }
+    ],
     body: `<p>제임스웹 우주망원경(JWST)이 <span class="hl">55 Cancri e</span>(지구에서 <span class="hl-warn">41광년</span> 떨어진 슈퍼-지구)의 대기에서 <span class="hl">이산화규소(SiO₂) 증기</span>와 마그네슘 황화물(MgS) 구름 성분을 처음으로 직접 관측했습니다.</p>
 <p>55 Cancri e는 질량이 지구의 약 <span class="hl-warn">8.6배</span>인 슈퍼-지구로 별에 매우 가까워 표면 온도가 <span class="hl-warn">2,000°C 이상</span>입니다. <span class="hl">JWST NIRSpec 분광관측</span>을 통해 이 특이한 대기 구성이 확인됐습니다.</p>
 <p>이번 발견은 외계행성 연구의 새로운 유형인 <span class="hl-good">'용암 세계(Lava World)'의 대기 특성을 처음으로 밝혀낸 것</span>으로, 암석 행성 진화 연구에 중요한 단서를 제공합니다.</p>`,
@@ -132,6 +148,10 @@ window.TRENDS_DATA = [
     whyItMatters: '중국이 아르테미스보다 먼저 달 남극에 도달하면 달 자원 선점 경쟁의 지형이 바뀔 수 있음.',
     lastFactChecked: '2026-05-01',
     editorNote: null,
+    sources: [
+      { name: 'CNSA 중국국가항천국', url: 'https://www.cnsa.gov.cn/', type: 'official', usedFor: '창어 7호 착륙 지점·임무 구성 발표 확인' },
+      { name: 'NASA Moon to Mars', url: 'https://www.nasa.gov/moon-to-mars/', type: 'background', usedFor: '아르테미스 착륙 후보 지점과의 자원 경쟁 배경' }
+    ],
     body: `<p>중국국가항천국(CNSA)이 달 남극 탐사 미션 <span class="hl">창어 7호(嫦娥七號)</span>의 착륙 지점을 <span class="hl">샤클턴 크레이터(Shackleton Crater)</span> 인근으로 최종 선정했습니다. 아르테미스 계획 착륙 후보 지점과 불과 수십 km 이내 거리에 있어 자원 선점 경쟁이 예고됩니다.</p>
 <p>창어 7호는 <span class="hl-warn">궤도선·착륙선·로버·소형 비행체</span> 4개 요소로 구성됩니다. 특히 호핑 소형 비행체(Mini Flying Detector)는 로버가 접근하기 어려운 <span class="hl">영구 음영 크레이터</span> 내부로 직접 비행해 물 얼음을 채취하는 임무를 수행합니다.</p>
 <p>창어 7호 발사는 창정 5호 로켓으로 <span class="hl-warn">2026년 하반기</span>에 계획됩니다. <span class="hl-good">창어 6호(2024년)는 이미 달 뒷면 샘플 귀환에 성공해 인류 첫 달 뒷면 샘플을 지구로 가져왔습니다.</span></p>`,
@@ -250,6 +270,10 @@ window.TRENDS_DATA = [
     whyItMatters: '화성 생명체 존재 여부에 대한 결정적 단서를 얻을 수 있는 인류 역사상 가장 중요한 과학 임무 중 하나.',
     lastFactChecked: '2026-05-01',
     editorNote: null,
+    sources: [
+      { name: 'NASA Mars Sample Return', url: 'https://mars.nasa.gov/msr/', type: 'official', usedFor: 'MSR 재설계안·예산·2031년 귀환 일정 확인' },
+      { name: 'ESA Mars Sample Return', url: 'https://www.esa.int/Science_Exploration/Space_Science/Mars_Sample_Return', type: 'official', usedFor: '유럽 측 지구 귀환 우주선(ERO) 역할 배경' }
+    ],
     body: `<p>NASA와 ESA가 공동으로 추진하는 화성 샘플 귀환(<span class="hl">Mars Sample Return, MSR</span>) 미션의 재설계안이 최종 승인됐습니다. 2022년 비용 급등(최대 <span class="hl-warn">110억 달러</span> 예상)으로 한차례 중단됐던 프로젝트가 예산을 <span class="hl-warn">80억 달러 이내</span>로 줄이고 일정을 최적화해 재출발합니다.</p>
 <p>이미 <span class="hl">퍼서비어런스 탐사차</span>가 화성 예제로 크레이터에서 <span class="hl-warn">43개</span> 티타늄 샘플 튜브를 수집해 캐시(cache)로 보관 중입니다. 샘플 귀환 일정은 <span class="hl-warn">2031년</span>으로 확정됐습니다.</p>
 <p>이 임무가 성공하면 화성 생명체 존재 여부에 대한 결정적 단서를 얻을 수 있습니다. 특히 예제로 크레이터는 고대 호수 삼각주로, <span class="hl-good">생명체 흔적(바이오시그니처)이 보존됐을 가능성이 높은 지역</span>입니다.</p>`,
@@ -270,6 +294,10 @@ window.TRENDS_DATA = [
     whyItMatters: '한국이 우주 강국 전략을 공식화. 약 3조 원 규모 투자 계획이 국내 우주 산업 생태계에 미치는 파급 효과.',
     lastFactChecked: '2026-05-01',
     editorNote: null,
+    sources: [
+      { name: 'KASA 한국우주항공청', url: 'https://www.kasa.go.kr/', type: 'official', usedFor: '달 탐사 로드맵·예산·목표 연도 확인' },
+      { name: 'KARI 한국항공우주연구원', url: 'https://www.kari.re.kr/', type: 'background', usedFor: '누리호 개량형·차세대발사체 기술 배경' }
+    ],
     body: `<p>대한민국 우주항공청(KASA)이 설립 1주년을 맞아 '한국형 달 탐사 중장기 로드맵'을 공식 발표했습니다. <span class="hl-warn">2032년 달 궤도선 투입, 2035년 달 착륙</span>을 핵심 목표로 삼는 이 계획은 약 <span class="hl-warn">3조 원</span> 규모의 예산을 포함합니다.</p>
 <p>로드맵의 핵심 내용: ① 2028년 <span class="hl">누리호 성능 개량형</span> 달 궤도 시범 발사 ② 2030년 차세대발사체(KSLV-III) 1차 비행 ③ 2032년 달 궤도 랑데부 검증 ④ 2035년 달 남극 착륙. KASA는 아르테미스 협정 체계 내에서 NASA, ESA와의 공동 임무도 적극 검토하고 있습니다.</p>
 <p><span class="hl-good">국내 우주 산업계는 KASA 설립 1년간 총 4,200억 원의 관련 계약을 수주</span>하며 산업 생태계 활성화 효과가 나타나고 있습니다.</p>`,
@@ -290,6 +318,10 @@ window.TRENDS_DATA = [
     whyItMatters: 'SLS 2호 조립 완료는 아르테미스 II 유인 달 비행을 위한 하드웨어 준비 완성.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ SLS 2호 조립 완료 날짜 NASA 공식 발표와 대조 권장.',
+    sources: [
+      { name: 'NASA SLS 미션', url: 'https://www.nasa.gov/exploration/systems/sls/', type: 'official', usedFor: 'SLS 2호 조립 완료·열차폐재 개선 사항 확인' },
+      { name: 'NASA Artemis II', url: 'https://www.nasa.gov/mission/artemis-ii/', type: 'background', usedFor: 'SLS 2호와 아르테미스 II 발사 연계 배경' }
+    ],
     body: `<p>NASA의 케네디우주센터 <span class="hl">Vehicle Assembly Building(VAB)</span>에서 아르테미스 II 임무용 우주발사시스템(SLS) 2호 로켓의 조립이 완료됐습니다. SLS Block 1B 구성으로, 1호 대비 페이로드 능력이 약 <span class="hl-warn">10%</span> 향상된 버전입니다.</p>
 <p>이번 조립에서는 1호 비행에서 발견된 <span class="hl">열차폐재 박리</span> 문제를 해결하기 위해 코어 스테이지 상단 접합부 설계가 변경됐습니다. <span class="hl-good">아르테미스 II 임무는 이후 계획대로 2026년 4월 발사됐습니다.</span></p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -309,6 +341,10 @@ window.TRENDS_DATA = [
     whyItMatters: '스타링크 v3는 v2 대비 용량 2.3배 증가. 2027년까지 평균 속도 400Mbps 목표.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ v3 위성 발사 날짜 및 누적 위성 수는 SpaceX 공식 발사 기록 페이지에서 재확인 권장.',
+    sources: [
+      { name: 'SpaceX 발사 기록', url: 'https://www.spacex.com/launches/', type: 'official', usedFor: 'Starlink v3 발사 날짜·위성 수 확인' },
+      { name: 'Starlink 공식', url: 'https://www.starlink.com/', type: 'background', usedFor: 'Starlink 서비스 현황·v3 용량 개선 배경' }
+    ],
     body: `<p>SpaceX가 3세대 스타링크(Starlink v3) 위성 <span class="hl-warn">50기</span>를 팰컨 9 로켓으로 한꺼번에 발사하는 데 성공했습니다. 총 누적 운용 위성 수가 <span class="hl-warn">8,200기</span>를 돌파했습니다.</p>
 <p>스타링크 v3는 E-Band 주파수를 추가 활용해 단일 위성당 데이터 처리 용량이 기존 v2 대비 <span class="hl-warn">2.3배</span>로 증가했습니다. 현재 스타링크는 전 세계 <span class="hl">120개국 이상</span>에서 400만 명 이상이 사용 중입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -328,6 +364,10 @@ window.TRENDS_DATA = [
     whyItMatters: '한국이 독자 개발한 고해상도 위성으로 자연재해 조기경보, 환경 감시 역량 강화.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 차세대중형위성 3호 운용 개시 날짜 및 현황 KARI 공식 발표 확인 권장.',
+    sources: [
+      { name: 'KARI 한국항공우주연구원', url: 'https://www.kari.re.kr/', type: 'official', usedFor: 'CAS500-3 운용 개시·센서 스펙 확인' },
+      { name: 'KASA 한국우주항공청', url: 'https://www.kasa.go.kr/', type: 'background', usedFor: '위성 활용·수요 기관 연계 배경' }
+    ],
     body: `<p>한국항공우주연구원(KARI)이 독자 개발한 <span class="hl">차세대 중형위성 3호(CAS500-3)</span>가 정상 운용에 돌입했습니다. 2025년 발사 후 약 1년의 궤도 검증을 마치고 공식 임무 운용을 시작했습니다.</p>
 <p>차세대 중형위성 3호는 해상도 <span class="hl-warn">0.5m급</span> 광학 카메라와 <span class="hl-warn">0.8m급</span> 열적외선(TIR) 센서를 탑재했습니다. <span class="hl-good">광학과 열적외선의 동시 관측으로 화재 감지 정확도가 이전 위성 대비 40% 향상</span>됐습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -347,6 +387,10 @@ window.TRENDS_DATA = [
     whyItMatters: '재진입 성능 완성도 향상은 스타십 완전 재사용의 핵심 과제 해결.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ IFT-8 날짜(2026.03.18) 및 상세 결과는 SpaceX 공식 발표 페이지에서 재확인 권장.',
+    sources: [
+      { name: 'SpaceX 발사 기록', url: 'https://www.spacex.com/launches/', type: 'official', usedFor: 'IFT-8 날짜·재진입·열차폐재 결과 확인' },
+      { name: 'SpaceX Starship', url: 'https://www.spacex.com/starship', type: 'background', usedFor: '스타십 우주선 재사용·Mechazilla 포쉝 배경' }
+    ],
     body: `<p>SpaceX의 스타십이 제8차 통합비행시험(<span class="hl">IFT-8</span>)에서 상단부(Ship)의 대기권 재진입 통제에 완벽히 성공하며 완전 재사용 능력을 입증했습니다.</p>
 <p>이번 비행에서 수퍼헤비 부스터는 발사대 <span class="hl">Mechazilla</span> 팔에 다시 정확히 포착됐으며, 스타십 상단은 인도양 목표 지점에 정밀 착수하는 데 성공했습니다. <span class="hl-good">IFT-6와 달리 이번에는 재진입 시 열차폐 타일 손상이 거의 없었다</span>는 점이 주목됩니다.</p>
 <p>SpaceX는 다음 단계로 <span class="hl">궤도상 연료 보급(In-Space Refueling)</span> 테스트를 진행할 계획이라고 밝혔습니다.</p>`,
@@ -387,6 +431,10 @@ window.TRENDS_DATA = [
     whyItMatters: '중국의 독자 우주정거장 운용 역량이 2030년 달 유인 탐사를 위한 핵심 기반.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 선저우-22 발사 날짜(2026.03.15) CNSA 공식 발표 대조 권장.',
+    sources: [
+      { name: 'CNSA 중국국가항천국', url: 'https://www.cnsa.gov.cn/', type: 'official', usedFor: '선저우-22 발사 날짜·도킹 확인' },
+      { name: 'China Manned Space (CMS)', url: 'https://www.cmse.gov.cn/', type: 'background', usedFor: '선저우·틈궁 운용·늬 탐사 관련 배경' }
+    ],
     body: `<p>중국국가항천국(CNSA)이 <span class="hl">선저우-22호(神舟二十二號)</span> 유인 우주선을 지우취안 위성발사센터에서 발사했습니다. 약 <span class="hl-warn">6.5시간</span> 추적 비행 끝에 천궁 우주정거장(天宮) 핵심 모듈 톈허(天和)에 정확히 도킹했습니다.</p>
 <p>중국은 이번 임무와 병행해 <span class="hl">달 탐사 핵심 기술인 랑데부·도킹 자동화</span>와 장기 유인 체류 의학 데이터 수집을 수행합니다. CNSA는 <span class="hl-warn">2030년 달 유인 탐사, 2035년 달 기지 초기 구축</span>을 목표로 하고 있습니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -406,6 +454,10 @@ window.TRENDS_DATA = [
     whyItMatters: '허블 대비 100배 넓은 시야로 외계행성 100만 개 통계 조사와 암흑에너지 성질 규명에 핵심.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 발사 목표일(2026년 9월) 및 케네디 우주센터 인도 일정(2026년 6월)은 공식 NASA 발표 기반. NASA 로먼 공식 페이지에서 최신 일정 확인 권장.',
+    sources: [
+      { name: 'NASA Roman Space Telescope', url: 'https://roman.gsfc.nasa.gov/', type: 'official', usedFor: '로먼 망원경 발사 일정·WFI 테스트·과학 목표 확인' },
+      { name: 'STScI Roman', url: 'https://www.stsci.edu/roman', type: 'background', usedFor: '로먼 WFI 사양·외계행성 통계 조사 배경' }
+    ],
     body: `<p>NASA의 <span class="hl">낸시 그레이스 로먼 우주망원경(Nancy Grace Roman Space Telescope)</span>이 최종 극저온 진공 테스트를 성공적으로 통과했습니다. <span class="hl-warn">2026년 6월 케네디 우주센터 인도, 9월 발사</span>를 목표로 마지막 준비 단계에 있습니다.</p>
 <p>로먼 망원경은 허블 우주망원경과 동일한 <span class="hl-warn">2.4m 주경</span>을 가지지만 시야각이 약 <span class="hl-warn">100배</span> 넓습니다. 주요 과학 목표는 ① 100만 개 이상 외계행성 통계 조사 ② 암흑에너지 성질 규명 ③ 적외선 넓은 시야 탐사.</p>
 <p>고다드 우주비행센터에서 진행된 극저온 테스트에서 <span class="hl-warn">230메가픽셀</span> 광시야 카메라(WFI)의 노이즈 특성이 <span class="hl-good">목표치를 크게 상회</span>했습니다.</p>`,
@@ -426,6 +478,10 @@ window.TRENDS_DATA = [
     whyItMatters: '아폴로 17호(1972) 이후 55년 만의 유인 달 착륙. 달 남극 물 얼음 직접 탐사.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 아르테미스 III 일정(2027년 7월)은 아르테미스 II 결과 분석에 따라 조정 가능. "예정" 표현이 적절함.',
+    sources: [
+      { name: 'NASA Artemis III 미션', url: 'https://www.nasa.gov/mission/artemis-iii/', type: 'official', usedFor: '아르테미스 III 일정·착륙 지점·승무원 확인' },
+      { name: 'SpaceX Starship HLS', url: 'https://www.spacex.com/starship', type: 'background', usedFor: '스타십 HLS 달 착륙선 역할·EVA 계획 배경' }
+    ],
     body: `<p>NASA가 아르테미스 III 달 착륙 임무의 시행 일정을 <span class="hl-warn">2027년 7월</span>로 공식 발표했습니다. 아폴로 17호(1972년) 이후 <span class="hl-warn">55년</span> 만에 인류가 다시 달 표면을 밟게 되는 역사적인 임무입니다.</p>
 <p>아르테미스 III는 최초의 <span class="hl">여성 우주비행사와 유색인종 우주비행사</span>가 달 표면에 내리는 것이 특징입니다. 착륙 지점은 달 남극 약 89°S 부근의 영구 음영 지역(PSR) 가장자리로, 수분 함유 얼음이 매장됐을 것으로 예상됩니다.</p>
 <p>임무 구성은 <span class="hl">SLS 로켓 + 오리온 캡슐</span>로 달 궤도에 도착 후, SpaceX 스타십 HLS에 탑재된 2명의 승무원이 달 표면으로 하강하는 방식입니다. 달 체류 시간은 약 <span class="hl-warn">6.5일</span>이며, EVA(선외활동) 2~4회를 실시할 계획입니다.</p>`,
@@ -446,6 +502,10 @@ window.TRENDS_DATA = [
     whyItMatters: '아리안 5 퇴역 이후 공백이 있었던 유럽의 독자 대형 발사체 역량 복구. 우주산업 독립성 확보.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 3차 비행 날짜 및 페이로드 공식 ArianeGroup 발표 대조 권장.',
+    sources: [
+      { name: 'ESA Ariane 6', url: 'https://www.esa.int/Enabling_Support/Space_Transportation/Ariane_6', type: 'official', usedFor: '아리안 6 3차 발사 성공·엔진 재점화 개선 확인' },
+      { name: 'ArianeGroup', url: 'https://www.ariane.group/', type: 'background', usedFor: '아리안스페이스 발사 계약·A64 생산 무리 배경' }
+    ],
     body: `<p>유럽의 차세대 대형 발사체 <span class="hl">아리안 6(Ariane 6)</span>가 세 번째 비행에서 두 기의 상업 통신 위성을 <span class="hl">정지천이궤도(GTO)</span>에 성공적으로 투입했습니다. <span class="hl-good">이번 성공으로 2020년 아리안 5 퇴역 이후 공백이 있었던 유럽의 대형 발사체 서비스가 완전히 복구</span>됐습니다.</p>
 <p>초기 1·2차 비행에서 발생한 <span class="hl">상단 엔진 재점화 실패</span> 문제를 개선한 것이 이번 성공의 핵심이었습니다. 아리안스페이스는 A62·A64 합산 <span class="hl-warn">12건</span>의 발사 계약을 보유하고 있으며, <span class="hl-warn">2027년까지 연간 6회</span> 발사를 목표로 생산 라인을 확장할 계획입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -465,6 +525,10 @@ window.TRENDS_DATA = [
     whyItMatters: '소형 위성 전용 발사 서비스 시장에서 Rocket Lab의 독보적 신뢰성 입증.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ Electron 60번째 발사 날짜 및 페이로드 공식 Rocket Lab 발표 대조 권장.',
+    sources: [
+      { name: 'Rocket Lab 공식', url: 'https://www.rocketlabusa.com/', type: 'official', usedFor: 'Electron 60차 발사 날짜·페이로드 확인' },
+      { name: 'Rocket Lab Electron', url: 'https://www.rocketlabusa.com/launch/electron/', type: 'background', usedFor: 'Electron 기체·재사용 전략 배경' }
+    ],
     body: `<p>뉴질랜드 마히아 반도 발사장에서 Rocket Lab의 <span class="hl">Electron 로켓</span>이 <span class="hl-warn">60번째</span> 발사에 성공했습니다. <span class="hl-warn">2017년</span> 데뷔 이후 약 9년 만에 달성한 누적 기록으로, 소형 발사체 분야에서 독보적인 신뢰성을 입증했습니다.</p>
 <p>Rocket Lab은 1단 로켓을 헬기로 회수하는 <span class="hl">재사용 방식</span>도 점차 고도화하고 있습니다. <span class="hl-good">CEO 피터 벡은 "60번은 소형 위성 고객들이 믿고 맡길 수 있는 정시 배달 능력의 증거"라고 밝혔습니다.</span></p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -484,6 +548,10 @@ window.TRENDS_DATA = [
     whyItMatters: '완전 재사용 발사체 개발의 최대 난관 극복. 발사 비용 획기적 절감 가능성.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ IFT-6 날짜(2026.03.05) 및 결과 SpaceX 공식 발표 페이지 대조 권장.',
+    sources: [
+      { name: 'SpaceX 발사 기록', url: 'https://www.spacex.com/launches/', type: 'official', usedFor: 'IFT-6 날짜·완전 궤도 비행·Mechazilla 포쉝 확인' },
+      { name: 'SpaceX Starship', url: 'https://www.spacex.com/starship', type: 'background', usedFor: '스타십 완전 재사용·화성 임무 연계 배경' }
+    ],
     body: `<p>SpaceX의 스타십이 제6차 통합비행시험(<span class="hl">IFT-6</span>)에서 완전한 궤도 비행을 달성하며 우주 발사 역사에 새로운 이정표를 세웠습니다.</p>
 <p>이번 비행에서 수퍼헤비 부스터는 발사 약 <span class="hl-warn">7분</span> 후 발사 기지로 돌아와 <span class="hl">Mechazilla 포착 팔</span>에 정확히 안착됐으며, 스타십 상단부는 궤도를 <span class="hl-warn">1.25바퀴</span> 돌고 인도양 목표 지점에 수직 하강으로 정밀 착수했습니다.</p>
 <p><span class="hl-good">1단 및 2단 모두 회수에 성공한 것은 완전 재사용 발사체 개발의 핵심 이정표</span>입니다.</p>`,
@@ -583,6 +651,10 @@ window.TRENDS_DATA = [
     whyItMatters: '생명체 거주 가능 구역의 슈퍼-지구에서 잠재적 생명 지표 분자 검출. 천문학계 최대 발견 후보.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ K2-18b JWST 논문은 2023년 Nature Astronomy에 게재됨(확인). 이 기사의 날짜(2026.02.18)가 후속 관측 발표인지 Nature Astronomy 공식 페이지에서 재확인 권장. 확인 전까지 developing으로 유지.',
+    sources: [
+      { name: 'Nature Astronomy', url: 'https://www.nature.com/natastron/', type: 'paper', usedFor: 'K2-18b CO₂·CH₄·DMS 검출 논문 원문 확인' },
+      { name: 'NASA JWST 미션', url: 'https://www.nasa.gov/missions/webb/', type: 'official', usedFor: 'JWST NIRSpec 분광관측 배경·K2-18b 화학 조성 설명' }
+    ],
     body: `<p>제임스웹 우주망원경(JWST)이 지구로부터 약 <span class="hl-warn">40광년</span> 떨어진 외계행성 <span class="hl">K2-18b</span>의 대기에서 이산화탄소(CO₂)와 메탄(CH₄)을 동시 검출했습니다. 이 분자 조합은 지구 같은 생명체가 존재하는 환경을 시사하는 '바이오시그니처' 후보로 주목받고 있습니다.</p>
 <p>K2-18b는 지구 질량의 약 <span class="hl-warn">8.6배</span>인 '슈퍼-지구'로, 별의 생명 가능Zone(habitable zone)에 위치합니다. 연구진은 또한 <span class="hl">디메틸설파이드(DMS)</span>의 약한 신호도 감지됐다고 밝혔습니다.</p>
 <p>다만 연구진은 비생물학적 화학 반응으로도 이 분자들이 만들어질 수 있으므로 <span class="hl">'생명체 발견'이 아닌 '유망 후보 확인'</span>이라고 신중하게 표현했습니다. 이번 발견은 Nature Astronomy에 게재됐습니다.</p>`,
@@ -603,6 +675,10 @@ window.TRENDS_DATA = [
     whyItMatters: '인도 독자 위성 관측 역량 강화. 주야·악천후 관측 가능한 SAR 위성으로 재해 대응 강화.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ PSLV-C61 / EOS-09 발사 날짜 공식 ISRO 발표 대조 권장.',
+    sources: [
+      { name: 'ISRO 공식', url: 'https://www.isro.gov.in/', type: 'official', usedFor: 'PSLV-C61 / EOS-09 발사 날짜·궤도 확인' },
+      { name: 'ISRO Chandrayaan', url: 'https://www.isro.gov.in/Chandrayaan4.html', type: 'background', usedFor: '시차라얄-4 달 남극 다음 임무 배경' }
+    ],
     body: `<p>인도우주연구기구(ISRO)가 <span class="hl">PSLV-C61 로켓</span>으로 지구관측 위성 <span class="hl">EOS-09</span>(Earth Observation Satellite-09)를 <span class="hl-warn">태양동기궤도(SSO) 528km</span>에 성공적으로 투입했습니다.</p>
 <p>EOS-09는 <span class="hl">C-Band 합성개구레이더(SAR)</span>를 탑재하여 주야·악천후 관계없이 지표면을 관측할 수 있습니다. 해상도는 <span class="hl-warn">1m급</span>으로 농업 작황 예측, 홍수 및 산사태 모니터링에 활용됩니다.</p>
 <p><span class="hl-good">ISRO는 2026년 하반기에 달 남극 착륙을 시도하는 찬드라얀-4 임무도 준비 중입니다.</span></p>`,
@@ -625,6 +701,10 @@ window.TRENDS_DATA = [
     whyItMatters: 'Vulcan의 성공은 SpaceX 독주 체제에 대한 미국 국가안보 우주 발사의 공급 다변화를 의미.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ Vulcan 2차 비행 날짜 및 페이로드 공식 ULA 발표 대조 권장.',
+    sources: [
+      { name: 'ULA Vulcan', url: 'https://www.ulalaunch.com/rockets/vulcan', type: 'official', usedFor: 'Vulcan 2차 발사 날짜·NSSL Phase 3 계약 확인' },
+      { name: 'Blue Origin BE-4 엔진', url: 'https://www.blueorigin.com/engines', type: 'background', usedFor: 'BE-4 엔진 사양·Vulcan 1단 구성 배경' }
+    ],
     body: `<p><span class="hl">ULA(United Launch Alliance)의 Vulcan Centaur 로켓</span>이 두 번째 비행에서 성공을 거두며 미국 국가 안보 우주 발사(<span class="hl">NSSL Phase 3</span>) 계약의 본격적인 이행에 나섰습니다.</p>
 <p>Vulcan Centaur의 핵심: <span class="hl-warn">BE-4 엔진(Blue Origin 개발, 액체산소/메탄 연료)</span> 2기를 1단에 탑재. ULA는 NSSL Phase 3 계약으로 <span class="hl-warn">2027~2034년</span> 미 군사·정보 위성 발사를 수행합니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -644,6 +724,10 @@ window.TRENDS_DATA = [
     whyItMatters: '반 앨런 방사선대 내부 비행으로 화성 장기 임무 방사선 데이터 수집. 스타십 첫 유인 비행으로 이어지는 프로그램.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ 승무원 명단 및 발사 일정 공식 Polaris 페이지에서 최신 정보 확인 권장.',
+    sources: [
+      { name: 'Polaris Program', url: 'https://polarisprogram.com/', type: 'official', usedFor: 'Polaris Dawn 2 승무원·목표 고도·일정 확인' },
+      { name: 'SpaceX Crew Dragon', url: 'https://www.spacex.com/human-spaceflight/crew/', type: 'background', usedFor: 'Crew Dragon 기체·EVA 스유트 배경' }
+    ],
     body: `<p>억만장자 Jared Isaacman이 이끄는 민간 우주 탐사 프로그램 <span class="hl">Polaris</span>의 두 번째 임무 Polaris Dawn 2의 승무원 4명이 공식 확정됐습니다. 목표 고도 <span class="hl-warn">1,400km</span> — 역대 최고도 민간 유인 우주 비행이 될 전망입니다.</p>
 <p>고도 1,400km는 <span class="hl">반 앨런 방사선대(Van Allen Belt) 내대</span> 바로 아래로, 이번 임무의 핵심 과학 목표 중 하나가 고강도 방사선 환경에서 인체에 미치는 영향을 측정하는 것입니다. Polaris 프로그램은 <span class="hl">스타십 첫 유인 비행(Polaris Dawn 3)으로 이어질 예정</span>입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -663,6 +747,10 @@ window.TRENDS_DATA = [
     whyItMatters: '준궤도 비행은 비교적 저렴하게 4분간 미세중력을 제공해 소규모 과학 실험의 접근성을 높임.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ NS-33 날짜 및 탑재 실험 종류 Blue Origin 공식 발표 대조 권장.',
+    sources: [
+      { name: 'Blue Origin New Shepard', url: 'https://www.blueorigin.com/new-shepard', type: 'official', usedFor: 'NS-33 임무·탑재 내용·회수 확인' },
+      { name: 'NASA Flight Opportunities', url: 'https://www1.nasa.gov/directorates/spacetech/flightopportunities/index.html', type: 'background', usedFor: '준궤도 미세중력 과학 실험 정책 배경' }
+    ],
     body: `<p>Blue Origin의 준궤도 로켓 <span class="hl">New Shepard NS-33</span> 임무가 성공적으로 완료됐습니다. 탑승객 없이 순수 과학 실험 탑재체 6종만을 싣고 비행한 무인 임무였습니다. 캡슐은 발사 후 약 11분간 비행하며 최고 고도 <span class="hl-warn">107km</span>(<span class="hl">카르만 선</span>, 우주 경계)를 넘었고, 재사용 캡슐과 부스터가 모두 안전하게 회수됐습니다.</p>
 <p><span class="hl-good">NS-33은 재사용 캡슐의 12번째 비행</span>. Blue Origin은 과학 연구 탑재체 정기 발사 서비스를 연 6~8회로 확대할 계획입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -682,6 +770,10 @@ window.TRENDS_DATA = [
     whyItMatters: 'SpaceX Crew Dragon의 연속 성공 실적이 유인 우주 비행의 신뢰성을 입증.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ Crew-11 발사 날짜 및 승무원 명단 NASA 공식 페이지 대조 권장.',
+    sources: [
+      { name: 'NASA ISS Expeditions', url: 'https://www.nasa.gov/international-space-station/expeditions/', type: 'official', usedFor: 'Crew-11 승무원·도킹 일정 확인' },
+      { name: 'SpaceX Crew Dragon', url: 'https://www.spacex.com/human-spaceflight/crew/', type: 'background', usedFor: 'Crew Dragon 연속 성공 실적·ISS 2030 이양 배경' }
+    ],
     body: `<p>SpaceX <span class="hl">Crew Dragon 캡슐</span>이 Crew-11 승무원 4명을 탑재하고 케네디우주센터에서 발사, 약 <span class="hl-warn">27시간</span> 비행 후 국제우주정거장(ISS)에 도킹했습니다.</p>
 <p>SpaceX는 Crew-11을 포함해 지금까지 팰컨 9으로 유인 발사를 수행하며 <span class="hl-good">100% 성공률을 유지</span>하고 있습니다. NASA는 ISS 운용을 <span class="hl-warn">2030년</span>까지 유지하고 이후 민간에 이양하는 방향으로 검토 중입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -701,6 +793,10 @@ window.TRENDS_DATA = [
     whyItMatters: '포보스 샘플은 화성 기원인지 소행성 포획인지 결론을 낼 수 있는 유일한 직접 증거.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ MMX 탐사선의 현재 포보스 근접 운용 여부는 JAXA 공식 발표에서 최신 상태 확인 권장. MMX 임무는 여러 차례 일정이 변경된 이력 있음.',
+    sources: [
+      { name: 'JAXA MMX 미션', url: 'https://www.isas.jaxa.jp/en/missions/spacecraft/current/mmx.html', type: 'official', usedFor: 'MMX 포보스 근접 촬영·샘플 저넥 일정 확인' },
+      { name: 'ESA MMX', url: 'https://www.esa.int/Science_Exploration/Space_Science/Hera/MMX', type: 'background', usedFor: 'MMX ESA 파트너십·포보스 기원 연구 배경' }
+    ],
     body: `<p>일본항공우주연구개발기구(JAXA)의 화성 위성 탐사선 <span class="hl">MMX(Martian Moons eXploration)</span>가 화성 내위성 포보스(Phobos) 표면 <span class="hl-warn">50km 상공</span>에서 최고 해상도 지형 촬영에 성공했습니다.</p>
 <p>포보스는 지름 약 <span class="hl-warn">22km</span>의 작고 불규칙한 위성입니다. <span class="hl">터치다운 방식</span>으로 표면에 잠깐 접촉해 샘플을 채취합니다. <span class="hl-good">MMX의 샘플 귀환 예정 연도는 2031년</span>입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
@@ -720,6 +816,10 @@ window.TRENDS_DATA = [
     whyItMatters: '중형 재사용 발사체 시장에서 SpaceX 팰컨 9에 대한 실질적 대안 등장 가능성.',
     lastFactChecked: '2026-05-01',
     editorNote: '⚠️ Archimedes 엔진 정적 연소 시험 날짜 및 2026년 4분기 첫 비행 목표 일정은 Rocket Lab 공식 발표 페이지에서 최신 상태 확인 권장.',
+    sources: [
+      { name: 'Rocket Lab Neutron', url: 'https://www.rocketlabusa.com/launch/neutron/', type: 'official', usedFor: 'Neutron 첫 비행 일정·Archimedes 엔진 시험 현황 확인' },
+      { name: 'Rocket Lab 공식', url: 'https://www.rocketlabusa.com/', type: 'background', usedFor: 'Neutron 중형 재사용 발사체 시장 주의 배경' }
+    ],
     body: `<p>Rocket Lab이 개발 중인 중형 재사용 발사체 <span class="hl">Neutron</span>의 엔진 <span class="hl">Archimedes(아르키메데스)</span>가 버지니아주 왈롭스 섬 시험장에서 정적 연소 시험을 성공적으로 완료했습니다. 첫 비행은 <span class="hl-warn">2026년 4분기</span>를 목표로 합니다.</p>
 <p>Neutron은 <span class="hl-warn">LEO 기준 13톤</span> 탑재 능력을 목표로 합니다. Archimedes 엔진은 <span class="hl">액체산소/메탄 연료</span>를 사용하는 풀 플로우 단계 연소 사이클 엔진입니다.</p>`,
     image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
