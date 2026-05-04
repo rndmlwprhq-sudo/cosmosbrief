@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✦ 서술 스타일 트레이너 — COSMOS BRIEF</title>
+  <title>✶ 서술 스타일 트레이너 — Radiant Blue Dot</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -241,7 +241,7 @@
   <header class="topbar">
     <div>
       <div class="topbar-logo">✦ 서술 스타일 트레이너</div>
-      <div class="topbar-subtitle">COSMOS BRIEF 운영 도구</div>
+      <div class="topbar-subtitle">Radiant Blue Dot 운영 도구</div>
     </div>
     <div class="topbar-spacer"></div>
     <div class="topbar-stats" id="topbar-stats">
@@ -520,7 +520,7 @@
       <div class="card">
         <div class="card-title">🎯 이 도구의 목적</div>
         <p style="font-size:0.88rem; line-height:1.9; color:#bbb;">
-          COSMOS BRIEF 웹사이트의 글을 AI가 써줄 때 <strong style="color:var(--cyan);">"내 말투와 서술 방식을 모르면 소용없잖아요"</strong>.<br>
+          Radiant Blue Dot 웹사이트의 글을 AI가 써줄 때 <strong style="color:var(--cyan);">"내 말투와 서술 방식을 모르면 소용없쟖아요"</strong>.<br>
           그래서 이 도구에 당신만의 글쓰기 방식을 학습시키면, 나중에 AI에게<br>
           <code style="background:rgba(126,232,232,0.1); color:var(--cyan); padding:0.1rem 0.4rem; border-radius:4px;">화성 소개 글 써줘</code>
           라고만 해도 내 스타일로 써줘요.
@@ -897,7 +897,7 @@ function generatePrompt() {
   let parts = [];
 
   // Header
-  parts.push(`당신은 "COSMOS BRIEF"라는 천문학 웹사이트의 글쓰기 어시스턴트입니다.\n이 웹사이트는 천문학을 어렵지 않게, 감동적이고 인간적인 언어로 설명하는 것을 목표로 합니다.\n아래에 정의된 서술 스타일과 규칙을 철저히 따라 글을 작성해주세요.\n`);
+  parts.push(`당신은 "Radiant Blue Dot"이라는 천문학 웹사이트의 글쓰기 어시스턴트입니다.\n이 웹사이트는 천문학을 어력지 않게, 감동적이고 인간적인 언어로 설명하는 것을 목표로 합니다.\n아래에 정의된 서술 스타일과 규칙을 철저히 따라 글을 작성해주세요.\n`);
 
   // Rules
   if (includes.rules) {
@@ -938,7 +938,7 @@ function generatePrompt() {
 
   // Footer instruction
   parts.push(`\n\n═══ 글쓰기 요청 방식 ═══`);
-  parts.push(`사용자가 "X 주제 글 써줘", "X 티저 만들어줘" 등의 요청을 하면 위 규칙과 예문을 바탕으로 COSMOS BRIEF 스타일로 작성해주세요.`);
+  parts.push(`사용자가 "X 주제 글 써줘", "X 티저 만들어줘" 등의 요청을 하면 위 규칙과 예문을 바탕으로 Radiant Blue Dot 스타일로 작성해주세요.`);
 
   if (platform === 'claude') parts.push(`\n이 지시사항은 대화 전체에 걸쳐 유지됩니다.`);
 

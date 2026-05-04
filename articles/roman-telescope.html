@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF</title>
+  <title>낙시 그레이스 로먼 우주망원경 — Radiant Blue Dot</title>
   <meta name="description" content="제임스웹의 다음 주자, NASA 낸시 그레이스 로먼 우주망원경이 2026년 가을 발사를 앞두고 있습니다. 허블보다 100배 넓은 시야로 우주를 탐색합니다." />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF" />
+  <meta property="og:title" content="낙시 그레이스 로먼 우주망원경 — Radiant Blue Dot" />
   <meta property="og:description" content="제임스웹의 다음 주자, 2026년 가을 발사 확정. 허블보다 100배 넓은 시야." />
   <meta property="og:url" content="https://cosmosbrief.vercel.app/articles/roman-telescope.html" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -351,7 +351,7 @@
 <!-- ── Top Bar ── -->
 <header class="top-bar">
   <button class="btn-back" onclick="goBack()" aria-label="뒤로">←</button>
-  <div class="top-logo">COSMOS <span>BRIEF</span></div>
+  <div class="top-logo"><span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span></div>
   <button class="btn-share" id="btnShare" onclick="handleShare()">🔗 공유</button>
 </header>
 
@@ -643,7 +643,7 @@
     const btn = document.getElementById('btnShare');
     if (navigator.share) {
       navigator.share({
-        title: '낸시 그레이스 로먼 우주망원경 — COSMOS BRIEF',
+        title: '낙시 그레이스 로먼 우주망원경 — Radiant Blue Dot',
         text:  '제임스웹의 다음 주자, 2026년 가을 발사 확정',
         url:   location.href
       });
@@ -666,7 +666,7 @@
     'dark energy dark matter galaxy cluster cosmic web',
     'clean room space telescope cryogenic testing engineer',
     'camera sensor detector array silicon chip space',
-    'falcon heavy rocket launch space exploration',
+    'falcon heavy rocket launch space exploration', 
     'james webb space telescope orbit lagrange l2'
   ];
 

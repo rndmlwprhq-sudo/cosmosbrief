@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🛰 관리자 — COSMOS BRIEF 뉴스 허브</title>
+  <title>🛠 관리자 — Radiant Blue Dot 뉴스 허브</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -160,7 +160,7 @@
 <body>
 <div class="shell">
   <header class="topbar">
-    <span class="topbar-logo">🛰 COSMOS BRIEF</span>
+    <span class="topbar-logo">🛠 Radiant Blue Dot</span>
     <span class="topbar-badge">관리자</span>
     <div class="topbar-spacer"></div>
     <div class="topbar-status" id="last-fetch-info">
@@ -446,7 +446,7 @@
 <div id="auth-overlay">
   <div class="auth-box">
     <div style="font-size:2rem">🛠</div>
-    <h2>COSMOS BRIEF 관리자</h2>
+    <h2>Radiant Blue Dot 관리자</h2>
     <p>관리자 비밀번호(ADMIN_SECRET)를 입력하세요</p>
     <input type="password" id="auth-input" class="api-key-input"
       placeholder="ADMIN_SECRET 값" style="width:100%;margin-bottom:0.25rem"
@@ -869,7 +869,7 @@ async function migrateFromLocalStorage() {
 function saveApiKey() { const k=document.getElementById('api-key-input').value.trim(); if(!k){toast('⚠️ API 키를 입력해주세요');return;} localStorage.setItem(API_KEY_STORE,k); toast('✅ API 키 저장 완료'); }
 function toggleApiKeyVisibility() { const el=document.getElementById('api-key-input'); el.type=el.type==='password'?'text':'password'; }
 
-function exportData() { const blob=new Blob([JSON.stringify(publishedCache,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='cosmos-brief-'+Date.now()+'.json'; a.click(); }
+function exportData() { const blob=new Blob([JSON.stringify(publishedCache,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='radiant-blue-dot-'+Date.now()+'.json'; a.click(); }
 async function importData(e) { const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=async ev=>{try{const d=JSON.parse(ev.target.result);if(!Array.isArray(d)) throw 0; await apiAction({action:'import',articles:d}); publishedCache=d; updateGlobalStats(); toast('✅ '+d.length+'개 불러오기 완료');}catch(err){toast('⚠️ '+(err.message||'파일 형식 오류'));}}; reader.readAsText(file); }
 
 function updateOrigLen() { document.getElementById('orig-len-val').textContent=document.getElementById('orig-text').value.length.toLocaleString(); }

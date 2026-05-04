@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="우주 뉴스 최신 동향 — 발사, 탐사, 위성, 과학 연구, 우주개발 정책을 팩트체크하여 제공합니다" />
-  <title>우주 최신 동향 — COSMOS BRIEF</title>
+  <title>개발동향 | Radiant Blue Dot</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
@@ -242,9 +242,9 @@
 </div>
 
 <nav class="nav">
-  <a href="index.html" class="nav-logo">
+  <a href="index.html" class="nav-logo brand-logo" aria-label="Radiant Blue Dot home">
     <div class="logo-icon">🌌</div>
-    <div class="logo-text">COSMOS <span>BRIEF</span></div>
+    <span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html" class="nav-link">홈</a></li>
@@ -456,7 +456,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <div class="logo-text">COSMOS <span>BRIEF</span></div>
+        <div class="footer-brand-logo"><span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span></div>
         <p>매일 최신 우주개발, 항공우주 뉴스를 분석하여 신뢰할 수 있는 정보를 제공합니다.</p>
       </div>
       <div class="footer-section">
@@ -484,7 +484,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 COSMOS BRIEF.</span>
+      <span>© 2026 Radiant Blue Dot.</span>
       <span>Made with ❤️ for the curious minds</span>
     </div>
   </footer>
@@ -650,7 +650,7 @@
               + `</div>`;
           });
         }
-        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
+        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-titㄴle">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
 
         document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(bodyHtml);
 
