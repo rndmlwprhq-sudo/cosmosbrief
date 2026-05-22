@@ -32,21 +32,23 @@
     #knowledge-hub-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; }
     #knowledge-hub {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1.25rem;
     }
 
     .hub-card {
-      background: var(--gradient-card);
+      background:
+        radial-gradient(circle at 20% 12%, rgba(247,201,72,0.13), transparent 34%),
+        linear-gradient(145deg, rgba(255,255,255,0.055), rgba(126,232,232,0.035));
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem 1.25rem 1.5rem;
+      border-radius: 18px;
+      padding: 1.85rem 1.3rem 1.55rem;
       text-align: center;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
       animation: fadeInUp 0.5s both;
     }
-    .hub-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .hub-card:hover { transform: translateY(-6px); box-shadow: 0 10px 34px rgba(0,0,0,0.32); }
     .hub-solar:hover        { border-color: rgba(255,180,0,0.5); }
     .hub-celestial:hover    { border-color: rgba(140,190,255,0.5); }
     .hub-astrophysics:hover { border-color: rgba(60,220,180,0.5); }
@@ -55,7 +57,12 @@
     .hub-telescope:hover    { border-color: rgba(255,200,100,0.5); }
     .hub-astronomer:hover   { border-color: rgba(100,220,160,0.5); }
 
-    .hub-icon-wrap { font-size: 2.2rem; margin-bottom: 0.75rem; display: inline-block; }
+    .hub-icon-wrap {
+      font-size: 2.3rem; margin-bottom: 0.85rem; display: inline-flex;
+      width: 64px; height: 64px; align-items: center; justify-content: center;
+      border-radius: 20px; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
     .hub-icon-wrap.float { animation: hubFloat 3s ease-in-out infinite alternate; }
     @keyframes hubFloat { 0%{transform:translateY(0)} 100%{transform:translateY(-8px)} }
     .hub-card-name  { font-weight: 800; font-size: 1rem; margin-bottom: 0.25rem; }
@@ -82,11 +89,18 @@
       transition: border-color 0.2s, transform 0.15s;
     }
     .subcat-item:hover { border-color: var(--color-accent-gold); transform: translateX(4px); }
+    .subcat-item.is-planned { opacity: 0.86; border-style: dashed; }
     .subcat-icon { font-size: 1.5rem; flex-shrink: 0; }
     .subcat-info { flex: 1; }
     .subcat-name    { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.15rem; }
     .subcat-preview { font-size: 0.8rem; color: var(--color-text-muted); }
-    .subcat-arrow   { color: var(--color-accent-gold); font-size: 1rem; }
+    .subcat-status {
+      display: inline-flex; margin-top: 0.35rem; padding: 0.12rem 0.5rem;
+      border-radius: 999px; border: 1px solid rgba(247,201,72,0.22);
+      background: rgba(247,201,72,0.08); color: var(--color-accent-gold);
+      font-size: 0.68rem; font-weight: 700;
+    }
+    .subcat-arrow   { color: var(--color-accent-gold); font-size: 0.78rem; font-weight: 800; white-space: nowrap; }
 
     #teaser-overlay {
       position: fixed; inset: 0; z-index: 2000;
@@ -313,6 +327,7 @@
       <a href="index.html">홈</a>
       <a href="trends.html">개발 동향</a>
       <a href="knowledge.html" class="active">천문 지식</a>
+      <a href="cosmos-life.html">우주와 우리 삶</a>
     </div>
     <div class="nav-user">
       <button class="btn-login" onclick="handleLogin()">🔐 로그인</button>
@@ -325,6 +340,7 @@
     <a href="index.html">홈</a>
     <a href="trends.html">개발 동향</a>
     <a href="knowledge.html" class="active">천문 지식</a>
+    <a href="cosmos-life.html">우주와 우리 삶</a>
   </div>
 </nav>
 

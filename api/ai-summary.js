@@ -11,7 +11,14 @@ export default async function handler(req, res) {
 
   // ── Auth check ──
   const secret = process.env.ADMIN_SECRET;
-  if (secret) {
+  const isProd = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+  if (!secret) {
+    if (isProd) {
+      res.status(500).json({ error: 'ADMIN_SECRET is not configured' });
+      return;
+    }
+    console.warn('[ai-summary] ADMIN_SECRET is not configured; allowing local development request.');
+  } else {
     const auth = req.headers['authorization'];
     if (!auth || auth !== `Bearer ${secret}`) {
       return res.status(401).json({ error: 'Unauthorized' });

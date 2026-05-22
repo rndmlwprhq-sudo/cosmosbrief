@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="우주 현상과 우주개발을 인간의 삶, 윤리, 상상력과 연결해 읽는 Radiant Blue Dot의 에세이형 공간" />
+  <title>우주와 우리 삶 | Radiant Blue Dot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .life-hero {
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 7rem 2rem 4rem;
+    }
+    .life-hero::before {
+      content: "";
+      position: absolute;
+      inset: 3rem 2rem auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(247,201,72,0.28), transparent 16%),
+        radial-gradient(circle at 62% 58%, rgba(126,232,232,0.18), transparent 22%),
+        linear-gradient(145deg, rgba(247,201,72,0.16), rgba(79,142,247,0.10));
+      border: 1px solid rgba(255,255,255,0.08);
+      opacity: 0.62;
+      pointer-events: none;
+    }
+    .life-kicker {
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+      color: var(--color-accent-gold);
+      border: 1px solid rgba(247,201,72,0.28);
+      background: rgba(247,201,72,0.08);
+      border-radius: 999px;
+      padding: 0.32rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+    }
+    .life-hero h1 {
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.12;
+      max-width: 760px;
+      font-weight: 900;
+      margin-bottom: 1.1rem;
+    }
+    .life-hero p {
+      max-width: 680px;
+      color: var(--color-text-secondary);
+      line-height: 1.9;
+      font-size: 1rem;
+    }
+    .life-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .corner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .corner-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(126,232,232,0.025));
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+    .corner-card .icon {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(247,201,72,0.1);
+      border: 1px solid rgba(247,201,72,0.18);
+      margin-bottom: 0.85rem;
+      font-size: 1.35rem;
+    }
+    .corner-card h2 {
+      font-size: 0.98rem;
+      margin-bottom: 0.45rem;
+      font-weight: 900;
+    }
+    .corner-card p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-size: 0.82rem;
+    }
+    .essay-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 0 1rem;
+    }
+    .essay-section-title h2 {
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+    .beta-pill {
+      border: 1px solid rgba(126,232,232,0.26);
+      background: rgba(126,232,232,0.08);
+      color: var(--color-accent-cyan);
+      border-radius: 999px;
+      padding: 0.18rem 0.65rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    .essay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .essay-card {
+      min-height: 180px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(247,201,72,0.10), transparent 34%),
+        rgba(255,255,255,0.035);
+      border-radius: 16px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .essay-card .corner {
+      color: var(--color-accent-cyan);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .essay-card h3 {
+      font-size: 1.05rem;
+      line-height: 1.45;
+      font-weight: 900;
+    }
+    .essay-card p {
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      font-size: 0.86rem;
+      flex: 1;
+    }
+    .status {
+      align-self: flex-start;
+      border-radius: 999px;
+      padding: 0.16rem 0.6rem;
+      background: rgba(247,201,72,0.08);
+      border: 1px solid rgba(247,201,72,0.2);
+      color: var(--color-accent-gold);
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    @media (max-width: 720px) {
+      .life-hero { padding-top: 5.5rem; }
+      .life-hero::before { width: 180px; height: 180px; opacity: 0.35; }
+      .essay-section-title { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="star-canvas"></canvas>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo brand-logo" aria-label="Radiant Blue Dot home">
+    <div class="logo-icon">🌌</div>
+    <span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">홈</a></li>
+    <li><a href="trends.html" class="nav-link">개발 동향</a></li>
+    <li><a href="knowledge.html" class="nav-link">천문 지식</a></li>
+    <li><a href="cosmos-life.html" class="nav-link active">우주와 우리 삶</a></li>
+    <li><a href="index.html#about" class="nav-link">소개</a></li>
+  </ul>
+  <a href="knowledge.html" class="nav-cta">지식 지도 →</a>
+  <button class="nav-mobile-toggle" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main class="page-wrapper">
+  <section class="life-hero">
+    <div class="life-kicker">✦ 우주를 삶의 언어로 읽기</div>
+    <h1>먼 우주의 이야기가<br><span class="gradient-text">오늘의 우리</span>에게 닿는 방식</h1>
+    <p>
+      우주개발은 로켓과 숫자만의 이야기가 아닙니다. 버려야 하는 질량, 오래 버티는 추진, 지구를 떠나며 다시 보게 되는 지구처럼
+      우주는 인간의 선택과 태도, 상상력에 조용한 비유를 건넵니다.
+    </p>
+  </section>
+
+  <section class="life-shell">
+    <div class="corner-grid">
+      <article class="corner-card"><div class="icon">☀️</div><h2>하루 한 번, 우주가 건네는 말</h2><p>짧은 우주 개념을 하루의 생각거리로 연결합니다.</p></article>
+      <article class="corner-card"><div class="icon">🚀</div><h2>우주 프로젝트 속 인간 이야기</h2><p>탐사와 발사 뒤에 있는 선택, 실패, 협업을 읽습니다.</p></article>
+      <article class="corner-card"><div class="icon">🎬</div><h2>SF와 우주 인문학</h2><p>상상 속 우주가 현실의 질문을 어떻게 비추는지 봅니다.</p></article>
+      <article class="corner-card"><div class="icon">⚖️</div><h2>우주 윤리와 문명 이야기</h2><p>궤도, 자원, 행성 보호를 문명의 책임으로 다룹니다.</p></article>
+      <article class="corner-card"><div class="icon">📓</div><h2>나의 우주 공부 노트</h2><p>천문학을 공부하며 남길 수 있는 개념 노트와 질문입니다.</p></article>
+    </div>
+
+    <div class="essay-section-title">
+      <h2>샘플 에세이 카드</h2>
+      <span class="beta-pill">Beta · 콘텐츠 확장 준비 중</span>
+    </div>
+    <div class="essay-grid">
+      <article class="essay-card">
+        <div class="corner">우주 프로젝트 속 인간 이야기</div>
+        <h3>발사체는 왜 모든 것을 싣고 떠날 수 없을까?</h3>
+        <p>궤도에 오른다는 것은 원하는 것과 버려야 하는 것을 동시에 계산하는 일입니다.</p>
+        <span class="status">준비 중</span>
+      </article>
+      <article class="essay-card">
+        <div class="corner">하루 한 번, 우주가 건네는 말</div>
+        <h3>전기추진처럼 느리지만 오래 가는 사람들</h3>
+        <p>작은 힘도 오래 지속되면 먼 궤도를 바꿀 수 있다는 우주공학의 조용한 비유입니다.</p>
+        <span class="status">샘플</span>
+      </article>
+      <article class="essay-card">
+        <div class="corner">나의 우주 공부 노트</div>
+        <h3>궤도에 오르려면 버려야 하는 질량이 있다</h3>
+        <p>로켓 방정식에서 시작해 선택과 집중이라는 삶의 문제로 이어지는 짧은 노트입니다.</p>
+        <span class="status">준비 중</span>
+      </article>
+      <article class="essay-card">
+        <div class="corner">천문학적 관점</div>
+        <h3>라그랑주점은 왜 균형의 장소처럼 보일까?</h3>
+        <p>완전한 정지가 아니라 힘의 관계 속에서 유지되는 균형에 대한 이야기입니다.</p>
+        <span class="status">준비 중</span>
+      </article>
+      <article class="essay-card">
+        <div class="corner">우주 프로젝트 속 인간 이야기</div>
+        <h3>보이저는 떠났지만 사라지지 않았다</h3>
+        <p>멀어진다는 것과 연결이 끊어진다는 것이 꼭 같은 말은 아니라는 사실을 보이저가 보여줍니다.</p>
+        <span class="status">샘플</span>
+      </article>
+      <article class="essay-card">
+        <div class="corner">우주 윤리와 문명 이야기</div>
+        <h3>우주개발은 지구를 포기하는 꿈일까?</h3>
+        <p>우주로 향하는 시선이 오히려 지구의 취약함과 책임을 더 선명하게 만들 수 있는지 묻습니다.</p>
+        <span class="status">준비 중</span>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2026 Radiant Blue Dot.</span>
+    <span>우주는 멀리 있지만, 질문은 오늘 곁에 있습니다.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

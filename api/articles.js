@@ -15,7 +15,30 @@ const PATH    = 'data/published.json';
 const GH_API  = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`;
 
 const MAX_ARTICLES = 500;
-const ALLOWED_ACTIONS = new Set(['publish', 'delete', 'clear', 'import']);
+const ALLOWED_ACTIONS = new Set(['ping', 'publish', 'delete', 'clear', 'import']);
+
+function isProductionRuntime() {
+  return process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+}
+
+function requireAdmin(req, res) {
+  const secret = process.env.ADMIN_SECRET;
+  if (!secret) {
+    if (isProductionRuntime()) {
+      res.status(500).json({ error: 'ADMIN_SECRET is not configured' });
+      return false;
+    }
+    console.warn('[articles] ADMIN_SECRET is not configured; allowing local development request.');
+    return true;
+  }
+
+  const auth = req.headers['authorization'];
+  if (!auth || auth !== `Bearer ${secret}`) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return false;
+  }
+  return true;
+}
 
 // Only allow CSS hex colors or simple color names to prevent CSS injection
 function sanitizeColor(v) {
@@ -99,13 +122,7 @@ export default async function handler(req, res) {
   // ── POST: mutate articles (requires ADMIN_SECRET) ─────────────────────
   if (req.method === 'POST') {
     // ── Auth check ──
-    const secret = process.env.ADMIN_SECRET;
-    if (secret) {
-      const auth = req.headers['authorization'];
-      if (!auth || auth !== `Bearer ${secret}`) {
-        return res.status(401).json({ error: 'Unauthorized' });
-      }
-    }
+    if (!requireAdmin(req, res)) return;
 
     const body = req.body || {};
     const { action, article, id, articles } = body;
@@ -113,6 +130,10 @@ export default async function handler(req, res) {
     // Validate action against allowlist
     if (!action || !ALLOWED_ACTIONS.has(action)) {
       return res.status(400).json({ error: 'Invalid request' });
+    }
+
+    if (action === 'ping') {
+      return res.json({ ok: true });
     }
 
     try {

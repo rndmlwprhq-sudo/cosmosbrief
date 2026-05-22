@@ -130,11 +130,12 @@
     .badge-reliable-media { background:rgba(79,142,247,0.15);  color:#7fb5ff; border:1px solid rgba(79,142,247,0.35); }
     .badge-analysis       { background:rgba(247,201,72,0.15);  color:#f7c948; border:1px solid rgba(247,201,72,0.35); }
     .badge-unverified     { background:rgba(160,160,160,0.12); color:#999;    border:1px solid rgba(160,160,160,0.3); }
+    .badge-low-confidence { background:rgba(251,146,60,0.12); color:#fb923c; border:1px solid rgba(251,146,60,0.32); }
     .badge-confirmed      { background:rgba(86,224,160,0.15);  color:#56e0a0; border:1px solid rgba(86,224,160,0.35); }
     .badge-scheduled      { background:rgba(167,119,247,0.15); color:#c49fff; border:1px solid rgba(167,119,247,0.35); }
     .badge-developing     { background:rgba(251,146,60,0.15);  color:#fb923c; border:1px solid rgba(251,146,60,0.35); }
     .badge-needs-review   { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.35); }
-    /* low_confidence cards no longer rendered on public pages */
+    /* low_confidence cards remain public, but must carry a clear caution badge */
     .hl-warn { background:rgba(245,158,11,0.12); border-bottom:1px solid rgba(245,158,11,0.35); border-radius:3px; padding:0 3px; color:#fbbf24; }
     .hl-good { background:rgba(52,211,153,0.12); border-bottom:1px solid rgba(52,211,153,0.35); border-radius:3px; padding:0 3px; color:#34d399; }
 
@@ -250,6 +251,7 @@
     <li><a href="index.html" class="nav-link">홈</a></li>
     <li><a href="trends.html" class="nav-link active">최신 동향</a></li>
     <li><a href="knowledge.html" class="nav-link">지식 허브</a></li>
+    <li><a href="cosmos-life.html" class="nav-link">우주와 우리 삶</a></li>
     <li><a href="index.html#about" class="nav-link">소개</a></li>
   </ul>
   <a href="knowledge.html" class="nav-cta">지식 허브 &#x2192;</a>
@@ -348,7 +350,7 @@
     <div class="trends-section reveal">
       <div class="trends-header">
         <div class="trends-title">
-          � 글로벌 우주 키워드 트렌드
+          글로벌 우주 키워드 트렌드
         </div>
         <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">수집된 글로벌 우주 뉴스에서 반복적으로 등장한 키워드 &nbsp;·&nbsp; 분석 기준: 2026.04.09–2026.05.01</div>
       </div>
@@ -464,6 +466,7 @@
         <ul>
           <li><a href="trends.html">우주 최신 동향</a></li>
           <li><a href="knowledge.html">지식 허브</a></li>
+          <li><a href="cosmos-life.html">우주와 우리 삶</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -503,12 +506,14 @@
       official:       '공식 출처',
       reliable_media: '신뢰 매체',
       analysis:       '분석 자료',
+      low_confidence: '신뢰도 낮음',
       unverified:     '미검증'
     };
     const RELIABILITY_CLASS = {
       official:       'badge-official',
       reliable_media: 'badge-reliable-media',
       analysis:       'badge-analysis',
+      low_confidence: 'badge-low-confidence',
       unverified:     'badge-unverified'
     };
     const STATUS_LABEL = {
@@ -566,7 +571,7 @@
     }
 
     const confirmed = data.filter(d =>
-      ['official','reliable_media','analysis'].includes(d.reliability) &&
+      ['official','reliable_media','analysis','low_confidence'].includes(d.reliability) &&
       ['confirmed','scheduled','developing'].includes(d.status)
     );
 
@@ -864,7 +869,10 @@
         + (kt.deduplicatedArticleCount !== null ? ' / 중복 제거 후: <strong style="color:#ccc;">' + kt.deduplicatedArticleCount.toLocaleString() + '개</strong>' : '')
         + '</div>';
     } else {
-      summaryHtml = '<div style="font-size:0.75rem;color:#555;margin-bottom:1rem;">자동 수집 준비 중 — 수치는 파이프라인 연결 후 업데이트됩니다.</div>';
+      summaryHtml = '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-size:0.75rem;color:#777;margin-bottom:1rem;">'
+        + '<span style="font-size:0.68rem;color:#f7c948;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.24);border-radius:999px;padding:0.12rem 0.55rem;font-weight:800;">Beta</span>'
+        + '<span>데이터 연결 전입니다. 현재는 편집부가 선별한 키워드 지도를 보여주며, 수집 수치는 파이프라인 연결 후 표시됩니다.</span>'
+        + '</div>';
     }
 
     // Keyword cards
@@ -893,7 +901,7 @@
       } else if (kw.articleCount !== null) {
         countHtml = '<span style="font-size:0.72rem;color:#888;">관련 ' + kw.articleCount + '건</span>';
       } else {
-        countHtml = '<span style="font-size:0.68rem;color:#444;background:rgba(255,255,255,0.04);padding:0.1rem 0.4rem;border-radius:2rem;border:1px solid rgba(255,255,255,0.08);">수집 대기</span>';
+        countHtml = '<span style="font-size:0.68rem;color:#777;background:rgba(255,255,255,0.045);padding:0.1rem 0.45rem;border-radius:2rem;border:1px solid rgba(255,255,255,0.09);">분석 예정</span>';
       }
 
       var barHtml = '';

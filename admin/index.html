@@ -448,6 +448,9 @@
     <div style="font-size:2rem">🛠</div>
     <h2>Radiant Blue Dot 관리자</h2>
     <p>관리자 비밀번호(ADMIN_SECRET)를 입력하세요</p>
+    <p style="color:var(--gold);font-size:0.72rem;line-height:1.6;">
+      관리자 토큰은 브라우저 세션에만 저장됩니다. 공용 PC에서는 사용 후 창을 닫아주세요.
+    </p>
     <input type="password" id="auth-input" class="api-key-input"
       placeholder="ADMIN_SECRET 값" style="width:100%;margin-bottom:0.25rem"
       onkeydown="if(event.key==='Enter')checkAdminAuth()" />
@@ -502,6 +505,11 @@ async function checkAdminAuth() {
     });
     if (r.status === 401) {
       errEl.textContent = '비밀번호가 올바르지 않습니다';
+      btn.disabled = false; btn.textContent = '입장'; return;
+    }
+    if (!r.ok) {
+      const data = await r.json().catch(() => ({}));
+      errEl.textContent = data.error || '관리자 API 설정을 확인하세요';
       btn.disabled = false; btn.textContent = '입장'; return;
     }
     sessionStorage.setItem(ADMIN_SECRET_KEY, input);
