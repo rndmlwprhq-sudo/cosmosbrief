@@ -93,7 +93,11 @@
     .subcat-icon { font-size: 1.5rem; flex-shrink: 0; }
     .subcat-info { flex: 1; }
     .subcat-name    { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.15rem; }
-    .subcat-preview { font-size: 0.8rem; color: var(--color-text-muted); }
+    .subcat-preview {
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: rgba(220, 231, 252, 0.84);
+    }
     .subcat-status {
       display: inline-flex; margin-top: 0.35rem; padding: 0.12rem 0.5rem;
       border-radius: 999px; border: 1px solid rgba(247,201,72,0.22);
@@ -320,28 +324,23 @@
 
 <canvas id="star-canvas"></canvas>
 
-<nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a class="nav-logo brand-logo" href="index.html" aria-label="Radiant Blue Dot home"><span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span></a>
-    <div class="nav-links">
-      <a href="index.html">홈</a>
-      <a href="trends.html">개발 동향</a>
-      <a href="knowledge.html" class="active">천문 지식</a>
-      <a href="cosmos-life.html">우주와 우리 삶</a>
-    </div>
-    <div class="nav-user">
-      <button class="btn-login" onclick="handleLogin()">🔐 로그인</button>
-    </div>
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="메뉴">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html">홈</a>
-    <a href="trends.html">개발 동향</a>
-    <a href="knowledge.html" class="active">천문 지식</a>
-    <a href="cosmos-life.html">우주와 우리 삶</a>
-  </div>
+<nav class="nav">
+  <a href="index.html" class="nav-logo brand-logo" aria-label="Radiant Blue Dot home">
+    <div class="logo-icon">🌌</div>
+    <span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">홈</a></li>
+    <li><a href="trends.html" class="nav-link">개발 동향</a></li>
+    <li><a href="knowledge.html" class="nav-link active">천문 지식</a></li>
+    <li><a href="cosmos-life.html" class="nav-link">우주와 우리 삶</a></li>
+    <li><a href="index.html#about" class="nav-link">소개</a></li>
+  </ul>
+  <a href="trends.html" class="nav-cta">최신 뉴스 →</a>
+  <button class="btn-login" onclick="handleLogin()">🔐 로그인</button>
+  <button class="nav-mobile-toggle" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="knowledge-hero">
