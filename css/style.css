@@ -2063,6 +2063,15 @@ ul, ol { list-style: none; }
   font-weight: 700;
 }
 
+.reader-body .term-highlight {
+  color: #9de7ff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(126, 232, 232, 0.46);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 /* Callout box */
 .reader-body .callout {
   background: rgba(79, 142, 247, 0.06);
