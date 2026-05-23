@@ -139,6 +139,21 @@
     .settings-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;}
     .api-key-input{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:monospace;font-size:0.82rem;padding:0.55rem 0.85rem;outline:none;transition:border-color 0.2s;}
     .api-key-input:focus{border-color:var(--purple);}
+    .keyword-editor-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+    .keyword-editor-note{font-size:0.78rem;color:#bbb;line-height:1.75;max-width:600px;}
+    .keyword-meta-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:0.7rem;margin-bottom:1rem;}
+    .keyword-field label{display:block;color:var(--muted);font-size:0.68rem;font-weight:700;margin-bottom:0.3rem;}
+    .keyword-field input,.keyword-field select{width:100%;background:rgba(0,0,0,0.28);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:0.78rem;padding:0.48rem 0.55rem;outline:none;}
+    .keyword-field input:focus,.keyword-field select:focus{border-color:var(--cyan);}
+    .keyword-toolbar{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin:1rem 0;}
+    .keyword-editor-status{min-height:1.4em;font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;}
+    .keyword-editor-status.ok{color:var(--green);}
+    .keyword-editor-status.error{color:var(--red);}
+    .keyword-row{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:0.8rem;margin-bottom:0.65rem;}
+    .keyword-row-grid{display:grid;grid-template-columns:1.3fr 0.8fr 0.8fr 0.8fr 1fr 1.35fr 1.15fr;gap:0.55rem;align-items:end;}
+    .keyword-row-footer{display:flex;gap:0.55rem;align-items:end;margin-top:0.55rem;}
+    .keyword-row-footer .keyword-field{flex:1;}
+    .keyword-status-help{font-size:0.73rem;color:var(--muted);line-height:1.75;margin-top:1rem;padding:0.7rem 0.9rem;background:rgba(255,255,255,0.025);border-radius:var(--r-sm);}
     .empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
     .empty .e-icon{font-size:2.5rem;margin-bottom:0.75rem;}
     .empty p{font-size:0.82rem;line-height:1.8;}
@@ -154,6 +169,8 @@
       .shell{grid-template-columns:1fr;grid-template-rows:52px auto 1fr;}
       .sidebar{display:flex;overflow-x:auto;overflow-y:hidden;padding:0.5rem;gap:0.3rem;}
       .sidebar-label{display:none;} .company-btn{flex-shrink:0;padding:0.4rem 0.7rem;white-space:nowrap;} .sidebar-divider{width:1px;height:auto;margin:0 0.25rem;}
+      .keyword-meta-grid,.keyword-row-grid{grid-template-columns:1fr 1fr;}
+      .keyword-row-footer{flex-direction:column;align-items:stretch;}
     }
   </style>
 </head>
@@ -240,6 +257,9 @@
     <div class="sidebar-label">관리</div>
     <button class="company-btn" onclick="selectCompany('published',this)">
       <span class="company-dot" style="background:var(--green)"></span> 발행된 업데이트
+    </button>
+    <button class="company-btn" onclick="selectCompany('keyword-trends',this)">
+      <span class="company-dot" style="background:var(--cyan)"></span> 키워드 트렌드
     </button>
     <button class="company-btn" onclick="selectCompany('settings',this)">
       <span class="company-dot" style="background:var(--gold)"></span> ⚙️ 설정
@@ -377,6 +397,42 @@
         <div class="published-list" id="published-list"></div>
       </div>
 
+      <!-- KEYWORD TRENDS -->
+      <div class="panel" id="panel-keyword-trends">
+        <div class="keyword-editor-header">
+          <div>
+            <h1 style="font-size:1.2rem;font-weight:900;margin-bottom:0.3rem;">키워드 트렌드 수치 관리</h1>
+            <p class="keyword-editor-note">자동 수집 연결 전까지 관리자가 확인한 수치만 입력합니다. 실제 값이 있는 행은 출처와 기준 시각을 함께 기록해야 공개 페이지에서 오해 없이 표시됩니다.</p>
+          </div>
+          <button class="btn btn-ghost" onclick="loadKeywordTrendEditor()">다시 불러오기</button>
+        </div>
+
+        <div class="settings-card">
+          <div class="sec-title" style="color:var(--cyan);">운영 기준</div>
+          <div class="keyword-meta-grid">
+            <div class="keyword-field"><label for="kt-period-start">분석 시작일</label><input type="date" id="kt-period-start" /></div>
+            <div class="keyword-field"><label for="kt-period-end">분석 종료일</label><input type="date" id="kt-period-end" /></div>
+            <div class="keyword-field"><label for="kt-article-total">분석 기사 수</label><input type="number" min="0" id="kt-article-total" placeholder="선택" /></div>
+            <div class="keyword-field"><label for="kt-dedup-total">중복 제거 후</label><input type="number" min="0" id="kt-dedup-total" placeholder="선택" /></div>
+            <div class="keyword-field"><label for="kt-data-updated-at">데이터 발행 시각</label><input type="datetime-local" id="kt-data-updated-at" /></div>
+          </div>
+          <div class="keyword-toolbar">
+            <button class="btn btn-ghost btn-sm" onclick="addKeywordTrendRow()">+ 키워드 추가</button>
+            <button class="btn btn-ghost btn-sm" onclick="fillKeywordTrendTime()">기준 시각을 현재로 입력</button>
+            <button class="btn btn-green" id="btn-save-keywords" onclick="saveKeywordTrends()">수치 저장 및 발행</button>
+          </div>
+          <div class="keyword-editor-status" id="keyword-editor-status"></div>
+        </div>
+
+        <div id="keyword-trend-rows"></div>
+        <p class="keyword-status-help">
+          <strong style="color:var(--green)">confirmed</strong> 확인된 수치 /
+          <strong style="color:var(--gold)">low_confidence</strong> 공개하되 추가 검증 필요 /
+          <strong style="color:var(--muted)">not_collected_yet</strong> 수치 미입력 상태입니다.
+          관리자 메모는 공개 화면에는 표시되지 않지만 저장소에 저장되므로 민감한 내용은 입력하지 마세요.
+        </p>
+      </div>
+
       <!-- SETTINGS -->
       <div class="panel" id="panel-settings">
         <h1 style="font-size:1.2rem;font-weight:900;margin-bottom:0.4rem;">⚙️ 설정</h1>
@@ -399,7 +455,7 @@
           <div class="sec-title" style="color:var(--gold);">⚠️ GITHUB_PAT / ADMIN_SECRET 설정 확인</div>
           <p style="font-size:0.82rem;color:#bbb;line-height:1.85;margin-bottom:1rem;">
             Vercel 프로젝트 설정에서 아래 환경변수 2개가 모두 등록되어 있어야 합니다.<br>
-            <strong style="color:var(--cyan);">GITHUB_PAT</strong> — 기사 저장 (repo scope)<br>
+            <strong style="color:var(--cyan);">GITHUB_PAT</strong> — 기사 및 키워드 수치 저장 (repo scope)<br>
             <strong style="color:var(--red);">ADMIN_SECRET</strong> — 관리자 비밀번호 (무작위 문자열 권장)<br>
             <span style="color:var(--muted);font-size:0.78rem;">vercel.com → 프로젝트 → Settings → Environment Variables</span>
           </p>
@@ -487,6 +543,7 @@ let uploadedPhotos = [];
 const API_KEY_STORE = 'cb_openai_key';
 const ADMIN_SECRET_KEY = 'cb_admin_secret';
 let publishedCache = [];
+let keywordTrendCache = { keywords: [] };
 
 function getAdminSecret() { return sessionStorage.getItem(ADMIN_SECRET_KEY) || ''; }
 
@@ -555,11 +612,201 @@ async function initPublishedCache() {
   updateGlobalStats();
 }
 
+async function keywordTrendApi(method, body) {
+  const headers = { 'Content-Type': 'application/json' };
+  const secret = getAdminSecret();
+  if (secret) headers.Authorization = 'Bearer ' + secret;
+  const options = { method, headers, cache: 'no-store' };
+  if (body) options.body = JSON.stringify(body);
+  const response = await fetch('/api/keyword-trends', options);
+  const data = await response.json().catch(() => ({}));
+  if (response.status === 401) throw new Error('인증 실패 - 페이지를 새로고침하여 다시 로그인하세요');
+  if (!response.ok) throw new Error(data.error || ('키워드 API 오류 ' + response.status));
+  return data;
+}
+
+function setKeywordEditorStatus(type, text) {
+  const el = document.getElementById('keyword-editor-status');
+  if (!el) return;
+  el.className = 'keyword-editor-status' + (type ? ' ' + type : '');
+  el.textContent = text || '';
+}
+
+function datetimeLocalValue(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
+function createKeywordRow() {
+  return {
+    id: 'keyword-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+    keyword: '',
+    aliases: [],
+    mentionCount: null,
+    articleCount: null,
+    trendScore: null,
+    change: null,
+    rank: null,
+    status: 'not_collected_yet',
+    updatedAt: null,
+    source: '',
+    note: '',
+    explanation: '',
+  };
+}
+
+async function loadKeywordTrendEditor() {
+  setKeywordEditorStatus('', '키워드 데이터를 불러오는 중입니다...');
+  try {
+    keywordTrendCache = await keywordTrendApi('GET');
+    if (!Array.isArray(keywordTrendCache.keywords)) keywordTrendCache.keywords = [];
+    document.getElementById('kt-period-start').value = (keywordTrendCache.periodStart || '').slice(0, 10);
+    document.getElementById('kt-period-end').value = (keywordTrendCache.periodEnd || '').slice(0, 10);
+    document.getElementById('kt-article-total').value = keywordTrendCache.articleCountTotal ?? '';
+    document.getElementById('kt-dedup-total').value = keywordTrendCache.deduplicatedArticleCount ?? '';
+    document.getElementById('kt-data-updated-at').value = datetimeLocalValue(keywordTrendCache.updatedAt);
+    renderKeywordTrendRows();
+    setKeywordEditorStatus('ok', '현재 저장된 키워드 ' + keywordTrendCache.keywords.length + '개를 불러왔습니다.');
+  } catch (error) {
+    setKeywordEditorStatus('error', '불러오기 실패: ' + error.message);
+  }
+}
+
+function renderKeywordTrendRows() {
+  const container = document.getElementById('keyword-trend-rows');
+  if (!keywordTrendCache.keywords.length) {
+    container.innerHTML = '<div class="empty"><p>저장된 키워드가 없습니다. 키워드를 추가해 운영을 시작하세요.</p></div>';
+    return;
+  }
+  container.innerHTML = keywordTrendCache.keywords.map((item, index) => {
+    return '<div class="keyword-row" data-index="' + index + '">'
+      + '<div class="keyword-row-grid">'
+      + '<div class="keyword-field"><label>키워드명</label><input data-field="keyword" value="' + escHtml(item.keyword) + '" /></div>'
+      + '<div class="keyword-field"><label>언급량</label><input type="number" min="0" data-field="mentionCount" value="' + (item.mentionCount ?? '') + '" placeholder="-" /></div>'
+      + '<div class="keyword-field"><label>관심도 점수</label><input type="number" min="0" max="100" step="0.1" data-field="trendScore" value="' + (item.trendScore ?? '') + '" placeholder="-" /></div>'
+      + '<div class="keyword-field"><label>증감</label><input type="number" step="0.1" data-field="change" value="' + (item.change ?? '') + '" placeholder="-" /></div>'
+      + '<div class="keyword-field"><label>상태</label><select data-field="status">'
+      + '<option value="confirmed"' + (item.status === 'confirmed' ? ' selected' : '') + '>confirmed</option>'
+      + '<option value="low_confidence"' + (item.status === 'low_confidence' ? ' selected' : '') + '>low_confidence</option>'
+      + '<option value="not_collected_yet"' + (item.status === 'not_collected_yet' ? ' selected' : '') + '>not_collected_yet</option>'
+      + '</select></div>'
+      + '<div class="keyword-field"><label>기준 시각</label><input class="kt-updated-at" type="datetime-local" data-field="updatedAt" value="' + datetimeLocalValue(item.updatedAt) + '" /></div>'
+      + '<div class="keyword-field"><label>출처명</label><input data-field="source" value="' + escHtml(item.source || '') + '" placeholder="예: 편집부 확인" /></div>'
+      + '</div>'
+      + '<div class="keyword-row-footer">'
+      + '<div class="keyword-field"><label>관리자 메모 (화면 미노출)</label><input data-field="note" value="' + escHtml(item.note || '') + '" placeholder="비민감 검증 경위 또는 후속 확인 사항" /></div>'
+      + '<button class="btn btn-danger btn-sm" type="button" onclick="removeKeywordTrendRow(' + index + ')">삭제</button>'
+      + '</div></div>';
+  }).join('');
+}
+
+function addKeywordTrendRow() {
+  keywordTrendCache.keywords.push(createKeywordRow());
+  renderKeywordTrendRows();
+}
+
+function removeKeywordTrendRow(index) {
+  if (!confirm('이 키워드 행을 삭제하시겠어요?')) return;
+  keywordTrendCache.keywords.splice(index, 1);
+  renderKeywordTrendRows();
+}
+
+function fillKeywordTrendTime() {
+  const value = datetimeLocalValue(new Date().toISOString());
+  document.getElementById('kt-data-updated-at').value = value;
+  document.querySelectorAll('.kt-updated-at').forEach(input => { input.value = value; });
+}
+
+function nullableFormNumber(value, label) {
+  if (value.trim() === '') return null;
+  const number = Number(value);
+  if (!Number.isFinite(number)) throw new Error(label + ' 값이 숫자가 아닙니다.');
+  return number;
+}
+
+function localDateToIso(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) throw new Error('기준 시각을 확인하세요.');
+  return date.toISOString();
+}
+
+function collectKeywordTrendData() {
+  const rows = Array.from(document.querySelectorAll('.keyword-row'));
+  const keywords = rows.map((row, index) => {
+    const previous = keywordTrendCache.keywords[index] || createKeywordRow();
+    const read = field => row.querySelector('[data-field="' + field + '"]').value.trim();
+    const keyword = read('keyword');
+    if (!keyword) throw new Error((index + 1) + '번째 키워드명을 입력하세요.');
+    const mentionCount = nullableFormNumber(read('mentionCount'), '언급량');
+    const trendScore = nullableFormNumber(read('trendScore'), '관심도 점수');
+    const change = nullableFormNumber(read('change'), '증감');
+    const status = read('status');
+    const updatedAt = localDateToIso(read('updatedAt'));
+    const source = read('source');
+    const hasValue = [mentionCount, trendScore, change, previous.articleCount].some(value => value !== null);
+    if ((hasValue || status !== 'not_collected_yet') && (!updatedAt || !source)) {
+      throw new Error('수치 또는 공개 상태가 있는 키워드에는 기준 시각과 출처명이 필요합니다.');
+    }
+    if (status === 'not_collected_yet' && hasValue) {
+      throw new Error('수치를 입력한 키워드는 confirmed 또는 low_confidence 상태를 선택하세요.');
+    }
+    if (status !== 'not_collected_yet' && !hasValue) {
+      throw new Error('confirmed 또는 low_confidence 상태에는 공개할 수치를 입력하세요.');
+    }
+    return {
+      ...previous,
+      keyword,
+      mentionCount,
+      trendScore,
+      change,
+      status,
+      updatedAt,
+      source,
+      note: read('note'),
+    };
+  });
+  return {
+    version: 1,
+    method: 'manual_admin',
+    periodStart: document.getElementById('kt-period-start').value || null,
+    periodEnd: document.getElementById('kt-period-end').value || null,
+    articleCountTotal: nullableFormNumber(document.getElementById('kt-article-total').value, '분석 기사 수'),
+    deduplicatedArticleCount: nullableFormNumber(document.getElementById('kt-dedup-total').value, '중복 제거 기사 수'),
+    updatedAt: localDateToIso(document.getElementById('kt-data-updated-at').value),
+    keywords,
+  };
+}
+
+async function saveKeywordTrends() {
+  const button = document.getElementById('btn-save-keywords');
+  try {
+    const data = collectKeywordTrendData();
+    button.disabled = true;
+    button.textContent = '저장 중...';
+    setKeywordEditorStatus('', 'GitHub에 키워드 수치를 저장하는 중입니다...');
+    const result = await keywordTrendApi('POST', { action: 'save', data });
+    keywordTrendCache = data;
+    setKeywordEditorStatus('ok', '저장 완료: ' + result.count + '개 키워드가 공개 데이터에 반영되었습니다.');
+    toast('키워드 트렌드 수치 저장 완료');
+  } catch (error) {
+    setKeywordEditorStatus('error', '저장 실패: ' + error.message);
+    toast('키워드 수치 저장 실패: ' + error.message, 6000);
+  } finally {
+    button.disabled = false;
+    button.textContent = '수치 저장 및 발행';
+  }
+}
+
 function selectCompany(id, btn) {
   document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   if (id === 'published') { document.getElementById('panel-published').classList.add('active'); renderPublished(); return; }
+  if (id === 'keyword-trends') { document.getElementById('panel-keyword-trends').classList.add('active'); loadKeywordTrendEditor(); return; }
   if (id === 'settings')  { document.getElementById('panel-settings').classList.add('active'); loadApiKeyUI(); return; }
 
   currentCompany = id; fetchedArticles = []; selectedArticleIndex = -1; uploadedPhotos = [];

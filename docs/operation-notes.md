@@ -3,7 +3,7 @@
 ## 관리자 보안
 
 - 운영 환경에서는 `ADMIN_SECRET`, `GITHUB_PAT`, `OPENAI_API_KEY`를 반드시 Vercel 환경변수로 설정합니다.
-- `ADMIN_SECRET`이 없는 운영 환경에서는 `/api/articles`의 POST 작업과 `/api/ai-summary`가 실패하도록 보호합니다.
+- `ADMIN_SECRET`이 없는 운영 환경에서는 `/api/articles`, `/api/keyword-trends`의 POST 작업과 `/api/ai-summary`가 실패하도록 보호합니다.
 - 관리자 토큰은 브라우저 `sessionStorage`에 저장됩니다. 공용 PC에서는 사용 후 창을 닫아 세션을 종료합니다.
 - API 키와 토큰은 HTML/JS 코드에 직접 넣지 않습니다.
 
@@ -22,6 +22,14 @@
 - `developing`: 진행 중인 사안입니다. 후속 확인이 필요할 수 있습니다.
 - `needs_review`: 검토 중인 항목입니다. 일반 사용자 공개 목록에서는 제외합니다.
 
+## 키워드 트렌드 운영
+
+- 현재 키워드 트렌드는 외부 API 기반 실시간 수집이 아니라, 관리자 콘솔의 `키워드 트렌드` 패널에서 입력하는 운영 데이터입니다.
+- 확인된 수치는 `confirmed`, 출처는 있으나 추가 검증이 필요한 수치는 `low_confidence`, 아직 입력하지 않은 후보는 `not_collected_yet`으로 관리합니다.
+- `confirmed`와 `low_confidence` 행에는 언급량 또는 점수 등의 수치와 함께 `source`, `updatedAt`을 반드시 입력합니다.
+- `note`는 검토 과정용 메모이며 공개 API 응답과 화면에는 표시하지 않습니다. 다만 GitHub 저장 파일에 남으므로 비밀값이나 민감 정보는 입력하지 않습니다.
+- 저장 후 `trends.html`에서 배지, 수치, 출처, 기준 시각을 확인하고, `index.html` 프리뷰에 근거 없는 수치가 나타나지 않는지 확인합니다.
+
 ## 콘텐츠 출처와 저작권
 
 - 공식 보도자료, 기관 페이지, 신뢰 매체, 논문 출처를 가능한 한 함께 기록합니다.
@@ -35,4 +43,3 @@
 - `sourceUrl`과 `sources[]`가 실제로 열리는지 확인합니다.
 - `low_confidence` 또는 `needs_review` 상태가 필요한 항목은 무리하게 `confirmed`로 올리지 않습니다.
 - 관리자 페이지에서 발행 후 `trends.html` 공개 카드와 모달 표시를 확인합니다.
-

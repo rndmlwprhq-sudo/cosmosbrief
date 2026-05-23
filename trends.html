@@ -135,6 +135,7 @@
     .badge-scheduled      { background:rgba(167,119,247,0.15); color:#c49fff; border:1px solid rgba(167,119,247,0.35); }
     .badge-developing     { background:rgba(251,146,60,0.15);  color:#fb923c; border:1px solid rgba(251,146,60,0.35); }
     .badge-needs-review   { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.35); }
+    .badge-not-collected  { background:rgba(160,160,160,0.12); color:#a7a7bb; border:1px solid rgba(160,160,160,0.28); }
     /* low_confidence cards remain public, but must carry a clear caution badge */
     .hl-warn { background:rgba(245,158,11,0.12); border-bottom:1px solid rgba(245,158,11,0.35); border-radius:3px; padding:0 3px; color:#fbbf24; }
     .hl-good { background:rgba(52,211,153,0.12); border-bottom:1px solid rgba(52,211,153,0.35); border-radius:3px; padding:0 3px; color:#34d399; }
@@ -352,7 +353,7 @@
         <div class="trends-title">
           글로벌 우주 키워드 트렌드
         </div>
-        <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">수집된 글로벌 우주 뉴스에서 반복적으로 등장한 키워드 &nbsp;·&nbsp; 분석 기준: 2026.04.09–2026.05.01</div>
+        <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">관리자가 확인한 키워드 수치를 준비하고 있습니다.</div>
       </div>
 
       <!-- pipeline status banner -->
@@ -363,7 +364,7 @@
         font-size:0.78rem; color:#fb923c; line-height:1.6;
       ">
         <span style="font-size:1rem;">⏳</span>
-        <span>아직 실제 기사 수집 파이프라인이 연결되지 않았습니다. 아래 키워드는 편집자가 수동으로 선정한 트렌드 후보이며, 수치는 수집 전 상태입니다.</span>
+        <span>자동 수집 파이프라인 연결 전 단계입니다. 아래 후보 키워드는 표시되지만, 확인된 수치가 입력되기 전에는 분석 예정 상태로 안내됩니다.</span>
       </div>
 
       <div class="trends-grid">
@@ -422,7 +423,7 @@
 
       <!-- methodology footnote -->
       <div style="margin-top:1.25rem; padding:0.6rem 0.9rem; border-left:2px solid rgba(126,232,232,0.2); font-size:0.72rem; color:#555; line-height:1.7;">
-        키워드 수치는 수집된 기사 제목·요약·본문 일부에서 키워드와 동의어가 등장한 횟수를 기준으로 계산됩니다. 전체 인터넷의 절대 관심도가 아니라, 선택한 뉴스 데이터 소스 기준의 관심도 지표입니다.
+        이 영역의 공개 수치는 관리자 검토 후 입력한 기준 시각과 출처를 함께 표시합니다. 자동 수집 연결 전에는 입력된 자료만 제공하며, 전체 인터넷의 절대 관심도를 뜻하지 않습니다.
       </div>
     </div>
   </div>
@@ -834,101 +835,127 @@
     if (btn) btn.textContent = isHidden ? '지난 기사 더 보기 ↓' : '지난 기사 접기 ↑';
   }
 
-  // ── Global Keyword Trends (data/keyword-trends.js) ──────────────
-  // TODO: Connect real data pipeline:
-  //   - GDELT DOC API or NewsAPI Everything endpoint
-  //   - Date-range space-news fetch, deduplicate by URL
-  //   - Search titles/summaries for each keyword + aliases
-  //   - Compute mentionCount, articleCount, trendScore
-  //   - Auto-update keyword-trends.js (scripts/updateKeywordTrends.js)
-  (function renderGlobalKeywordTrends() {
-    var kt = window.KEYWORD_TRENDS;
+  // Keyword figures are currently entered by an administrator. The managed JSON
+  // is deliberately kept compatible with a future automated collection source.
+  (function initKeywordTrends() {
     var container = document.getElementById('keyword-global-container');
     var banner = document.getElementById('kw-pipeline-banner');
+    var metaLine = document.getElementById('kw-meta-line');
     if (!container) return;
 
-    // Show/hide pipeline banner based on whether totals are collected
-    if (kt && kt.articleCountTotal !== null) {
-      if (banner) banner.style.display = 'none';
+    function escKw(value) {
+      return String(value || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
-
-    if (!kt || !kt.keywords || !kt.keywords.length) {
-      container.innerHTML = '<p style="font-size:0.82rem;color:#555;">키워드 데이터를 불러올 수 없습니다.</p>';
-      return;
+    function numeric(value) {
+      return typeof value === 'number' && isFinite(value) ? value : null;
     }
-
-    var hasRealData = kt.keywords.some(function(k) {
-      return k.mentionCount !== null || k.trendScore !== null;
-    });
-
-    // Header row: article count summary
-    var summaryHtml = '';
-    if (kt.articleCountTotal !== null) {
-      summaryHtml = '<div style="font-size:0.78rem;color:#888;margin-bottom:1rem;">'
-        + '분석 기사 수: <strong style="color:#ccc;">' + kt.articleCountTotal.toLocaleString() + '개</strong>'
-        + (kt.deduplicatedArticleCount !== null ? ' / 중복 제거 후: <strong style="color:#ccc;">' + kt.deduplicatedArticleCount.toLocaleString() + '개</strong>' : '')
-        + '</div>';
-    } else {
-      summaryHtml = '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-size:0.75rem;color:#777;margin-bottom:1rem;">'
-        + '<span style="font-size:0.68rem;color:#f7c948;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.24);border-radius:999px;padding:0.12rem 0.55rem;font-weight:800;">Beta</span>'
-        + '<span>데이터 연결 전입니다. 현재는 편집부가 선별한 키워드 지도를 보여주며, 수집 수치는 파이프라인 연결 후 표시됩니다.</span>'
-        + '</div>';
+    function normalizeKeyword(raw) {
+      return {
+        keyword: raw.keyword || '',
+        aliases: Array.isArray(raw.aliases) ? raw.aliases : [],
+        explanation: raw.explanation || '',
+        mentionCount: numeric(raw.mentionCount !== undefined ? raw.mentionCount : raw.count),
+        articleCount: numeric(raw.articleCount),
+        trendScore: numeric(raw.trendScore !== undefined ? raw.trendScore : raw.score),
+        change: numeric(raw.change),
+        status: raw.status || raw.confidence || 'not_collected_yet',
+        source: raw.source || '',
+        updatedAt: raw.updatedAt || null
+      };
     }
-
-    // Keyword cards
-    var KW_COLORS = ['#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0',
-                     '#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0',
-                     '#7ee8e8','#7fb5ff','#f7c948'];
-
-    // Compute bar widths only when real scores exist
-    var maxScore = 0;
-    if (hasRealData) {
-      kt.keywords.forEach(function(k) {
-        var s = k.trendScore || k.articleCount || k.mentionCount || 0;
-        if (s > maxScore) maxScore = s;
-      });
+    function hasValue(item) {
+      return [item.mentionCount, item.articleCount, item.trendScore, item.change].some(function(value) { return value !== null; });
     }
-
-    var cardsHtml = kt.keywords.map(function(kw, i) {
-      var color = KW_COLORS[i % KW_COLORS.length];
-      var aliasText = kw.aliases && kw.aliases.length
-        ? '<span style="font-size:0.65rem;color:#555;"> · ' + kw.aliases.slice(0,3).join(', ') + '</span>'
-        : '';
-
-      var countHtml;
-      if (kw.mentionCount !== null) {
-        countHtml = '<span style="font-size:0.72rem;color:#888;">언급 ' + kw.mentionCount + '회</span>';
-      } else if (kw.articleCount !== null) {
-        countHtml = '<span style="font-size:0.72rem;color:#888;">관련 ' + kw.articleCount + '건</span>';
-      } else {
-        countHtml = '<span style="font-size:0.68rem;color:#777;background:rgba(255,255,255,0.045);padding:0.1rem 0.45rem;border-radius:2rem;border:1px solid rgba(255,255,255,0.09);">분석 예정</span>';
+    function formatTimestamp(value) {
+      if (!value) return '';
+      var date = new Date(value);
+      if (isNaN(date.getTime())) return escKw(value);
+      return new Intl.DateTimeFormat('ko-KR', {
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit',
+        hour12:false, timeZone:'Asia/Seoul'
+      }).format(date) + ' KST';
+    }
+    function formatDate(value) {
+      if (!value) return '';
+      var date = new Date(value);
+      if (isNaN(date.getTime())) return escKw(value);
+      return new Intl.DateTimeFormat('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).format(date);
+    }
+    function statusBadge(status) {
+      if (status === 'confirmed') return '<span class="badge badge-confirmed">확인됨</span>';
+      if (status === 'low_confidence') return '<span class="badge badge-low-confidence">신뢰도 낮음</span>';
+      return '<span class="badge badge-not-collected">수집 준비 중</span>';
+    }
+    async function loadManagedData() {
+      try {
+        var response = await fetch('/api/keyword-trends', { cache:'no-store' });
+        if (response.ok) return await response.json();
+      } catch (_) {}
+      try {
+        var fallbackResponse = await fetch('data/keyword-trends-managed.json', { cache:'no-store' });
+        if (fallbackResponse.ok) return await fallbackResponse.json();
+      } catch (_) {}
+      return window.KEYWORD_TRENDS;
+    }
+    function render(kt) {
+      if (!kt || !Array.isArray(kt.keywords) || !kt.keywords.length) {
+        container.innerHTML = '<p style="font-size:0.82rem;color:#777;">키워드 데이터를 불러올 수 없습니다.</p>';
+        return;
+      }
+      var keywords = kt.keywords.map(normalizeKeyword);
+      var hasRealData = keywords.some(hasValue);
+      var updatedAt = kt.updatedAt || keywords.map(function(item) { return item.updatedAt; }).filter(Boolean).sort().pop();
+      var period = kt.periodStart && kt.periodEnd ? ' · 분석 기간: ' + formatDate(kt.periodStart) + ' - ' + formatDate(kt.periodEnd) : '';
+      if (metaLine) {
+        metaLine.textContent = hasRealData
+          ? '관리자 검토 기반 키워드 수치 · 업데이트: ' + (formatTimestamp(updatedAt) || '기준 시각 미기재') + period
+          : '키워드 후보 목록 · 수치 데이터 연결 전';
+      }
+      if (banner && hasRealData) {
+        banner.style.background = 'rgba(126,232,232,0.06)';
+        banner.style.borderColor = 'rgba(126,232,232,0.22)';
+        banner.style.color = '#7ee8e8';
+        banner.innerHTML = '<span style="font-size:1rem;">✓</span><span>현재 표시된 수치는 관리자 입력 기반입니다. 자동 수집 연결 전까지 각 항목의 출처와 기준 시각을 함께 확인해주세요.</span>';
       }
 
-      var barHtml = '';
-      if (hasRealData && maxScore > 0) {
-        var score = kw.trendScore || kw.articleCount || kw.mentionCount || 0;
-        var pct = Math.round((score / maxScore) * 90);
-        barHtml = '<div style="margin-top:0.4rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;">'
-          + '<div style="height:3px;width:' + pct + '%;background:' + color + ';border-radius:2px;opacity:0.6;"></div>'
+      var summaryHtml = hasRealData
+        ? '<div style="display:flex;gap:0.55rem;align-items:center;flex-wrap:wrap;font-size:0.75rem;color:#888;margin-bottom:1rem;">'
+          + '<span style="color:#7ee8e8;background:rgba(126,232,232,0.1);border:1px solid rgba(126,232,232,0.22);border-radius:999px;padding:0.12rem 0.55rem;font-weight:800;">운영 입력</span>'
+          + (kt.articleCountTotal !== null && kt.articleCountTotal !== undefined ? '<span>분석 기사 수 <strong style="color:#ccc;">' + Number(kt.articleCountTotal).toLocaleString() + '개</strong></span>' : '<span>관리자가 검토한 수치가 공개 중입니다.</span>')
+          + (kt.deduplicatedArticleCount !== null && kt.deduplicatedArticleCount !== undefined ? '<span>· 중복 제거 후 <strong style="color:#ccc;">' + Number(kt.deduplicatedArticleCount).toLocaleString() + '개</strong></span>' : '')
+          + '</div>'
+        : '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-size:0.75rem;color:#777;margin-bottom:1rem;">'
+          + '<span style="font-size:0.68rem;color:#f7c948;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.24);border-radius:999px;padding:0.12rem 0.55rem;font-weight:800;">Beta</span>'
+          + '<span>데이터 연결 전입니다. 편집부가 선정한 키워드 후보만 표시하며 수치는 입력 후 공개됩니다.</span></div>';
+
+      var colors = ['#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0'];
+      var maxValue = keywords.reduce(function(max, item) {
+        var value = item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount);
+        return value !== null && value > max ? value : max;
+      }, 0);
+      var cards = keywords.map(function(item, index) {
+        var color = colors[index % colors.length];
+        var count = item.mentionCount !== null ? '언급 ' + item.mentionCount.toLocaleString() + '회'
+          : (item.articleCount !== null ? '관련 ' + item.articleCount.toLocaleString() + '건' : '분석 예정');
+        var score = item.trendScore !== null ? '<span>관심도 ' + item.trendScore + '</span>' : '<span>점수 분석 예정</span>';
+        var change = item.change === null ? '' : '<span style="color:' + (item.change >= 0 ? '#56e0a0' : '#fb923c') + ';">' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change + '</span>';
+        var value = item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount);
+        var width = value !== null && maxValue > 0 ? Math.max(4, Math.round(value / maxValue * 100)) : 0;
+        return '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-left:3px solid ' + color + '55;border-radius:8px;padding:0.7rem 0.85rem;margin-bottom:0.55rem;">'
+          + '<div style="display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;">'
+          + '<strong style="font-size:0.85rem;color:' + color + ';">' + escKw(item.keyword) + '</strong>'
+          + statusBadge(item.status)
+          + '<span style="margin-left:auto;font-size:0.72rem;color:#a7a7bb;">' + count + '</span></div>'
+          + (item.explanation ? '<div style="font-size:0.74rem;color:#777;margin-top:0.35rem;line-height:1.55;">' + escKw(item.explanation) + '</div>' : '')
+          + '<div style="display:flex;gap:0.6rem;flex-wrap:wrap;font-size:0.68rem;color:#777;margin-top:0.45rem;">' + score + change
+          + (item.updatedAt ? '<span>기준 ' + formatTimestamp(item.updatedAt) + '</span>' : '')
+          + (item.source ? '<span>출처 ' + escKw(item.source) + '</span>' : '') + '</div>'
+          + (width ? '<div style="margin-top:0.45rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="height:3px;width:' + width + '%;background:' + color + ';border-radius:2px;opacity:0.7;"></div></div>' : '')
           + '</div>';
-      }
-
-      return '<div style="'
-        + 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'
-        + 'border-left:3px solid ' + color + '33;'
-        + 'border-radius:8px;padding:0.65rem 0.85rem;margin-bottom:0.55rem;'
-        + '">'
-        + '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;">'
-        + '<span style="font-size:0.85rem;font-weight:800;color:' + color + ';">' + kw.keyword + '</span>'
-        + aliasText
-        + '<span style="margin-left:auto;flex-shrink:0;">' + countHtml + '</span>'
-        + '</div>'
-        + (kw.explanation ? '<div style="font-size:0.74rem;color:#666;margin-top:0.3rem;line-height:1.55;">' + kw.explanation + '</div>' : '')
-        + barHtml
-        + '</div>';
-    }).join('');
-
-    container.innerHTML = summaryHtml + cardsHtml;
+      }).join('');
+      container.innerHTML = summaryHtml + cards;
+    }
+    loadManagedData().then(render);
   })();
 </script>
 </body>
