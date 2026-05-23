@@ -288,7 +288,8 @@
       background: rgba(20,20,35,0.95); border: 1px solid var(--color-border);
       color: #ccc; padding: 0.75rem 1.5rem; border-radius: 50px;
       font-size: 0.85rem; opacity: 0; pointer-events: none;
-      transition: all 0.3s; z-index: 9999; white-space: nowrap;
+      transition: all 0.3s; z-index: 9999; white-space: normal;
+      max-width: calc(100vw - 2rem); text-align: center;
     }
     .login-prompt.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
