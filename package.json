@@ -2,7 +2,11 @@
   "name": "cosmosbrief",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "trend:draft": "node scripts/collect-keyword-trends.js"
+  },
   "dependencies": {
+    "fast-xml-parser": "^5.2.5",
     "node-html-parser": "^6.1.13"
   }
 }

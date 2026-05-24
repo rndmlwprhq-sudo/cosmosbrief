@@ -46,6 +46,21 @@ vercel dev
 
 관리자 토큰은 브라우저 `sessionStorage`에만 저장됩니다. 공용 PC에서는 작업 후 브라우저 창을 닫아 세션을 종료하세요.
 
+### 키워드 트렌드 초안 수집
+
+관리자 입력 전 수치 계산을 보조하기 위해 RSS 기반 초안 생성 스크립트를 제공합니다.
+
+```bash
+npm install
+npm run trend:draft
+```
+
+`scripts/collect-keyword-trends.js`는 `data/keyword-trends-managed.json`의 키워드와 aliases를 사용하여 최근 7일 Google News RSS 검색 결과의 제목과 요약만 집계합니다. 결과는 `data/keyword-trends-draft.json`에 `low_confidence` 초안으로 저장되며, 운영 파일인 `data/keyword-trends-managed.json`은 변경하지 않습니다. 각 키워드에는 검토용 매칭 기사 샘플이 최대 5건 포함됩니다. 관리자는 draft의 기사 출처, 링크와 수치를 검토한 뒤 관리자 콘솔에서 필요한 항목만 발행합니다.
+
+RSS의 제목, 요약, 날짜, 링크와 출처 필드를 안전하게 읽기 위해 가벼운 XML 파서인 `fast-xml-parser`를 사용합니다. 본문 전문 크롤링이나 API 키가 필요한 외부 서비스는 사용하지 않습니다.
+
+점수 초안은 `articleCount * 12 + mentionCount * 2 + officialSourceBonus + recencyBonus`를 최대 100점으로 제한하여 계산합니다. 공식 기관 또는 기업 출처가 포함되면 `officialSourceBonus`가 10점, 최근 48시간 내 관련 기사가 있으면 `recencyBonus`가 10점 추가됩니다. 이전 운영 데이터의 `articleCount`가 양수일 때에는 초안의 `change`에 증감률을 계산하며, 0건에서 증가한 경우에는 의미 있는 백분율 기준이 없으므로 `null`로 남깁니다.
+
 ## 외부 연동
 
 - OpenAI Chat Completions API
@@ -58,6 +73,7 @@ vercel dev
 
 - `data/keyword-trends.js`: 수치가 없는 후보 키워드의 정적 폴백 데이터
 - `data/keyword-trends-managed.json`: 관리자가 발행한 운영 데이터
+- `data/keyword-trends-draft.json`: RSS 집계 후 관리자 검토를 기다리는 초안 데이터
 - `/api/keyword-trends`: 공개 읽기와 관리자 저장을 담당하는 GitHub-backed API
 
-현재 운영 필드는 `keyword`, `mentionCount`, `trendScore`, `change`, `status`, `updatedAt`, `source`입니다. 데이터 파일은 공개 저장소를 통해 제공되므로 관리자 메모나 비밀값은 저장하지 않습니다. 이후 외부 데이터 공급자가 확정되면 같은 필드 구조를 유지한 채 저장 입력원만 자동 수집 파이프라인으로 확장할 수 있습니다.
+현재 운영 필드는 `keyword`, `mentionCount`, `articleCount`, `trendScore`, `change`, `rank`, `status`, `updatedAt`, `source`입니다. 데이터 파일은 공개 저장소를 통해 제공되므로 관리자 메모나 비밀값은 저장하지 않습니다. 초안 파일 역시 커밋하면 공개될 수 있으므로 민감한 검토 기록을 넣지 않습니다. 이후 외부 데이터 공급자가 확정되면 같은 필드 구조를 유지한 채 저장 입력원만 자동 수집 파이프라인으로 확장할 수 있습니다.
