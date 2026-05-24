@@ -60,4 +60,4 @@ vercel dev
 - `data/keyword-trends-managed.json`: 관리자가 발행한 운영 데이터
 - `/api/keyword-trends`: 공개 읽기와 관리자 저장을 담당하는 GitHub-backed API
 
-현재 운영 필드는 `keyword`, `mentionCount`, `trendScore`, `change`, `status`, `updatedAt`, `source`, `note`이며, `note`는 공개 화면과 API 공개 응답에서 제외됩니다. 단, GitHub 저장 파일에 포함되므로 비밀값이나 민감한 내용은 기록하지 마세요. 이후 외부 데이터 공급자가 확정되면 같은 필드 구조를 유지한 채 저장 입력원만 자동 수집 파이프라인으로 확장할 수 있습니다.
+현재 운영 필드는 `keyword`, `mentionCount`, `trendScore`, `change`, `status`, `updatedAt`, `source`입니다. 데이터 파일은 공개 저장소를 통해 제공되므로 관리자 메모나 비밀값은 저장하지 않습니다. 이후 외부 데이터 공급자가 확정되면 같은 필드 구조를 유지한 채 저장 입력원만 자동 수집 파이프라인으로 확장할 수 있습니다.

@@ -353,7 +353,7 @@
         <div class="trends-title">
           글로벌 우주 키워드 트렌드
         </div>
-        <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">관리자가 확인한 키워드 수치를 준비하고 있습니다.</div>
+        <div id="kw-meta-line" style="font-size:0.82rem; color:var(--color-text-muted);">Beta · 데이터 연결 전 · 관리자 수동 입력 대기 중</div>
       </div>
 
       <!-- pipeline status banner -->
@@ -364,7 +364,7 @@
         font-size:0.78rem; color:#fb923c; line-height:1.6;
       ">
         <span style="font-size:1rem;">⏳</span>
-        <span>자동 수집 파이프라인 연결 전 단계입니다. 아래 후보 키워드는 표시되지만, 확인된 수치가 입력되기 전에는 분석 예정 상태로 안내됩니다.</span>
+        <span>수집 준비 중입니다. 검증된 수치가 입력되면 키워드별 언급량, 관심도 변화, 출처와 기준 시각이 이곳에 표시됩니다.</span>
       </div>
 
       <div class="trends-grid">
@@ -849,6 +849,9 @@
     function numeric(value) {
       return typeof value === 'number' && isFinite(value) ? value : null;
     }
+    function validDate(value) {
+      return !!value && !isNaN(new Date(value).getTime());
+    }
     function normalizeKeyword(raw) {
       return {
         keyword: raw.keyword || '',
@@ -864,7 +867,11 @@
       };
     }
     function hasValue(item) {
-      return [item.mentionCount, item.articleCount, item.trendScore, item.change].some(function(value) { return value !== null; });
+      return [item.mentionCount, item.articleCount, item.trendScore].some(function(value) { return value !== null; });
+    }
+    function canPublish(item) {
+      var statusReady = item.status === 'confirmed' || item.status === 'low_confidence';
+      return statusReady && hasValue(item) && !!item.source && validDate(item.updatedAt);
     }
     function formatTimestamp(value) {
       if (!value) return '';
@@ -881,9 +888,9 @@
       if (isNaN(date.getTime())) return escKw(value);
       return new Intl.DateTimeFormat('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).format(date);
     }
-    function statusBadge(status) {
-      if (status === 'confirmed') return '<span class="badge badge-confirmed">확인됨</span>';
-      if (status === 'low_confidence') return '<span class="badge badge-low-confidence">신뢰도 낮음</span>';
+    function statusBadge(status, published) {
+      if (published && status === 'confirmed') return '<span class="badge badge-confirmed">확인됨</span>';
+      if (published && status === 'low_confidence') return '<span class="badge badge-low-confidence">신뢰도 낮음</span>';
       return '<span class="badge badge-not-collected">수집 준비 중</span>';
     }
     async function loadManagedData() {
@@ -899,17 +906,19 @@
     }
     function render(kt) {
       if (!kt || !Array.isArray(kt.keywords) || !kt.keywords.length) {
-        container.innerHTML = '<p style="font-size:0.82rem;color:#777;">키워드 데이터를 불러올 수 없습니다.</p>';
+        container.innerHTML = '<div style="padding:1rem;border:1px solid rgba(126,232,232,0.16);border-radius:8px;background:rgba(126,232,232,0.04);">'
+          + '<strong style="display:block;font-size:0.9rem;margin-bottom:0.35rem;">키워드 트렌드 수집 준비 중</strong>'
+          + '<p style="font-size:0.78rem;line-height:1.7;color:#888;">검증된 수치가 입력되면 키워드별 언급량과 관심도 변화가 표시됩니다.</p></div>';
         return;
       }
       var keywords = kt.keywords.map(normalizeKeyword);
-      var hasRealData = keywords.some(hasValue);
-      var updatedAt = kt.updatedAt || keywords.map(function(item) { return item.updatedAt; }).filter(Boolean).sort().pop();
+      var hasRealData = keywords.some(canPublish);
+      var updatedAt = kt.updatedAt || keywords.filter(canPublish).map(function(item) { return item.updatedAt; }).filter(Boolean).sort().pop();
       var period = kt.periodStart && kt.periodEnd ? ' · 분석 기간: ' + formatDate(kt.periodStart) + ' - ' + formatDate(kt.periodEnd) : '';
       if (metaLine) {
         metaLine.textContent = hasRealData
           ? '관리자 검토 기반 키워드 수치 · 업데이트: ' + (formatTimestamp(updatedAt) || '기준 시각 미기재') + period
-          : '키워드 후보 목록 · 수치 데이터 연결 전';
+          : 'Beta · 데이터 연결 전 · 관리자 수동 입력 대기 중';
       }
       if (banner && hasRealData) {
         banner.style.background = 'rgba(126,232,232,0.06)';
@@ -930,26 +939,26 @@
 
       var colors = ['#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0'];
       var maxValue = keywords.reduce(function(max, item) {
-        var value = item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount);
+        var value = canPublish(item) ? (item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount)) : null;
         return value !== null && value > max ? value : max;
       }, 0);
       var cards = keywords.map(function(item, index) {
         var color = colors[index % colors.length];
-        var count = item.mentionCount !== null ? '언급 ' + item.mentionCount.toLocaleString() + '회'
-          : (item.articleCount !== null ? '관련 ' + item.articleCount.toLocaleString() + '건' : '분석 예정');
-        var score = item.trendScore !== null ? '<span>관심도 ' + item.trendScore + '</span>' : '<span>점수 분석 예정</span>';
-        var change = item.change === null ? '' : '<span style="color:' + (item.change >= 0 ? '#56e0a0' : '#fb923c') + ';">' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change + '</span>';
-        var value = item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount);
+        var published = canPublish(item);
+        var count = published && item.mentionCount !== null ? '언급 ' + item.mentionCount.toLocaleString() + '회'
+          : (published && item.articleCount !== null ? '관련 ' + item.articleCount.toLocaleString() + '건' : '분석 예정');
+        var score = published && item.trendScore !== null ? '<span>관심도 ' + item.trendScore + '</span>' : '<span>점수 분석 예정</span>';
+        var change = published && item.change !== null ? '<span style="color:' + (item.change >= 0 ? '#56e0a0' : '#fb923c') + ';">' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change + '</span>' : '';
+        var value = published ? (item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount)) : null;
         var width = value !== null && maxValue > 0 ? Math.max(4, Math.round(value / maxValue * 100)) : 0;
         return '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-left:3px solid ' + color + '55;border-radius:8px;padding:0.7rem 0.85rem;margin-bottom:0.55rem;">'
           + '<div style="display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;">'
           + '<strong style="font-size:0.85rem;color:' + color + ';">' + escKw(item.keyword) + '</strong>'
-          + statusBadge(item.status)
+          + statusBadge(item.status, published)
           + '<span style="margin-left:auto;font-size:0.72rem;color:#a7a7bb;">' + count + '</span></div>'
           + (item.explanation ? '<div style="font-size:0.74rem;color:#777;margin-top:0.35rem;line-height:1.55;">' + escKw(item.explanation) + '</div>' : '')
           + '<div style="display:flex;gap:0.6rem;flex-wrap:wrap;font-size:0.68rem;color:#777;margin-top:0.45rem;">' + score + change
-          + (item.updatedAt ? '<span>기준 ' + formatTimestamp(item.updatedAt) + '</span>' : '')
-          + (item.source ? '<span>출처 ' + escKw(item.source) + '</span>' : '') + '</div>'
+          + (published ? '<span>기준 ' + formatTimestamp(item.updatedAt) + '</span><span>출처 ' + escKw(item.source) + '</span>' : '') + '</div>'
           + (width ? '<div style="margin-top:0.45rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="height:3px;width:' + width + '%;background:' + color + ';border-radius:2px;opacity:0.7;"></div></div>' : '')
           + '</div>';
       }).join('');

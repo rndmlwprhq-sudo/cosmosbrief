@@ -127,7 +127,7 @@
         <div class="card-features">
           <div class="card-feature-item">
             <span class="feature-dot"></span>
-            실시간 키워드 트렌드 분석 차트
+            검증된 키워드 트렌드 수치 (Beta)
           </div>
           <div class="card-feature-item">
             <span class="feature-dot"></span>
@@ -280,11 +280,9 @@
       </div>
       <div class="trends-grid">
         <div class="keyword-chart" id="home-keyword-preview">
-          <div class="keyword-bar-item">
-            <div class="keyword-bar-header">
-              <span class="keyword-name">키워드 수치 준비 중</span>
-              <span class="keyword-count">데이터 연결 전</span>
-            </div>
+          <div style="padding:1rem;border:1px solid rgba(126,232,232,0.16);border-radius:8px;background:rgba(126,232,232,0.04);">
+            <strong style="display:block;font-size:0.9rem;margin-bottom:0.35rem;">키워드 트렌드 수집 준비 중</strong>
+            <p style="font-size:0.78rem;line-height:1.7;color:var(--color-text-muted);">검증된 수치가 입력되면 주요 우주개발 키워드의 언급량과 관심도 변화가 이곳에 표시됩니다.</p>
           </div>
         </div>
 
@@ -532,6 +530,15 @@
     function number(value) {
       return typeof value === 'number' && isFinite(value) ? value : null;
     }
+    function validDate(value) {
+      return !!value && !isNaN(new Date(value).getTime());
+    }
+    function formatTimestamp(value) {
+      return new Intl.DateTimeFormat('ko-KR', {
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit',
+        hour12:false, timeZone:'Asia/Seoul'
+      }).format(new Date(value)) + ' KST';
+    }
     async function getKeywordData() {
       try {
         var response = await fetch('/api/keyword-trends', { cache:'no-store' });
@@ -544,38 +551,53 @@
       return window.KEYWORD_TRENDS || { keywords: [] };
     }
     function render(data) {
-      var items = Array.isArray(data.keywords) ? data.keywords.slice(0, 6) : [];
-      var normalized = items.map(function(item) {
+      var normalized = (Array.isArray(data.keywords) ? data.keywords : []).map(function(item) {
         return {
           keyword: item.keyword || '',
           count: number(item.mentionCount !== undefined ? item.mentionCount : item.count),
+          articleCount: number(item.articleCount),
           score: number(item.trendScore !== undefined ? item.trendScore : item.score),
           change: number(item.change),
-          status: item.status || item.confidence || 'not_collected_yet'
+          status: item.status || item.confidence || 'not_collected_yet',
+          source: item.source || '',
+          updatedAt: item.updatedAt || null
         };
       });
-      var hasData = normalized.some(function(item) {
-        return item.count !== null || item.score !== null || item.change !== null;
-      });
+      function canPublish(item) {
+        var statusReady = item.status === 'confirmed' || item.status === 'low_confidence';
+        var hasPrimaryValue = item.count !== null || item.articleCount !== null || item.score !== null;
+        return statusReady && hasPrimaryValue && !!item.source && validDate(item.updatedAt);
+      }
+      var hasData = normalized.some(canPublish);
       if (badge) badge.textContent = hasData ? '운영 입력' : 'Beta';
-      if (!normalized.length) {
-        container.innerHTML = '<div class="keyword-bar-item"><div class="keyword-count">키워드 데이터를 불러올 수 없습니다.</div></div>';
+      if (!hasData) {
+        container.innerHTML = '<div style="padding:1rem;border:1px solid rgba(126,232,232,0.16);border-radius:8px;background:rgba(126,232,232,0.04);">'
+          + '<strong style="display:block;font-size:0.9rem;margin-bottom:0.35rem;">키워드 트렌드 수집 준비 중</strong>'
+          + '<p style="font-size:0.78rem;line-height:1.7;color:var(--color-text-muted);">검증된 수치가 입력되면 주요 우주개발 키워드의 언급량과 관심도 변화가 이곳에 표시됩니다.</p>'
+          + '<span style="display:inline-block;margin-top:0.55rem;font-size:0.7rem;color:#f7c948;">데이터 연결 전 · 관리자 수동 입력 대기 중</span></div>';
         return;
       }
-      var max = normalized.reduce(function(current, item) {
-        var value = item.score !== null ? item.score : item.count;
+      var items = normalized.filter(canPublish).concat(normalized.filter(function(item) { return !canPublish(item); })).slice(0, 6);
+      var max = items.reduce(function(current, item) {
+        var value = canPublish(item) ? (item.score !== null ? item.score : (item.count !== null ? item.count : item.articleCount)) : null;
         return value !== null && value > current ? value : current;
       }, 0);
-      container.innerHTML = normalized.map(function(item, index) {
-        var value = item.score !== null ? item.score : item.count;
+      container.innerHTML = items.map(function(item, index) {
+        var published = canPublish(item);
+        var value = published ? (item.score !== null ? item.score : (item.count !== null ? item.count : item.articleCount)) : null;
         var width = value !== null && max > 0 ? Math.max(4, Math.round(value / max * 100)) : 0;
-        var state = item.status === 'low_confidence' ? '신뢰도 낮음 · ' : '';
-        var label = item.count !== null ? '언급 ' + item.count.toLocaleString() + '회'
-          : (item.score !== null ? '관심도 ' + item.score : '수집 준비 중');
+        var state = published && item.status === 'low_confidence' ? '신뢰도 낮음' : (published ? '확인됨' : '수집 준비 중');
+        var figures = published
+          ? (item.count !== null ? '언급 ' + item.count.toLocaleString() + '회' : '관련 ' + item.articleCount.toLocaleString() + '건')
+            + (item.score !== null ? ' · 관심도 ' + item.score : '')
+            + (item.change !== null ? ' · ' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change : '')
+          : '분석 예정';
         return '<div class="keyword-bar-item"><div class="keyword-bar-header">'
-          + '<span class="keyword-name">' + escKw(item.keyword) + '</span>'
-          + '<span class="keyword-count">' + state + label + '</span></div>'
-          + '<div class="keyword-bar-track"><div class="keyword-bar-fill kw-' + (index + 1) + '" style="width:' + width + '%"></div></div></div>';
+          + '<span class="keyword-name">' + escKw(item.keyword) + ' <small style="display:inline-block;font-size:0.66rem;font-weight:700;padding:0.1rem 0.42rem;border-radius:999px;color:' + (published && item.status === 'confirmed' ? '#56e0a0' : published ? '#fb923c' : '#888') + ';background:' + (published && item.status === 'confirmed' ? 'rgba(86,224,160,0.12)' : published ? 'rgba(251,146,60,0.12)' : 'rgba(160,160,160,0.1)') + ';">' + state + '</small></span>'
+          + '<span class="keyword-count">' + figures + '</span></div>'
+          + (published ? '<div style="font-size:0.7rem;color:var(--color-text-muted);">출처 ' + escKw(item.source) + ' · 업데이트 ' + formatTimestamp(item.updatedAt) + '</div>' : '')
+          + (published ? '<div class="keyword-bar-track"><div class="keyword-bar-fill kw-' + (index + 1) + '" style="width:' + width + '%"></div></div>' : '')
+          + '</div>';
       }).join('');
     }
     getKeywordData().then(render);

@@ -82,15 +82,16 @@ function sanitizeKeyword(raw, index) {
   const rank = nullableNumber(raw.rank, 'rank', { integer: true, min: 1 });
   const updatedAt = nullableDate(raw.updatedAt, 'updated_at');
   const source = str(raw.source, 120);
-  const hasMeasuredValue = [mentionCount, articleCount, trendScore, change].some(value => value !== null);
+  const hasPrimaryValue = [mentionCount, articleCount, trendScore].some(value => value !== null);
+  const hasEnteredValue = hasPrimaryValue || change !== null;
 
-  if ((hasMeasuredValue || status !== 'not_collected_yet') && (!updatedAt || !source)) {
+  if ((hasEnteredValue || status !== 'not_collected_yet') && (!updatedAt || !source)) {
     throw new Error('source_and_updated_at_required');
   }
-  if (status === 'not_collected_yet' && hasMeasuredValue) {
+  if (status === 'not_collected_yet' && hasEnteredValue) {
     throw new Error('pending_value_not_allowed');
   }
-  if (status !== 'not_collected_yet' && !hasMeasuredValue) {
+  if (status !== 'not_collected_yet' && !hasPrimaryValue) {
     throw new Error('confirmed_value_required');
   }
 
@@ -106,7 +107,6 @@ function sanitizeKeyword(raw, index) {
     status,
     updatedAt,
     source,
-    note: str(raw.note, 500),
     explanation: str(raw.explanation, 500),
   };
 }
@@ -135,10 +135,7 @@ function sanitizeDataset(raw) {
 }
 
 function publicDataset(data) {
-  return {
-    ...data,
-    keywords: data.keywords.map(({ note, ...publicKeyword }) => publicKeyword),
-  };
+  return data;
 }
 
 function defaultDataset() {
