@@ -64,7 +64,7 @@
     </div>
     <div class="hero-stats">
       <!-- Fixed editorial headline until weekly counts are automated. -->
-      <a href="trends.html#latest-feed" class="hero-stat hero-stat-link hero-stat-update" aria-label="개발 동향 최신 기사 피드로 이동">
+      <a href="trends.html#article-summary-feed" class="hero-stat hero-stat-link hero-stat-update" aria-label="개발 동향 기사 요약 피드로 이동">
         <span class="stat-number" data-target="10" data-suffix="+">0+</span>
         <span class="stat-label">이번주 업데이트</span>
       </a>
@@ -92,7 +92,6 @@
     <div class="news-carousel-header">
       <div class="news-carousel-label">
         <span class="ticker-label">최신 개발동향</span>
-        <span class="news-carousel-caption">공개 기사 데이터에서 최근 소식을 불러옵니다.</span>
       </div>
       <div class="news-carousel-controls" aria-label="기사 슬라이더 조작">
         <button type="button" id="home-news-prev" class="carousel-control" aria-label="이전 기사 보기">‹</button>
@@ -215,7 +214,7 @@
 
     <div class="knowledge-grid reveal">
 
-      <div class="knowledge-card" data-article="blackhole-shadow" data-difficulty="beginner" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="blackhole-shadow" data-difficulty="beginner" role="button" tabindex="0" aria-label="입문 글 블랙홀이란 무엇인가 읽기">
         <div class="kc-icon">⚫</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -231,7 +230,7 @@
         </div>
       </div>
 
-      <div class="knowledge-card" data-difficulty="beginner" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="big-bang-beginner" data-difficulty="beginner" role="button" tabindex="0" aria-label="입문 글 빅뱅 우주의 시작 읽기">
         <div class="kc-icon">💫</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -247,7 +246,7 @@
         </div>
       </div>
 
-      <div class="knowledge-card" data-difficulty="intermediate" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="dark-universe" data-difficulty="intermediate" role="button" tabindex="0" aria-label="중급 글 암흑물질과 암흑에너지 읽기">
         <div class="kc-icon">🌌</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -263,7 +262,7 @@
         </div>
       </div>
 
-      <div class="knowledge-card" data-difficulty="intermediate" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="stellar-elements" data-difficulty="intermediate" role="button" tabindex="0" aria-label="중급 글 별의 일생과 원소의 기원 읽기">
         <div class="kc-icon">⭐</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -279,7 +278,7 @@
         </div>
       </div>
 
-      <div class="knowledge-card" data-difficulty="advanced" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="gravity-orbits" data-difficulty="advanced" role="button" tabindex="0" aria-label="심화 글 중력은 어떻게 궤도를 만들까 읽기">
         <div class="kc-icon">🌀</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -300,7 +299,7 @@
         </div>
       </div>
 
-      <div class="knowledge-card" data-difficulty="advanced" style="cursor:pointer;">
+      <div class="knowledge-card" data-article="gravitational-waves" data-difficulty="advanced" role="button" tabindex="0" aria-label="심화 글 중력파 시공간의 파문 읽기">
         <div class="kc-icon">🔬</div>
         <div class="kc-difficulty">
           <div class="difficulty-stars">
@@ -374,7 +373,7 @@
 </div><!-- /.page-wrapper -->
 
 <!-- ============ ARTICLE MODAL ============ -->
-<div class="modal-overlay" id="article-modal">
+<div class="modal-overlay" id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-box">
     <div class="modal-header">
       <div>

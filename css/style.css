@@ -640,11 +640,6 @@ ul, ol { list-style: none; }
   flex-shrink: 0;
 }
 
-.news-carousel-caption {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-}
-
 .news-carousel-controls {
   display: flex;
   align-items: center;
@@ -1159,6 +1154,12 @@ ul, ol { list-style: none; }
   box-shadow: var(--shadow-card);
 }
 
+.knowledge-card:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 3px;
+  border-color: var(--color-accent-cyan);
+}
+
 .knowledge-card:hover::before { opacity: 1; }
 
 .kc-icon {
@@ -1580,6 +1581,56 @@ ul, ol { list-style: none; }
   font-weight: 700;
   margin: 1.5rem 0 0.75rem;
   color: var(--color-text-primary);
+}
+
+.modal-body .story-points {
+  margin-top: 1.75rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(126, 232, 232, 0.16);
+  background: rgba(126, 232, 232, 0.04);
+}
+
+.modal-body .story-points h3 {
+  margin-top: 0;
+}
+
+.modal-body .story-points ul {
+  padding-left: 1.15rem;
+  list-style: disc;
+  color: var(--color-text-secondary);
+}
+
+.modal-body .story-points li {
+  padding-left: 0.2rem;
+  margin-bottom: 0.55rem;
+  line-height: 1.7;
+}
+
+.modal-body .story-points li:last-child {
+  margin-bottom: 0;
+}
+
+.modal-body .story-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.modal-body .story-keyword {
+  padding: 0.28rem 0.62rem;
+  border: 1px solid rgba(79, 142, 247, 0.22);
+  border-radius: 100px;
+  background: rgba(79, 142, 247, 0.08);
+  color: var(--color-accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.modal-body .formula-card {
+  margin: 1.5rem 0;
+  padding: 1rem;
 }
 
 .modal-body .humanistic-message {
