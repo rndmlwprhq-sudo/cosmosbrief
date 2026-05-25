@@ -1162,6 +1162,18 @@ ul, ol { list-style: none; }
 
 .knowledge-card:hover::before { opacity: 1; }
 
+.knowledge-preview-header .section-tag {
+  color: #ffd86b;
+}
+
+.knowledge-preview-header .section-title {
+  text-shadow: 0 0 24px rgba(255, 216, 107, 0.07);
+}
+
+.knowledge-preview-header .section-desc {
+  max-width: 660px;
+}
+
 .kc-icon {
   font-size: 2.5rem;
   filter: drop-shadow(0 2px 8px rgba(79, 142, 247, 0.3));
@@ -1576,6 +1588,20 @@ ul, ol { list-style: none; }
   margin-bottom: 1.25rem;
 }
 
+.modal-body .term-highlight {
+  color: #9de7ff;
+  font-weight: 700;
+}
+
+.modal-body .idea-highlight {
+  color: #ffd86b;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 216, 107, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 .modal-body h3 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -1631,6 +1657,37 @@ ul, ol { list-style: none; }
 .modal-body .formula-card {
   margin: 1.5rem 0;
   padding: 1rem;
+}
+
+.modal-body .concept-definitions {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(79, 142, 247, 0.2);
+  border-radius: var(--radius-md);
+  background: rgba(79, 142, 247, 0.055);
+}
+
+.modal-body .concept-definitions h3 {
+  margin: 0 0 0.8rem;
+  font-size: 0.98rem;
+}
+
+.modal-body .concept-definitions dl {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.modal-body .concept-definitions dt {
+  color: #9de7ff;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.modal-body .concept-definitions dd {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.7;
 }
 
 .modal-body .humanistic-message {
