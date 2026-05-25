@@ -46,6 +46,12 @@
     .update-card { cursor:pointer; }
     .uc-read-more { margin-top:0.75rem; font-size:0.72rem; color:var(--color-text-muted,#7ee8e8); font-weight:700; opacity:0.6; }
     .update-card:hover .uc-read-more { opacity:1; color:#7ee8e8; }
+    .update-card:target,
+    .article-card:target,
+    .linked-article {
+      border-color:rgba(126,232,232,0.55) !important;
+      box-shadow:0 0 0 1px rgba(126,232,232,0.2), 0 0 24px rgba(126,232,232,0.11);
+    }
 
     /* ?? Article modal ?? */
     .article-modal-bg {
@@ -226,6 +232,34 @@
     }
     .btn-load-more:hover { background:rgba(126,232,232,0.15); border-color:rgba(126,232,232,0.5); }
     .no-more-articles-msg { font-size:0.78rem; color:#555; padding:0.5rem; }
+    .trend-keyword-row {
+      padding:0.75rem 0.85rem;
+      background:rgba(255,255,255,0.025);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:8px;
+    }
+    .trend-keyword-meta {
+      display:flex; gap:0.55rem; flex-wrap:wrap;
+      font-size:0.69rem; line-height:1.6; color:var(--color-text-muted);
+    }
+    .trend-keyword-note { font-size:0.73rem; color:#777; line-height:1.55; }
+    .events-heading {
+      display:flex; justify-content:space-between; align-items:center; gap:0.75rem;
+      flex-wrap:wrap; margin-bottom:1.25rem;
+    }
+    .events-heading strong {
+      font-size:0.8rem; color:var(--color-text-muted);
+      text-transform:uppercase; letter-spacing:0.08em;
+    }
+    .events-reference { font-size:0.68rem; color:#777; }
+    .event-state {
+      display:inline-block; margin-left:0.35rem; padding:0.08rem 0.42rem;
+      border-radius:999px; font-size:0.62rem; font-weight:800;
+      background:rgba(86,224,160,0.14); color:#56e0a0;
+    }
+    .event-state.developing { background:rgba(251,146,60,0.14); color:#fb923c; }
+    .timeline-link { display:block; color:inherit; text-decoration:none; }
+    .timeline-link:hover .timeline-text { color:#7ee8e8; }
   </style>
 </head>
 <body>
@@ -318,31 +352,13 @@
   </div>
 
   <!-- ============ LIVE ADMIN UPDATES ============ -->
-  <div class="live-updates-wrap" id="live-updates-wrap">
+  <div class="live-updates-wrap" id="latest-feed">
     <div class="live-updates-header">
       <div class="live-updates-title">실시간 우주 뉴스</div>
       <span class="live-badge-green">LIVE</span>
       <span style="font-size:0.72rem; color:var(--color-text-muted); margin-left:auto;" id="updates-count"></span>
     </div>
-    <!-- 최신 뉴스 카드 (하드코딩 예시) -->
-    <div class="insta-feed-row" id="insta-feed-row">
-      <a href="/articles/artemis2.html" target="_blank" class="itc-card">
-        <div class="itc-img" style="background:linear-gradient(135deg,#0a0f1e,#1a2a4a);">🌕</div>
-        <div class="itc-info">
-          <div class="itc-title">아르테미스 II 발사 준비</div>
-          <div class="itc-date">2026.04.09</div>
-          <span class="itc-badge">최신 뉴스</span>
-        </div>
-      </a>
-      <a href="/articles/roman-telescope.html" target="_blank" class="itc-card">
-        <div class="itc-img" style="background:linear-gradient(135deg,#0a1520,#0d2030);">🔭</div>
-        <div class="itc-info">
-          <div class="itc-title">NASA 로만 우주 망원경 발사 준비</div>
-          <div class="itc-date">2026.03.12</div>
-          <span class="itc-badge">최신 뉴스</span>
-        </div>
-      </a>
-    </div>
+    <div class="no-updates-msg" id="published-empty-state">관리자 발행 최신 기사가 준비되면 이곳에 표시됩니다.</div>
     <div class="updates-grid" id="updates-grid"></div>
   </div>
 
@@ -369,54 +385,16 @@
 
       <div class="trends-grid">
         <!-- keyword cards — rendered by renderGlobalKeywordTrends() -->
-        <div id="keyword-global-container"></div>
+        <div class="keyword-chart" id="keyword-global-container"></div>
 
         <!-- Timeline -->
         <div>
-          <p style="font-size:0.8rem; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem;">📅 4월~5월 주요 이벤트</p>
-          <div class="timeline-preview">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">4월 1일 · NASA</div>
-                <div class="timeline-text">아르테미스 II 발사 — 54년 만의 유인 달 궤도 비행</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">4월 10일 · NASA</div>
-                <div class="timeline-text">아르테미스 II 귀환 착수 성공</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">4월 7일 · ESA</div>
-                <div class="timeline-text">우주잔해 케슬러 신드롬 임계 경고 보고서 발표</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">4월 29일 · NASA/Roscosmos</div>
-                <div class="timeline-text">ISS Zvezda 모듈 PrK 균열 문제 미해결 보고</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">5월 1일 · NASA</div>
-                <div class="timeline-text">CLPS 계약 상한 $4.2B으로 증액 — 달 착륙 가속화</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">2026년 9월 예정 · NASA</div>
-                <div class="timeline-text">Nancy Grace Roman ST 발사 목표</div>
-              </div>
-            </div>
+          <div class="events-heading">
+            <strong>📅 이달 주요 이벤트</strong>
+            <span class="events-reference">2026.05.25 기준 · 기사 데이터 기반</span>
+          </div>
+          <div class="timeline-preview" id="monthly-events-list">
+            <div class="no-updates-msg">확인된 이달 이벤트를 불러오는 중입니다.</div>
           </div>
         </div>
       </div>
@@ -499,6 +477,19 @@
 <script src="data/keyword-trends.js"></script>
 <script src="data/trends.js"></script>
 <script>
+  function scrollToLinkedArticle() {
+    var id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target) return;
+    if (target.hasAttribute('data-page-hidden')) {
+      target.removeAttribute('data-page-hidden');
+      updateCardVisibility();
+    }
+    target.classList.add('linked-article');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   /* ── Render articles from TRENDS_DATA ── */
   (function renderTrendsArticles() {
     const data = window.TRENDS_DATA || [];
@@ -533,6 +524,9 @@
     function esc(s) {
       return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
+    function articleAnchor(id) {
+      return 'article-' + String(id || '').replace(/[^a-zA-Z0-9_-]/g, '-');
+    }
 
     const INIT_SHOW = 6;
 
@@ -553,7 +547,7 @@
       const tagsHtml = (item.tags || []).map(t => `<span class="article-tag tag-mission">${esc(t)}</span>`).join('');
       const pagedAttr = (typeof idx === 'number' && idx >= INIT_SHOW) ? ' data-page-hidden="1"' : '';
 
-      return `<div class="${cardClass}" data-key="${esc(item.id)}" data-category="${esc(item.category)}" style="cursor:pointer;" data-trends-id="${esc(item.id)}"${pagedAttr}>
+      return `<div id="${articleAnchor(item.id)}" class="${cardClass}" data-key="${esc(item.id)}" data-category="${esc(item.category)}" style="cursor:pointer;" data-trends-id="${esc(item.id)}"${pagedAttr}>
         ${makeThumb(item)}
         <div class="article-body">
           <div class="card-badge-row">
@@ -579,8 +573,23 @@
     const container = document.getElementById('articles-container');
     if (container) container.innerHTML = confirmed.map((item, idx) => makeCard(item, idx)).join('');
 
+    const eventContainer = document.getElementById('monthly-events-list');
+    if (eventContainer) {
+      const events = confirmed.filter(item => String(item.date || '').indexOf('2026-05-') === 0)
+        .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      eventContainer.innerHTML = events.length ? events.map(item => {
+        const eventState = item.status === 'confirmed' ? '확인됨' : '진행 중';
+        const eventClass = item.status === 'confirmed' ? '' : ' developing';
+        return `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">`
+          + `<a class="timeline-link" href="#${articleAnchor(item.id)}">`
+          + `<div class="timeline-date">${esc(item.date.replace(/-/g, '.'))} · ${esc(item.sourceName)}<span class="event-state${eventClass}">${eventState}</span></div>`
+          + `<div class="timeline-text">${esc(item.title)}</div></a></div></div>`;
+      }).join('') : '<div class="no-updates-msg">공개 기준을 충족한 이달 이벤트가 아직 없습니다.</div>';
+    }
+
     // Apply initial paging visibility (hides cards with data-page-hidden)
     updateCardVisibility();
+    scrollToLinkedArticle();
 
     // Attach click handlers
     document.querySelectorAll('[data-trends-id]').forEach(function(card) {
@@ -656,7 +665,7 @@
               + `</div>`;
           });
         }
-        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-titㄴle">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
+        bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
 
         document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(bodyHtml);
 
@@ -723,18 +732,24 @@
     if (!db || !db.length) {
       try { const r = await fetch('/api/articles', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
     }
-    // Try 3: localStorage fallback (same browser)
+    // Try 3: deployed static data fallback (keeps homepage article anchors aligned)
+    if (!db || !db.length) {
+      try { const r = await fetch('data/published.json', {cache:'no-store'}); if (r.ok) db = await r.json(); } catch {}
+    }
+    // Try 4: localStorage fallback (same browser)
     if (!db || !db.length) {
       try { db = JSON.parse(localStorage.getItem('cb_published_news') || '[]'); } catch {}
     }
-    const visible = (db||[]).filter(e => e.visible !== false);
+    const visible = (db||[]).filter(e => e.visible !== false).sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
     if (!visible.length) return;
 
-    const wrap = document.getElementById('live-updates-wrap');
+    const wrap = document.getElementById('latest-feed');
     const grid = document.getElementById('updates-grid');
     const countEl = document.getElementById('updates-count');
+    const emptyState = document.getElementById('published-empty-state');
     wrap.style.display = '';
     countEl.textContent = visible.length + '개 업데이트';
+    if (emptyState) emptyState.style.display = 'none';
 
     function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
     function relTime(iso) {
@@ -744,6 +759,9 @@
       if (d > 0) return d + '일 전';
       if (h > 0) return h + '시간 전';
       return '방금';
+    }
+    function publishedAnchor(id) {
+      return 'article-published-' + String(id || '').replace(/[^a-zA-Z0-9_-]/g, '-');
     }
 
     // Store articles for modal access
@@ -758,7 +776,7 @@
         .map(l => `<a href="${esc(l)}" target="_blank" rel="noopener" class="uc-link" onclick="event.stopPropagation()">🔗 원문</a>`).join('');
       const hidden = idx >= SHOW_INIT ? ' style="display:none" data-hidden-feed="true"' : '';
       return `
-        <div class="update-card" onclick="openArticleModal(${idx})"${hidden}>
+        <div id="${publishedAnchor(item.id)}" class="update-card" onclick="openArticleModal(${idx})"${hidden}>
           <div class="uc-top">
             <span class="uc-dot" style="background:${esc(item.companyColor||'#7ee8e8')}"></span>
             <span class="uc-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>
@@ -770,6 +788,7 @@
           <div class="uc-read-more">→ 전체 보기</div>
         </div>`;
     }).join('');
+    scrollToLinkedArticle();
 
     // If there are more articles, add a 'more' button
     if (visible.length > SHOW_INIT) {
@@ -937,29 +956,35 @@
           + '<span style="font-size:0.68rem;color:#f7c948;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.24);border-radius:999px;padding:0.12rem 0.55rem;font-weight:800;">Beta</span>'
           + '<span>데이터 연결 전입니다. 편집부가 선정한 키워드 후보만 표시하며 수치는 입력 후 공개됩니다.</span></div>';
 
+      var orderedKeywords = keywords.slice().sort(function(a, b) {
+        var aMentions = canPublish(a) && a.mentionCount !== null ? a.mentionCount : -1;
+        var bMentions = canPublish(b) && b.mentionCount !== null ? b.mentionCount : -1;
+        if (bMentions !== aMentions) return bMentions - aMentions;
+        var aScore = canPublish(a) && a.trendScore !== null ? a.trendScore : -1;
+        var bScore = canPublish(b) && b.trendScore !== null ? b.trendScore : -1;
+        return bScore - aScore;
+      });
       var colors = ['#7ee8e8','#7fb5ff','#f7c948','#fb923c','#c49fff','#56e0a0'];
-      var maxValue = keywords.reduce(function(max, item) {
-        var value = canPublish(item) ? (item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount)) : null;
-        return value !== null && value > max ? value : max;
+      var maxMentions = orderedKeywords.reduce(function(max, item) {
+        return canPublish(item) && item.mentionCount !== null && item.mentionCount > max ? item.mentionCount : max;
       }, 0);
-      var cards = keywords.map(function(item, index) {
+      var cards = orderedKeywords.map(function(item, index) {
         var color = colors[index % colors.length];
         var published = canPublish(item);
         var count = published && item.mentionCount !== null ? '언급 ' + item.mentionCount.toLocaleString() + '회'
           : (published && item.articleCount !== null ? '관련 ' + item.articleCount.toLocaleString() + '건' : '분석 예정');
         var score = published && item.trendScore !== null ? '<span>관심도 ' + item.trendScore + '</span>' : '<span>점수 분석 예정</span>';
         var change = published && item.change !== null ? '<span style="color:' + (item.change >= 0 ? '#56e0a0' : '#fb923c') + ';">' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change + '</span>' : '';
-        var value = published ? (item.trendScore !== null ? item.trendScore : (item.mentionCount !== null ? item.mentionCount : item.articleCount)) : null;
-        var width = value !== null && maxValue > 0 ? Math.max(4, Math.round(value / maxValue * 100)) : 0;
-        return '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-left:3px solid ' + color + '55;border-radius:8px;padding:0.7rem 0.85rem;margin-bottom:0.55rem;">'
-          + '<div style="display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;">'
-          + '<strong style="font-size:0.85rem;color:' + color + ';">' + escKw(item.keyword) + '</strong>'
-          + statusBadge(item.status, published)
-          + '<span style="margin-left:auto;font-size:0.72rem;color:#a7a7bb;">' + count + '</span></div>'
-          + (item.explanation ? '<div style="font-size:0.74rem;color:#777;margin-top:0.35rem;line-height:1.55;">' + escKw(item.explanation) + '</div>' : '')
-          + '<div style="display:flex;gap:0.6rem;flex-wrap:wrap;font-size:0.68rem;color:#777;margin-top:0.45rem;">' + score + change
-          + (published ? '<span>기준 ' + formatTimestamp(item.updatedAt) + '</span><span>출처 ' + escKw(item.source) + '</span>' : '') + '</div>'
-          + (width ? '<div style="margin-top:0.45rem;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;"><div style="height:3px;width:' + width + '%;background:' + color + ';border-radius:2px;opacity:0.7;"></div></div>' : '')
+        var width = published && item.mentionCount !== null && maxMentions > 0 ? Math.max(4, Math.round(item.mentionCount / maxMentions * 100)) : 0;
+        return '<div class="keyword-bar-item trend-keyword-row" style="border-left:3px solid ' + color + '55;">'
+          + '<div class="keyword-bar-header">'
+          + '<span class="keyword-name" style="color:' + color + ';">' + escKw(item.keyword) + ' ' + statusBadge(item.status, published) + '</span>'
+          + '<span class="keyword-count">' + count + '</span></div>'
+          + (width ? '<div class="keyword-bar-track"><div class="keyword-bar-fill" style="width:' + width + '%;background:' + color + ';"></div></div>' : '')
+          + (item.explanation ? '<div class="trend-keyword-note">' + escKw(item.explanation) + '</div>' : '')
+          + '<div class="trend-keyword-meta">' + score + change
+          + (published ? '<span>기준 ' + formatTimestamp(item.updatedAt) + '</span><span>출처 ' + escKw(item.source) + '</span>' : '<span>데이터 연결 전</span>')
+          + '</div>'
           + '</div>';
       }).join('');
       container.innerHTML = summaryHtml + cards;

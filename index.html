@@ -47,7 +47,7 @@
     <h1 class="hero-title">
       찬란한 우주<br />
       <span class="gradient-text">그 속에 선명한</span><br />
-      <span class="gold-text">푸른 점</span>
+      <span class="hero-dot-line"><span class="gold-text">푸른 점</span><span class="hero-blue-dot" aria-hidden="true"></span></span>
     </h1>
     <p class="hero-subtitle">
       우주에서 보면 지구는 작은 점입니다.<br />
@@ -60,15 +60,17 @@
     <div class="hero-actions">
       <a href="trends.html" class="btn-primary">🚀 개발 동향 보기</a>
       <a href="knowledge.html" class="btn-secondary">🌟 천문 지식 탐험</a>
+      <a href="cosmos-life.html" class="btn-secondary btn-life">🌍 우주와 우리 삶</a>
     </div>
     <div class="hero-stats">
+      <!-- Fixed editorial headline until weekly counts are automated. -->
+      <a href="trends.html#latest-feed" class="hero-stat hero-stat-link hero-stat-update" aria-label="개발 동향 최신 기사 피드로 이동">
+        <span class="stat-number" data-target="10" data-suffix="+">0+</span>
+        <span class="stat-label">이번주 업데이트</span>
+      </a>
       <div class="hero-stat">
-        <span class="stat-number" data-target="24" data-suffix="+">0+</span>
-        <span class="stat-label">이번 주 업데이트</span>
-      </div>
-      <div class="hero-stat">
-        <span class="stat-number" data-target="8" data-suffix="개">0개</span>
-        <span class="stat-label">출처 사이트 연동</span>
+        <span class="stat-number" data-target="13" data-suffix="개">0개</span>
+        <span class="stat-label">사이트 연동</span>
       </div>
       <div class="hero-stat">
         <span class="stat-number" data-target="3" data-suffix="단계">0단계</span>
@@ -85,31 +87,30 @@
     </div>
   </section>
 
-  <!-- ============ NEWS TICKER ============ -->
-  <div class="news-ticker">
-    <span class="ticker-label">🔴 Breaking</span>
-    <div class="ticker-separator"></div>
-    <div class="ticker-scroll">
-      <span class="ticker-item">🚀 스타십 IFT-6 궤도 진입 완전 성공 <span class="ticker-time">3시간 전</span></span>
-      <span class="ticker-item">🔭 JWST, 40광년 외계행성 대기서 이산화탄소·메탄 동시 검출 <span class="ticker-time">어제</span></span>
-      <span class="ticker-item">🌙 아르테미스 III 달 착륙 미션 2027년 3분기로 확정 <span class="ticker-time">2일 전</span></span>
-      <span class="ticker-item">🛰️ 한국 차세대 중형위성 3호 발사 성공 <span class="ticker-time">4일 전</span></span>
-      <span class="ticker-item">⚡ 핵융합 점화 유지 기록 갱신 — 에너지 생산 순수익 최초 달성 <span class="ticker-time">1주 전</span></span>
-      <!-- 티커는 JS로 무한 복제됨 -->
-      <span class="ticker-item">🚀 스타십 IFT-6 궤도 진입 완전 성공 <span class="ticker-time">3시간 전</span></span>
-      <span class="ticker-item">🔭 JWST, 40광년 외계행성 대기서 이산화탄소·메탄 동시 검출 <span class="ticker-time">어제</span></span>
-      <span class="ticker-item">🌙 아르테미스 III 달 착륙 미션 2027년 3분기로 확정 <span class="ticker-time">2일 전</span></span>
-      <span class="ticker-item">🛰️ 한국 차세대 중형위성 3호 발사 성공 <span class="ticker-time">4일 전</span></span>
-      <span class="ticker-item">⚡ 핵융합 점화 유지 기록 갱신 — 에너지 생산 순수익 최초 달성 <span class="ticker-time">1주 전</span></span>
+  <!-- ============ LATEST NEWS CAROUSEL ============ -->
+  <section class="news-carousel" aria-label="최신 개발동향">
+    <div class="news-carousel-header">
+      <div class="news-carousel-label">
+        <span class="ticker-label">최신 개발동향</span>
+        <span class="news-carousel-caption">공개 기사 데이터에서 최근 소식을 불러옵니다.</span>
+      </div>
+      <div class="news-carousel-controls" aria-label="기사 슬라이더 조작">
+        <button type="button" id="home-news-prev" class="carousel-control" aria-label="이전 기사 보기">‹</button>
+        <div id="home-news-dots" class="carousel-dots" aria-label="페이지 선택"></div>
+        <button type="button" id="home-news-next" class="carousel-control" aria-label="다음 기사 보기">›</button>
+      </div>
     </div>
-  </div>
+    <div class="news-carousel-grid" id="home-news-carousel" aria-live="polite">
+      <div class="news-carousel-empty">최신 공개 기사를 불러오는 중입니다.</div>
+    </div>
+  </section>
 
   <!-- ============ MAIN CATEGORIES ============ -->
   <div style="max-width:1280px; margin:0 auto; padding:5rem 2rem 3rem;">
     <div class="section-header reveal">
-      <div class="section-tag">두 가지 탐험</div>
+      <div class="section-tag">세 가지 탐험</div>
       <h2 class="section-title">무엇을 알고 싶으신가요?</h2>
-      <p class="section-desc">현재 진행 중인 우주 개발의 최전선과, 그 배경이 되는 천문학의 아름다운 지식들.</p>
+      <p class="section-desc">현재 진행 중인 우주 개발의 최전선과, 그 배경이 되는 천문학의 아름다운 지식들. 그리고 우리의 삶.</p>
     </div>
 
     <div class="category-grid reveal">
@@ -197,133 +198,6 @@
     </div>
   </div>
 
-  <!-- ============ LATEST ARTICLES ============ -->
-  <div class="section">
-    <div class="section-header reveal">
-      <div class="section-tag">최신 업데이트</div>
-      <h2 class="section-title">지금 가장 뜨거운 이야기</h2>
-    </div>
-
-    <div class="articles-grid featured reveal">
-
-      <!-- Featured Main -->
-      <div class="article-card featured-main" data-article="starship-ift6" style="cursor:pointer;">
-        <div class="article-img-placeholder">🚀</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-launch">발사체</span>
-            <span class="article-tag tag-mission">SpaceX</span>
-          </div>
-          <h3 class="article-title">스타십 IFT-6: 궤도 진입 완전 성공, 화성을 향한 이정표</h3>
-          <p class="article-excerpt">스페이스X의 스타십이 여섯 번째 통합 비행 시험에서 사상 최초로 완전한 궤도 진입에 성공했습니다. 수퍼헤비 부스터는 발사 타워의 기계 팔에 포착되었고, 스타십 상단은 인도양에 정밀 착수했습니다. 이 성공으로 NASA 아르테미스 달 착륙선 일정에 청신호가 켜졌으며, 2027년 화성 화물 임무 계획도 탄력을 받게 됐습니다.</p>
-          <div class="article-meta">
-            <div class="article-source">
-              <span class="source-logo">S</span>
-              SpaceX 공식 발표 요약
-            </div>
-            <span class="article-date">2026.03.05</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Side cards -->
-      <div class="article-card" data-article="jwst-exo" style="cursor:pointer;">
-        <div class="article-img-placeholder" style="aspect-ratio:16/8;">🔭</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-science">외계행성</span>
-            <span class="article-tag tag-mission">JWST</span>
-          </div>
-          <h3 class="article-title">JWST, 40광년 외계행성 대기에서 이산화탄소·메탄 동시 검출</h3>
-          <p class="article-excerpt">천문학계가 술렁이고 있습니다. 생명 활동의 잠재적 신호일 수 있는 분자들이 슈퍼-지구 K2-18b에서 확인됐습니다.</p>
-          <div class="article-meta">
-            <div class="article-source">
-              <span class="source-logo">N</span>
-              Nature Astronomy 요약
-            </div>
-            <span class="article-date">2026.02.18</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="article-card" style="cursor:pointer;">
-        <div class="article-img-placeholder" style="aspect-ratio:16/8;">🌙</div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="article-tag tag-explore">탐사</span>
-            <span class="article-tag tag-mission">NASA</span>
-          </div>
-          <h3 class="article-title">아르테미스 III 달 착륙 미션, 2027년 3분기로 공식 확정</h3>
-          <p class="article-excerpt">NASA가 아르테미스 III 유인 달 착륙 일정을 발표했습니다. 인류가 다시 달 표면을 밟을 날이 18개월 앞으로 다가왔습니다.</p>
-          <div class="article-meta">
-            <div class="article-source">
-              <span class="source-logo">N</span>
-              NASA 공식 발표 요약
-            </div>
-            <span class="article-date">2026.03.10</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ============ KEYWORD TREND PREVIEW ============ -->
-  <div style="max-width:1280px; margin:0 auto; padding:0 2rem 5rem;">
-    <div class="trends-section reveal">
-      <div class="trends-header">
-        <div class="trends-title">
-          🔥 이번 달 우주 키워드 트렌드
-          <span class="live-badge" id="home-keyword-badge">Beta</span>
-        </div>
-        <a href="trends.html" style="font-size:0.85rem; color:var(--color-accent-blue); font-weight:600;">전체 분석 보기 →</a>
-      </div>
-      <div class="trends-grid">
-        <div class="keyword-chart" id="home-keyword-preview">
-          <div style="padding:1rem;border:1px solid rgba(126,232,232,0.16);border-radius:8px;background:rgba(126,232,232,0.04);">
-            <strong style="display:block;font-size:0.9rem;margin-bottom:0.35rem;">키워드 트렌드 수집 준비 중</strong>
-            <p style="font-size:0.78rem;line-height:1.7;color:var(--color-text-muted);">검증된 수치가 입력되면 주요 우주개발 키워드의 언급량과 관심도 변화가 이곳에 표시됩니다.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Preview -->
-        <div>
-          <p style="font-size:0.8rem; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem;">📅 이달의 주요 이벤트</p>
-          <div class="timeline-preview">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">3월 5일</div>
-                <div class="timeline-text">스타십 IFT-6 발사 및 궤도 진입 성공</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">3월 10일</div>
-                <div class="timeline-text">아르테미스 III 일정 공식 확정 발표</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">3월 15일</div>
-                <div class="timeline-text">ESA 목성 탐사선 JUICE 목성계 궤도 진입</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-date">3월 20일</div>
-                <div class="timeline-text">한국 차세대 중형위성 3호 운용 개시</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ============ KNOWLEDGE PREVIEW ============ -->
   <div class="section">
     <div class="section-header reveal">
@@ -350,7 +224,7 @@
           <span class="difficulty-label">입문</span>
         </div>
         <h3 class="kc-title">블랙홀이란 무엇인가</h3>
-        <p class="kc-desc">빛조차 탈출할 수 없는 시공간의 끝. 블랙홀의 정체와 탄생, 그리고 사건 지평선의 의미를 쉽게 설명합니다.</p>
+        <p class="kc-desc">아주 무거운 별이 마지막에 작아지며 생긴, 빛도 빠져나오기 어려운 곳입니다. 보이지 않는데도 어떻게 발견하는지부터 천천히 읽습니다.</p>
         <div class="kc-footer">
           <span>📖 읽는 시간 8분</span>
           <span class="article-tag tag-beginner">입문</span>
@@ -366,7 +240,7 @@
           <span class="difficulty-label">입문</span>
         </div>
         <h3 class="kc-title">빅뱅 — 우주의 시작</h3>
-        <p class="kc-desc">138억 년 전, 아무것도 없던 곳에서 모든 것이 시작됐습니다. 우주의 탄생과 팽창을 처음부터 이해해보세요.</p>
+        <p class="kc-desc">우주는 아주 오래전, 매우 뜨겁고 빽빽한 상태에서 커지기 시작했습니다. 풍선에 그려진 점처럼 멀어지는 은하의 모습을 쉽게 풀어봅니다.</p>
         <div class="kc-footer">
           <span>📖 읽는 시간 10분</span>
           <span class="article-tag tag-beginner">입문</span>
@@ -382,7 +256,7 @@
           <span class="difficulty-label">중급</span>
         </div>
         <h3 class="kc-title">암흑물질과 암흑에너지</h3>
-        <p class="kc-desc">우주의 95%는 보이지 않는 무언가로 구성되어 있습니다. 우리가 아는 모든 것은 단 5%에 불과합니다.</p>
+        <p class="kc-desc">은하가 도는 속도와 우주 팽창의 변화는 눈에 보이는 물질만으로 설명되지 않습니다. 관측 증거가 가리키는 두 미지의 성분을 구분해 봅니다.</p>
         <div class="kc-footer">
           <span>📖 읽는 시간 15분</span>
           <span class="article-tag tag-intermediate">중급</span>
@@ -398,7 +272,7 @@
           <span class="difficulty-label">중급</span>
         </div>
         <h3 class="kc-title">별의 일생과 원소의 기원</h3>
-        <p class="kc-desc">우리 몸의 철, 칼슘, 산소는 모두 별 속에서 만들어졌습니다. 별의 핵융합과 초신성 폭발이 원소를 만드는 과정.</p>
+        <p class="kc-desc">별은 수소를 태우며 살아가고, 질량에 따라 서로 다른 마지막을 맞습니다. 핵융합과 폭발이 철·칼슘 같은 원소를 우주로 돌려보내는 과정을 살핍니다.</p>
         <div class="kc-footer">
           <span>📖 읽는 시간 12분</span>
           <span class="article-tag tag-intermediate">중급</span>
@@ -413,8 +287,13 @@
           </div>
           <span class="difficulty-label">심화</span>
         </div>
-        <h3 class="kc-title">일반 상대성 이론과 시공간 곡률</h3>
-        <p class="kc-desc">아인슈타인의 장 방정식 G_μν = 8πT_μν 가 의미하는 것. 질량이 공간을 구부린다는 것이 구체적으로 어떤 뜻인지.</p>
+        <h3 class="kc-title">중력은 어떻게 궤도를 만들까?</h3>
+        <p class="kc-desc">행성은 떨어지면서도 옆으로 빠르게 나아가기에 태양을 계속 돕니다. 질량과 거리로 중력의 세기를 읽는 기본 관계에서 궤도 운동을 시작합니다.</p>
+        <div class="formula-card" aria-label="뉴턴의 만유인력 식">
+          <span class="formula-symbol">F = G ·</span>
+          <span class="formula-fraction"><span>m<sub>1</sub>m<sub>2</sub></span><span>r<sup>2</sup></span></span>
+          <span class="formula-caption">질량이 클수록 끌림은 강해지고, 거리가 멀수록 빠르게 약해집니다.</span>
+        </div>
         <div class="kc-footer">
           <span>📖 읽는 시간 20분</span>
           <span class="article-tag tag-advanced">심화</span>
@@ -430,7 +309,7 @@
           <span class="difficulty-label">심화</span>
         </div>
         <h3 class="kc-title">중력파 — 시공간의 파문</h3>
-        <p class="kc-desc">LIGO가 검출한 중력파는 4억 광년 떨어진 블랙홀 합병의 흔적. 양성자 지름의 1/1000보다 작은 변화를 어떻게 측정할까?</p>
+        <p class="kc-desc">두 블랙홀이 합쳐질 때 생기는 아주 작은 시공간의 흔들림은 지구의 레이저 관측기로 감지됩니다. 관측 장치와 오차 제어가 만든 현대 천문학의 정밀함을 만납니다.</p>
         <div class="kc-footer">
           <span>📖 읽는 시간 18분</span>
           <span class="article-tag tag-advanced">심화</span>
@@ -456,38 +335,33 @@
   </div>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="footer" id="about">
+  <footer class="footer footer-home" id="about">
     <div class="footer-content">
       <div class="footer-brand">
         <div class="footer-brand-logo"><span class="brand-rad">Rad</span><span class="brand-blue">Blue</span>&thinsp;<span class="brand-dot">•</span></div>
         <p>Radiant Blue Dot은 우주개발 뉴스와 천문학 지식을 쉬운 언어로 전하고, 그 거대한 우주 속에서 우리의 삶이 왜 여전히 선명한지 함께 묻는 공간입니다.</p>
       </div>
-      <div class="footer-section">
-        <h4>카테고리</h4>
-        <ul>
-          <li><a href="trends.html">우주 개발 동향</a></li>
-          <li><a href="knowledge.html">기초 천문 지식</a></li>
-          <li><a href="cosmos-life.html">우주와 우리 삶</a></li>
-          <li><a href="trends.html">발사체 & 위성</a></li>
-          <li><a href="trends.html">탐사 프로젝트</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>난이도별</h4>
-        <ul>
-          <li><a href="knowledge.html">⭐ 입문 — 처음 시작</a></li>
-          <li><a href="knowledge.html">⭐⭐ 중급 — 개념 정리</a></li>
-          <li><a href="knowledge.html">⭐⭐⭐ 심화 — 깊이 파기</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>정보 출처</h4>
-        <ul>
+      <div class="footer-section source-section">
+        <h4>해외 기업 · 기관</h4>
+        <ul class="source-link-list">
           <li><a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA</a></li>
           <li><a href="https://www.spacex.com" target="_blank" rel="noopener">SpaceX</a></li>
           <li><a href="https://www.esa.int" target="_blank" rel="noopener">ESA</a></li>
-          <li><a href="https://www.kari.re.kr" target="_blank" rel="noopener">한국항공우주연구원</a></li>
-          <li><a href="https://www.kasi.re.kr" target="_blank" rel="noopener">한국천문연구원</a></li>
+          <li><a href="https://www.blueorigin.com/news/" target="_blank" rel="noopener">Blue Origin</a></li>
+          <li><a href="https://www.rocketlabusa.com/about/news/" target="_blank" rel="noopener">Rocket Lab</a></li>
+          <li><a href="https://global.jaxa.jp/press/" target="_blank" rel="noopener">JAXA</a></li>
+          <li><a href="https://www.ulalaunch.com/about/news/" target="_blank" rel="noopener">ULA</a></li>
+          <li><a href="https://www.axiomspace.com/newsroom" target="_blank" rel="noopener">Axiom Space</a></li>
+        </ul>
+      </div>
+      <div class="footer-section source-section">
+        <h4>한국 기업 · 기관</h4>
+        <ul class="source-link-list">
+          <li><a href="https://www.kasa.go.kr/prog/bbsArticle/BBSMSTR_000000000041/list.do" target="_blank" rel="noopener">우주항공청(KASA)</a></li>
+          <li><a href="https://www.kari.re.kr" target="_blank" rel="noopener">KARI</a></li>
+          <li><a href="https://www.kasi.re.kr" target="_blank" rel="noopener">KASI</a></li>
+          <li><a href="https://www.koreaaero.com/ko/media/news_list.do" target="_blank" rel="noopener">KAI</a></li>
+          <li><a href="https://www.hanwhaaerospace.com/kor/media/newsroom/list.do" target="_blank" rel="noopener">한화에어로스페이스</a></li>
         </ul>
       </div>
     </div>
@@ -518,89 +392,113 @@
 </div>
 
 <script src="js/main.js"></script>
-<script src="data/keyword-trends.js"></script>
+<script src="data/trends.js"></script>
 <script>
-  (function initHomeKeywordPreview() {
-    var container = document.getElementById('home-keyword-preview');
-    var badge = document.getElementById('home-keyword-badge');
+  (function initHomeNewsCarousel() {
+    var container = document.getElementById('home-news-carousel');
+    var prev = document.getElementById('home-news-prev');
+    var next = document.getElementById('home-news-next');
+    var dots = document.getElementById('home-news-dots');
     if (!container) return;
-    function escKw(value) {
+    var page = 0;
+    var entries = [];
+    function esc(value) {
       return String(value || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
-    function number(value) {
-      return typeof value === 'number' && isFinite(value) ? value : null;
+    function anchorId(value, prefix) {
+      return prefix + String(value || '').replace(/[^a-zA-Z0-9_-]/g, '-');
     }
-    function validDate(value) {
-      return !!value && !isNaN(new Date(value).getTime());
+    function safeDate(value) {
+      var date = new Date(value);
+      return isNaN(date.getTime()) ? 0 : date.getTime();
     }
-    function formatTimestamp(value) {
-      return new Intl.DateTimeFormat('ko-KR', {
-        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit',
-        hour12:false, timeZone:'Asia/Seoul'
-      }).format(new Date(value)) + ' KST';
+    function dateLabel(value) {
+      if (!value || !safeDate(value)) return '';
+      return new Intl.DateTimeFormat('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date(value));
     }
-    async function getKeywordData() {
+    async function loadPublished() {
       try {
-        var response = await fetch('/api/keyword-trends', { cache:'no-store' });
+        var response = await fetch('data/published.json', { cache:'no-store' });
         if (response.ok) return await response.json();
       } catch (_) {}
-      try {
-        var fallbackResponse = await fetch('data/keyword-trends-managed.json', { cache:'no-store' });
-        if (fallbackResponse.ok) return await fallbackResponse.json();
-      } catch (_) {}
-      return window.KEYWORD_TRENDS || { keywords: [] };
+      return [];
     }
-    function render(data) {
-      var normalized = (Array.isArray(data.keywords) ? data.keywords : []).map(function(item) {
+    function buildEntries(published) {
+      var result = (Array.isArray(published) ? published : []).filter(function(item) {
+        return item.visible !== false && item.title;
+      }).sort(function(a, b) {
+        return safeDate(b.publishedAt) - safeDate(a.publishedAt);
+      }).map(function(item) {
         return {
-          keyword: item.keyword || '',
-          count: number(item.mentionCount !== undefined ? item.mentionCount : item.count),
-          articleCount: number(item.articleCount),
-          score: number(item.trendScore !== undefined ? item.trendScore : item.score),
-          change: number(item.change),
-          status: item.status || item.confidence || 'not_collected_yet',
-          source: item.source || '',
-          updatedAt: item.updatedAt || null
+          title: item.title,
+          source: item.companyName || '발행 기사',
+          date: item.publishedAt,
+          href: 'trends.html#' + anchorId(item.id, 'article-published-')
         };
       });
-      function canPublish(item) {
-        var statusReady = item.status === 'confirmed' || item.status === 'low_confidence';
-        var hasPrimaryValue = item.count !== null || item.articleCount !== null || item.score !== null;
-        return statusReady && hasPrimaryValue && !!item.source && validDate(item.updatedAt);
-      }
-      var hasData = normalized.some(canPublish);
-      if (badge) badge.textContent = hasData ? '운영 입력' : 'Beta';
-      if (!hasData) {
-        container.innerHTML = '<div style="padding:1rem;border:1px solid rgba(126,232,232,0.16);border-radius:8px;background:rgba(126,232,232,0.04);">'
-          + '<strong style="display:block;font-size:0.9rem;margin-bottom:0.35rem;">키워드 트렌드 수집 준비 중</strong>'
-          + '<p style="font-size:0.78rem;line-height:1.7;color:var(--color-text-muted);">검증된 수치가 입력되면 주요 우주개발 키워드의 언급량과 관심도 변화가 이곳에 표시됩니다.</p>'
-          + '<span style="display:inline-block;margin-top:0.55rem;font-size:0.7rem;color:#f7c948;">데이터 연결 전 · 관리자 수동 입력 대기 중</span></div>';
+      var knownTitles = result.map(function(item) { return item.title; });
+      (window.TRENDS_DATA || []).filter(function(item) {
+        return ['official','reliable_media','analysis','low_confidence'].includes(item.reliability)
+          && ['confirmed','scheduled','developing'].includes(item.status)
+          && knownTitles.indexOf(item.title) === -1;
+      }).sort(function(a, b) {
+        return safeDate(b.date) - safeDate(a.date);
+      }).forEach(function(item) {
+        if (result.length >= 9) return;
+        result.push({
+          title: item.title,
+          source: item.sourceName,
+          date: item.date,
+          href: 'trends.html#' + anchorId(item.id, 'article-')
+        });
+      });
+      return result.slice(0, 9);
+    }
+    function pageSize() {
+      return window.matchMedia('(max-width: 768px)').matches ? 2 : 3;
+    }
+    function render() {
+      if (!entries.length) {
+        container.innerHTML = '<div class="news-carousel-empty">공개된 최신 개발동향 기사가 아직 없습니다.</div>';
+        if (dots) dots.innerHTML = '';
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
         return;
       }
-      var items = normalized.filter(canPublish).concat(normalized.filter(function(item) { return !canPublish(item); })).slice(0, 6);
-      var max = items.reduce(function(current, item) {
-        var value = canPublish(item) ? (item.score !== null ? item.score : (item.count !== null ? item.count : item.articleCount)) : null;
-        return value !== null && value > current ? value : current;
-      }, 0);
-      container.innerHTML = items.map(function(item, index) {
-        var published = canPublish(item);
-        var value = published ? (item.score !== null ? item.score : (item.count !== null ? item.count : item.articleCount)) : null;
-        var width = value !== null && max > 0 ? Math.max(4, Math.round(value / max * 100)) : 0;
-        var state = published && item.status === 'low_confidence' ? '신뢰도 낮음' : (published ? '확인됨' : '수집 준비 중');
-        var figures = published
-          ? (item.count !== null ? '언급 ' + item.count.toLocaleString() + '회' : '관련 ' + item.articleCount.toLocaleString() + '건')
-            + (item.score !== null ? ' · 관심도 ' + item.score : '')
-            + (item.change !== null ? ' · ' + (item.change > 0 ? '↑ +' : item.change < 0 ? '↓ ' : '') + item.change : '')
-          : '분석 예정';
-        return '<div class="keyword-bar-item"><div class="keyword-bar-header">'
-          + '<span class="keyword-name">' + escKw(item.keyword) + ' <small style="display:inline-block;font-size:0.66rem;font-weight:700;padding:0.1rem 0.42rem;border-radius:999px;color:' + (published && item.status === 'confirmed' ? '#56e0a0' : published ? '#fb923c' : '#888') + ';background:' + (published && item.status === 'confirmed' ? 'rgba(86,224,160,0.12)' : published ? 'rgba(251,146,60,0.12)' : 'rgba(160,160,160,0.1)') + ';">' + state + '</small></span>'
-          + '<span class="keyword-count">' + figures + '</span></div>'
-          + (published ? '<div style="font-size:0.7rem;color:var(--color-text-muted);">출처 ' + escKw(item.source) + ' · 업데이트 ' + formatTimestamp(item.updatedAt) + '</div>' : '')
-          + (published ? '<div class="keyword-bar-track"><div class="keyword-bar-fill kw-' + (index + 1) + '" style="width:' + width + '%"></div></div>' : '')
-          + '</div>';
+      var size = pageSize();
+      var pages = Math.ceil(entries.length / size);
+      page = Math.min(page, pages - 1);
+      var shown = entries.slice(page * size, page * size + size);
+      container.innerHTML = shown.map(function(item) {
+        return '<a class="news-slide-card" href="' + esc(item.href) + '">'
+          + '<span class="news-slide-source">' + esc(item.source) + '</span>'
+          + '<strong>' + esc(item.title) + '</strong>'
+          + '<span class="news-slide-date">' + esc(dateLabel(item.date)) + '</span>'
+          + '</a>';
       }).join('');
+      if (dots) {
+        dots.innerHTML = Array.from({ length: pages }, function(_, index) {
+          return '<button type="button" class="carousel-dot' + (index === page ? ' active' : '') + '" data-page="' + index + '" aria-label="' + (index + 1) + '페이지 보기"></button>';
+        }).join('');
+        dots.querySelectorAll('[data-page]').forEach(function(dot) {
+          dot.addEventListener('click', function() {
+            page = Number(dot.getAttribute('data-page'));
+            render();
+          });
+        });
+      }
+      if (prev) prev.disabled = page === 0;
+      if (next) next.disabled = page >= pages - 1;
     }
-    getKeywordData().then(render);
+    if (prev) prev.addEventListener('click', function() { if (page > 0) { page -= 1; render(); } });
+    if (next) next.addEventListener('click', function() {
+      if (page < Math.ceil(entries.length / pageSize()) - 1) { page += 1; render(); }
+    });
+    window.addEventListener('resize', render);
+    loadPublished().then(function(published) {
+      entries = buildEntries(published);
+      render();
+    });
   })();
 </script>
 </body>
