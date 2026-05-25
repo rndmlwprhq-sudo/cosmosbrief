@@ -34,10 +34,11 @@
 
 - `npm run trend:draft`는 `data/keyword-trends-managed.json`의 키워드와 aliases를 읽어 최근 7일 Google News RSS 제목과 요약을 집계하고, `data/keyword-trends-draft.json`만 생성합니다.
 - 스크립트는 링크 또는 유사 제목을 기준으로 중복 기사를 제거하며, 자동 계산 결과는 모두 `low_confidence` 초안으로 남깁니다. 각 키워드의 최신 매칭 기사 샘플 최대 5건을 제목, 날짜, 링크, 출처와 함께 저장하므로 발행 전에 근거를 확인합니다. 관리자가 확인하기 전에는 `confirmed`로 취급하지 않습니다.
-- `articleCount`는 중복 제거 후 키워드가 등장한 기사 수, `mentionCount`는 제목과 요약 안의 총 등장 횟수입니다. `trendScore`는 `articleCount * 12 + mentionCount * 2 + officialSourceBonus + recencyBonus`를 최대 100점으로 제한한 검토용 점수입니다.
-- 공식 기관 또는 기업 출처가 포함되면 10점, 최근 48시간 안의 관련 기사가 있으면 10점을 가산합니다. 기존 운영 `articleCount`가 양수일 때만 증감률을 계산하며, 0건에서 증가한 경우에는 `change`를 `null`로 둡니다.
+- `articleCount`는 중복 제거 후 키워드가 등장한 기사 수, `mentionCount`는 제목과 요약 안의 총 등장 횟수입니다. `trendScore`는 포화를 완화한 `articleCount * 7 + mentionCount * 1.5 + officialSourceBonus + recencyBonus`를 최대 100점으로 제한한 검토용 점수입니다.
+- 등록된 공식 RSS 또는 NASA, ESA, JAXA, KASA/KARI/KASI, SpaceX 공식 도메인 출처가 포함되면 10점, 최근 48시간 안의 관련 기사가 있으면 10점을 가산합니다. 기관명이 포함된 매체명만으로 공식 출처 보너스를 주지 않습니다. 기존 운영 `articleCount`가 양수일 때만 증감률을 계산하며, 0건에서 증가한 경우에는 `change`를 `null`로 둡니다.
 - RSS 호출이 모두 실패하면 draft를 새로 쓰지 않으며, `managed` 운영 파일은 어떤 경우에도 스크립트가 직접 덮어쓰지 않습니다.
 - draft를 커밋하면 공개 저장소에 포함됩니다. 민감한 메모를 추가하지 말고, 기사 출처와 산출값을 검토한 뒤 관리자 콘솔을 통해 발행할 값만 옮깁니다.
+- 관리자 콘솔의 `Draft 불러오기`는 초안을 화면에 보여 주고, 선택 항목을 편집표로 복사할 뿐입니다. 이 동작은 `/api/keyword-trends` 저장 요청을 보내지 않으며, `수치 저장 및 발행` 버튼을 누를 때에만 `ADMIN_SECRET` 인증 흐름을 거쳐 managed 데이터가 갱신됩니다.
 
 ## 콘텐츠 출처와 저작권
 

@@ -30,18 +30,14 @@ const ADDITIONAL_RSS_SOURCES = [
   // { id: 'jaxa', name: 'JAXA Press Releases', url: 'https://global.jaxa.jp/rss/press.rss', official: true },
 ];
 
-const OFFICIAL_SOURCE_PATTERNS = [
-  /\bNASA\b/i,
-  /\bESA\b/i,
-  /European Space Agency/i,
-  /\bJAXA\b/i,
-  /\bKASA\b/i,
-  /\bKARI\b/i,
-  /\bKASI\b/i,
-  /한국항공우주연구원/,
-  /우주항공청/,
-  /한국천문연구원/,
-  /\bSpaceX\b/i,
+const OFFICIAL_SOURCE_HOSTS = [
+  /(^|\.)nasa\.gov$/i,
+  /(^|\.)esa\.int$/i,
+  /(^|\.)jaxa\.jp$/i,
+  /(^|\.)kasa\.go\.kr$/i,
+  /(^|\.)kari\.re\.kr$/i,
+  /(^|\.)kasi\.re\.kr$/i,
+  /(^|\.)spacex\.com$/i,
 ];
 
 function uniqueStrings(values) {
@@ -120,8 +116,12 @@ function deduplicateArticles(articles) {
 
 function isOfficialArticle(article) {
   if (article.officialFeed) return true;
-  const sourceText = `${article.publisher} ${article.publisherUrl}`;
-  return OFFICIAL_SOURCE_PATTERNS.some(pattern => pattern.test(sourceText));
+  try {
+    const hostname = new URL(article.publisherUrl).hostname;
+    return OFFICIAL_SOURCE_HOSTS.some(pattern => pattern.test(hostname));
+  } catch (error) {
+    return false;
+  }
 }
 
 function buildGoogleNewsFeed(item, edition) {
@@ -290,7 +290,8 @@ async function main() {
     const mentionCount = relevantArticles.reduce((sum, article) => sum + article.mentionCount, 0);
     const officialSourceBonus = relevantArticles.some(isOfficialArticle) ? 10 : 0;
     const recencyBonus = relevantArticles.some(article => article.publishedMs >= recencyStart.getTime()) ? 10 : 0;
-    const trendScore = Math.min(100, articleCount * 12 + mentionCount * 2 + officialSourceBonus + recencyBonus);
+    const rawScore = articleCount * 7 + mentionCount * 1.5 + officialSourceBonus + recencyBonus;
+    const trendScore = Math.min(100, Math.round(rawScore * 10) / 10);
 
     return {
       ...item,
@@ -349,6 +350,7 @@ async function main() {
       failedFeeds: failures.length,
       failures,
       sourceTypes: ['Google News RSS search', ...ADDITIONAL_RSS_SOURCES.map(source => source.name)],
+      scoreFormula: 'articleCount * 7 + mentionCount * 1.5 + officialSourceBonus + recencyBonus (max 100)',
     },
     keywords: draftKeywords,
   };

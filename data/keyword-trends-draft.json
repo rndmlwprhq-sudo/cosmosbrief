@@ -1,11 +1,11 @@
 {
   "version": 1,
   "method": "rss_draft_review",
-  "periodStart": "2026-05-17T15:34:48.476Z",
-  "periodEnd": "2026-05-24T15:34:48.476Z",
-  "articleCountTotal": 1158,
-  "deduplicatedArticleCount": 1015,
-  "updatedAt": "2026-05-24T15:34:48.476Z",
+  "periodStart": "2026-05-18T08:51:37.941Z",
+  "periodEnd": "2026-05-25T08:51:37.941Z",
+  "articleCountTotal": 1159,
+  "deduplicatedArticleCount": 1012,
+  "updatedAt": "2026-05-25T08:51:37.941Z",
   "reviewRequired": true,
   "collection": {
     "windowDays": 7,
@@ -15,7 +15,8 @@
     "failures": [],
     "sourceTypes": [
       "Google News RSS search"
-    ]
+    ],
+    "scoreFormula": "articleCount * 7 + mentionCount * 1.5 + officialSourceBonus + recencyBonus (max 100)"
   },
   "keywords": [
     {
@@ -26,14 +27,14 @@
         "아르테미스 프로그램",
         "Artemis Program"
       ],
-      "mentionCount": 188,
-      "articleCount": 92,
+      "mentionCount": 182,
+      "articleCount": 91,
       "trendScore": 100,
       "change": null,
       "rank": 2,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: WTHR, The New Yorker, European Space Agency",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: NASA Watch, DW.com, Reuters Connect",
       "explanation": "NASA 유인 달 탐사 프로그램과 관련된 개발 동향 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 10,
@@ -41,43 +42,43 @@
       },
       "sampleArticles": [
         {
-          "title": "110th Indianapolis 500 | Meeting Artemis II astronaut Jeremy Hansen - WTHR",
-          "description": "110th Indianapolis 500 | Meeting Artemis II astronaut Jeremy Hansen WTHR",
-          "pubDate": "2026-05-24T13:58:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNaTZ1Z19ncUY1c3NtYVZRNnBnQ2NGZmx5eS1PemJQbEZMalItclVGcGJMRmlRT3JNOGl2QWV1WFNXWDNzTGwyOEVuaXNKTzJ0ZHE4UURsOWtxbktPc3RkazhLQVoxS1ZnX3Q4cGdoOFpTNG5GdGlDU0xEbkxKRjAzeFhPekxTa3lfbzFfS2VzSVc5WWhteW5Xdnduak13U29HMVhDQTRNWWVxV1NFTzRMU2ozUTZDc0hZSm5OS2ZOS1lVeHBTODI3Qm9PNXdLaFNoLWpPNV91dUwyUnk4SWFtc1FnQTNsNG9fRjRkTXBMandpWXZCTnc?oc=5",
-          "source": "WTHR",
+          "title": "NASAWatch on CGTN: Shenzhou 23 and Artemis Accords - NASA Watch",
+          "description": "NASAWatch on CGTN: Shenzhou 23 and Artemis Accords NASA Watch",
+          "pubDate": "2026-05-24T20:33:27.000Z",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdTFzd2xBU283TnQ1R2pFa2hxZE1BQ1IxNVJNS243Z3dyaVNpNDdXN2JOd1dyYW93dWJhZWlvSlRiWXppYllKeXU5OU9oWFNtZkZROGk0M19XS2xJUzhKRElxM0pQRUVXRnMxNGJyemUwSGZfbnN1WXBGd0J0N2tUd0dNenk?oc=5",
+          "source": "NASA Watch",
           "mentionCount": 2
         },
         {
-          "title": "The Leader of NASA ’s Artemis II Mission Is Still Moonstruck - The New Yorker",
-          "description": "The Leader of NASA ’s Artemis II Mission Is Still Moonstruck The New Yorker",
-          "pubDate": "2026-05-24T10:00:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOM184S0NxbXloMXhFcnR5NURDMkljajZkQzdCR21ycmsxZVR5RDdTSzg3WlctRldrX2RYWG82d3FYYjFtQWhadUtDenVjLWxlNWdCOV9SV1pjUXBFSW1kVGtjSlB4YXdEYjdCNWlQbzE2UG90MGZraU9jalBTZnFxMnlnU1JuYk9DNW1PNE9KWk5FbkNKNk5oTWZLOGQwX19zOF8wRUtfX3VrZkpjbmQwZWlSU2g?oc=5",
-          "source": "The New Yorker",
+          "title": "Relief and joy as historic Artemis II mission is a success - DW.com",
+          "description": "Relief and joy as historic Artemis II mission is a success DW.com",
+          "pubDate": "2026-05-24T20:22:55.000Z",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE10WUFjWWtMZkRNOVhDa1JXYTgzZ0hLNF9ycXlrVFFYME1ncmNxNnhwa1owb2JTRXJpOXF1dUVQTTFMTUNzTEtlV183SU93OEU4T3VXSjRHQU1TeEk1WTB1MWlTOTR0ZGdXRXB2WklLNVlmQzFtaHRJSHVZNEhkTGs?oc=5",
+          "source": "DW.com",
           "mentionCount": 2
         },
         {
-          "title": "Artemis II launch - European Space Agency",
-          "description": "Artemis II launch European Space Agency",
-          "pubDate": "2026-05-24T07:41:07.000Z",
-          "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxONjVucHF6RDJuNTBwTlhWVksyUHBoUmV1Wk0zOUd3MDFOZ0liMXBtRTBBdk1oUDhYTUZ0Mncyd1dxZGRsR2s3NXp1TkxubnI3ZEgwTWQybHdEaTdvT196MXphblg4UTZNdFFmZFFIbndQLURyc3dlLUdCSVZOalBEaTlveWlZdw?oc=5",
-          "source": "European Space Agency",
+          "title": "Licensable picture: Jeremy Hansen, astronaut and Artemis II crew member, walks the celebrity red carpet on Sunday, May 24, 2026, during the 110th - Reuters Connect",
+          "description": "Licensable picture: Jeremy Hansen, astronaut and Artemis II crew member, walks the celebrity red carpet on Sunday, May 24, 2026, during the 110th Reuters Connect",
+          "pubDate": "2026-05-24T17:36:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiwgJBVV95cUxNRzY1YUxicDlmOVItNU9uMFVjTXppSVhZQUpSRjJjUG1GNEZlZVRjQzlnVzNtU1BfaTRtZ3RvVDFEQ2tZNTdURkRXbjYxd3hORFhzRWl2S1dIUXFGcnRKWHlYeHRMVldpVUxQdjVDZENBOTFhaWJLYi0yby1POVlKM1c2RmJMX25WYjN5THo0MzlEd3pxLTg5ejBaRkxjSzBYYkppeU1TczcwQkhvblhFSVhPRVp4SUg3ZmtuSU5uUF9vSEZqUnEyX3N3NG55anhkMXU1NmEtem1TMFZIbGNER2t0d2JmTV9xaHU4S3FyTzBkTWMyZDUtNmZtVFBKVVA0Q0o5Q3d2WUhVR2xPdWxZRGtnTEw3NC1zZ1RrUl9vNDgzU0hLU0tOeTU2ZVFEbG5ueUdJRHNmMUlEQ0tldk1Odjh3?oc=5",
+          "source": "Reuters Connect",
           "mentionCount": 2
         },
         {
-          "title": "Artemis 2 임무의 우주 비행사들은 달 주위를 여행한 후 극단적이고 기록적인 기동을 자세히 설명합니다. - Mix Vale",
-          "description": "Artemis 2 임무의 우주 비행사들은 달 주위를 여행한 후 극단적이고 기록적인 기동을 자세히 설명합니다. Mix Vale",
-          "pubDate": "2026-05-23T15:45:50.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxPTzZfb2d4ZnBiaHowU3ZNWDFaOGdIRGx4VGpKbVZaMVowMU13YnUtb2JZbmYwM1I0X19sd2E3NTJQUjZxa0FyM1VfOFMtWXZHWElheVk4aFRXV2FTZGpENUhSbUt6UFNJWnk2QVQ1eEpvbHIxZy1ybXdPMUdCRVBuSm1pdWN5cFdDa053aHlmTGZSY1RvNjJSLVZhUHlnSmtCb3oxcDFkRW9tYWdxbDhsTEVsaVNHell4UjhkMGpycC1YZUhDZVg4NjhRRDE3VlRfdDllRzkwWU1FN1NIX3BObU5sYTFhaEJVRHowUDRYek8yclFCaWk3MXVsODlTVy1QcEgtUUJfUGczcXo4Uk5KcGt5QlFabzQzSnRkR2xWc2VpajRzZTlsVGJmM2FaVlp1Z3ZidnhHSjBVVnpEOXpqX2JpUTlPNlA4TkV1Y2piQnd2RHBCcW8xZzM5ONIB2wJBVV95cUxPTzZfb2d4ZnBiaHowU3ZNWDFaOGdIRGx4VGpKbVZaMVowMU13YnUtb2JZbmYwM1I0X19sd2E3NTJQUjZxa0FyM1VfOFMtWXZHWElheVk4aFRXV2FTZGpENUhSbUt6UFNJWnk2QVQ1eEpvbHIxZy1ybXdPMUdCRVBuSm1pdWN5cFdDa053aHlmTGZSY1RvNjJSLVZhUHlnSmtCb3oxcDFkRW9tYWdxbDhsTEVsaVNHell4UjhkMGpycC1YZUhDZVg4NjhRRDE3VlRfdDllRzkwWU1FN1NIX3BObU5sYTFhaEJVRHowUDRYek8yclFCaWk3MXVsODlTVy1QcEgtUUJfUGczcXo4Uk5KcGt5QlFabzQzSnRkR2xWc2VpajRzZTlsVGJmM2FaVlp1Z3ZidnhHSjBVVnpEOXpqX2JpUTlPNlA4TkV1Y2piQnd2RHBCcW8xZzM5OA?oc=5",
+          "title": "NASA의 오리온 캡슐은 아르테미스 II 임무를 성공적으로 마친 후 4명의 우주비행사와 함께 지구로 돌아옵니다. - Mix Vale",
+          "description": "NASA의 오리온 캡슐은 아르테미스 II 임무를 성공적으로 마친 후 4명의 우주비행사와 함께 지구로 돌아옵니다. Mix Vale",
+          "pubDate": "2026-05-24T17:03:45.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi1AJBVV95cUxQS0NJbU44TzZLaS1maXFtdGJsTzdFdTk1dnYxTzNscWtteEFvWktMY3RneEJWT1ptNHNBclV2SmU0b1U4dHRoeWZqekhIanZ5OFJabV91dXZPYmd1VmJIQ3psblJiclJFS1NrMktmQWRFamVRYVJKWE91bkpxSWRXNEc3WTktYVJubEFvMURqVExpd2VBTndCWDJTMXpvTDVXb1JVeWFOR2FiNEtDTlJwOEMzQlFXWFZuQzR2ZmVKaFppNWtwVUIzbVhVVzVBUG90WE01ODljS2xTMlNfbG16anNrMEVqZVpYd0VfYmhrQzZCQnhWaTNwY2cwaGxBbXFWSTBMWHFjb2RiT2ZtY1RhcjNnZTVzUm5iVGZOMWNtemNuVXNXWFplNWg3VEpZU1JfZ0RXMEtVSmNPZDd0R0t3djd3T2ZOZjVaRzFPXzg3Tkg0RDgw0gHaAkFVX3lxTE5zRFlTSXliZEFkdUdDeUxWWUtFSDl5VkhLTXJRLUNOV0I3aTdzVXdDZGtlWW5NTU5IdkVkS2VMM1dOMVFBdzExRzQyLXA1UFpTcUc1QXFjaUprZjdtMi1tQ2lpZjV3MDlvV2FJb0YwbnoxbUhSM3diOXBBcVM1SlZRcVpLR0xZZm5CRklGOUNncWVBMzFRdHVUakl3LUZUNmhqXzBNVS1UeWZkSy02cDBkYndDSC13VzRXNDEwRXJ0aFFDTGVzUTBIdVlnbDRJZG9JcmRjeW5vcGNVX1NVUXhoQU11cW8zTVV1bE1YTUpJT1hoQ2JDUVZKeE8zWXgyV3FzNy0wYzBGOWJ5LUEwczhBQlJlQUZqNmdxQW9GZFZzZkhGdWd3ZTFkRGFRV0tpV2ZVRzcteEVCYk12Uk1NMF9ORXhiVW9wbmlVdE1tdmNaMjh3TGNrRC1ZWWc?oc=5",
           "source": "Mix Vale",
           "mentionCount": 2
         },
         {
-          "title": "Artemis II makes history with successful moon mission - PIX11",
-          "description": "Artemis II makes history with successful moon mission PIX11",
-          "pubDate": "2026-05-23T11:49:07.000Z",
-          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQd3d2akV1Z1ppU1Nsa1oxZHIzZVZBNm5fZGEwWHA5dFAwclR5cWdVM01jM3NXLUJDZWhiNHpkZWZobWxrY05aaF9WOTl1X2I3SVBZWkN5OEpocm92UVc5ZlZaQ0hFSkxoVGMtY3dVUU9aMEdkMDlIeEllaUtaV29RTkdpSHhYYWp1c3Y5SGwxSlM?oc=5",
-          "source": "PIX11",
+          "title": "Licensable picture: Canadian astronaut from the Artemis II mission Jeremy Hansen walks the red carpet Sunday, May 24, 2026, ahead of the 110th - Reuters Connect",
+          "description": "Licensable picture: Canadian astronaut from the Artemis II mission Jeremy Hansen walks the red carpet Sunday, May 24, 2026, ahead of the 110th Reuters Connect",
+          "pubDate": "2026-05-24T15:23:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiwAJBVV95cUxQOVNZVGRrSDJWMWwxLU9fMFBscFBYZ1VPMlNfZFFVdFVqSFZWNERMOVB6STlLVXd3THg5d0lvaDA2OFdyc2tzZjRWeXlpRGhDODVYQUZXQ0prS3gxOVhDQ1FCa2JUWEg1bkM1NnI3OE1xVmtYTV9lNjYyeE9uZlNmcTY0OFU3WkF6UXdxLWhJNzFVVEZZaUNxN3hoa2k5T21nbmNyRnpncFlHb05pczNOVnIyUFlpUHdpd1hPT0FyY08yTmtNTnV2X2d3V0ZYREU3ZkRUWEpOTzFXUjlQbFZwRHd2UjRUN1F6dW5oNlhvWTlUbzNPRzd4dk81bVBUQl9oQV8wbkE0SHVMd2d6T20yUFVkWElsWUpBSWZWZFFyV0hrSmdjOUM2aTJBV21UVE13Y2JRQUJqVEd6czN6Zzhnbg?oc=5",
+          "source": "Reuters Connect",
           "mentionCount": 2
         }
       ]
@@ -97,8 +98,8 @@
       "change": null,
       "rank": 9,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: The Sunday Guardian, TradingKey, Moneycontrol.com",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: 재경일보, 네이트, Vietnam.vn",
       "explanation": "달 착륙과 달 자원 연구를 아우르는 탐사 관련 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -106,44 +107,44 @@
       },
       "sampleArticles": [
         {
+          "title": "AP위성, 수도권 AIT 센터 준공과 우주청 달 탐사 지원책에 3.90% 상승 마감 : 금융 - 재경일보",
+          "description": "AP위성, 수도권 AIT 센터 준공과 우주청 달 탐사 지원책에 3.90% 상승 마감 : 금융 재경일보",
+          "pubDate": "2026-05-25T07:06:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFA0Zi05cDFYSGhScWhzcDdydFJOeDNJRExZYkF5RExqbjhxQkd0dERsajVVQ2Z1d0NDbTdxSGNXSGhFaHp0VnExQ25n?oc=5",
+          "source": "재경일보",
+          "mentionCount": 2
+        },
+        {
+          "title": "中 선저우 23호, 톈궁 도킹 성공…'1년' 장기 체류하며 달 탐사 준비 나선다 - 네이트",
+          "description": "中 선저우 23호, 톈궁 도킹 성공…'1년' 장기 체류하며 달 탐사 준비 나선다 네이트",
+          "pubDate": "2026-05-25T07:01:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1PWTQ3UnpJd2V4WTBya2RSclBRbmV1dEN2N3UtOV8yRm8zOFZVbWVBdm96NFFyblk1RFFhWHAzTXlISlNuM0NxX1M2ZGxHaFd1MzlF?oc=5",
+          "source": "네이트",
+          "mentionCount": 2
+        },
+        {
+          "title": "중국이 달 탐사 경쟁을 가속화하고 있다. - Vietnam.vn",
+          "description": "중국이 달 탐사 경쟁을 가속화하고 있다. Vietnam.vn",
+          "pubDate": "2026-05-25T05:21:45.000Z",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA2XzJlMERFb0hjRmdTLWpXb2F5WjBBTVJiMnlkVTZVWjRsdDBBZ2paUzZuTTlBOFhRdEhfbjVENW9meGx6OFhmYXROSXN2Yi1kbDd5dXN4ZmRkVVBUd2Z2NzlmTmlJbXBIU0YzcTVJMzkzRHE0dEJleTVKSHo4djA?oc=5",
+          "source": "Vietnam.vn",
+          "mentionCount": 2
+        },
+        {
+          "title": "China Leads a New Chapter in Space Tourism and Lunar Exploration While United States and Russia Intensify the Global Moon Race – Key Developments to Follow - Travel And Tour World",
+          "description": "China Leads a New Chapter in Space Tourism and Lunar Exploration While United States and Russia Intensify the Global Moon Race – Key Developments to Follow Travel And Tour World",
+          "pubDate": "2026-05-25T05:00:36.000Z",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBTYWhvWGIxUW5WMGZRdnl0R3hXQURJTm1tTkdzNFM3c1FHUnpWLW9wTnBtcERLOW5KSHp4ZHBfTkROQmdFN1dlX0IyNUplSDlGdVFSdE1GamloX1Z5dm1JcS1qREtwODVsMDRLV3dR?oc=5",
+          "source": "Travel And Tour World",
+          "mentionCount": 2
+        },
+        {
           "title": "Chang’e-7 Lunar Mission: What is China’s Chang’e-7 Mission and Why is it Important for Lunar Exploration? - The Sunday Guardian",
           "description": "Chang’e-7 Lunar Mission: What is China’s Chang’e-7 Mission and Why is it Important for Lunar Exploration? The Sunday Guardian",
-          "pubDate": "2026-05-24T10:49:44.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNdUt4UkRVY2JvMmRzbzZYTnA3SzdPemF0UHN0d2FtQVNvTGQ4OVVZTjJHWGtYbUN5NUNYdkxYSFBhSWhDVGhybUdMT0QtYmNKTVNxRWFLRnZOZUlyWFdkVFByLW5sQ2xJOHVOWXFIMkFBU3I5RjQ3THpfblpORzlqVjRZNGRyd1hHWWNLeGNoSHQwNUtWUjJQd2lOOFlLdFNZWEQ4SVZyVTlIUTVjWkFramQ3SDRJV0JhX0JHYVhZUUxpZlZVbzFBQ0hpUms3bjZKSzBkUkh6aC1rU1JsVk1kMNIB5gFBVV95cUxPdG92aGNDeFYtN2tHRVE5bEd1NUtEeUJramJMdDVXdnVndnhPQ3RPdXk0NEVEcHRlSXV6VjN2U1dPTXB5NVBpZDdtVDAyY2hpMmVxQTd6cVlXWUJLbXpzYTFOT19fMXdEbDJCSHB5OTVocnVGUVlpUlZxOVU1VzVuMHJ3R24zN2hmbkhJbldhQWp1RzdKRXJxTGZyVHlvYjZtY29Cb2JKX1doSEZySlJTbVdaVkp5Q05LTGFwR0MzVUFqVUhnSFF4N0k3OWc2NzhyTlU3MFpSMzJMa3JsVjVveTBvRjlidw?oc=5",
+          "pubDate": "2026-05-24T10:49:50.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPdG92aGNDeFYtN2tHRVE5bEd1NUtEeUJramJMdDVXdnVndnhPQ3RPdXk0NEVEcHRlSXV6VjN2U1dPTXB5NVBpZDdtVDAyY2hpMmVxQTd6cVlXWUJLbXpzYTFOT19fMXdEbDJCSHB5OTVocnVGUVlpUlZxOVU1VzVuMHJ3R24zN2hmbkhJbldhQWp1RzdKRXJxTGZyVHlvYjZtY29Cb2JKX1doSEZySlJTbVdaVkp5Q05LTGFwR0MzVUFqVUhnSFF4N0k3OWc2NzhyTlU3MFpSMzJMa3JsVjVveTBvRjlid9IB5gFBVV95cUxPdG92aGNDeFYtN2tHRVE5bEd1NUtEeUJramJMdDVXdnVndnhPQ3RPdXk0NEVEcHRlSXV6VjN2U1dPTXB5NVBpZDdtVDAyY2hpMmVxQTd6cVlXWUJLbXpzYTFOT19fMXdEbDJCSHB5OTVocnVGUVlpUlZxOVU1VzVuMHJ3R24zN2hmbkhJbldhQWp1RzdKRXJxTGZyVHlvYjZtY29Cb2JKX1doSEZySlJTbVdaVkp5Q05LTGFwR0MzVUFqVUhnSFF4N0k3OWc2NzhyTlU3MFpSMzJMa3JsVjVveTBvRjlidw?oc=5",
           "source": "The Sunday Guardian",
           "mentionCount": 4
-        },
-        {
-          "title": "SpaceX 상장 임박. DOGE-1 달 탐사 임무가 예정대로 진행될 수 있을까, 도지코인은 정말로 상승할 것인가? - TradingKey",
-          "description": "SpaceX 상장 임박. DOGE-1 달 탐사 임무가 예정대로 진행될 수 있을까, 도지코인은 정말로 상승할 것인가? TradingKey",
-          "pubDate": "2026-05-24T10:25:30.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUmFtOGZndnJMQXl4Y25vdDctV2c4T2tpSGpELUZzd2F6eHpoX2JfSzR4NVIxMVR3ZXkxNWUxMFhvN1VlNmNsSGZyLWsyS1lEMUpVSjFoeFZqeDY4WDJHLXhOdFdtUTZhTW5SWmRXcm10STdnRVNXd1ROa3dyUXYwSHREQ0FtVHZ3R0tvOE5yYlJBblJrS1piOE9naHZ2T3UzZ2VTV1FCcFloNWVrQ0lxVHBzb3dFTE5p?oc=5",
-          "source": "TradingKey",
-          "mentionCount": 2
-        },
-        {
-          "title": "China Lunar Mission 2026: Chang’e-7 to look for water on the Moon in this \"extreme region\"! - Moneycontrol.com",
-          "description": "China Lunar Mission 2026: Chang’e-7 to look for water on the Moon in this \"extreme region\"! Moneycontrol.com",
-          "pubDate": "2026-05-24T05:38:28.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbnpNUHhmU1pWaEZjUVhmQk5pVEV5MVNNZ2o2VWdsYnUxQUt6ZWxpN21NUmRhU2FDUk5jMEZzUWkwNDh1cWpnVFItdUpJNWZ0RmVfN0Myd1NsTUNPNFlwM1VzQWlFb0NMM1V2S3ZjS3lmXzNXWkNRazNUUm1WVkwwMG5VaEhoTUludjJCUmRac2NyLThzS2tDNXdIMlZHYjNHbkJjWEJEUVY3UFJWZFZxV0NGTHBGRS0tekZuVFNkVi1ZcW84Z0huR1R6aDhoSTY2QmJnWGFUazEtN3lER2hZ?oc=5",
-          "source": "Moneycontrol.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "China advances efforts for lunar exploration, crewed moon landing - news.cgtn.com",
-          "description": "China advances efforts for lunar exploration, crewed moon landing news.cgtn.com",
-          "pubDate": "2026-05-24T03:14:52.000Z",
-          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPVFItaXR6VXo2Tnc5QlpVLUt4QWdrZ1NrS1l2UTR2NFVXYmFsMkd2OThJMmpiWXI2U21wM3ZPZXJMT056TEQwV01jaXVRZVVuTFo1S2NIbS13NXNtSDJ0Wmk3SFk3bXNXc01YbTJVTFV2LXg3T1NybFR2d29EaFZ3Y2FIMXNnbXV5ZWs5eDU1Y0RXSHQ5WUZlUnM2OHRtTktOeTBLbWFzSHo3c3l6SzVEVTdncmRPaEFJc1ViNFd3?oc=5",
-          "source": "news.cgtn.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "China’s upcoming lunar mission to target moon’s south pole - Macau Business",
-          "description": "China’s upcoming lunar mission to target moon’s south pole Macau Business",
-          "pubDate": "2026-05-23T22:49:23.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOLVpyRFNUT1F0QjFodGFCTnA1b1RmTjlTN25lZzlIX2MwWlVGV2lrcUdfME5jbS1lUGlLaTg4Y3d1eElua0JIRG1JRVZwYVY0ajhrWk9NRGhpYW55ak1Ga2o5YkJEdWxZVkMteFJaNVl4ZlhveGJ0SDN4YmNiQXJqQmxoZ3dpYWRUdUFZ?oc=5",
-          "source": "Macau Business",
-          "mentionCount": 2
         }
       ]
     },
@@ -156,14 +157,14 @@
         "IFT",
         "Integrated Flight Test"
       ],
-      "mentionCount": 336,
-      "articleCount": 166,
+      "mentionCount": 330,
+      "articleCount": 163,
       "trendScore": 100,
       "change": null,
       "rank": 1,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: v.daum.net, 동아일보, The Spokesman-Review",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: thecommoditiesnews.com, 조선일보, v.daum.net",
       "explanation": "SpaceX의 대형 재사용 발사체 개발과 시험비행 동향 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 10,
@@ -171,43 +172,43 @@
       },
       "sampleArticles": [
         {
-          "title": "착수 후 폭발했는데 환호성…스페이스X 스타십, 실패했는데 왜?[노컷브이] - v.daum.net",
-          "description": "착수 후 폭발했는데 환호성…스페이스X 스타십, 실패했는데 왜?[노컷브이] v.daum.net",
-          "pubDate": "2026-05-24T08:42:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFA2QzY5MDdTZG9IUTd5NzBnRHFYbmpwX01LRlkzZmhZUXNrUGszQ2NaSnljY211cFdNcjlNLTN3OHoxb1lhX1E?oc=5",
+          "title": "\"스타십 양산에 특수합금 소재 기하급수 증가\"...스피어 수혜볼 듯 - thecommoditiesnews.com",
+          "description": "\"스타십 양산에 특수합금 소재 기하급수 증가\"...스피어 수혜볼 듯 thecommoditiesnews.com",
+          "pubDate": "2026-05-25T06:47:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFB5U3N1bkJVejlWZzg0UkkxY0VTQXM5YnlGMjdvOTRFVThwNHU5OWpXREoweENpRmFlRWJ3OGV1bEJGMGFHUi1Fb0FQa0dpRU1Fc3k0dzliWXdleWV0T2g2RExzUjdmT1lNTUtkUzdYOThubGNHNER3?oc=5",
+          "source": "thecommoditiesnews.com",
+          "mentionCount": 2
+        },
+        {
+          "title": "美 스타십 이틀 뒤 中 선저우도 쐈다…우주인 1년 체류로 달 착륙 경쟁 - 조선일보",
+          "description": "美 스타십 이틀 뒤 中 선저우도 쐈다…우주인 1년 체류로 달 착륙 경쟁 조선일보",
+          "pubDate": "2026-05-25T06:28:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNdE4wdHMwMTZJVy1yd2NwQmk3RHFZMlEzalhIajZoWjFlSUM4LVpibGhJaUYxU2I0LWVQaW9lelhOTVZsVFdjNnEwUk5OVi1CUXRkOEVlY1d1NHptNTFOT2RtYThmS2QwWGhJZnd1UVRSdzR5SEJtNTZUbFJ4enBKTzQzcw?oc=5",
+          "source": "조선일보",
+          "mentionCount": 2
+        },
+        {
+          "title": "스페이스X 스타십 V3 시험비행 성공…사상 최대 IPO 청신호 - v.daum.net",
+          "description": "스페이스X 스타십 V3 시험비행 성공…사상 최대 IPO 청신호 v.daum.net",
+          "pubDate": "2026-05-25T01:51:15.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0tdDQ5Q2hJOWNsbTVrVGFJbFU5UXh6V2xoWVlBVzZXUl9JbXdla1pyRVd4a083YlhxaVIyMFBoV2pidThwSmVQNXB3aDZ1aUU?oc=5",
           "source": "v.daum.net",
           "mentionCount": 2
         },
         {
-          "title": "IPO 앞둔 스페이스X, ‘스타십 V3’ 첫 시험발사 성공 - 동아일보",
-          "description": "IPO 앞둔 스페이스X, ‘스타십 V3’ 첫 시험발사 성공 동아일보",
-          "pubDate": "2026-05-24T05:41:58.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5lUHZzS0lBa3BEU0lVQkRCc0FvTDVyTlFnZ0I2d3BQOGlmTGRkaTZzaXZwOEtWb0lyN2ZkZ3F4VlFsQ3BmcURGY1hoQTJHeGEtUUgwem1YQXFtcDdBTC16RTdpZjBzUdIBZkFVX3lxTE5lUHZzS0lBa3BEU0lVQkRCc0FvTDVyTlFnZ0I2d3BQOGlmTGRkaTZzaXZwOEtWb0lyN2ZkZ3F4VlFsQ3BmcURGY1hoQTJHeGEtUUgwem1YQXFtcDdBTC16RTdpZjBzUQ?oc=5",
-          "source": "동아일보",
+          "title": "‘화성 개척’ 더 거대해진 스타십 V3 첫 데뷔 성공...우주 패권 독주 굳힌다 - 레디앙",
+          "description": "‘화성 개척’ 더 거대해진 스타십 V3 첫 데뷔 성공...우주 패권 독주 굳힌다 레디앙",
+          "pubDate": "2026-05-25T01:36:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5BRkNFS1N5TkJvYmc4S2U3c1VkZ1huZFFnRmZYVmhFX2RDUDJWTGNoaWlBVGlxU3Y1MHVtU19MQ0dMOU0wZUFoWGNCbjZQM3Vwd1NBaFlmZDFwNGM5Zm5oZEJBWFNhMV82?oc=5",
+          "source": "레디앙",
           "mentionCount": 2
         },
         {
-          "title": "SpaceX’s upgraded Starship V3 completes debut test flight from Texas - The Spokesman-Review",
-          "description": "SpaceX’s upgraded Starship V3 completes debut test flight from Texas The Spokesman-Review",
-          "pubDate": "2026-05-24T04:55:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQUDRtYXJKRnUzVmZ4MzNKWDA3ak5DS0xfVDlhLWxZSUxFOHNzampEV2loLXI0YUtRS0k2bHUyeWx3OXh3YU14dGVITWZULUxoZnlIZVJlWGNoc0NhWmJGUS02RUo5NkRaVWFNQVpGNmd1c2NvS3p2QmtNVGE1SHBKTUZLV0MyWWtFa2I2d3lFLUMwam05ZGtCUFd1YnkzUQ?oc=5",
-          "source": "The Spokesman-Review",
-          "mentionCount": 2
-        },
-        {
-          "title": "스페이스X `스타십 V3` 첫 비행 성공…IPO 앞두고 우주 투자 열기 확산되나 - 디지털데일리",
-          "description": "스페이스X `스타십 V3` 첫 비행 성공…IPO 앞두고 우주 투자 열기 확산되나 디지털데일리",
-          "pubDate": "2026-05-23T21:37:36.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBGNVdoUkNHWXNrNEcxZHRHSXRJWWNuMFpBNmwxVjhYc054Y2xTV2t5M0RtUFpXTXJTRkx3cW1aTXZzX0wyQlUwcUs4b09sTEVIdF9fVmtYN2NWb0RGMmlpdGxzZUk?oc=5",
-          "source": "디지털데일리",
-          "mentionCount": 2
-        },
-        {
-          "title": "SpaceX’s Starship V3—still a work in progress—mostly successful on first flight - Ars Technica",
-          "description": "SpaceX’s Starship V3—still a work in progress—mostly successful on first flight Ars Technica",
-          "pubDate": "2026-05-23T17:54:54.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNVExic1FWVEY3Wk94eWsxemhCOGlOU2dCVU5oTFFUSGIyQmpLOXdHWVNLc09kY0Zoak41MGlyaTJFc3hDd0p6Z19rT29BX1VkVVpwQTk5ZTB5SHJNbTcxLUNIdVYybHpnaWExQnk1Nl9xdXEzWFpkNW45ZE5zMmlDdldKZUFIZW0wZFNJYTdheGVzcHhFTm9CeTRiQlF3blE1eUVzaWtacDRPZHY3X1dabHdXNXlURi1h?oc=5",
-          "source": "Ars Technica",
+          "title": "스페이스X ‘스타십 V3’ 시험발사 성공… “내달 기업공개도 순항” - v.daum.net",
+          "description": "스페이스X ‘스타십 V3’ 시험발사 성공… “내달 기업공개도 순항” v.daum.net",
+          "pubDate": "2026-05-24T16:44:40.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9jZEFxaVA5Vkt3Vlo2TFFZeWh4OUxXby0yOEZqT1l5NE1RcHpUbWprMzI2VzctUkxXai1qcjlGZ2ZTY0oxRjNIVUIxZw?oc=5",
+          "source": "v.daum.net",
           "mentionCount": 2
         }
       ]
@@ -221,13 +222,13 @@
         "케슬러 신드롬",
         "Kessler Syndrome"
       ],
-      "mentionCount": 24,
-      "articleCount": 12,
+      "mentionCount": 18,
+      "articleCount": 9,
       "trendScore": 100,
       "change": null,
       "rank": 12,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
       "source": "Google News RSS (KR), Google News RSS (US); publishers: chinadailyasia.com, Foro3D, Dork | Down With Boring",
       "explanation": "궤도 환경 안전과 우주 지속가능성 논의를 추적하는 키워드입니다.",
       "scoring": {
@@ -292,8 +293,8 @@
       "change": null,
       "rank": 5,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: 24/7 Wall St., CTech, TeslaNorth.com",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: 경향신문, The Fast Mode, Lowy Institute",
       "explanation": "저궤도 통신망과 궤도 혼잡 이슈를 함께 살피는 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -301,43 +302,43 @@
       },
       "sampleArticles": [
         {
+          "title": "Are the skies heating up as satellite swarms like Starlink multiply? - 경향신문",
+          "description": "Are the skies heating up as satellite swarms like Starlink multiply? 경향신문",
+          "pubDate": "2026-05-25T05:39:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE93WTZLZEYxdk5GankxcXk5ZXBvMldEcmZCeHNGTmVOZ2pyZjFVSmlLdVBEaFdIZXl3ZUwwZ2h2akVVZkRPVE9KcElzUFdic1RMSnF6VDlLLWdoVzdHYUE?oc=5",
+          "source": "경향신문",
+          "mentionCount": 2
+        },
+        {
+          "title": "Sateliot, Turkcell Advance 5G NB-IoT NTN with LEO Satellite Constellation for IoT Connectivity - The Fast Mode",
+          "description": "Sateliot, Turkcell Advance 5G NB-IoT NTN with LEO Satellite Constellation for IoT Connectivity The Fast Mode",
+          "pubDate": "2026-05-25T01:56:22.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQYnNHQy0yZE9xZWFGOVBhUGJDVk5RNFEtM1FyWUZ1dS1oYkhkQXhZLXA1UFdiSFBwYjV3Z3ZtOVloR2ppRXh3YjV2dDJGZEdBQV9yaHFxckhfWGNVcU9vR09ka205TUdJN1ZtV1JybVVrdXZlWThrZnJwMkFrWXA0TFZnNTNsdEZHeV9MZ0NrTUd1a29ScV9FQ2MyaUExR25RaXdLNHZuS290MDZJbmFDcHhZdkpwYW1CbU5xQlpkakZUOEU3TUxLaTROS3JWQmdNS2NIRUJHRi0za3J4aER1T2t3?oc=5",
+          "source": "The Fast Mode",
+          "mentionCount": 2
+        },
+        {
+          "title": "Solomon Islands’ Starlink workaround has connectivity lessons for the Pacific - Lowy Institute",
+          "description": "Solomon Islands’ Starlink workaround has connectivity lessons for the Pacific Lowy Institute",
+          "pubDate": "2026-05-25T00:02:15.000Z",
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOVlk2RVZ5MVlyeS03QTJWbENPdTNLX0tZd21uYmZlZVc2RGJjZ2c3TXRKTEp2MUdaU3VwektYdHRRUE9XMVBWSUY2Um9udm8ta2RCa1AxVW42aG5wb2UxQ0R5cVVKWlVqLWNPd1JwR1N3bnctNlFIQ0Qwc1gybmNEWU9xWVhKWlY0U0pGN0pFTXRSdjVTR0xYbi1NeGdXNlE5cFR0dWdMVWRmT0F1U254S1NyWDg?oc=5",
+          "source": "Lowy Institute",
+          "mentionCount": 2
+        },
+        {
+          "title": "Live coverage: SpaceX to launch 29 Starlink satellites on a Falcon 9 rocket from Cape Canaveral - Spaceflight Now",
+          "description": "Live coverage: SpaceX to launch 29 Starlink satellites on a Falcon 9 rocket from Cape Canaveral Spaceflight Now",
+          "pubDate": "2026-05-24T17:55:13.000Z",
+          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNS1JPVGZMN2luU05JNWM4Z3hEaV9GRmpZU1N1QmhnNFc4VjJPdHhHTGttLW9qeWJocnFPMEJMWWttN1VYOGliV29WeERSWW1TSk9NRGxIUXNXZFo3SnZGdWhBODdYWXZrNVFBcUVTc0VfRU9XMzlHMFdVSTV2OE9UMUI1R1ZrQjQxcTg1Qy1jX0I4ZjJTbm1UaXpzWW5ZQXViRjVvUXNmenNkVDBZT28yYjZpMDJOOE9mOFNkVVdTVllmNHBVZUxaNWF3MUEtdw?oc=5",
+          "source": "Spaceflight Now",
+          "mentionCount": 2
+        },
+        {
           "title": "Buried Deep in SpaceX's Pre-IPO Disclosures: A Threat to Starlink That Sounds Like Science Fiction - 24/7 Wall St.",
           "description": "Buried Deep in SpaceX's Pre-IPO Disclosures: A Threat to Starlink That Sounds Like Science Fiction 24/7 Wall St.",
           "pubDate": "2026-05-24T11:29:34.000Z",
           "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNRW1ZdUp2dFpUUTRaeUdXTlNrcGotSDRfNFNvcUVaZXFlb2lJZkNqVnhmU2VDUW81R0JlMm1rZkhadjlabVNaY1N1ajcwM1RDbnJPS1lZTW0tMUhCUXltUGR5NUd3WWtWdTF5M2xmU0NuTEZJc0cxYjhvMFhDa2JCc09KdmxMNUM5VkhyaHV2TDItOFU3VFpPSk12azhtczlCTFVqN1FueHVOR1BteXZhYTRhUTUzUEp1aTVFTlNZa082aXhLbHZVeDV6YWVQc2dqa1g3QWpKMA?oc=5",
           "source": "24/7 Wall St.",
-          "mentionCount": 2
-        },
-        {
-          "title": "SpaceX’s $2 trillion question: Visionary empire or Starlink house of cards? - CTech",
-          "description": "SpaceX’s $2 trillion question: Visionary empire or Starlink house of cards? CTech",
-          "pubDate": "2026-05-24T11:29:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5SbzN3a0ZIWHc0MVBMaFFZVEI1T0NwZGdRMkZvVFJXNWt0TEpUNU04bFNvWUZqUW1hWUpLSl83Q0Zad2RDX01icGw4enBXQ2c0OTZkdkNLNHVReFoxNXhrOGZoMDhHOVk?oc=5",
-          "source": "CTech",
-          "mentionCount": 2
-        },
-        {
-          "title": "Starlink Is Raising Its Prices — Here’s How Much More You’ll Pay - TeslaNorth.com",
-          "description": "Starlink Is Raising Its Prices — Here’s How Much More You’ll Pay TeslaNorth.com",
-          "pubDate": "2026-05-24T04:09:49.000Z",
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNSnBQcm54cGdhWUl3N3JOTW5ER2dablEyd0h1UzdTSTl3MTI4dTRCS3BzaExkZ3k5Y0ZrNWJUS09GTjMxcUVaSHcwX0NIZktxU1pqekpyLUE3dDJmRG9uT0xxTkJlVnJVLWpfN3U3c3gtWTBYTTNteE1XdmJJOGlfbGdEYUhQOEJleDBhU2lEZ0RwNG9kV2tvM2h3dw?oc=5",
-          "source": "TeslaNorth.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "SpaceX는 2026년에 1,000개의 Starlink 위성을 지구 궤도로 보내 역사적인 이정표를 달성했습니다. - Mix Vale",
-          "description": "SpaceX는 2026년에 1,000개의 Starlink 위성을 지구 궤도로 보내 역사적인 이정표를 달성했습니다. Mix Vale",
-          "pubDate": "2026-05-23T15:45:02.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi1AJBVV95cUxPT0JhM0VTSWl4Nl8yMXhCQ2RPcnl4TC1jS1djM205SVZ0UFdfVXhJZGI0V2Uxa3JFbGJKbmE2NWZhRG5DY1dxZWFXNzBPaGlzYWUzZzREekJiYlE2X0hSbHJxZzFjcVJHRHVPTWpXWjM2Szg4WVlxSExBeWt6RnNFM3JnSS1hbDdmUFlYSEtLOHMzOGRvd005LU5JajRVc2xWaWVqcEd5Y1haSDR2SDdYbVZuemkwR2loUG90ZjhqWEIxUWtPekNXSFBUTEFHanRjbVF3TktSMXlZYTNZOVVUMlVzNXRqLWpQaDZpZDhlU3FETzNJWDk2Nkh1Y21JWXVnUnpLT21GZEhmb081VmR6MTNwdWM1bDFuRHdGQ3JZOERBRGFfUVFHS1czcVlfZEx1ODVxbmNvRW9pYjJHYjN6b1ZRNUNBX1VNeGVlNUlLeUU5V3Fx0gHUAkFVX3lxTE9PQmEzRVNJaXg2XzIxeEJDZE9yeXhMLWNLV2MzbTlJVnRQV19VeElkYjRXZTFrckVsYkpuYTY1ZmFEbkNjV3FlYVc3ME9oaXNhZTNnNER6QmJiUTZfSFJscnFnMWNxUkdEdU9NaldaMzZLODhZWXFITEF5a3pGc0UzcmdJLWFsN2ZQWVhIS0s4czM4ZG93TTktTklqNFVzbFZpZWpwR3ljWFpINHZIN1htVm56aTBHaWhQb3RmOGpYQjFRa096Q1dIUFRMQUdqdGNtUXdOS1IxeVlhM1k5VVQyVXM1dGotalBoNmlkOGVTcURPM0lYOTY2SHVjbUlZdWdSektPbUZkSGZvTzVWZHoxM3B1YzVsMW5Ed0ZDclk4REFEYV9RUUdLVzNxWV9kTHU4NXFuY29Fb2liMkdiM3pvVlE1Q0FfVU14ZWU1SUt5RTlXcXE?oc=5",
-          "source": "Mix Vale",
-          "mentionCount": 2
-        },
-        {
-          "title": "SpaceX’s $2T Valuation May Be More About Starlink Than Rockets - Tema Space Innovators ETF (ARCA:NASA) - Benzinga",
-          "description": "SpaceX’s $2T Valuation May Be More About Starlink Than Rockets - Tema Space Innovators ETF (ARCA:NASA) Benzinga",
-          "pubDate": "2026-05-23T14:01:54.000Z",
-          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZlBJQUVtVU1QMmo3R2lUOXQ1cHh6bldFbHBIeVdibzNWbnZQamlfODJNMkhaOFdRM3dQUjBJZVd0ZmZBTUdZQlBrNGhvRmpmZVBSNXhnZTFqTkNHZER1M1pWY0lNRTR2c1R1dTBuLW94SUU0RzNsQXdVS19wRWljUzZFQjFOOFFSMVA4blV4eHZ5TzYwazNLN0dWUFhqMi1Sc0gtd0dIUzh0a1lKTVZCRUg0Y3Jhd3g5SkpCUmVn?oc=5",
-          "source": "Benzinga",
           "mentionCount": 2
         }
       ]
@@ -351,20 +352,36 @@
         "바이오시그니처",
         "biosignature"
       ],
-      "mentionCount": 56,
-      "articleCount": 28,
+      "mentionCount": 58,
+      "articleCount": 29,
       "trendScore": 100,
       "change": null,
       "rank": 10,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: EarthSky, News9live, AOL.com",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: AOL.com, MSN, EarthSky",
       "explanation": "다른 별 주변 행성과 대기 관측 연구를 다루는 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
         "recencyBonus": 10
       },
       "sampleArticles": [
+        {
+          "title": "Jupiter-like exoplanet helping scientists rethink how solar systems form - AOL.com",
+          "description": "Jupiter-like exoplanet helping scientists rethink how solar systems form AOL.com",
+          "pubDate": "2026-05-24T18:33:53.000Z",
+          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYUhJLXlTT0l2NDN6dUdNeUxBV1IwUll4TDF5UllLYUE3WGZzRkF5QTN6QmxUY0oxb1FfVldTUmk0MmU5bjl3N0RBVWlGWjRnWnRuVXZzcVFWbkZkVEtmYWwzZHp1cmhnbHU4YkNNMHRTQkV0czM0RTY4elljZUtoaW95empxLXlIblB0ZWNzd3pvNTg?oc=5",
+          "source": "AOL.com",
+          "mentionCount": 2
+        },
+        {
+          "title": "Astronomers get the best look yet at the surface of an exoplanet - MSN",
+          "description": "Astronomers get the best look yet at the surface of an exoplanet MSN",
+          "pubDate": "2026-05-24T13:40:15.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi5AJBVV95cUxNWTZZTHdjVjIzMDlDX1VuR0lzQ3VqLXU2cTFHdnQyNzF1T25FVGh2M3RJWWx6elVmNUNFNl9lbkQ0T2wzdGIzV3dFSVdiNmg1VTdPYnMyeW1TeVU0M1gwWDhZclZHNmNkVXJBS1pSR1BybXp0R1JRNFozRVkwX3FsZHl0djBiY0NZMGtkdVBnR21IWElHeGJjNmhQM0hKRVJ1cEllcXdMNjI5TVhvZzJwSlk2QjI5cWZISGFIbnk3cGdWUTY2M3hDTDRQS0pSajFfemtScTZTMTA0ZVFFbGdtVDdwenotVVo2bVBOUHBjRWlDTUtxcjRBMEN4MmpFenB1MDRWMnAxSmtocVd0LTFTSkxGb19MalVGZi03NkYwYVBtcW1Fa1U2SFBTVGFPcVNEbFlaMjQ0SHVPNVJvRFpmR1BHTmtNc2hiaVR6bmJIcDJzUGdVSTZSV2RGdVVNOW5zdmlJSQ?oc=5",
+          "source": "MSN",
+          "mentionCount": 2
+        },
         {
           "title": "Hot Jupiter exoplanet has cloudy mornings and clear evenings - EarthSky",
           "description": "Hot Jupiter exoplanet has cloudy mornings and clear evenings EarthSky",
@@ -382,27 +399,11 @@
           "mentionCount": 2
         },
         {
-          "title": "JWST catches mineral clouds forming and fading on 'hot Jupiter' exoplanet - AOL.com",
-          "description": "JWST catches mineral clouds forming and fading on 'hot Jupiter' exoplanet AOL.com",
-          "pubDate": "2026-05-24T02:50:48.000Z",
-          "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPS1JtYzBVelBqNWFPQTlwSHc2VC0zSm1wOEctNTBGU3RnV3IzbDNBSXRzWUlzVElDd0N1bmloc1BjYVU3bDlkdmdBMlJYcjB6cXVoSDdGdGxvQUlMM1pYMFg5TnYtb3pudlBTb1dxSXJzZ3gtaTZEWC1sb1QwYkZpaFJ1dnE3QQ?oc=5",
-          "source": "AOL.com",
-          "mentionCount": 2
-        },
-        {
           "title": "Intergalactic Noize Commander — Intergalactic Noize Commander - Exoplanet (Music Video) - Dork | Down With Boring",
           "description": "Intergalactic Noize Commander — Intergalactic Noize Commander - Exoplanet (Music Video) Dork | Down With Boring",
           "pubDate": "2026-05-24T00:12:38.000Z",
           "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNMjZ2cC1RNXFoR3h1MmRXY1ZoX01oRG80UlBWeHVfVmRscW9wMHZsV3U5V3lXbHpxSVFrYXBLU3BCM0dwdFJJWi1CNVMxNm1hNG1pdHF1b0paSGlyZWZfbno4dXJCU1F1TUwwTzJPcHZWUmxud3dsUlRwcGNtdnBsRVNNeS1EYmZycEdNY3FtVXF2Tl9YSDBYbm1NS24yQnFNanVyQUVXQlFyVENvZFJxRW5n?oc=5",
           "source": "Dork | Down With Boring",
-          "mentionCount": 2
-        },
-        {
-          "title": "The strangest exoplanet in the universe has a dark secret - MSN",
-          "description": "The strangest exoplanet in the universe has a dark secret MSN",
-          "pubDate": "2026-05-23T19:49:55.000Z",
-          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdmJYbjcxVWtWeERrZ3BkaVRiSDZTQ0RoSW4xOE1ZaFFBMHlQd2FGUEZGM09aSTFIWWVIOERRd25IWDZJc0xNemo5ZVVjcEFhYnFKek5vZEVHTG5DLWthSkYwTk1CTV83YTEtVVZWMUJac0NrNTlsbmNCcEgyVVVOWXB1WTdIdVVPV3dmdEhhY2hVLUplUHpBVzFWXzZyMzdxZXdhaFBFX1RoRXhTS25aRg?oc=5",
-          "source": "MSN",
           "mentionCount": 2
         }
       ]
@@ -416,14 +417,14 @@
         "MSR",
         "Perseverance"
       ],
-      "mentionCount": 166,
-      "articleCount": 82,
+      "mentionCount": 164,
+      "articleCount": 81,
       "trendScore": 100,
       "change": null,
       "rank": 4,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: AOL.com, The News Mill, RLS Media",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: Patch, 链捕手ChainCatcher, Guideposts",
       "explanation": "화성 로버와 샘플 귀환 계획을 포함한 탐사 동향 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -431,43 +432,43 @@
       },
       "sampleArticles": [
         {
-          "title": "NASA’s Perseverance rover captures stunning selfie in ancient martian terrain - AOL.com",
-          "description": "NASA’s Perseverance rover captures stunning selfie in ancient martian terrain AOL.com",
-          "pubDate": "2026-05-24T08:20:24.000Z",
-          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNVWp4ZFozMXh1dzZGMXdOeGQ1cnZsSWs5azhmakxabVFJR2xGQkhwTy1tX29xUVhFSXFQLUg2X3FsM1daM2taSTR3MVYwRmJTRkNOclpiMzR2UzEta1ZySFZhRDdnUTZ5bk1xamdvSHBsSUhJMktFLWthaVl3ay1hMktuNFZ5bGRZSlVjWTVn?oc=5",
+          "title": "Campaign To Recognize Newtowns John Janney A Story Of Passion, Perseverance - Patch",
+          "description": "Campaign To Recognize Newtowns John Janney A Story Of Passion, Perseverance Patch",
+          "pubDate": "2026-05-25T05:47:48.000Z",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZEVvVUVLN3g0WkplTGdlZkt0VklaVklsYk1tWjB6cjh4bWJDMnZ6Y3o5VjZpS1ZROW84Z3JQQUw0WkNMbVdLU3BGeXpWOEU5WENMYmRJZmxDSXU5M085a1hRVU5rVHJLcFdTTkowbFJfczFCRWxkeE9QZlRiX09nLWNfaWduWGpFakNfektRUkNLLVdja0NBM1VzN2hXMS13QUx5WFJZaDl6SFVS0gHIAUFVX3lxTE04ZlV2bDk1WnpyR1E4eWtnd0ZXdG5Ublg5anMtYkJiRFJHd3NodzBQa2hSRXVaOHR2bkd6dlR3UGZlQlMtZHdmYkZLMzdlZWg4SThtMVB0bVBpeU1OWERwQzJoN000QnJ4VUpvMDMzR1gwNzRkVHA4SUswZEc3bnYxVU9rQ2NjUWxQREdYeUFiNUl4N2RLWHJ3djNxai0wU05oTDg4R2U4UUJLczI0ZGhWbTltYXJ5Z0tqakVZN216U1pNbmJUUURm?oc=5",
+          "source": "Patch",
+          "mentionCount": 2
+        },
+        {
+          "title": "SuperEx's Mars exploration dream: Digital currency is the key to unlocking economic exchanges in the interstellar era - 链捕手ChainCatcher",
+          "description": "SuperEx's Mars exploration dream: Digital currency is the key to unlocking economic exchanges in the interstellar era 链捕手ChainCatcher",
+          "pubDate": "2026-05-25T01:29:19.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1SSWRocmJJS0ZjcjRVZmFUVzZRZkZncnlLLVUzWExLbURoZjBobWdMbGVodEFWMzd2VFc1dkx6ekpSR2Nuam5zZnpab3A4cTZ2aTNoQnNQSi1OOTQ?oc=5",
+          "source": "链捕手ChainCatcher",
+          "mentionCount": 2
+        },
+        {
+          "title": "Perseverance Quote by Shaquille O’Neal - Guideposts",
+          "description": "Perseverance Quote by Shaquille O’Neal Guideposts",
+          "pubDate": "2026-05-24T18:36:45.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPVXd4SV82SjFCY1dvS3l3TXp1MTFhV21FY1p4cWpuQ0NIRTlJSlVzbjZWMFA3U053N3VLRzhCQ2htVGd0MHVXaUJMN3RZM2JMblo0YjI2Rzh4bjF2LW95YTNUSWREdDRFWmp6endFNjNBV2JRZTJ5dkl2S01NeDhaWkN3?oc=5",
+          "source": "Guideposts",
+          "mentionCount": 2
+        },
+        {
+          "title": "Business of perseverance: Cookstown Antique Market celebrating 35 years - BradfordToday.ca",
+          "description": "Business of perseverance: Cookstown Antique Market celebrating 35 years BradfordToday.ca",
+          "pubDate": "2026-05-24T18:31:24.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaTFrazVVV1kyMXRmYnEtdFNuczJmVGdMbnd3OU1mU2UtdDNJM0ZHSmZKbDZ5Q1BFSzRMdU0wWWR1Um16aDQ0VVFyLVAwZFNuNVhRcWxZVkNoOEdiWmRYajk2N3J3Xzc2ejBRZnFSR002a1RBNXBEdGhYWjRHS3JZRXdlVmJYSGx5T2VQclQwUmp3N2N5YS1sSEtScFBsTVFkams2TUM2T0tFWFg2bGtXM3FmOG0yb2JMZmlR?oc=5",
+          "source": "BradfordToday.ca",
+          "mentionCount": 2
+        },
+        {
+          "title": "Quote of the Day: B.F. Skinner on Perseverance and Learning From Failure - AOL.com",
+          "description": "Quote of the Day: B.F. Skinner on Perseverance and Learning From Failure AOL.com",
+          "pubDate": "2026-05-24T15:45:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1tTllPbFlqc3FGeTJnT2xrOTMtUjIyTGN1Y2VlbUVUd2hmMDVtemVvekFXWXM2U0I2bVVsNGlFVHdNWHVxRjJNMjQ2M1RZWll3eE1tcmszS3c4WDNFb2IzOFB0UjRoaFlIMnZVeW1zT0VsaFU?oc=5",
           "source": "AOL.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "‘Graduate Chaiwala’: An incredible story of perseverance - The News Mill",
-          "description": "‘Graduate Chaiwala’: An incredible story of perseverance The News Mill",
-          "pubDate": "2026-05-24T08:07:12.000Z",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNU0JhV01Wb0U0NnJKYlRjX09YMkRCUmxEV1doc3pqVU5kRmR3eF9nbFBjcFBFeTgzSU80QXRPbXFDWFRrVmx0bFNlWEJqaU93R0dteWQ5dm1yOWhTOWZEcFV1cHB4UngzS3Y5TDZUZW9YWERmOHc5Uk8yZl9hTjFEWm1QbmJETlRNSlEwcFVkSQ?oc=5",
-          "source": "The News Mill",
-          "mentionCount": 2
-        },
-        {
-          "title": "The ‘ART’ of Perseverance: A Championship Season Ends With a Hampton Dream for Art’s Rivera - RLS Media",
-          "description": "The ‘ART’ of Perseverance: A Championship Season Ends With a Hampton Dream for Art’s Rivera RLS Media",
-          "pubDate": "2026-05-24T07:24:52.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE50QUlyRnF6dDRhVTRSOEFvTlBROTJsN2hiNldMNENYbUF6NUtFUUw3UmhvOW5MWEdjcXpaZ29XUXE2MEJob1VnWFRqMA?oc=5",
-          "source": "RLS Media",
-          "mentionCount": 2
-        },
-        {
-          "title": "Bob Woodson, black conservative movement leader, dies: Faithful perseverance in fighting poverty, racism - Christian Post",
-          "description": "Bob Woodson, black conservative movement leader, dies: Faithful perseverance in fighting poverty, racism Christian Post",
-          "pubDate": "2026-05-24T04:07:57.000Z",
-          "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOOTdNZDhlVTBld3J1dXExcE5qU1ZSSmhabGE4QjBtZ2k5TTZic0cxeDY1UEYwTGVHTWt3eUxsdXp1SEpaa01TX2gtWkoyRUxEaTR5TlJ5aEtvdkNPcXZiOFFmT2Q5cFJGZ25YbjJ4djhsSVNURUFmckhzSEJmWC1sbkc1a09TWW9PRVpXRUl3VWI0V2Vma3ZCM2J2dzIyQzI4V2hvOQ?oc=5",
-          "source": "Christian Post",
-          "mentionCount": 2
-        },
-        {
-          "title": "코펜하겐 아토믹스, MSR 재료 부식 및 펌프 신뢰성 입증 - 에너지안전신문",
-          "description": "코펜하겐 아토믹스, MSR 재료 부식 및 펌프 신뢰성 입증 에너지안전신문",
-          "pubDate": "2026-05-24T01:24:31.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA5bXZQaW0teGxPaTJwTXZVWjFsY09zU0tickJybzRrZDQ3SVo2WlM0WHREZGdHR21hUE1VSnY1bEQ3NWhpeUFZdTN3VlBMNzJmYzkwV1RqcV9GUjR6ZEMwcjZyTkg?oc=5",
-          "source": "에너지안전신문",
           "mentionCount": 2
         }
       ]
@@ -480,14 +481,14 @@
         "우주태양광발전",
         "SPS"
       ],
-      "mentionCount": 136,
-      "articleCount": 68,
+      "mentionCount": 126,
+      "articleCount": 63,
       "trendScore": 100,
       "change": null,
       "rank": 6,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: The News Mill, OdishaBytes, prameyanews.com",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: simplywall.st, The Times, Indianmasterminds",
       "explanation": "궤도 태양광 발전 개념과 기술 개발 논의를 위한 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -495,43 +496,43 @@
       },
       "sampleArticles": [
         {
+          "title": "A Look At SPS Commerce (SPSC) Valuation After Fresh Analyst Optimism On Earnings - simplywall.st",
+          "description": "A Look At SPS Commerce (SPSC) Valuation After Fresh Analyst Optimism On Earnings simplywall.st",
+          "pubDate": "2026-05-25T01:23:52.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOZDJfS1U1MlFzMlpwOVQxcm83THl1VUkyekxMcEJjUFZHV05ZbDVaLTZNc2pYUG85QXVOQUFydGMzbjdsQ1Jnek1idEFYWjh3QW40UGhmWUM2SUlMd0VTcXlOU1VGSVRyMEFfYlZRb1pkaUFZdUhhNV9TS180czROblFoVUFZRlZyQkxteF81TTRDQTVDdlhnRTNGRi1nSHB2VkJnMXNlT3pnRFBuVHpETjJ4NHlJNEUyQ21xZzdWSHVhV0VCemJHaVRWONIB0AFBVV95cUxQMXVDWjZ2d3Q5RlZVcEQxdGpmanlzaE91Sm4xV3VQcXVibFM3WFJFOGZodEdfcFZ4YTFwaF9ueGpyMWpVX3NLSVREcTdUMi1mWmJhMjdSVy1UNXBDNXlfcUY2Q0x2QktVaW5KX1JrZFBnMmt1NXpnNDE5OU9jQXNPSkszODhlck1ieUN0X1Q3OVNRQ29VQnB0UU1mUml1NU1uZDlHOGhvUXJZbDZtMngyTmFIcVlHcEZCdE5zUW4tNWxtWkRFZndEaTZ4TEJsYXFK?oc=5",
+          "source": "simplywall.st",
+          "mentionCount": 2
+        },
+        {
+          "title": "SPS still does not recognise women despite Supreme Court ruling - The Times",
+          "description": "SPS still does not recognise women despite Supreme Court ruling The Times",
+          "pubDate": "2026-05-24T18:10:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbTVfeTRTQzBCRXVQRWNCREhXSTVRYkhYWU8tX0EwMEdra01xUXg0UjBYekRCek9DOTdMemJDNG14RmliSXowQjR5b21hTExsWlFjTU5UVmIzVlNlXzZabVEzWUM3ZnpYUmVtVy1wY25wN2pVcVUtZFE1b2hhUjhiMk1NWjJWSnNNemw0akVVLThzRG5UNExIb3d1bHBaWGd0bDF3c1RPWHBndzh0STh3SUFTNHozMWtjUkE?oc=5",
+          "source": "The Times",
+          "mentionCount": 2
+        },
+        {
+          "title": "Tamil Nadu Govt Transfers 6 Police Officers; New SPs in 3 Districts, P.K. Senthil Kumari Appointed IGP Traffic and Road Safety - Indianmasterminds",
+          "description": "Tamil Nadu Govt Transfers 6 Police Officers; New SPs in 3 Districts, P.K. Senthil Kumari Appointed IGP Traffic and Road Safety Indianmasterminds",
+          "pubDate": "2026-05-24T16:10:41.000Z",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPSVFpaGlnRHpucUZPUDAwd2Q0ZWFxT3pIcmFBWVRVVUZyaEJXR0I1WjdsUGtoLWRRUlAxMHVQT0dYanN3VVNqWHA1Si1fY2Ztd3p0dXduenIxMkRCS1FXUzFYbHAyd0ZlcTVOdFN0VE95NVNIaHg2LUtsZUJkVnVJUTJ2UFBqSk43cmZZU0RlNEtvY0F2SldpRXZsTQ?oc=5",
+          "source": "Indianmasterminds",
+          "mentionCount": 2
+        },
+        {
+          "title": "Odisha Govt Reshuffles 18 IPS Officers, New SPs Appointed Across Districts - Dailyhunt",
+          "description": "Odisha Govt Reshuffles 18 IPS Officers, New SPs Appointed Across Districts Dailyhunt",
+          "pubDate": "2026-05-24T13:31:42.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPdlhMT0dQNWxSeXJEckJIMnMxcGw0bWtCaXRfdXVTZnhraldkcmU1RXZINTB5aDkwRE0xTjc4X0x4UXFzc245QTgtV2drd295S2dJVnNtemU5aWZhLUhuUWl6QUF5VXlkaldTaWU3NDk2V3Q1TDV2OFppQlN1N0dRMXpiRkpwMHFMdUZRUUNqSThYTUp1MDJTWklqQ3I0eDhYM2RIX3R5Y2hBQWlzNWtxM1pySXJ3QzVUbC1pTHhhVkhrcy1yVjlCU1NmOThIQngzVGExZGdGb0JHTElQd0llam9KV2F3YzFIMm1QQWRIUl9TR0xmVkxJbkJmZ25LRV9vdVE?oc=5",
+          "source": "Dailyhunt",
+          "mentionCount": 2
+        },
+        {
           "title": "Manipur excise dept seeks DCs, SPs help in intensified drive against illicit liquors - The News Mill",
           "description": "Manipur excise dept seeks DCs, SPs help in intensified drive against illicit liquors The News Mill",
           "pubDate": "2026-05-24T07:37:28.000Z",
           "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaVUyT2s0NzlKb2xfeTI0UVk1Y2xNSXdrRjlSYXlySU9oNC04b0tmVjl5LW9meXlpSTN3TXNMR3lYVFNBcWtYR2tJVEdXSmFJbERYM1NockxWUnZjeXBnXzdTSG1lbUZkd1pqek8xck11QVJEYkhIZ0R3b29za3FjMmdBdFJCOWhYdm81VzFwNW9fVFppOGN5YllMZ1h1Z0dwLWRZ?oc=5",
           "source": "The News Mill",
-          "mentionCount": 2
-        },
-        {
-          "title": "Odisha Appoints News SPs To Nine Districts Amid Focus On Law & Order - OdishaBytes",
-          "description": "Odisha Appoints News SPs To Nine Districts Amid Focus On Law & Order OdishaBytes",
-          "pubDate": "2026-05-24T05:37:53.000Z",
-          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUWd2aEZKS0R5MkhwMm5EVEZDbkNneGlwdTcyUGxmOWR6SDlyTHprQ3NLMVZrZ1VEM2dKTWNqWWNScnVXTTgyczV1VDh1LU5raUY1QW5neWFpX1FJMi1NeS1SZ1k1ME12UC1xU2hjMHdoakhMYjNIelE2RXdsR1JrUUVNSG1BZlpTMkowUVdodERUTmVfSnfSAZsBQVVfeXFMTkdmR0J3d1ZWa3hvcWJLUnpBRXVxcDVic0ZXNHQ1MnFfTW1yQXZIY1ZIalVGeGR4MkYxSVpTS2xiRDh6ZDVyNGpXTS1zb1Nya1dfMXJJT1NMeV9VQ2hlRG4wYm5aY2JUTVY3eTJTa2VRZ3lFRktCVmZsR0NVMzdGWWp1Vm1iSjczZ0N2TkxNbUZqYkpwcVZFdFpiczQ?oc=5",
-          "source": "OdishaBytes",
-          "mentionCount": 2
-        },
-        {
-          "title": "10 districts get new SPs in Odisha - prameyanews.com",
-          "description": "10 districts get new SPs in Odisha prameyanews.com",
-          "pubDate": "2026-05-24T05:34:40.000Z",
-          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1heWRjdnhMMURGVEpXaWQyUExoblhaODFtYW5hTVhFeE1pSVdkbUtoUXZjdTdIb1V5R3U0a3VZZktRZDh3Z0ZmMEF6WEh0djRDNUc0b0xhMnhWQmZ0a0FqaVRwN0FvTC11blFYaEgydw?oc=5",
-          "source": "prameyanews.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "Odisha Govt Announces Major IPS Reshuffle: SPs of Eight Districts Transferred - Ommcom News",
-          "description": "Odisha Govt Announces Major IPS Reshuffle: SPs of Eight Districts Transferred Ommcom News",
-          "pubDate": "2026-05-24T02:36:56.000Z",
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQYk9TdEhzRmRWYkhXV05IbE9aREZlNW1mNlRyYVlZNFAxa3Q2UU80blhfZWpyZ0RvOFp0cF94MC1KWlZVYTVBeS1vTWFmbkM4ZjhwTnBvWG9jVUNrOV9Wb29iTEFmNjFxV3ZkVzFyYTlJUHJiaUhfMWxQUEVMM3NpNTdKcy1rekphaTJpYUJXVUQzWWFlZ19HYjRDNWVEX3hDeGlDbnFKa2FRRVEyLXludHJR?oc=5",
-          "source": "Ommcom News",
-          "mentionCount": 2
-        },
-        {
-          "title": "IPS reshuffle in Odisha: Several districts get new SPs - Sambad English",
-          "description": "IPS reshuffle in Odisha: Several districts get new SPs Sambad English",
-          "pubDate": "2026-05-24T02:33:43.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONE9mNzkxMF9WeXRmd3RGMUt1aTh2RE9iVWp4UDNVemRqa19XVWg0QmY3RzVtdFlXbHJIWVQxWjZqbHBkYkVrNE1UWkRBajM4UDI5S3dpalB4Y3o5WTZFZG9Tdjg3dEowVlRpbVkxbkprcjdXZEpkc09wNHdYVlJYOWUzSzY1cHdfTWlWb2NGekFJd1VVWF9mQjRUTUhCbl9lcEHSAacBQVVfeXFMT1J1WEJXX3R2bHVGMmNKM1BsUU5xTmdoSTgzTHVQaTh6RHRQVFJYakdVX1ZJOHRCYWlIeWNkb1lBYkFWZWtDcE5BRjFicFh6NzU1T1lSdE9IeDVMZWNWbXZ1Wm5lbTQ0QnNkUHlKRC1FWW9yQmxRQm8wdWN1Wi1rNTgtN2RmMFYySDlJOXdpR2I3VGJUMjdfVjdsdzlMVXBVbldHMENzV2M?oc=5",
-          "source": "Sambad English",
           "mentionCount": 2
         }
       ]
@@ -551,7 +552,7 @@
       "change": null,
       "rank": 15,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
       "source": "Google News RSS (KR), Google News RSS (US)",
       "explanation": "달의 자원을 탐사와 체류에 이용하려는 연구 동향 키워드입니다.",
       "scoring": {
@@ -575,7 +576,7 @@
       "change": null,
       "rank": 11,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
       "source": "Google News RSS (KR), Google News RSS (US); publishers: Foro3D, TipRanks, satnews.com",
       "explanation": "큐브위성과 초소형 위성 임무의 발전을 다루는 키워드입니다.",
       "scoring": {
@@ -635,14 +636,14 @@
         "New Glenn",
         "Neutron"
       ],
-      "mentionCount": 78,
-      "articleCount": 39,
+      "mentionCount": 80,
+      "articleCount": 40,
       "trendScore": 100,
       "change": null,
       "rank": 8,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: Pune Mirror, gagadget.com, Hanford Sentinel",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: Orbital Today, Market Data Forecast, AOL.com",
       "explanation": "회수와 재비행을 목표로 하는 발사체 운용 동향 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -650,43 +651,43 @@
       },
       "sampleArticles": [
         {
+          "title": "The FAA Clears The Blue Origin New Glenn Rocket For Flight - Orbital Today",
+          "description": "The FAA Clears The Blue Origin New Glenn Rocket For Flight Orbital Today",
+          "pubDate": "2026-05-25T07:19:35.000Z",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPMEw1NTQ5ZFl2ZEp3TFNONUJuNmV0a0JLWmtsTFRQTVNJcmgzUkZ5dDkxcUhZUlBudlJRdGdCdTNrd1I2aElZRzhUVVhlcHYxaHREMFRFbS1vcGI1YWJGRzZVZElCclRxVGxMb0JZYTBhblBpQnIwOEtseENUQm8xNG9VTVhPZ0l1VVFmX1VPUUlwRHVnN3h6TFgzcw?oc=5",
+          "source": "Orbital Today",
+          "mentionCount": 2
+        },
+        {
+          "title": "U.S. Reusable Launch Vehicle Market Size, Share, & Growth, 2034 - Market Data Forecast",
+          "description": "U.S. Reusable Launch Vehicle Market Size, Share, & Growth, 2034 Market Data Forecast",
+          "pubDate": "2026-05-25T05:47:25.000Z",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaFBVWXh5YWJyaVN0WXVhNjhkQ0FYQU9xXzVKLVByWEJZM3FhdkExUVJaSXNSdC03SjlKOUU3MVJHbnlaODJiQnFKUjVLcExsNXBBenJXZ3J0S1U4OWV2RWhMSXVkUHlBbDJxUmwxUkxLUzBycjJ1SVlSWDBORmpKcUQ2b0I3Q0ZyaC1mQmNmR2Y4dVdtYXFIaFZR?oc=5",
+          "source": "Market Data Forecast",
+          "mentionCount": 2
+        },
+        {
+          "title": "FAA grounds Blue Origin's New Glenn rocket after satellite placed in wrong orbit, resulting in lost payload - AOL.com",
+          "description": "FAA grounds Blue Origin's New Glenn rocket after satellite placed in wrong orbit, resulting in lost payload AOL.com",
+          "pubDate": "2026-05-24T22:44:47.000Z",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1mUUgzVlVuTW9QS0p5S1FjblctcEdvV2FGMlNIUk1Nd1kxamNCNlJVVU5iQTE0dGRlVGJXTWZVT2NCMnljVURQYWRZVlFDOVVZd0JsUDhOb29CSm1BUDRBYnlNeGI5dVJzYUZVNDJXT09UN1N5LW1PcklsZXR5Qk0?oc=5",
+          "source": "AOL.com",
+          "mentionCount": 2
+        },
+        {
+          "title": "Constellation Seeks Early Site Permit at Oswego, NY - Neutron Bytes",
+          "description": "Constellation Seeks Early Site Permit at Oswego, NY Neutron Bytes",
+          "pubDate": "2026-05-24T15:58:46.000Z",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQaGNMVHB1UTNkY2FrMG9mQ1BQU0cyRTVXZUtDeHlFTmtjTHRmUFJEVDdPb19Oc0EtdEp4aUlHcU1ScTZpYlFRVGEwV3VlaFRycVc1RHZDX2g2SC1GQ2Nhc1B0WE14U0t3Z1l6YjFjODZwYzJtTTl0cEpZdFh3dENyS3cyYjFKVkFKNXU2NDc5cGU?oc=5",
+          "source": "Neutron Bytes",
+          "mentionCount": 2
+        },
+        {
           "title": "Blue Origin New Glenn triumphant comeback after FAA green light - Pune Mirror",
           "description": "Blue Origin New Glenn triumphant comeback after FAA green light Pune Mirror",
           "pubDate": "2026-05-24T12:09:23.000Z",
           "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiVnlZam4zTU5GdUdJc1REbFRCSFg5MEJSWFppaHJlQUJkWnBOVnRVdVBOdGFnTDd0MElmVVRHYy1uWjhhZXBHSlRxaldNQi12OEM3bC0wWnRKQVlyVVdhbXdQQmFrT2p6S014WHZhbmVtdktzWE54Yw?oc=5",
           "source": "Pune Mirror",
-          "mentionCount": 2
-        },
-        {
-          "title": "Blue Origin clears FAA review, but New Glenn's upper stage keeps raising questions - gagadget.com",
-          "description": "Blue Origin clears FAA review, but New Glenn's upper stage keeps raising questions gagadget.com",
-          "pubDate": "2026-05-24T03:22:06.000Z",
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNV1p1NXNoOVJoM2NuM2ktYXhWSDNOVjJiV1QxVmhqU08xRmlPbllYOGJGRmt6SllOT1NxMFNOaEhnZ2R2YjZ0NWQ1YmFnbHZnc1NpZVZ2dEJKMG11TjMta1ZoeFk3aXNXVkNDTVREYzJlM0VhQ0d0dldhTnlMRUhXR2JUQlhFdmlWUmpFTnJSTDlRZUx2M0lDQVl2cHQ1a05RaXREaEdyQVYyWjNBQ1REdEpB0gG3AUFVX3lxTE5jLUhOUVQtbW9OYkc5M0MxVDZTcUVjQjlGaG1yVUw0aGxQMEN3QjQ5ZnlZeFFXRUxLcXd2WEhDUWR1N0IzUmluYWt4dEFNdmZaVURIWDNNVHdfMkV6WjdhSUs3eGM3Q1lkb0RJZW00OWU1UGkwLW90VmhYRkZHQTBFSml4TzM2T2g3UEhnRWpaSWhRTlBRSFZZbWRNSlNxVDc1dEFIOS11X0VNVWx1Vm5UMXlhLXBGTQ?oc=5",
-          "source": "gagadget.com",
-          "mentionCount": 2
-        },
-        {
-          "title": "FAA closes Blue Origin investigation that had grounded New Glenn - Hanford Sentinel",
-          "description": "FAA closes Blue Origin investigation that had grounded New Glenn Hanford Sentinel",
-          "pubDate": "2026-05-23T20:56:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPaTZJVFBtN3lpZGVYbW9fRFV4ZF9OemZITUkxSHpSd0sxNHVMZURxbWRxNDk4OHBjUmFFSmVPeVlkY3RiRTFFRGVkQ2NUVXctZWxJMVMtcFgwODc1dFc4cHBYRlc4WVl2dXdUQl9EWHF5cjJPMm9SclRGcnh2cG4zWm1fbkRaLVhnV0dOTUt4a1YwSHRWcnktQk9PVHpVNmRxYjVfcHpwQXVvSmtPeGU5NEdYRTZYOXpDWDlNNzlBOV9ndlpqYnVaXy1mc25LQnpSOUZFcERGS0lFS1ZhS0o0OWRuYzNKbUY2QjJPStIB8gFBVV95cUxQd001M1JHelhUcnFVZWNjWURabHRKTVZGVkhfdXR6eFNSTWF4WVVTUjhmVno0cHVYMXQ5cWZzRzVHUWxXN05OYXlLWFBlQUdpeE1rblRBbGVRbFRCX193a3pyN09IdXdSRzcxb25pVU9raF9wM2JsNm1FVjhVS0w1NS1WbG1QNWFoODAwRGJES2F3aENJVEk0SzNVMmpsYlZZZUMtMmNiX3VpWkJEeGJ6bVN0dnY5ZVhkdi1RVjJ0YndHeFFFSVA0dUU1aUY2U21FeXZ2c2ZuMkZoWl9hTU84WFQ5UnkwMzlDdEwwYnBlUEs0dw?oc=5",
-          "source": "Hanford Sentinel",
-          "mentionCount": 2
-        },
-        {
-          "title": "Blue Origin announces $600M Florida expansion, FAA clears New Glenn for launch - Florida Today",
-          "description": "Blue Origin announces $600M Florida expansion, FAA clears New Glenn for launch Florida Today",
-          "pubDate": "2026-05-23T20:45:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOLXNpWTJfMnE3QmI4STlDMmhyTnVGSmpEOUYwYmQ4RGE1SUpkTXg4Z2hTcE1MdnFDcmpDamNJMFkzMG1OakI0Q1Rubm9WakVMNTl4OXcya1RHeTNFZjhNWjQyZ2dPQVRkMF9CdU9sMjJTQWgwcUNUcjJ2LWpIUjd1SW0xSlVBb1NWVGVMWDRYbGlId1NiUTg3ZXQxOFN1SzkxcDltRnB3VjV0SVluaEYwa2xZNjI5bndsRzJueDRXVDhfcWE0Q182Q0lhVHVIZzZWXzc3aEdhSlV6MmNOa2NYOUQxOGN1bVpvRzF5VkY1Q2ZYSDRPODYxUEpMaHpWWFUzNF9yWm5Tb1A?oc=5",
-          "source": "Florida Today",
-          "mentionCount": 2
-        },
-        {
-          "title": "Pulsed Neutron Logging Tool Market Analysis By Application, - openPR.com",
-          "description": "Pulsed Neutron Logging Tool Market Analysis By Application, openPR.com",
-          "pubDate": "2026-05-23T19:34:39.000Z",
-          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOdnR3ZlgtZGRSU3RQZ0VocHJJaU9BTnlGdTBiWXFsY2dQMU4xNDBRaDZmOGRONDFkcS1zUFpuOEgtWFd0WmtzX1lZTWRCUGk3ZHo2b0FkM3JCRmlxZERrWmh3UkxMN253S0ZPcEltSU5fWHY2dS1NOFE4dzJIQWhpTDFrUWlNN1BiaDFfX3hoYTFVYTRYVTVENXVB?oc=5",
-          "source": "openPR.com",
           "mentionCount": 2
         }
       ]
@@ -698,20 +699,36 @@
         "Artemis Accords",
         "아르테미스 어코즈"
       ],
-      "mentionCount": 10,
-      "articleCount": 5,
-      "trendScore": 90,
+      "mentionCount": 12,
+      "articleCount": 6,
+      "trendScore": 80,
       "change": null,
       "rank": 13,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: Forth.News, NASA (.gov), spaceconnectonline.com.au",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: NASA Watch, Radar.am, Forth.News",
       "explanation": "달 탐사를 둘러싼 국제 협력 원칙과 가입 동향 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 10,
-        "recencyBonus": 0
+        "recencyBonus": 10
       },
       "sampleArticles": [
+        {
+          "title": "NASAWatch on CGTN: Shenzhou 23 and Artemis Accords - NASA Watch",
+          "description": "NASAWatch on CGTN: Shenzhou 23 and Artemis Accords NASA Watch",
+          "pubDate": "2026-05-24T20:33:27.000Z",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdTFzd2xBU283TnQ1R2pFa2hxZE1BQ1IxNVJNS243Z3dyaVNpNDdXN2JOd1dyYW93dWJhZWlvSlRiWXppYllKeXU5OU9oWFNtZkZROGk0M19XS2xJUzhKRElxM0pQRUVXRnMxNGJyemUwSGZfbnN1WXBGd0J0N2tUd0dNenk?oc=5",
+          "source": "NASA Watch",
+          "mentionCount": 2
+        },
+        {
+          "title": "New rules on the moon: Artemis Accords still have questions - Radar.am",
+          "description": "New rules on the moon: Artemis Accords still have questions Radar.am",
+          "pubDate": "2026-05-23T22:36:17.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9XNmR0WUdxOFV4SHEtbWMzUlNUbjJmOUc5bFg3WW81NnlWS3FCTWxCdWlWb3ZpWE9WdW5ubkhzdlItRVNaQ1FCX0wxeEpaZ1E2TmdTRFJaNA?oc=5",
+          "source": "Radar.am",
+          "mentionCount": 2
+        },
         {
           "title": "NASA Restructures Agency, Adds Deputy, Expands Artemis Accords, and Updates Moon Base Plans - Forth.News",
           "description": "NASA Restructures Agency, Adds Deputy, Expands Artemis Accords, and Updates Moon Base Plans Forth.News",
@@ -735,22 +752,6 @@
           "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOUkNkbnFKLXZqbXloVkltRWd6WjhVaXNsNk9PVURhTExkTlhuMGlaTEN0M3pkV0h5bjZXb251VkhheWZIWUNLMlc3SnYwZjBBUTFRay1xbTdrV0JLSHdBeHhMTXoyZkszUG5qVDcwd2pSMWd5QTgyZVpBdmJWbmM4eVBrRkVUeVAxdHZjWTJNVmZrQ0VOcUVfcm82ZVVwcTNJamc?oc=5",
           "source": "spaceconnectonline.com.au",
           "mentionCount": 2
-        },
-        {
-          "title": "Ireland signs the Artemis Accords - Ireland.ie",
-          "description": "Ireland signs the Artemis Accords Ireland.ie",
-          "pubDate": "2026-05-20T17:31:36.000Z",
-          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZ2dqVzZ2N09LWm5fUVpKUmc4UVVkYmw0djJmcWZULVdfUWNzZFgzYmVPdS1sVlhXNGNZUlRGZlVYNlkyVGRRZHNZeFhral9XUjRjUzRpQm95QVNrd21Nb0F5c0VqWG94ekE3VkdZQVVmN2tYMmRUcHNNUzNZQW1QWkZMeVZOVmhPcXRzcUJiQkFId1VidFRoQV9JUm5lcjlDMkZ6TlF5bw?oc=5",
-          "source": "Ireland.ie",
-          "mentionCount": 2
-        },
-        {
-          "title": "NASA promotes new cooperation initiatives among Artemis Accords signatories - Agencia Peruana de Noticias | ANDINA",
-          "description": "NASA promotes new cooperation initiatives among Artemis Accords signatories Agencia Peruana de Noticias | ANDINA",
-          "pubDate": "2026-05-18T23:04:37.000Z",
-          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZFE2N0lHaWJpTDVmQ3c2dGpSZmt6YWU2WklPSzkzN0dCbjRHSzFSQTFQSVFxLUdpd2dKZXZlN1lTNTc4Z0dkS1JOeFdOc3dzdkpHV3Vubk90RnZ3cWZGOUVMbWJqWDR4Q2lzUk1VTDJrNGgyQ2RSNC1vRFBlX191SjdzWG1KMllxS1A5X2R4RW83OGhGblVUX0UycDhDNzRKcEJlSW41MHN6Szg2VVlOdGg1ajR2N3hFbXVWRnhn?oc=5",
-          "source": "Agencia Peruana de Noticias | ANDINA",
-          "mentionCount": 2
         }
       ]
     },
@@ -765,11 +766,11 @@
       ],
       "mentionCount": 2,
       "articleCount": 1,
-      "trendScore": 16,
+      "trendScore": 10,
       "change": null,
       "rank": 14,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
       "source": "Google News RSS (KR), Google News RSS (US); publishers: Newser",
       "explanation": "국제우주정거장 종료 계획과 후속 플랫폼을 살피는 키워드입니다.",
       "scoring": {
@@ -778,8 +779,8 @@
       },
       "sampleArticles": [
         {
-          "title": "SpaceX and ISS Deorbit: Trillions in Untapped Value at Risk Without a Space Economy Bridge - Community Trading Platform - Newser",
-          "description": "SpaceX and ISS Deorbit: Trillions in Untapped Value at Risk Without a Space Economy Bridge - Community Trading Platform Newser",
+          "title": "SpaceX and ISS Deorbit: Trillions in Untapped Value at Risk Without a Space Economy Bridge - Profitability Analysis - Newser",
+          "description": "SpaceX and ISS Deorbit: Trillions in Untapped Value at Risk Without a Space Economy Bridge - Profitability Analysis Newser",
           "pubDate": "2026-05-21T01:12:02.000Z",
           "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPWUhiRlV0MkRLYWV0dEx3S3lsbzBjQVdGUFZ3LVBRU19SeUFyenZvcEJySU9yU1g3TXQxOXJyUzFrUFJNZGlIUDlGcmVpRzBvUGs0RjZHWDJtRUI2ZEt0dlBMTUR2ZzVqdFN5dWI3VWs1cFBvdmpPOWFocFdUWEZLUUdDLUdKM3k5U0NROG1RQlFzQzlqSmxGMzBQOXo5VnB4a3hramN2ZGM3aUNUU1U3WHlHeEg5NE9HVEl4VnludW56SlI4NHdhYnFxeTk?oc=5",
           "source": "Newser",
@@ -802,8 +803,8 @@
       "change": null,
       "rank": 7,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: NDTV, India Today, MSN",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: CPG Click Petróleo e Gás, The Eastern Herald, vocal.media",
       "explanation": "적외선 우주 관측과 관련 연구 발표를 추적하는 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -811,9 +812,33 @@
       },
       "sampleArticles": [
         {
+          "title": "The James Webb telescope spotted a planet 700 light-years from Earth with mornings full of sand clouds and nights with clear skies, the temperature difference between the two hemispheres reaches an impressive 170 degrees. - CPG Click Petróleo e Gás",
+          "description": "The James Webb telescope spotted a planet 700 light-years from Earth with mornings full of sand clouds and nights with clear skies, the temperature difference between the two hemispheres reaches an impressive 170 degrees. CPG Click Petróleo e Gás",
+          "pubDate": "2026-05-25T04:46:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxOT0hXVlBWaEd2anZoSjMzbGFVR2x3bzhuVlVzWjhHVHlXTHJYc0VrNDBLQXY3NmZLZ2t6aldUc2xPSkllMFlCVm1xOFczanZOZWRIdWFpem1QMUNlOTQzZFlVT2hnbUlpVlRNbjdCUUVyWGtSanF3eTdLcWVkWjVRSGd1TGdvV3F0UmMtOHNhNlFZbTE0WnpycTdJN0dUMWFyN2FlUVZjX1F4X0tjOG84Ym1WbzV1Y2tvVmF3b1p3azBJY1huVXIzQmllaV8wOHVLX0c1U19weHJtRlZyWXhGbEVsUklBUWhwdzZDS2F6MmlKeEVoVDRkXy1uMTg0Um52NFAwNDVUOGpqTjJraUhtQVF3?oc=5",
+          "source": "CPG Click Petróleo e Gás",
+          "mentionCount": 2
+        },
+        {
+          "title": "Webb Telescope Finds Most Massive Star Clusters Break Free of Birth Clouds in Just 5 Million Years - The Eastern Herald",
+          "description": "Webb Telescope Finds Most Massive Star Clusters Break Free of Birth Clouds in Just 5 Million Years The Eastern Herald",
+          "pubDate": "2026-05-24T16:56:26.000Z",
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNTzhPTjA2SWdmcHJkMTdWb3EwMndudWhuLXZJb2lxQ3VOMktYQXpVRVZoVnRPZDcxSWlGbjg2aUQ3czY0WVJuYUpxTG5WX2tLS1lBWFo2cXR1R3RZN25MczJxazZVX2I1eExCbFFpNks4NDE4c1BlWTM4UW9Va0J1b3VRa2p3QUdSV2FNNEpIam1RZ0RFSkgySHZpdW5xenhpSmJxd01jcVM?oc=5",
+          "source": "The Eastern Herald",
+          "mentionCount": 2
+        },
+        {
+          "title": "How the James Webb Space Telescope Is Challenging Our Understanding of the Universe - vocal.media",
+          "description": "How the James Webb Space Telescope Is Challenging Our Understanding of the Universe vocal.media",
+          "pubDate": "2026-05-24T15:38:09.000Z",
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQb0Z0OWxwa3NhZG41WXBwY21jdUNfMHJzRFp3cDlMTDdTOExSQWhMNzAwVnVyYTRLTDB1LVVrQXpUOW5pX2xJbWZUaVhweXRYdnVQRUI5ejNuODJwYk5MNFQ1d0hJRUdWMXVqajBwSHZGeS1scjJ4LVVIdnZLLUtnNnMzdmxhaFBUVE03Rko0SmJ1U1ppRklHb0kyOFMyM0ozQXYwTm5zOUIya3RyOGFQcGV3?oc=5",
+          "source": "vocal.media",
+          "mentionCount": 2
+        },
+        {
           "title": "NASA's James Webb Space Telescope Reveals Massive Star Clusters Form Faster Inside Galaxies - NDTV",
           "description": "NASA's James Webb Space Telescope Reveals Massive Star Clusters Form Faster Inside Galaxies NDTV",
-          "pubDate": "2026-05-24T15:03:19.000Z",
+          "pubDate": "2026-05-24T13:59:23.000Z",
           "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQVS1jQmFpc3U4Ny1VXzVWbUx4am92OGpIQ2RGTHg3el9Pdl9Ccnk1TXhQaWptUVFyNzVBWVVzQU5PNV9ITlJmOHVhVFFyNGtldFJuYXREY05uTFV2enIzQ0FTRzJ3S0g2RHlzZXdtS2xDbnFQUnk2amZtcDNEZ0tzNk41a0NEalQzWGg2UDAyUVAtcThNcGg2VVRWYVJKN3lKeHExWFdFMXdFMUVqaDlQTHdRclF4ZHlWSlozVUs5RUF1dGFTc3hJ0gHPAUFVX3lxTE1GaXFBX2pRNVVDa25DdFlGX2ZWb2c1QmdrcXJzcXgwM1l3M2M4VFNvaFBobGZLNE80VkpRU0lCR3NlUEYtWDB2YmxpOWhLX2xRaXQwckRpcDFCcDhTNnk2X193elVyTVlDQmM0RGhyUnh1eGtaeDRHM0tsLVBtN3JSYzBUbUZjWjRpUGt1c0NNMXRCTHozZmN3Y3BYQVU5cFl2b0p4MDFBeGJHUWRWbTNDNFROT1FmUmhXZUEtUWFJTVVMMHotWllIN3VuSXNmdw?oc=5",
           "source": "NDTV",
           "mentionCount": 2
@@ -824,30 +849,6 @@
           "pubDate": "2026-05-24T13:20:48.000Z",
           "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPN21QQkUyN0NpemF0UkVCR0NKR005OUc0TWdiLVE0cEVrX3hKbFFxb3MzbHdueTkyUDN2Yk1jekxaa3QzTzhZa0Q2Z2ZOcGF0RzR2QlJ5czFkb2pub1lScE51TkxXRS1nNVZCSFZYWmZGakJ2QzFOaE0tbE5DdENzZnQ0NTJxODVWWnhNbzFXNXdEdDUzM1hsY2p0b0J6cjB3eE13SzBCeHhvMmRHY3FZazNScjJ3dW9IU1UydnpsZ2JoSGJTYmtPcldLMjgxY1YtVWhldjlZZXRTRU1z0gHiAUFVX3lxTE93VXpibVp0RUJ5VjRuSTdlb201ZWczREZkUDFsczd6czJURGJSTlJQeWJZendOY3BoTENPUFhLMXYyMm8zOGdiUTJOb05TdXR0Y01JODkzcFNUT2dYd0FFNExPdHk3OWhEM0liQkpxeVV2VFEtRU1YN2Ffa1E2YTN6eWFTMDN0T3VXbGdralI4SUlaUG9zeTN5RXVwU3V0NzRYTmZXeEVRdTZ2dkFDNnVhMDl5VklYYm5sQWp4VGJoakVVMXlBNUVBLXhHV0tlVmRhNEFzRENtaUN2QTZGX3F6U1E?oc=5",
           "source": "India Today",
-          "mentionCount": 2
-        },
-        {
-          "title": "Webb telescope maps daily weather cycle on distant hot Jupiter - MSN",
-          "description": "Webb telescope maps daily weather cycle on distant hot Jupiter MSN",
-          "pubDate": "2026-05-24T11:15:00.000Z",
-          "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdXBhc29zU3hvTFV4QVFlQU9ScHd5Q0ZJSEcwZFhIM0tCbFN1UG81SHp5MFZHeXF2YmRRbUZrYm8tdDFpVGlaWUIzTUMwZURibGZPWGkzZGRmTFMyNEZvdGl4ZUs3TlZ5SkkwQjhPR05XYlRVSDE0OTBEMVBoa21vOHpzVEZFZVRmVlNrbC1TemJHQmRiUmRjRVA3QUsyX3ZyMUpfVGdWMU00MGZXeEh2T3ZRbG9XeDg?oc=5",
-          "source": "MSN",
-          "mentionCount": 2
-        },
-        {
-          "title": "Watch: Scientists create the most detailed dark matter map using James Webb Telescope - Inbox.eu",
-          "description": "Watch: Scientists create the most detailed dark matter map using James Webb Telescope Inbox.eu",
-          "pubDate": "2026-05-24T06:24:38.000Z",
-          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNeFdreWhLakEwZXRpV2JoWXBic2t5QjU3NkRxZ3JGQ1dqNEpzUHNlR1FUX2M0TnJidkFoU3dnTDZJQWx2VmVIOGp5NF9wZ0psejFlN2hVWXdMOGVqWFYyWDBzMnlwMXJzcVMwTkZrQ1lyWldxc0hyZ1lJY2ZmMUtYQ0xYRFJKWVRkTnYxTm9RWjk1TEkzTUJhb1JjOGxnRm1TOE1xSFVIa2otTU9xNzJUd20xV3kxaElGbG1SQm9JZVlCRlVq?oc=5",
-          "source": "Inbox.eu",
-          "mentionCount": 2
-        },
-        {
-          "title": "JWST catches mineral clouds forming and fading on 'hot Jupiter' exoplanet - AOL.com",
-          "description": "JWST catches mineral clouds forming and fading on 'hot Jupiter' exoplanet AOL.com",
-          "pubDate": "2026-05-24T02:50:48.000Z",
-          "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPS1JtYzBVelBqNWFPQTlwSHc2VC0zSm1wOEctNTBGU3RnV3IzbDNBSXRzWUlzVElDd0N1bmloc1BjYVU3bDlkdmdBMlJYcjB6cXVoSDdGdGxvQUlMM1pYMFg5TnYtb3pudlBTb1dxSXJzZ3gtaTZEWC1sb1QwYkZpaFJ1dnE3QQ?oc=5",
-          "source": "AOL.com",
           "mentionCount": 2
         }
       ]
@@ -861,14 +862,14 @@
         "Intuitive Machines",
         "Firefly"
       ],
-      "mentionCount": 178,
-      "articleCount": 88,
+      "mentionCount": 180,
+      "articleCount": 89,
       "trendScore": 100,
       "change": null,
       "rank": 3,
       "status": "low_confidence",
-      "updatedAt": "2026-05-24T15:34:48.476Z",
-      "source": "Google News RSS (KR), Google News RSS (US); publishers: The Motley Fool, Yahoo Finance, simplywall.st",
+      "updatedAt": "2026-05-25T08:51:37.941Z",
+      "source": "Google News RSS (KR), Google News RSS (US); publishers: Seeking Alpha, Yahoo Finance UK, paxtonmedia.com",
       "explanation": "민간 달 탑재체 운송 서비스와 착륙 임무 관련 키워드입니다.",
       "scoring": {
         "officialSourceBonus": 0,
@@ -876,43 +877,43 @@
       },
       "sampleArticles": [
         {
-          "title": "Intuitive Machines Wins 2 NASA Contracts, Neither of Which Matters Much - The Motley Fool",
-          "description": "Intuitive Machines Wins 2 NASA Contracts, Neither of Which Matters Much The Motley Fool",
-          "pubDate": "2026-05-24T12:15:05.000Z",
-          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPYjJHRmdzaXBnRnVGdWcxNkJHY3NzcDZBSjdvX19LUTRHQWRPOVhVMXgzWTdOMWJqSklvOXlTWXV0ZWNENnZjSUcxNWNQV0lWUnA4OGYzbkEtdnJBTHdPRkhDZWhQX1V4VU5iMjhlR0k3WGo5VnNvV1JZMDdDeXQwdWMxRW10UVJJSDdtVEhidng4Z1oxbm1DMA?oc=5",
-          "source": "The Motley Fool",
+          "title": "Intuitive Machines: A Growth Story That Still Needs To Prove Itself (NASDAQ:LUNR) - Seeking Alpha",
+          "description": "Intuitive Machines: A Growth Story That Still Needs To Prove Itself (NASDAQ:LUNR) Seeking Alpha",
+          "pubDate": "2026-05-25T02:31:11.000Z",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOalJaaHNpbnpZcnRVTXRwSkNrYzlUdnBSZGNWRjlmc1JGR1V1b0VIMTh5U2NDcW9RNWl1b0kwcXlEY1FtZHVNejZLb3BZbUh3Rm01c3RUcnoxa2lzdldDN1lMRWdUVTZFc1NTNHZfamRfYkszWnBXd0tTbjRHdUEtYnppXzM1ZC12OUpmRGxmNnV1SHdmaTV3R2VjQ204cUhTMkpYMmtuNDNvOW5x?oc=5",
+          "source": "Seeking Alpha",
           "mentionCount": 2
         },
         {
-          "title": "Firefly Aerospace (FLY) Valuation Check After Multi Launch Contract Wins And Cedar Park Expansion - Yahoo Finance",
-          "description": "Firefly Aerospace (FLY) Valuation Check After Multi Launch Contract Wins And Cedar Park Expansion Yahoo Finance",
-          "pubDate": "2026-05-24T12:12:43.000Z",
-          "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOWlJibG5OZ09wR2FnS1d4NEs3bm03NGFDWjUxcXNCSEFEcHJzUEJvQnZVcGIyV3FPTzZxSm5CVkNZTnlpYV8wOHpac19EUzNHZDBzSjdMeXN2S2lVNU4wc3VBcm1QcDFqaldlLWN5MnE0bEV2RVlhdUdwbUpvZ3lLN2luMGZfbmNwSS0tWTJZU0o0QzJNUEVLRTM0RG1EQW1Ta1lNMA?oc=5",
-          "source": "Yahoo Finance",
+          "title": "Firefly Aerospace (FLY) Is Up 22.4% After Expanding Texas Manufacturing Hub For Lunar And Orbital Vehicles - Yahoo Finance UK",
+          "description": "Firefly Aerospace (FLY) Is Up 22.4% After Expanding Texas Manufacturing Hub For Lunar And Orbital Vehicles Yahoo Finance UK",
+          "pubDate": "2026-05-25T00:14:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPa0xFODFOU25uYlFMbWQyYnNXV19QcEtVZnF1UDhtSnBNSFI0aHRhSklxeU1naVJQQkFIUEk1em5pS0ZYOTZnSjBzNENjNXRFbHNucjlvUTk1cFhVT2FBOXU4LUQ4aWJwai1OclQ4THY5QUxpXzBjWVJLUFRWUEdacQ?oc=5",
+          "source": "Yahoo Finance UK",
           "mentionCount": 2
         },
         {
-          "title": "Could Firefly Aerospace’s (FLY) Texas Expansion Redefine Its Manufacturing Edge In Space Services? - simplywall.st",
-          "description": "Could Firefly Aerospace’s (FLY) Texas Expansion Redefine Its Manufacturing Edge In Space Services? simplywall.st",
-          "pubDate": "2026-05-23T20:21:33.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNMHh0N2phYlNFUzBMMVYxdkFVbTR0RklKdXZ5ZjhCY3o3R2x0Mm1YWE85MVFZb3RkU3UtWjhCQ1pycE45SWhHQTR2UFUwUmE4Q0dzUG1rOW80d3gwODdiVEFybUQ2dWcyeEN5U2ZHUGdrWFFwN2NvazhHUGVaYTJWQmFTREV2VjVkX0dqMGpOVG1DSkZ3NFNmSDExUERFb2VNMmY5QkxYWkRXcllwQUNqSkZUMmoyY0hQa0QxcXNoYmNLQ3BEVFVDaW5xUnpyX3RNS3VTRXkwZkEtemhD0gHcAUFVX3lxTE0weHQ3amFiU0VTMEwxVjF2QVVtNHRGSUp1dnlmOEJjejdHbHQybVhYTzkxUVlvdGRTdS1aOEJDWnJwTjlJaEdBNHZQVTBSYThDR3NQbWs5bzR3eDA4N2JUQXJtRDZ1ZzJ4Q3lTZkdQZ2tYUXA3Y29rOEdQZVphMlZCYVNERXZWNWRfR2owak5UbUNKRnc0U2ZIMTFQREVvZU0yZjlCTFhaRFdyWXBBQ2pKRlQyajJjSFBrRDFxc2hiY0tDcERUVUNpbnFSenJfdE1LdVNFeTBmQS16aEM?oc=5",
-          "source": "simplywall.st",
+          "title": "Firefly Festival returns Tuesday - paxtonmedia.com",
+          "description": "Firefly Festival returns Tuesday paxtonmedia.com",
+          "pubDate": "2026-05-24T21:00:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNR1NReHJlLTJwMkJFV1J3cFc0VGdza3plbDhyOUV2ZHItM19LbnIyVXVvQWxNX1dyV3haZHp1enkxMU5EZ0tib28tcTNmWVh0elJMTnkzdW55RERXMjRpdWcyVXA5cFNJdDk0MF90WnZaSVF1VEcweE1zRnAtb1o0NDgtb29XSW10SjBaMWMwbVpiRlRGYTJuQzJPUFhwaF9VMXhjQVVob3pGYlVSN1lRbGFRcFdfNVVBX1VMYWR6cmNzVThfVVo4MEZaZzc3YmlSeG9aUUNkdlpaUjZl?oc=5",
+          "source": "paxtonmedia.com",
           "mentionCount": 2
         },
         {
-          "title": "Why Intuitive Machines (LUNR) Is Up 12.9% After Winning Key NASA Lunar Imaging Contracts - simplywall.st",
-          "description": "Why Intuitive Machines (LUNR) Is Up 12.9% After Winning Key NASA Lunar Imaging Contracts simplywall.st",
-          "pubDate": "2026-05-23T19:41:28.000Z",
-          "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPY3pqaktDUjFWX3lnODJDUlN4a0JUR1RGYXJhWG1PWFo4MWl6TmJCcmNVV0l4OEQyZzQzQlVhTlN0SXc1WjBxM1VOb0JrQUJNNXRYOGduUGZNQU1NWW5FZkFNeGU1VFNEMUhsbG5WN19DUnFjOEloRDctTno1QmhjTGREd0V1cVdYMGpJOTVyNzVQeG5jVWlXOVVrZkliUC1GMGlsblkxbHFpcDRtUldJOXFiaThqc3RhUXBrTEpTOUYwMFdXa2dWRW96RTVDZmEyYWxXQlA1REg0Z9IB3wFBVV95cUxNVWxDeVFXMUQtcXFwNGtLR0dpMmNKSnd2eG5HY0hIbHdRRVlFdUtEdGpUVHFkZHhId3J2WWU5SXVjQVBTT2FyeGFyM1ZZNU9Hb0JWTEhLaF81VlZjZmpmeXpKOHRqNFNFd1R5cldDVVdWWVpOdEVNeHFBZ2JkWXZTVi1CWW9PUEZNSG90b1czdkZ3N3JqT0J4TnpDM1h5TVNFZGtGZWM3STU2VnhQUjdCazJFLVFXaktrME1TVktCVF9ISGZOcmdmOFhfZk9LRzYxam5nUGFtSjlVU2w5YTNV?oc=5",
-          "source": "simplywall.st",
+          "title": "Grandfather Mountain announces 2026 firefly glow dates, lottery ticketing system - WLOS",
+          "description": "Grandfather Mountain announces 2026 firefly glow dates, lottery ticketing system WLOS",
+          "pubDate": "2026-05-24T20:13:06.000Z",
+          "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPd256Y3JKMElDakJtZno3RGFFTDFKOGRTaVZScGE5RDVJT1F0S0huTnhHMHlLaUo5YnVPQTllNW1nb3hCZlNabk1lVmhIOEJmUmJpRXF5Z0ZVU2pYRTlualQ3MGg0Y3BseHQtRVk1U3VVYTlhTnBTR05GMzZfQ1lnQk45ekh0X1JIYzdsaHo5Tk8zQ2ljenM2SkhlYW9KSWtaY3hBa1FXbHZFRUVtcDdFQnZab3oxWlh4Ym1XZE1STlpqUXl2NF91YTNxTlltYTNQU1RVc2Z3SEw5Vm40aHY4RElDVVhoWGt6Z19TVzYyMnZZRXl3UzQ3RE93azk1Mi1XX3lGQU93MW13SVhsZ05yRVJadG1iTTQ?oc=5",
+          "source": "WLOS",
           "mentionCount": 2
         },
         {
-          "title": "Nio's Firefly brand reaches 60,000 delivery milestone - CnEVPost",
-          "description": "Nio's Firefly brand reaches 60,000 delivery milestone CnEVPost",
-          "pubDate": "2026-05-23T11:46:16.000Z",
-          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1qd3ZqaVZVcWNjN212Vl9nd19Uai1NOEwxSG5rRW5haUp5Y25GZFRYTEVqZDB2dW5Da1RiV29WYjR0d3phNlpVVzJTMldRVkhFd3NneTU3V2ctald6cjhpZWJzY090UWo4WHFkZ1VOM3FEbEJ2bjdIMA?oc=5",
-          "source": "CnEVPost",
+          "title": "Firefly Festival returns June 2 - Messenger-Inquirer",
+          "description": "Firefly Festival returns June 2 Messenger-Inquirer",
+          "pubDate": "2026-05-24T17:30:00.000Z",
+          "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQVmdfUlFpUGVmbEFKN0gxMlp6SXZfSEtvY1cyaHBfU2YxeVNsZk1TYVB0TmNtWUhtSVhxS0pyZE9Ib1UwS3lLRHVaT2tSVXAwNnhOYnBfa1d5X0ZGMWotbS10cEFEejZyMHJ5SVVwX0JuazVmM2JGcVlmVWRtTmVvUmR4YUFfQzBZOVc4R0Nkd0hUOGlDSWxsTlplRkpYbHpieEpXX1NONTRBR2tialpkbnU3UTdvSVNEdlZlVk1CYXNOUGVPR0E?oc=5",
+          "source": "Messenger-Inquirer",
           "mentionCount": 2
         }
       ]

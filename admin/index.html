@@ -150,9 +150,30 @@
     .keyword-editor-status.ok{color:var(--green);}
     .keyword-editor-status.error{color:var(--red);}
     .keyword-row{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:0.8rem;margin-bottom:0.65rem;}
-    .keyword-row-grid{display:grid;grid-template-columns:1.3fr 0.8fr 0.8fr 0.8fr 1fr 1.35fr 1.15fr;gap:0.55rem;align-items:end;}
+    .keyword-row-grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:0.55rem;align-items:end;}
     .keyword-row-footer{display:flex;justify-content:flex-end;gap:0.55rem;align-items:end;margin-top:0.55rem;}
     .keyword-status-help{font-size:0.73rem;color:var(--muted);line-height:1.75;margin-top:1rem;padding:0.7rem 0.9rem;background:rgba(255,255,255,0.025);border-radius:var(--r-sm);}
+    .keyword-draft-panel{margin-bottom:1rem;border-color:rgba(247,201,72,0.2);}
+    .keyword-draft-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+    .keyword-draft-header h2{font-size:0.95rem;font-weight:800;color:var(--gold);margin-bottom:0.25rem;}
+    .keyword-draft-header p{font-size:0.74rem;color:var(--muted);line-height:1.7;}
+    .keyword-draft-status{font-size:0.76rem;color:var(--muted);margin-bottom:0.75rem;}
+    .keyword-draft-status.ok{color:var(--green);}
+    .keyword-draft-status.error{color:var(--red);}
+    .keyword-draft-list{display:flex;flex-direction:column;gap:0.7rem;max-height:660px;overflow-y:auto;padding-right:0.2rem;}
+    .keyword-draft-item{background:var(--surf2);border:1px solid var(--border);border-radius:var(--r-sm);padding:0.8rem 0.9rem;}
+    .keyword-draft-item-head{display:flex;align-items:flex-start;gap:0.7rem;margin-bottom:0.6rem;}
+    .keyword-draft-select{accent-color:var(--gold);width:16px;height:16px;margin-top:0.2rem;flex-shrink:0;}
+    .keyword-draft-name{font-size:0.86rem;font-weight:800;flex:1;}
+    .keyword-draft-badge{font-size:0.66rem;font-weight:700;border-radius:999px;padding:0.12rem 0.45rem;background:rgba(247,201,72,0.1);color:var(--gold);border:1px solid rgba(247,201,72,0.25);}
+    .keyword-draft-badge.saturated{background:rgba(224,92,92,0.1);border-color:rgba(224,92,92,0.28);color:#f28b82;}
+    .keyword-draft-metrics{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:0.55rem;}
+    .keyword-draft-metric{font-size:0.7rem;color:#c4c4d5;background:rgba(255,255,255,0.04);border-radius:4px;padding:0.2rem 0.4rem;}
+    .keyword-draft-source{font-size:0.7rem;color:var(--muted);line-height:1.65;margin-bottom:0.55rem;}
+    .keyword-draft-samples{display:flex;flex-direction:column;gap:0.35rem;border-top:1px solid var(--border);padding-top:0.55rem;}
+    .keyword-draft-sample{font-size:0.71rem;line-height:1.5;display:flex;gap:0.5rem;align-items:baseline;flex-wrap:wrap;}
+    .keyword-draft-sample a{flex:1;min-width:200px;}
+    .keyword-draft-sample-meta{color:var(--muted);white-space:nowrap;}
     .empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
     .empty .e-icon{font-size:2.5rem;margin-bottom:0.75rem;}
     .empty p{font-size:0.82rem;line-height:1.8;}
@@ -403,7 +424,10 @@
             <h1 style="font-size:1.2rem;font-weight:900;margin-bottom:0.3rem;">키워드 트렌드 수치 관리</h1>
             <p class="keyword-editor-note">자동 수집 연결 전까지 관리자가 확인한 수치만 입력합니다. 실제 값이 있는 행은 출처와 기준 시각을 함께 기록해야 공개 페이지에서 오해 없이 표시됩니다.</p>
           </div>
-          <button class="btn btn-ghost" onclick="loadKeywordTrendEditor()">다시 불러오기</button>
+          <div class="btn-row">
+            <button class="btn btn-gold" type="button" onclick="loadKeywordTrendDraft()">Draft 불러오기</button>
+            <button class="btn btn-ghost" type="button" onclick="loadKeywordTrendEditor()">다시 불러오기</button>
+          </div>
         </div>
 
         <div class="settings-card">
@@ -421,6 +445,18 @@
             <button class="btn btn-green" id="btn-save-keywords" onclick="saveKeywordTrends()">수치 저장 및 발행</button>
           </div>
           <div class="keyword-editor-status" id="keyword-editor-status"></div>
+        </div>
+
+        <div class="settings-card keyword-draft-panel" id="keyword-draft-panel" hidden>
+          <div class="keyword-draft-header">
+            <div>
+              <h2>수집 Draft 검토</h2>
+              <p>자동 산출값은 검토 전 `low_confidence`입니다. 선택 항목을 편집표에 반영한 뒤, 최종 저장 버튼을 눌러야 공개 데이터가 변경됩니다.</p>
+            </div>
+            <button class="btn btn-gold btn-sm" type="button" onclick="applySelectedKeywordDraft()">선택 항목 반영</button>
+          </div>
+          <div class="keyword-draft-status" id="keyword-draft-status"></div>
+          <div class="keyword-draft-list" id="keyword-draft-list"></div>
         </div>
 
         <div id="keyword-trend-rows"></div>
@@ -543,6 +579,7 @@ const API_KEY_STORE = 'cb_openai_key';
 const ADMIN_SECRET_KEY = 'cb_admin_secret';
 let publishedCache = [];
 let keywordTrendCache = { keywords: [] };
+let keywordDraftCache = null;
 
 function getAdminSecret() { return sessionStorage.getItem(ADMIN_SECRET_KEY) || ''; }
 
@@ -631,6 +668,13 @@ function setKeywordEditorStatus(type, text) {
   el.textContent = text || '';
 }
 
+function setKeywordDraftStatus(type, text) {
+  const el = document.getElementById('keyword-draft-status');
+  if (!el) return;
+  el.className = 'keyword-draft-status' + (type ? ' ' + type : '');
+  el.textContent = text || '';
+}
+
 function datetimeLocalValue(value) {
   if (!value) return '';
   const date = new Date(value);
@@ -683,9 +727,11 @@ function renderKeywordTrendRows() {
     return '<div class="keyword-row" data-index="' + index + '">'
       + '<div class="keyword-row-grid">'
       + '<div class="keyword-field"><label>키워드명</label><input data-field="keyword" value="' + escHtml(item.keyword) + '" /></div>'
+      + '<div class="keyword-field"><label>기사 수</label><input type="number" min="0" step="1" data-field="articleCount" value="' + (item.articleCount ?? '') + '" placeholder="-" /></div>'
       + '<div class="keyword-field"><label>언급량</label><input type="number" min="0" data-field="mentionCount" value="' + (item.mentionCount ?? '') + '" placeholder="-" /></div>'
       + '<div class="keyword-field"><label>관심도 점수</label><input type="number" min="0" max="100" step="0.1" data-field="trendScore" value="' + (item.trendScore ?? '') + '" placeholder="-" /></div>'
       + '<div class="keyword-field"><label>증감</label><input type="number" step="0.1" data-field="change" value="' + (item.change ?? '') + '" placeholder="-" /></div>'
+      + '<div class="keyword-field"><label>순위</label><input type="number" min="1" step="1" data-field="rank" value="' + (item.rank ?? '') + '" placeholder="-" /></div>'
       + '<div class="keyword-field"><label>상태</label><select data-field="status">'
       + '<option value="confirmed"' + (item.status === 'confirmed' ? ' selected' : '') + '>confirmed</option>'
       + '<option value="low_confidence"' + (item.status === 'low_confidence' ? ' selected' : '') + '>low_confidence</option>'
@@ -717,11 +763,153 @@ function fillKeywordTrendTime() {
   document.querySelectorAll('.kt-updated-at').forEach(input => { input.value = value; });
 }
 
+function formatKstDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '-';
+  return date.toLocaleString('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit',
+  }) + ' KST';
+}
+
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : '';
+  } catch (error) {
+    return '';
+  }
+}
+
 function nullableFormNumber(value, label) {
   if (value.trim() === '') return null;
   const number = Number(value);
   if (!Number.isFinite(number)) throw new Error(label + ' 값이 숫자가 아닙니다.');
   return number;
+}
+
+function captureKeywordTrendRows() {
+  return Array.from(document.querySelectorAll('.keyword-row')).map((row, index) => {
+    const previous = keywordTrendCache.keywords[index] || createKeywordRow();
+    const read = field => row.querySelector('[data-field="' + field + '"]').value.trim();
+    return {
+      ...previous,
+      keyword: read('keyword'),
+      articleCount: nullableFormNumber(read('articleCount'), '기사 수'),
+      mentionCount: nullableFormNumber(read('mentionCount'), '언급량'),
+      trendScore: nullableFormNumber(read('trendScore'), '관심도 점수'),
+      change: nullableFormNumber(read('change'), '증감'),
+      rank: nullableFormNumber(read('rank'), '순위'),
+      status: read('status'),
+      updatedAt: localDateToIso(read('updatedAt')),
+      source: read('source'),
+    };
+  });
+}
+
+function renderKeywordDraftReview() {
+  const container = document.getElementById('keyword-draft-list');
+  if (!keywordDraftCache || !Array.isArray(keywordDraftCache.keywords) || !keywordDraftCache.keywords.length) {
+    container.innerHTML = '<div class="empty"><p>검토할 draft 키워드가 없습니다.</p></div>';
+    return;
+  }
+  container.innerHTML = keywordDraftCache.keywords.map((item, index) => {
+    const applicable = ['articleCount', 'mentionCount', 'trendScore'].some(field => (
+      item[field] !== null && item[field] !== undefined && item[field] !== '' && Number.isFinite(Number(item[field]))
+    ));
+    const samples = Array.isArray(item.sampleArticles) ? item.sampleArticles.slice(0, 5) : [];
+    const scoreBadge = Number(item.trendScore) >= 100
+      ? '<span class="keyword-draft-badge saturated">점수 포화: 검토 필요</span>'
+      : '<span class="keyword-draft-badge">low_confidence</span>';
+    const sampleHtml = samples.map(article => {
+      const link = safeExternalUrl(article.link);
+      const title = escHtml(article.title || '제목 없음');
+      const titleHtml = link
+        ? '<a href="' + escHtml(link) + '" target="_blank" rel="noopener noreferrer">' + title + '</a>'
+        : '<span>' + title + '</span>';
+      return '<div class="keyword-draft-sample">' + titleHtml
+        + '<span class="keyword-draft-sample-meta">' + escHtml(article.source || '-') + ' · ' + escHtml(formatKstDate(article.pubDate)) + '</span></div>';
+    }).join('');
+    return '<article class="keyword-draft-item">'
+      + '<div class="keyword-draft-item-head">'
+      + '<input class="keyword-draft-select" type="checkbox" data-draft-index="' + index + '" aria-label="' + escHtml(item.keyword) + ' draft 적용 선택"' + (applicable ? '' : ' disabled') + ' />'
+      + '<div class="keyword-draft-name">' + escHtml(item.keyword) + '</div>' + scoreBadge
+      + '</div>'
+      + '<div class="keyword-draft-metrics">'
+      + '<span class="keyword-draft-metric">기사 ' + (item.articleCount ?? '-') + '건</span>'
+      + '<span class="keyword-draft-metric">언급 ' + (item.mentionCount ?? '-') + '회</span>'
+      + '<span class="keyword-draft-metric">점수 ' + (item.trendScore ?? '-') + '</span>'
+      + '<span class="keyword-draft-metric">순위 ' + (item.rank ?? '-') + '</span>'
+      + '<span class="keyword-draft-metric">' + escHtml(item.status || 'low_confidence') + '</span>'
+      + '</div>'
+      + '<div class="keyword-draft-source">출처: ' + escHtml(item.source || '-') + '<br>기준 시각: ' + escHtml(formatKstDate(item.updatedAt)) + '</div>'
+      + '<div class="keyword-draft-samples">' + (sampleHtml || '<span class="keyword-draft-sample-meta">근거 기사 샘플이 없습니다.</span>') + '</div>'
+      + '</article>';
+  }).join('');
+}
+
+async function loadKeywordTrendDraft() {
+  const panel = document.getElementById('keyword-draft-panel');
+  panel.hidden = false;
+  setKeywordDraftStatus('', 'Draft 파일을 불러오는 중입니다...');
+  try {
+    const response = await fetch('../data/keyword-trends-draft.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (response.status === 404) throw new Error('생성된 draft 파일이 없습니다. 먼저 로컬에서 npm run trend:draft를 실행하세요.');
+    if (!response.ok) throw new Error('Draft 응답 오류 ' + response.status);
+    const data = await response.json();
+    if (!data || !Array.isArray(data.keywords)) throw new Error('Draft JSON 구조를 확인하세요.');
+    keywordDraftCache = data;
+    renderKeywordDraftReview();
+    setKeywordDraftStatus('ok', 'Draft ' + data.keywords.length + '개 항목을 불러왔습니다. 선택 후 반영해도 저장 전까지 공개되지 않습니다.');
+  } catch (error) {
+    keywordDraftCache = null;
+    document.getElementById('keyword-draft-list').innerHTML = '';
+    setKeywordDraftStatus('error', 'Draft 불러오기 실패: ' + error.message);
+  }
+}
+
+function applySelectedKeywordDraft() {
+  if (!keywordDraftCache || !Array.isArray(keywordDraftCache.keywords)) {
+    setKeywordDraftStatus('error', '먼저 Draft를 불러오세요.');
+    return;
+  }
+  const selected = Array.from(document.querySelectorAll('.keyword-draft-select:checked'))
+    .map(input => keywordDraftCache.keywords[Number(input.dataset.draftIndex)])
+    .filter(Boolean);
+  if (!selected.length) {
+    setKeywordDraftStatus('error', '편집표에 반영할 키워드를 선택하세요.');
+    return;
+  }
+  try {
+    keywordTrendCache.keywords = captureKeywordTrendRows();
+    selected.forEach(item => {
+      const index = keywordTrendCache.keywords.findIndex(existing => existing.id === item.id || existing.keyword === item.keyword);
+      const current = index >= 0 ? keywordTrendCache.keywords[index] : createKeywordRow();
+      const applied = {
+        ...current,
+        id: item.id || current.id,
+        keyword: item.keyword,
+        aliases: Array.isArray(item.aliases) ? item.aliases.slice() : current.aliases,
+        explanation: item.explanation || current.explanation,
+        articleCount: item.articleCount ?? null,
+        mentionCount: item.mentionCount ?? null,
+        trendScore: item.trendScore ?? null,
+        change: item.change ?? null,
+        rank: item.rank ?? null,
+        status: 'low_confidence',
+        updatedAt: item.updatedAt || null,
+        source: item.source || '',
+      };
+      if (index >= 0) keywordTrendCache.keywords[index] = applied;
+      else keywordTrendCache.keywords.push(applied);
+    });
+    renderKeywordTrendRows();
+    setKeywordEditorStatus('ok', 'Draft에서 선택한 ' + selected.length + '개 항목을 편집표에 반영했습니다. 아직 공개되지 않았으며, 검토 후 수치 저장 및 발행을 눌러야 저장됩니다.');
+    setKeywordDraftStatus('ok', '선택 항목이 편집표로 복사되었습니다. 공개 발행 전 출처와 기사 샘플을 다시 확인하세요.');
+  } catch (error) {
+    setKeywordDraftStatus('error', '선택 항목 반영 실패: ' + error.message);
+  }
 }
 
 function localDateToIso(value) {
@@ -738,13 +926,15 @@ function collectKeywordTrendData() {
     const read = field => row.querySelector('[data-field="' + field + '"]').value.trim();
     const keyword = read('keyword');
     if (!keyword) throw new Error((index + 1) + '번째 키워드명을 입력하세요.');
+    const articleCount = nullableFormNumber(read('articleCount'), '기사 수');
     const mentionCount = nullableFormNumber(read('mentionCount'), '언급량');
     const trendScore = nullableFormNumber(read('trendScore'), '관심도 점수');
     const change = nullableFormNumber(read('change'), '증감');
+    const rank = nullableFormNumber(read('rank'), '순위');
     const status = read('status');
     const updatedAt = localDateToIso(read('updatedAt'));
     const source = read('source');
-    const hasPrimaryValue = [mentionCount, trendScore, previous.articleCount].some(value => value !== null);
+    const hasPrimaryValue = [articleCount, mentionCount, trendScore].some(value => value !== null);
     const hasEnteredValue = hasPrimaryValue || change !== null;
     if ((hasEnteredValue || status !== 'not_collected_yet') && (!updatedAt || !source)) {
       throw new Error('수치 또는 공개 상태가 있는 키워드에는 기준 시각과 출처명이 필요합니다.');
@@ -758,9 +948,11 @@ function collectKeywordTrendData() {
     return {
       ...previous,
       keyword,
+      articleCount,
       mentionCount,
       trendScore,
       change,
+      rank,
       status,
       updatedAt,
       source,

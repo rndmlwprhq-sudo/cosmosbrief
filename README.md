@@ -59,7 +59,9 @@ npm run trend:draft
 
 RSS의 제목, 요약, 날짜, 링크와 출처 필드를 안전하게 읽기 위해 가벼운 XML 파서인 `fast-xml-parser`를 사용합니다. 본문 전문 크롤링이나 API 키가 필요한 외부 서비스는 사용하지 않습니다.
 
-점수 초안은 `articleCount * 12 + mentionCount * 2 + officialSourceBonus + recencyBonus`를 최대 100점으로 제한하여 계산합니다. 공식 기관 또는 기업 출처가 포함되면 `officialSourceBonus`가 10점, 최근 48시간 내 관련 기사가 있으면 `recencyBonus`가 10점 추가됩니다. 이전 운영 데이터의 `articleCount`가 양수일 때에는 초안의 `change`에 증감률을 계산하며, 0건에서 증가한 경우에는 의미 있는 백분율 기준이 없으므로 `null`로 남깁니다.
+점수 초안은 포화가 너무 빨리 발생하지 않도록 `articleCount * 7 + mentionCount * 1.5 + officialSourceBonus + recencyBonus`를 최대 100점으로 제한하여 계산합니다. 등록된 공식 RSS 또는 NASA, ESA, JAXA, KASA/KARI/KASI, SpaceX의 공식 도메인 출처가 포함되면 `officialSourceBonus`가 10점, 최근 48시간 내 관련 기사가 있으면 `recencyBonus`가 10점 추가됩니다. 이전 운영 데이터의 `articleCount`가 양수일 때에는 초안의 `change`에 증감률을 계산하며, 0건에서 증가한 경우에는 의미 있는 백분율 기준이 없으므로 `null`로 남깁니다.
+
+관리자 콘솔의 `키워드 트렌드` 패널에서는 `Draft 불러오기`로 초안을 열어 기사 샘플을 검토하고, 체크한 항목만 기존 편집표로 복사할 수 있습니다. 이 단계에서는 공개 저장이 일어나지 않으며, 관리자가 별도로 `수치 저장 및 발행`을 누른 경우에만 인증된 API 저장이 실행됩니다.
 
 ## 외부 연동
 
