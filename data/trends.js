@@ -29,6 +29,486 @@
  *   - 출처 불명 또는 저작권 불명확 이미지 사용 금지.
  */
 window.TRENDS_DATA = [
+  {
+    id: 'blue-origin-ng4-hotfire-update',
+    icon: '🔥',
+    title: 'Blue Origin, NG-4 hotfire 중 New Glenn 부스터 손실 공지',
+    summary: 'Blue Origin은 NG-4용 New Glenn 부스터가 5월 29일 패드 hotfire 시험 중 anomaly를 겪어 손실됐다고 공식 공지했다.',
+    date: '2026-05-30',
+    sourceName: 'Blue Origin',
+    sourceUrl: 'https://www.blueorigin.com/news',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'launch',
+    tags: ['New Glenn', 'NG-4', 'hotfire', 'anomaly', 'Blue Origin'],
+    whyItMatters: '대형 재사용 발사체 개발은 실제 비행 전 지상 시험에서 많은 데이터를 축적한다. 이번 공지는 시험 실패도 개발 과정의 일부이며, 원인 규명과 안전한 복귀가 발사체 신뢰성을 좌우한다는 점을 보여준다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: 'Blue Origin 공식 뉴스 목록의 짧은 공지를 기준으로 작성했다. 원인과 후속 일정은 공식 조사 결과가 추가되기 전까지 확정적으로 해석하지 않는다.',
+    sources: [
+      { name: 'Blue Origin News - NG-4 Hotfire Updates', url: 'https://www.blueorigin.com/news', type: 'official', usedFor: 'NG-4 hotfire anomaly와 부스터 손실 공지 확인' }
+    ],
+    body: `<p>Blue Origin은 <span class="hl">New Glenn</span> NG-4 임무에 쓰일 부스터가 2026년 5월 29일 패드에서 진행한 <span class="hl">hotfire</span> 시험 중 anomaly를 겪었고, 그 결과 부스터를 잃었다고 공식 뉴스 목록을 통해 공지했다. 회사는 원인이 추진계와 관련된 것으로 평가된다고 밝혔지만, 상세 원인과 일정 영향은 제한적으로만 공개했다.</p>
+<p><span class="hl">hotfire</span>는 발사체를 실제 발사하지 않은 상태에서 엔진을 점화해 추진계, 구조, 지상 설비가 함께 작동하는지 확인하는 시험이다. 발사 전 마지막 단계에 가까운 통합 시험이기 때문에 작은 이상도 큰 손상으로 이어질 수 있다. 이번 항목은 성공 기사라기보다, 대형 발사체 개발에서 지상 시험이 왜 위험 관리의 핵심인지 보여주는 사례다.</p>
+<p>New Glenn은 Blue Origin이 개발 중인 대형 궤도 발사체로, 1단 재사용과 대형 페이로드 운송을 목표로 한다. 이런 발사체는 단순히 엔진 추력만 큰 것이 아니라, 극저온 추진제 운용, 복수 엔진 제어, 발사대와의 인터페이스, 비상 종료 절차가 모두 함께 맞아야 한다. <span class="hl-warn">부스터 손실은 심각한 사건이지만, 공식 조사와 설계 보완을 통해 다음 시험의 안전 기준을 높이는 데이터가 될 수 있다.</span></p>
+<p>앞으로 볼 포인트는 Blue Origin이 원인 분석을 어디까지 공개하는지, NG-4 일정과 New Glenn 발사 캠페인이 어떻게 조정되는지다. 짧은 공지만으로 발사체 전체 개발의 성공과 실패를 단정할 수는 없다. 다만 우주수송 산업에서는 시험 실패를 숨기지 않고 기술적으로 처리하는 능력 또한 신뢰의 일부가 된다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'jaxa-htv-x1-controlled-reentry',
+    icon: '🛰️',
+    title: 'JAXA, HTV-X1 통제 재진입 성공으로 ISS 화물 임무 마무리',
+    summary: 'JAXA는 HTV-X1이 ISS 임무와 기술실증을 마치고 통제 재진입을 성공적으로 수행했다고 발표했다.',
+    date: '2026-05-27',
+    sourceName: 'JAXA',
+    sourceUrl: 'https://global.jaxa.jp/press/2026/05/20260527-1_e.html',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['HTV-X1', 'ISS', '통제 재진입', '우주수송', 'JAXA'],
+    whyItMatters: '우주 화물선은 실어 나르는 능력뿐 아니라 임무 종료 후 안전하게 지구 대기로 되돌아오는 능력도 중요하다. 통제 재진입은 우주수송의 책임 있는 마무리 절차다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'JAXA - Successful Controlled Re-entry of HTV-X1', url: 'https://global.jaxa.jp/press/2026/05/20260527-1_e.html', type: 'official', usedFor: 'HTV-X1 통제 재진입 성공 발표 확인' }
+    ],
+    body: `<p>JAXA는 <span class="hl">HTV-X1</span>이 국제우주정거장(ISS) 화물 수송과 기술실증 임무를 마친 뒤 통제 재진입에 성공했다고 발표했다. HTV-X 계열은 기존 일본 화물선 HTV의 후속 체계로, 더 유연한 운용과 향후 우주수송 기술 축적을 목표로 한다.</p>
+<p><span class="hl">통제 재진입</span>은 우주선이 임무를 끝낸 뒤 아무 곳으로나 떨어지지 않도록 궤도와 진입 시점을 계산해 안전 해역으로 유도하는 절차다. 우주선 대부분은 대기권에서 불타지만, 일부 큰 부품은 남을 수 있기 때문에 재진입 위치를 관리하는 일은 우주 활동의 안전 기준과 직결된다.</p>
+<p>HTV-X1의 의미는 단순한 화물 수송 성공에 그치지 않는다. ISS에 물자와 장비를 보내는 일은 우주정거장 유지의 기본이고, 동시에 새 항법, 전력, 통신, 구조 기술을 검증하는 기회가 된다. <span class="hl-warn">우주수송은 발사 순간만이 아니라 도킹, 체류, 분리, 재진입까지 이어지는 전체 운용 능력</span>으로 평가된다.</p>
+<p>앞으로 JAXA가 HTV-X 경험을 달 궤도 게이트웨이, 상업 저궤도 플랫폼, 심우주 물류로 어떻게 확장할지가 관전 포인트다. 우주 탐사가 장기 체류와 지속 가능한 운송으로 이동할수록, 화물선의 역할은 보조 수단이 아니라 탐사 인프라의 중심에 가까워진다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'nasa-moon-base-rovers-landers-update',
+    icon: '🌕',
+    title: 'NASA, Moon Base 로버·착륙선·임무 계획 업데이트',
+    summary: 'NASA가 지속 가능한 달 표면 활동을 위한 로버, 착륙선, 임무 진행 상황을 업데이트했다.',
+    date: '2026-05-26',
+    sourceName: 'NASA',
+    sourceUrl: 'https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['Moon Base', 'Artemis', '로버', '착륙선', '달기지'],
+    whyItMatters: '달기지는 하나의 건물이 아니라 이동, 전력, 통신, 착륙, 자원 활용이 연결된 운영 체계다. NASA의 업데이트는 달 표면 활동이 단발 착륙에서 지속 체류로 옮겨가고 있음을 보여준다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'NASA - Moon Base Rovers, Landers, Missions Update', url: 'https://www.nasa.gov/news-release/nasa-provides-update-on-moon-base-rovers-landers-missions/', type: 'official', usedFor: 'Moon Base 관련 NASA 업데이트 확인' }
+    ],
+    body: `<p>NASA는 Moon Base 구상과 관련해 달 표면에서 쓰일 로버, 착륙선, 임무 진행 상황을 업데이트했다. 핵심은 달 탐사가 더 이상 깃발을 꽂고 돌아오는 이벤트가 아니라, 사람이 머물고 이동하며 실험하는 <span class="hl">지속 가능한 표면 활동</span>으로 바뀌고 있다는 점이다.</p>
+<p>달 표면 로버는 단순한 이동 수단이 아니다. 우주인은 우주복만으로 먼 거리를 오래 이동하기 어렵고, 과학 장비와 시료를 함께 운반해야 한다. 로버는 탐사 반경을 넓히고, 착륙 지점 주변의 지형과 자원 후보를 조사하는 기초 인프라가 된다. 착륙선은 사람과 화물을 정확한 지점에 내려놓는 역할을 맡는다.</p>
+<p><span class="hl">Moon Base</span>가 어려운 이유는 달이 지구와 다르기 때문이다. 낮과 밤의 온도 차, 먼지, 통신 지연, 방사선, 긴 밤 동안의 전력 확보가 모두 문제다. 특히 달 남극 후보지는 물 얼음 가능성 때문에 주목받지만, 그림자가 깊은 지역은 전력과 열 관리가 더 까다롭다. <span class="hl-warn">달기지는 로켓 하나가 아니라 전력, 이동, 통신, 착륙, 생활 지원이 함께 맞물린 시스템</span>이다.</p>
+<p>앞으로 볼 포인트는 각 장비가 실제 일정과 예산 안에서 얼마나 안정적으로 통합되는지다. Artemis 프로그램은 NASA뿐 아니라 민간 착륙선, 국제 파트너, 우주복, 통신망까지 함께 움직인다. 달 표면에서 오래 일하려면 멋진 비전보다 반복 가능한 운영 능력이 먼저 증명되어야 한다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'nasa-artemis-iii-crew-update-announcement',
+    icon: '👩‍🚀',
+    title: 'NASA, Artemis III 승무원 발표와 임무 진행 업데이트 예고',
+    summary: 'NASA는 Artemis III 승무원 발표와 임무 진행 상황 업데이트 계획을 공식 안내했다.',
+    date: '2026-05-26',
+    sourceName: 'NASA',
+    sourceUrl: 'https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['Artemis III', '유인 달 임무', 'SLS', '승무원', 'NASA'],
+    whyItMatters: 'Artemis III는 인류의 달 남극 유인 착륙을 목표로 하는 상징적 임무다. 승무원 발표는 임무가 기술 개발에서 실제 운용 준비 단계로 이동하고 있음을 보여주는 지표다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: '공식 발표는 승무원 명단 자체가 아니라 발표 일정과 임무 진행 업데이트 예고를 다룬다. 승무원이 이미 확정 발표됐다는 식으로 표현하지 않았다.',
+    sources: [
+      { name: 'NASA - Artemis III Crew Announcement Advisory', url: 'https://www.nasa.gov/news-release/nasa-to-announce-artemis-iii-crew-provide-mission-progress-update/', type: 'official', usedFor: 'Artemis III 승무원 발표 예고와 임무 업데이트 계획 확인' }
+    ],
+    body: `<p>NASA는 <span class="hl">Artemis III</span> 승무원 발표와 임무 진행 상황 업데이트를 제공할 계획을 공식 안내했다. 이 기사는 승무원 명단이 이미 발표됐다는 의미가 아니라, NASA가 어떤 자리에서 임무 현황을 설명하고 승무원 관련 소식을 공개할지를 예고한 발표다.</p>
+<p>Artemis III는 달 남극 부근 유인 착륙을 목표로 하는 임무다. SLS 로켓, Orion 우주선, 달 착륙선, 우주복, 통신과 지상 운영이 모두 맞아야 한다. 특히 달 남극은 과학적 가치와 물 얼음 가능성 때문에 주목받지만, 지형과 조명 조건이 어렵고 착륙 안전성 검증도 중요하다.</p>
+<p>승무원 발표가 중요한 이유는 우주비행사가 단순히 탑승자가 아니라 임무 설계의 일부이기 때문이다. 훈련, 과학 장비 운용, 비상 절차, 착륙 후 활동 계획은 실제 승무원 구성과 함께 구체화된다. <span class="hl-warn">유인 달 임무는 로켓 발사 성공만으로 끝나지 않고, 사람이 달에서 안전하게 일하고 돌아오는 전 과정을 포함한다.</span></p>
+<p>앞으로 볼 포인트는 일정의 현실성, 착륙선과 우주복 준비 상태, 달 표면 활동 계획이다. Artemis III는 과학 임무이면서 동시에 국제 협력과 산업 생태계의 시험대다. NASA의 다음 발표에서는 상징적 장면보다 세부 준비 상황을 얼마나 투명하게 설명하는지가 중요하다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'rocket-lab-motiv-space-systems-acquisition-complete',
+    icon: '🤖',
+    title: 'Rocket Lab, Motiv Space Systems 인수 완료로 우주 로보틱스 역량 확보',
+    summary: 'Rocket Lab은 화성 임무 경험을 가진 Motiv Space Systems 인수를 완료하며 우주 구조물·로보틱스 역량을 확대했다.',
+    date: '2026-05-26',
+    sourceName: 'Rocket Lab',
+    sourceUrl: 'https://www.rocketlabcorp.com/updates/rocket-lab-adds-mars-proven-robotics-capabilities-with-completion-of-motiv-space-systems-acquisition/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'satellite',
+    tags: ['Motiv Space Systems', '우주로봇', '화성 임무', '인수', '우주 인프라'],
+    whyItMatters: 'Rocket Lab은 발사체 회사에서 위성, 우주선, 부품, 로보틱스까지 아우르는 우주 시스템 기업으로 확장하고 있다. 인수는 우주 인프라 시장에서 수직 통합의 흐름을 보여준다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'Rocket Lab - Motiv Space Systems Acquisition Completed', url: 'https://www.rocketlabcorp.com/updates/rocket-lab-adds-mars-proven-robotics-capabilities-with-completion-of-motiv-space-systems-acquisition/', type: 'official', usedFor: '인수 완료와 우주 로보틱스 역량 설명 확인' }
+    ],
+    body: `<p>Rocket Lab은 <span class="hl">Motiv Space Systems</span> 인수를 완료했다고 발표했다. Motiv는 화성 임무에 쓰인 로보틱스와 우주 구조물 관련 경험을 가진 기업으로, Rocket Lab은 이번 인수를 통해 위성과 우주선 플랫폼뿐 아니라 우주에서 실제로 움직이고 조작하는 장치까지 포트폴리오를 넓히게 됐다.</p>
+<p><span class="hl">우주 로보틱스</span>는 단순한 로봇팔 이상의 의미를 갖는다. 탐사선의 장비를 펼치고, 시료를 다루고, 위성이나 우주정거장의 구조물을 조립하며, 사람이 직접 하기 어려운 위험한 작업을 대신한다. 화성처럼 통신 지연이 큰 환경에서는 로봇 시스템의 신뢰성과 자율성이 특히 중요하다.</p>
+<p>Rocket Lab의 방향은 발사 서비스만 제공하는 회사에서 우주 임무 전체를 설계하는 회사로 이동하는 흐름과 맞닿아 있다. Electron과 Neutron 같은 발사체, Photon 우주선, 태양전지와 반응휠 같은 부품, 그리고 로보틱스까지 묶이면 고객은 더 통합된 방식으로 임무를 구성할 수 있다. <span class="hl-warn">우주산업의 경쟁은 발사 가격만이 아니라 임무를 끝까지 수행하는 시스템 능력으로 넓어지고 있다.</span></p>
+<p>앞으로 볼 포인트는 Motiv의 기술이 실제 Rocket Lab 임무와 어떤 제품군으로 통합되는지다. 달·화성 탐사, 궤도상 서비스, 우주정거장 조립 같은 시장이 커질수록 로보틱스는 주변 기술이 아니라 핵심 인프라가 된다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'spacex-starship-twelfth-flight-test',
+    icon: '🚀',
+    title: 'SpaceX, Starship 12번째 비행시험으로 재사용 발사체 데이터 축적',
+    summary: 'SpaceX 공식 launch 기록에 Starship 12번째 비행시험이 등록되며 대형 재사용 발사체 개발 흐름을 이어갔다.',
+    date: '2026-05-22',
+    sourceName: 'SpaceX',
+    sourceUrl: 'https://www.spacex.com/launches/pricing/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'launch',
+    tags: ['Starship', 'Flight Test 12', '재사용 발사체', 'Super Heavy', 'SpaceX'],
+    whyItMatters: 'Starship은 달 착륙선, 대형 위성 발사, 장기적으로는 화성 수송까지 연결되는 개발 플랫폼이다. 반복 비행시험은 성공 여부만큼이나 열·구조·엔진·재진입 데이터를 쌓는 과정이다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: 'SpaceX 공식 launch 목록을 기준으로 작성했다. 세부 시험 결과는 공식 업데이트가 추가로 공개되는 범위 안에서만 해석한다.',
+    sources: [
+      { name: 'SpaceX Launches - Starship Flight Test 12', url: 'https://www.spacex.com/launches/pricing/', type: 'official', usedFor: 'Starship 12번째 비행시험 공식 launch 기록 확인' }
+    ],
+    body: `<p>SpaceX 공식 launch 기록에는 <span class="hl">Starship Flight Test 12</span>가 2026년 5월 22일 항목으로 등록되어 있다. Starship은 Super Heavy 부스터와 상단 Starship 우주선으로 구성된 대형 발사체로, 완전 재사용을 목표로 개발되고 있다.</p>
+<p>Starship 시험은 한 번의 성공 또는 실패로만 읽기 어렵다. 엔진 점화, 단 분리, 자세 제어, 열 차폐, 재진입, 착수 또는 회수 시나리오가 모두 시험 데이터가 된다. 특히 대형 재사용 발사체는 같은 하드웨어를 반복해 쓰기 위해 구조 피로, 열 손상, 추진제 관리, 지상 정비 시간을 함께 줄여야 한다.</p>
+<p><span class="hl">재사용 발사체</span>가 중요한 이유는 발사 비용과 발사 빈도를 바꿀 수 있기 때문이다. 한 번 쓰고 버리는 로켓은 안정적일 수 있지만, 대형 우주정거장 부품, 달 착륙선, 대량 위성 배치처럼 많은 질량을 반복적으로 보내야 하는 임무에는 비용 부담이 크다. <span class="hl-warn">Starship 개발의 핵심은 큰 로켓을 만드는 것이 아니라, 큰 로켓을 반복 운용 가능한 시스템으로 바꾸는 일</span>이다.</p>
+<p>앞으로 볼 포인트는 궤도상 급유, 재진입 열 보호, 부스터와 우주선 회수 안정성이다. Starship은 NASA Artemis 달 착륙선 개발과도 연결되어 있어, 시험 비행 데이터는 SpaceX만의 내부 개발을 넘어 달 탐사 일정에도 영향을 줄 수 있다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'rocket-lab-synspective-9th-electron-launch',
+    icon: '🛰️',
+    title: 'Rocket Lab, Synspective 전용 9번째 Electron 발사 성공',
+    summary: 'Rocket Lab은 일본 SAR 위성 기업 Synspective를 위한 9번째 Electron 전용 발사를 완료했다고 발표했다.',
+    date: '2026-05-22',
+    sourceName: 'Rocket Lab',
+    sourceUrl: 'https://www.rocketlabcorp.com/updates/mission-success-rocket-lab-completes-9th-electron-launch-for-synspective/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'launch',
+    tags: ['Electron', 'Synspective', 'SAR 위성', '지구관측', '전용발사'],
+    whyItMatters: '전용 소형 발사는 고객 위성을 원하는 궤도와 일정에 맞춰 올리는 장점이 있다. SAR 위성망 확장은 재난, 해양, 도시 관측에서 상업 지구관측의 활용도를 높인다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'Rocket Lab - 9th Electron Launch for Synspective', url: 'https://www.rocketlabcorp.com/updates/mission-success-rocket-lab-completes-9th-electron-launch-for-synspective/', type: 'official', usedFor: 'Synspective 전용 Electron 발사 성공 확인' }
+    ],
+    body: `<p>Rocket Lab은 일본 기업 Synspective를 위한 9번째 Electron 전용 발사를 성공적으로 완료했다고 발표했다. Synspective는 <span class="hl">SAR 위성</span>을 이용해 지표를 관측하는 기업으로, 여러 위성을 배치해 반복 관측 능력을 키우고 있다.</p>
+<p>SAR은 Synthetic Aperture Radar, 즉 합성개구레이더를 뜻한다. 일반 광학 카메라가 햇빛과 구름의 영향을 크게 받는 반면, SAR은 전파를 쏘고 되돌아오는 신호를 분석해 밤이나 흐린 날에도 지표 변화를 볼 수 있다. 홍수, 산사태, 선박 이동, 도시 침하 같은 변화를 추적하는 데 유용하다.</p>
+<p>Electron 전용 발사의 장점은 고객이 원하는 궤도와 시간에 맞춰 위성을 올릴 수 있다는 점이다. 대형 로켓에 여러 위성이 함께 타는 rideshare는 비용이 낮을 수 있지만, 궤도와 일정 선택이 제한된다. <span class="hl-warn">작은 위성이라도 정확한 궤도에 제때 배치되면 지구관측 서비스의 품질이 크게 달라진다.</span></p>
+<p>앞으로 볼 포인트는 Synspective 위성군의 관측 빈도와 데이터 서비스 확장이다. Rocket Lab 입장에서는 반복 고객과 전용 발사 실적을 쌓는 것이 소형 발사 시장에서 신뢰를 만드는 핵심이다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'rocket-lab-geo-sda-space-force-contract',
+    icon: '🛡️',
+    title: 'Rocket Lab, 미 우주군 GEO 우주감시 탑재체 호스팅 위성 계약 수주',
+    summary: 'Rocket Lab은 미 우주군 Space Domain Awareness 탑재체를 실을 GEO 위성 제작 계약을 수주했다고 발표했다.',
+    date: '2026-05-21',
+    sourceName: 'Rocket Lab',
+    sourceUrl: 'https://www.rocketlabcorp.com/updates/rocket-lab-awarded-90m-contract-to-build-geo-satellites-hosting-space-domain-awareness-payload-for-u-s-space-force/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'satellite',
+    tags: ['GEO', 'Space Domain Awareness', '우주감시', '위성제작', 'U.S. Space Force'],
+    whyItMatters: 'GEO 영역은 통신·군사·기상 위성이 밀집한 전략 궤도다. 우주감시 탑재체를 위한 전용 위성 계약은 Rocket Lab이 발사체를 넘어 방위 우주 시스템 제작사로 확장하고 있음을 보여준다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'Rocket Lab - $90M GEO SDA Satellite Contract', url: 'https://www.rocketlabcorp.com/updates/rocket-lab-awarded-90m-contract-to-build-geo-satellites-hosting-space-domain-awareness-payload-for-u-s-space-force/', type: 'official', usedFor: '계약 금액, GEO 위성, Space Domain Awareness 임무 확인' }
+    ],
+    body: `<p>Rocket Lab은 미 우주군을 위해 <span class="hl">Space Domain Awareness</span> 탑재체를 호스팅할 GEO 위성 제작 계약을 수주했다고 밝혔다. 발표 제목 기준 계약 규모는 9천만 달러이며, 임무는 정지궤도 영역의 우주 상황 인식을 강화하는 데 맞춰져 있다.</p>
+<p><span class="hl">GEO</span>는 지구 자전과 같은 속도로 도는 정지궤도다. 지상에서 보면 위성이 하늘의 거의 같은 위치에 머무는 것처럼 보여 통신, 방송, 기상 관측에 많이 쓰인다. 이 궤도에는 고가의 전략 위성이 많기 때문에, 주변 물체와 잠재적 위협을 감시하는 능력이 중요하다.</p>
+<p>Space Domain Awareness는 우주에 있는 위성, 파편, 물체의 위치와 움직임을 파악하는 활동이다. 단순한 감시가 아니라 충돌 회피, 군사적 상황 판단, 위성 운용 안전과 연결된다. <span class="hl-warn">우주가 경제와 안보의 인프라가 될수록, 우주 공간을 보는 능력 자체가 중요한 시스템 자산이 된다.</span></p>
+<p>이번 계약은 Rocket Lab이 Electron 발사체 회사에 머물지 않고, 위성 버스와 임무 시스템 제작까지 넓히고 있다는 신호다. 앞으로 볼 포인트는 위성 제작 일정, 탑재체 통합, GEO 운용 실적이다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'nasa-technology-priorities-space-industry',
+    icon: '🧭',
+    title: 'NASA, 우주산업 기술 우선순위 공개로 민간 협력 방향 제시',
+    summary: 'NASA가 우주산업을 활성화하기 위한 기술 우선순위를 공개하며 산업계와의 공동 개발 방향을 제시했다.',
+    date: '2026-05-20',
+    sourceName: 'NASA',
+    sourceUrl: 'https://www.nasa.gov/news-release/nasa-releases-technology-priorities-to-energize-space-industry/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'policy',
+    tags: ['기술 우선순위', '우주산업', 'STMD', '민간협력', '기술투자'],
+    whyItMatters: '기술 우선순위는 정부가 어떤 문제를 산업계와 함께 풀려는지 보여주는 신호다. 민간 기업은 이를 바탕으로 연구개발 투자와 파트너십 방향을 조정할 수 있다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'NASA - Technology Priorities to Energize Space Industry', url: 'https://www.nasa.gov/news-release/nasa-releases-technology-priorities-to-energize-space-industry/', type: 'official', usedFor: 'NASA 기술 우선순위 공개와 산업 협력 방향 확인' }
+    ],
+    body: `<p>NASA는 우주산업과의 협력을 촉진하기 위한 기술 우선순위를 공개했다. 이는 NASA가 앞으로 어떤 기술을 민간과 함께 개발하고, 어떤 영역에 투자를 집중하려는지 보여주는 일종의 로드맵이다. 발표는 NASA의 우주기술 부문과 산업계의 접점을 더 명확히 하는 데 초점이 있다.</p>
+<p><span class="hl">기술 우선순위</span>는 단순한 희망 목록이 아니다. 달과 화성 탐사, 우주수송, 전력, 통신, 로보틱스, 자율운용, 생명유지 같은 문제는 정부 혼자 해결하기 어렵고, 민간이 단독으로 시장을 만들기에도 위험이 크다. NASA가 우선순위를 공개하면 기업은 어떤 기술이 공공 임무와 연결될 가능성이 큰지 판단할 수 있다.</p>
+<p>이런 방식은 우주개발의 역할 분담 변화를 보여준다. 과거에는 정부가 대부분의 장비를 직접 설계하고 조달했다면, 최근에는 민간 기업이 플랫폼과 서비스를 만들고 정부가 임무 요구를 제시하는 방식이 늘고 있다. <span class="hl-warn">우주산업의 성장은 로켓 발사 횟수만이 아니라 필요한 기술을 시장이 반복적으로 공급할 수 있는 구조</span>에 달려 있다.</p>
+<p>앞으로 볼 포인트는 공개된 우선순위가 실제 계약, 연구 공모, 시범 임무로 어떻게 연결되는지다. 좋은 목록보다 중요한 것은 예산과 일정, 그리고 실패를 견디며 기술을 성숙시키는 실행 체계다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kasa-lunar-communications-navigation-industry-meeting',
+    icon: '🌙',
+    title: '우주항공청, 달 궤도 통신·항법 신산업 생태계 간담회 개최',
+    summary: '우주항공청은 달 궤도 통신·항법 서비스와 글로벌 달 탐사 시장 진출을 논의하기 위한 국내 기업 간담회를 열었다.',
+    date: '2026-05-20',
+    sourceName: 'KASA',
+    sourceUrl: 'https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=407',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'policy',
+    tags: ['달 궤도 통신', '달 항법', '달 탐사 생태계', 'KAI', '한화시스템'],
+    whyItMatters: '달 탐사가 반복 임무로 바뀌려면 통신과 항법 인프라가 필요하다. 국내 기업 간담회는 한국 우주산업이 달 탐사 공급망과 서비스 시장에 진입하려는 흐름을 보여준다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: 'KAI와 한화시스템 등 기업명은 우주항공청 공식 보도자료에서 언급된 범위 안에서만 키워드로 반영했다.',
+    sources: [
+      { name: '우주항공청 - 달 탐사 신산업 생태계 조성을 위한 기업 간담회', url: 'https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=407', type: 'official', usedFor: '간담회 목적, 달 통신·항법 서비스 논의 확인' }
+    ],
+    body: `<p>우주항공청은 달 탐사 신산업 생태계 조성을 위해 국내 기업 간담회를 열었다. 핵심 의제는 <span class="hl">달 궤도 통신·항법 서비스</span>와 글로벌 달 탐사 시장 진출이다. 달 표면과 궤도에서 여러 국가와 기업의 임무가 늘어나면, 지구 주변 GPS나 통신망처럼 달 주변에도 기본 인프라가 필요해진다.</p>
+<p>달에서는 지구의 위성항법 시스템을 그대로 쓰기 어렵다. 착륙선, 로버, 우주인은 자신이 어디에 있는지 알고, 지구와 데이터를 주고받아야 한다. 달 궤도에 통신·항법 위성이 배치되면 착륙 정확도, 로버 운용, 과학 데이터 전송, 비상 대응이 훨씬 안정될 수 있다.</p>
+<p>이 간담회가 중요한 이유는 달 탐사가 국가 연구기관의 단발 임무를 넘어 산업 서비스로 확장되고 있기 때문이다. 발사체와 탐사선만으로는 달 경제가 만들어지지 않는다. 통신, 항법, 전력, 데이터 처리, 착륙 지원 같은 서비스가 있어야 다양한 임무가 반복될 수 있다. <span class="hl-warn">달 탐사의 다음 경쟁력은 달에 가는 능력뿐 아니라 달 주변에서 계속 운영하는 능력</span>이다.</p>
+<p>앞으로 볼 포인트는 국내 기업이 어떤 역할을 맡고, KASA의 로드맵이 실제 기술 개발과 국제 협력으로 이어지는지다. 달 통신·항법은 아직 초기 시장이지만, 표준과 운용 경험을 먼저 쌓는 쪽이 장기적인 우위를 가질 가능성이 크다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'nasa-psyche-mars-flyby-success',
+    icon: '🪐',
+    title: 'NASA Psyche, 화성 중력보조 성공 후 금속질 소행성으로 향하다',
+    summary: 'NASA Psyche 탐사선이 화성 플라이바이를 성공적으로 수행하고 금속질 소행성 Psyche를 향한 항로를 이어간다.',
+    date: '2026-05-19',
+    sourceName: 'NASA',
+    sourceUrl: 'https://www.nasa.gov/missions/psyche-mission/nasas-psyche-mission-aces-mars-flyby-targets-metal-rich-asteroid/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'science',
+    tags: ['Psyche', '화성 플라이바이', '중력보조', '금속질 소행성', '궤도역학'],
+    whyItMatters: 'Psyche는 금속이 풍부한 소행성을 직접 탐사해 행성 핵과 초기 태양계 형성에 대한 단서를 찾는 임무다. 화성 중력보조 성공은 심우주 항법의 중요한 단계다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'NASA - Psyche Mission Aces Mars Flyby', url: 'https://www.nasa.gov/missions/psyche-mission/nasas-psyche-mission-aces-mars-flyby-targets-metal-rich-asteroid/', type: 'official', usedFor: '화성 플라이바이 성공과 Psyche 임무 목표 확인' }
+    ],
+    body: `<p>NASA의 <span class="hl">Psyche</span> 탐사선이 화성 플라이바이를 성공적으로 수행하고 금속질 소행성 Psyche를 향한 여정을 이어간다. 이번 단계는 탐사선이 목적지에 도달하기 위해 행성의 중력을 이용해 속도와 궤도 방향을 조정하는 중요한 항법 절차다.</p>
+<p><span class="hl">중력보조</span>는 탐사선이 행성 근처를 지나며 행성의 운동 에너지를 아주 조금 빌려 궤도를 바꾸는 방법이다. 엔진을 오래 켜지 않아도 속도와 방향을 조절할 수 있어, 연료가 제한된 심우주 임무에서 자주 쓰인다. 화성 플라이바이는 Psyche가 먼 소행성대로 향하는 궤도 에너지를 얻는 과정이다.</p>
+<p>Psyche가 향하는 소행성은 금속이 풍부한 것으로 알려져 있다. 과학자들은 이런 천체가 행성 내부 핵의 일부였거나, 초기 태양계에서 금속과 암석이 분리되는 과정을 보여줄 수 있다고 본다. 지구의 핵은 직접 탐사할 수 없지만, 금속질 소행성은 행성 내부를 간접적으로 읽는 창이 될 수 있다. <span class="hl-warn">Psyche 임무는 소행성 하나를 보는 일이 아니라 행성이 어떻게 만들어졌는지 묻는 탐사</span>다.</p>
+<p>앞으로 볼 포인트는 탐사선의 장기 항법, 전기추진 운용, 소행성 도착 후 관측 계획이다. 심우주 탐사는 빠른 성과보다 긴 시간 동안 작은 오차를 관리하는 능력에 가깝다. 이번 화성 플라이바이는 그 긴 여정의 중요한 방향 전환점이다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'axiom-university-alliance-expands',
+    icon: '🎓',
+    title: 'Axiom Space University Alliance, 여러 대륙 연구 네트워크로 확장',
+    summary: 'Axiom Space는 University Alliance가 여러 대륙 연구자들을 연결하는 방향으로 확장됐다고 발표했다.',
+    date: '2026-05-19',
+    sourceName: 'Axiom Space',
+    sourceUrl: 'https://www.axiomspace.com/release/axiom-spaces-university-alliance-expands-connecting-researchers-across-six-continents',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['University Alliance', '상업우주 연구', '우주정거장', '국제협력', '민간 연구'],
+    whyItMatters: '저궤도 연구가 정부 우주정거장 중심에서 상업 플랫폼으로 이동하려면 대학과 연구기관의 참여가 필수다. 연구 네트워크 확장은 상업우주정거장 생태계의 기반을 넓힌다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: '공식 페이지 제목은 six continents로 표시된다. 사용자 제공 후보의 four continents 표현보다 공식 페이지 표현을 우선했다.',
+    sources: [
+      { name: 'Axiom Space - University Alliance Expands', url: 'https://www.axiomspace.com/release/axiom-spaces-university-alliance-expands-connecting-researchers-across-six-continents', type: 'official', usedFor: 'University Alliance 확장과 연구 협력 범위 확인' }
+    ],
+    body: `<p>Axiom Space는 <span class="hl">University Alliance</span>가 여러 대륙의 연구자와 기관을 연결하는 방향으로 확장됐다고 발표했다. 이 프로그램은 상업우주정거장 시대를 대비해 대학, 연구기관, 산업 파트너가 저궤도 연구를 함께 설계하도록 돕는 네트워크다.</p>
+<p>저궤도 연구는 미세중력, 방사선, 폐쇄 환경 같은 지상과 다른 조건을 활용한다. 생명과학, 재료과학, 유체, 반도체, 의학 연구가 대표적이다. 과거에는 이런 연구가 ISS와 국가 우주기관 중심으로 이루어졌지만, 앞으로는 상업 플랫폼과 대학 연구가 더 직접적으로 연결될 가능성이 커지고 있다.</p>
+<p><span class="hl">상업우주정거장</span>이 성공하려면 단순히 모듈을 발사하는 것만으로는 부족하다. 그 안에서 무엇을 연구하고, 누가 비용을 내며, 어떤 데이터와 서비스를 만들 것인지가 중요하다. <span class="hl-warn">연구자 네트워크는 우주정거장을 건물에서 연구 생태계로 바꾸는 연결망</span>이다.</p>
+<p>앞으로 볼 포인트는 이 네트워크가 실제 실험 제안, 비행 기회, 교육 프로그램, 산업 연구로 얼마나 이어지는지다. 상업우주가 지속 가능하려면 홍보성 참여보다 반복 가능한 연구 수요가 필요하다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kasa-kari-satellite-imagery-ai-training-data',
+    icon: '🛰️',
+    title: '우주항공청·항우연, 민간 수요 맞춤형 위성영상 AI 학습자료 제작',
+    summary: '우주항공청과 항우연은 위성영상 AI 학습자료를 산업 수요에 맞춰 제작·공개하는 흐름을 이어가고 있다.',
+    date: '2026-05-14',
+    sourceName: 'KASA',
+    sourceUrl: 'https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=406',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'satellite',
+    tags: ['위성영상', 'AI 학습자료', '지구관측', '데이터셋', '우주산업'],
+    whyItMatters: '위성영상 산업은 위성을 잘 만드는 것만큼 데이터를 쓸 수 있게 만드는 일이 중요하다. AI 학습자료는 민간 서비스와 분석 모델 개발의 기반이 된다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: 'KASA 공식 정책브리프를 기준으로 작성하고, 항우연은 공동 수행·데이터 제작 맥락에서 표기했다.',
+    sources: [
+      { name: '우주항공청 - 민간 수요 맞춤형 위성영상 AI 학습자료 제작', url: 'https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=406', type: 'official', usedFor: '위성영상 AI 학습자료 제작·공개 계획 확인' }
+    ],
+    body: `<p>우주항공청과 한국항공우주연구원은 민간 수요에 맞춘 <span class="hl">위성영상 AI 학습자료</span> 제작 흐름을 이어가고 있다. 위성영상은 재난, 농업, 도시, 해양, 국토 관리에 활용될 수 있지만, 원본 영상만 있다고 바로 서비스가 만들어지는 것은 아니다.</p>
+<p>AI 모델이 위성영상을 이해하려면 도로, 건물, 농경지, 산림, 선박, 변화 지역 같은 대상을 학습할 수 있는 정리된 데이터셋이 필요하다. 사람이 의미를 붙인 학습자료가 있어야 모델은 새 영상에서 유사한 패턴을 찾아낼 수 있다. 그래서 위성영상 데이터는 촬영보다 가공과 검증 과정이 산업화의 중요한 단계가 된다.</p>
+<p>민간 수요 맞춤형이라는 표현은 기술 공급자 중심이 아니라 실제 기업과 서비스가 필요로 하는 형태로 데이터를 준비한다는 뜻이다. <span class="hl-warn">우주산업의 가치는 궤도 위 위성에서 끝나지 않고, 지상에서 데이터를 해석해 의사결정에 쓰는 순간 커진다.</span></p>
+<p>앞으로 볼 포인트는 데이터셋의 품질, 공개 범위, 기업 활용 사례다. 좋은 AI 학습자료가 늘어나면 국내 지구관측 기업과 분석 스타트업이 더 빠르게 서비스를 만들 수 있다. 다만 개인정보, 보안, 오분류 문제를 함께 관리해야 신뢰 가능한 시장이 된다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kari-naro-space-center-special-opening',
+    icon: '🏗️',
+    title: '항우연, 우주항공주간 맞아 나로우주센터 특별 개방',
+    summary: 'KARI는 누리호 발사 현장을 직접 만날 수 있는 나로우주센터 특별 개방 프로그램을 운영한다고 밝혔다.',
+    date: '2026-05-14',
+    sourceName: 'KARI',
+    sourceUrl: 'https://www.kari.re.kr/kor/article/ATCL87374b48c/18443',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'policy',
+    tags: ['나로우주센터', '누리호', '우주항공주간', '대중 참여', '우주교육'],
+    whyItMatters: '우주개발은 연구소와 발사장 안에서만 이루어지지 않는다. 대중이 실제 현장을 이해할 때 국가 우주개발의 사회적 기반도 넓어진다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'KARI - 누리호 발사 현장을 직접 만난다, 나로우주센터 특별 개방', url: 'https://www.kari.re.kr/kor/article/ATCL87374b48c/18443', type: 'official', usedFor: '나로우주센터 특별 개방 일정과 취지 확인' }
+    ],
+    body: `<p>한국항공우주연구원은 우주항공주간을 맞아 <span class="hl">나로우주센터</span>를 특별 개방한다고 밝혔다. 나로우주센터는 누리호 발사가 이루어진 국내 대표 우주 발사장으로, 발사체 조립과 점검, 발사 운용의 상징적 현장이다.</p>
+<p>발사장은 단순히 로켓을 세워 두는 장소가 아니다. 추진제 공급, 기상 판단, 추적·통신, 안전 통제, 비상 절차, 지상 설비가 모두 연결된 복합 시스템이다. 일반 관람객이 이런 공간을 직접 보는 일은 발사가 뉴스 속 장면이 아니라 많은 사람이 함께 관리하는 기술 과정임을 이해하게 해 준다.</p>
+<p>우주교육에서 현장 경험이 중요한 이유는 추상적인 우주개발을 구체적인 산업과 직업으로 바꾸어 보여주기 때문이다. <span class="hl-warn">우주개발의 다음 세대는 교과서 속 로켓보다 실제 발사장과 연구 현장을 보고 자신의 질문을 키울 때 더 가까워진다.</span></p>
+<p>앞으로 볼 포인트는 특별 개방이 일회성 행사에 그치지 않고, 안전과 보안을 지키면서도 꾸준한 교육 프로그램으로 이어지는지다. 국내 발사체 역량이 커질수록 우주개발을 사회가 함께 이해하는 통로도 함께 넓어져야 한다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'axiom-space-japan-subsidiary',
+    icon: '🌏',
+    title: 'Axiom Space, 일본 법인 설립으로 아시아·태평양 상업우주 수요 대응',
+    summary: 'Axiom Space는 일본 법인을 설립해 아시아·태평양 지역의 상업우주정거장과 유인우주 수요에 대응한다고 발표했다.',
+    date: '2026-05-14',
+    sourceName: 'Axiom Space',
+    sourceUrl: 'https://www.axiomspace.com/release/axiom-space-to-establish-japan-subsidiary-to-serve-growing-asia-pacific-demand',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'explore',
+    tags: ['Axiom Space Japan', '상업우주정거장', '아시아태평양', '민간우주', '유인우주'],
+    whyItMatters: '상업우주정거장 시장은 지역 파트너십과 연구 수요가 함께 있어야 성장한다. 일본 법인은 아시아·태평양 시장을 겨냥한 Axiom의 현지화 전략으로 볼 수 있다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'Axiom Space - Japan Subsidiary', url: 'https://www.axiomspace.com/release/axiom-space-to-establish-japan-subsidiary-to-serve-growing-asia-pacific-demand', type: 'official', usedFor: '일본 법인 설립 발표와 APAC 수요 대응 방향 확인' }
+    ],
+    body: `<p>Axiom Space는 일본 법인을 설립해 아시아·태평양 지역의 상업우주 수요에 대응하겠다고 발표했다. Axiom은 민간 우주비행, ISS 민간 임무, 상업우주정거장 모듈 개발을 추진하는 기업으로, 일본 법인은 지역 고객과 연구기관, 산업 파트너를 직접 연결하는 거점이 될 수 있다.</p>
+<p><span class="hl">상업우주정거장</span>은 정부가 운영하는 ISS 이후 저궤도 연구와 제조, 민간 우주비행을 이어갈 후보 인프라다. 하지만 플랫폼만 만들면 시장이 자동으로 생기지는 않는다. 연구 주제, 고객 교육, 규제 대응, 안전 훈련, 탑재체 운송까지 지역별 지원 체계가 필요하다.</p>
+<p>아시아·태평양 지역은 일본, 한국, 호주, 싱가포르 등 우주산업과 생명과학, 소재 연구 역량이 있는 국가가 모여 있다. Axiom의 일본 법인은 이 수요를 상업우주정거장 서비스와 연결하려는 움직임으로 읽힌다. <span class="hl-warn">저궤도 경제는 궤도 위 모듈보다 지상에서 그 모듈을 쓸 연구자와 기업 네트워크가 먼저 커져야 한다.</span></p>
+<p>앞으로 볼 포인트는 일본 법인이 실제 임무 계약, 연구 프로그램, 지역 기업 협력으로 이어지는지다. 상업우주정거장 경쟁은 기술 개발뿐 아니라 신뢰할 수 있는 고객 생태계를 누가 먼저 만드는지의 싸움이기도 하다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kari-launch-vehicle-cooperation-building',
+    icon: '🏭',
+    title: '항우연 발사체기술협력동 준공, 우주수송 협력 허브 운영',
+    summary: 'KARI는 발사체기술협력동 준공을 통해 누리호 기술 이전과 산업체 협력 기반을 강화한다고 밝혔다.',
+    date: '2026-05-12',
+    sourceName: 'KARI',
+    sourceUrl: 'https://www.kari.re.kr/kor/article/ATCL87374b48c/18442',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'launch',
+    tags: ['누리호', '발사체기술협력동', '우주수송', '민간 이전', '한화에어로스페이스'],
+    whyItMatters: '국가 발사체 기술은 연구소에서 산업체로 이전될 때 반복 생산과 운용 역량으로 바뀐다. 협력동은 한국형 우주수송 생태계를 키우는 물리적 거점이다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'KARI - 발사체기술협력동 준공', url: 'https://www.kari.re.kr/kor/article/ATCL87374b48c/18442', type: 'official', usedFor: '발사체기술협력동 준공과 우주수송 협력 목적 확인' }
+    ],
+    body: `<p>한국항공우주연구원은 <span class="hl">발사체기술협력동</span> 준공을 통해 우주수송 역량을 육성하는 협력 허브를 본격 운영한다고 밝혔다. 이 공간은 누리호 개발로 축적된 기술을 산업체와 공유하고, 민간 주도의 발사체 생태계를 키우는 기반으로 소개됐다.</p>
+<p>발사체 기술 이전은 설계도만 넘기는 일이 아니다. 엔진, 탱크, 구조체, 전자장비, 품질관리, 시험 절차, 발사 운용 경험이 함께 축적되어야 한다. 로켓은 한 번의 성공보다 반복 생산과 반복 발사가 어렵다. 따라서 연구소와 산업체가 같은 기술 언어를 쓰고 문제를 함께 해결하는 공간이 중요하다.</p>
+<p><span class="hl">누리호</span>는 한국이 독자 발사체 체계를 갖추는 데 중요한 이정표였지만, 다음 단계는 운용 능력의 산업화다. 민간 기업이 제작과 운영 경험을 쌓아야 발사 서비스, 위성 배치, 기술 수출 가능성이 열린다. <span class="hl-warn">우주수송 역량은 국가 연구개발 성과가 산업 현장에서 반복 가능한 공정으로 바뀔 때 비로소 커진다.</span></p>
+<p>앞으로 볼 포인트는 협력동이 실제 기업 교육, 시험 지원, 공동 개발, 누리호 후속 발사체 체계로 얼마나 이어지는지다. 한국 우주개발의 경쟁력은 발사 성공 기록뿐 아니라 그 성공을 여러 기업이 재현할 수 있는 생태계에 달려 있다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kasi-moon-to-mars-space-exploration-lectures',
+    icon: '🎤',
+    title: '천문연·대전시, 우주항공주간 Moon to Mars 탐사 강연 개최',
+    summary: 'KASI는 우주항공주간을 맞아 달 탐사, 우주위험 감시, Moon to Mars 흐름을 대중에게 소개하는 강연 프로그램을 운영했다.',
+    date: '2026-05-12',
+    sourceName: 'KASI',
+    sourceUrl: 'https://www.kasi.re.kr/publication/post/newsMaterial/32355',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'science',
+    tags: ['Moon to Mars', '달탐사', '우주위험감시', 'KASI', '과학대중화'],
+    whyItMatters: '탐사와 우주위험 감시는 전문 연구 영역이지만 사회적 이해가 함께 있어야 정책과 산업으로 이어진다. 대중 강연은 우주개발의 과학적 배경을 넓히는 통로다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'KASI - Moon to Mars 우주탐사 강연 프로그램', url: 'https://www.kasi.re.kr/publication/post/newsMaterial/32355', type: 'official', usedFor: '강연 프로그램 주제와 운영 취지 확인' }
+    ],
+    body: `<p>한국천문연구원과 대전시는 우주항공주간을 맞아 <span class="hl">Moon to Mars</span> 흐름을 소개하는 우주탐사 강연 프로그램을 열었다. 프로그램은 달 탐사, 우주위험 감시, 미래 탐사 전략처럼 전문성이 높은 주제를 대중에게 설명하는 데 초점을 맞췄다.</p>
+<p>Moon to Mars는 달을 최종 목적지가 아니라 화성 탐사의 전초기지이자 기술 검증장으로 보는 접근이다. 달에서 전력, 착륙, 자원 활용, 장기 체류를 검증하면 더 먼 심우주 임무의 위험을 줄일 수 있다. 동시에 <span class="hl">우주위험 감시</span>는 소행성, 우주잔해, 태양활동처럼 지구와 우주 인프라에 영향을 줄 수 있는 요소를 관측하는 분야다.</p>
+<p>이런 강연이 중요한 이유는 우주개발이 더 이상 전문가만의 뉴스가 아니기 때문이다. 달 탐사 예산, 소행성 방어, 위성망, 우주교통 관리는 사회적 선택과 연결된다. <span class="hl-warn">복잡한 우주 이슈를 시민이 이해할 수 있는 언어로 풀어내는 일도 우주개발의 중요한 기반</span>이다.</p>
+<p>앞으로 볼 포인트는 이런 대중 프로그램이 일회성 행사에서 교육 콘텐츠, 지역 과학문화, 청소년 진로 탐색으로 확장되는지다. 좋은 과학 커뮤니케이션은 호기심을 만들고, 그 호기심이 다음 세대 연구자와 엔지니어를 키운다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'jaxa-esa-ramses-apophis-cooperation',
+    icon: '☄️',
+    title: 'JAXA·ESA, Apophis 소행성 RAMSES 임무와 행성방어 협력 체결',
+    summary: 'JAXA와 ESA가 행성방어 협력 양해각서와 ESA 주도 RAMSES Apophis 임무 협력 협정을 체결했다.',
+    date: '2026-05-08',
+    sourceName: 'JAXA',
+    sourceUrl: 'https://global.jaxa.jp/press/2026/05/20260508-1_e.html',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'science',
+    tags: ['RAMSES', 'Apophis', '행성방어', '소행성', 'JAXA-ESA 협력'],
+    whyItMatters: 'Apophis는 2029년 지구 가까이를 지나는 소행성으로, 근접 통과 전후 변화를 관측할 수 있는 드문 기회다. 행성방어는 국제 협력 없이는 작동하기 어렵다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'JAXA - Cooperation on Planetary Defence and RAMSES', url: 'https://global.jaxa.jp/press/2026/05/20260508-1_e.html', type: 'official', usedFor: 'JAXA-ESA 행성방어 협력과 RAMSES 협정 확인' }
+    ],
+    body: `<p>JAXA와 ESA는 <span class="hl">행성방어</span> 협력에 관한 양해각서와 ESA 주도 <span class="hl">RAMSES</span> 소행성 Apophis 임무 협력 협정을 체결했다. Apophis는 2029년 지구 가까이를 통과할 예정인 소행성으로, 지구 근접 천체 연구에서 특별한 관측 기회를 제공한다.</p>
+<p>행성방어는 소행성이 지구에 위협이 될 수 있는지 찾고, 궤도를 정밀하게 계산하며, 필요할 경우 궤도를 바꾸는 기술까지 포함한다. 영화적 상상처럼 마지막 순간에 폭파하는 일이 아니라, 수년에서 수십 년 전부터 궤도와 물리적 특성을 정확히 아는 일이 핵심이다.</p>
+<p>RAMSES 임무는 Apophis가 지구 가까이를 지나기 전후의 상태를 관측해, 지구 중력이 소행성의 회전, 표면, 궤도에 어떤 영향을 주는지 살피려는 목표를 갖는다. JAXA는 Hayabusa 계열 소행성 탐사 경험을 갖고 있고, ESA는 Hera 등 행성방어 임무를 추진해 왔다. <span class="hl-warn">소행성 하나를 자세히 보는 일은 미래의 충돌 위험을 줄이는 국제 안전 기술</span>로 이어진다.</p>
+<p>앞으로 볼 포인트는 RAMSES의 개발 일정, 탑재체 구성, Apophis 근접 통과 전 관측 준비다. 행성방어는 한 기관의 명성보다 데이터 공유와 국제 협력이 더 중요한 분야다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'rocket-lab-haste-anduril-contract',
+    icon: '⚡',
+    title: 'Rocket Lab, Anduril용 HASTE 극초음속 시험 발사 계약 수주',
+    summary: 'Rocket Lab은 HASTE 기반 극초음속 시험 발사 서비스를 제공하는 3천만 달러 규모 계약을 Anduril과 체결했다고 발표했다.',
+    date: '2026-05-07',
+    sourceName: 'Rocket Lab',
+    sourceUrl: 'https://www.rocketlabcorp.com/updates/rocket-lab-awarded-30-million-contract-for-haste-hypersonic-rocket-launches-for-anduril/',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'launch',
+    tags: ['HASTE', '극초음속', 'Electron', '국방우주', '시험발사'],
+    whyItMatters: 'HASTE는 우주 발사체 기술이 국방 시험 시장과 만나는 지점을 보여준다. 빠르고 반복 가능한 시험 발사는 극초음속 기술 검증의 핵심 인프라다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: null,
+    sources: [
+      { name: 'Rocket Lab - $30M HASTE Contract for Anduril', url: 'https://www.rocketlabcorp.com/updates/rocket-lab-awarded-30-million-contract-for-haste-hypersonic-rocket-launches-for-anduril/', type: 'official', usedFor: '계약 금액, HASTE 발사 서비스, Anduril 고객 확인' }
+    ],
+    body: `<p>Rocket Lab은 Anduril Industries를 위해 <span class="hl">HASTE</span> 기반 극초음속 시험 발사를 제공하는 3천만 달러 규모 계약을 수주했다고 발표했다. HASTE는 Electron 발사체 계열 기술을 응용해 극초음속 시험체를 빠르게 발사하고 데이터를 얻기 위한 플랫폼이다.</p>
+<p><span class="hl">극초음속</span>은 보통 마하 5 이상의 속도 영역을 가리킨다. 이 속도에서는 공기 압축, 열, 구조 하중, 유도 제어가 모두 어려워진다. 실제 비행 환경을 반복적으로 시험해야 설계가 성숙해지기 때문에, 시험 발사체와 발사장 운용 능력이 중요하다.</p>
+<p>HASTE가 우주 뉴스에서 중요한 이유는 우주 발사체 기술이 궤도 투입만이 아니라 고속 비행 시험 인프라로도 확장되고 있기 때문이다. 발사체 회사는 엔진, 구조, 비행 소프트웨어, 발사 운용을 이미 갖추고 있어 국방·연구 시험 시장에 진입하기 쉽다. <span class="hl-warn">우주 발사 기술은 점점 더 넓은 항공우주 시험 생태계의 기반 기술로 쓰이고 있다.</span></p>
+<p>앞으로 볼 포인트는 HASTE 발사가 얼마나 빠르게 반복되고, 시험 데이터가 어떤 고객 수요로 이어지는지다. 다만 국방 관련 시험은 공개 정보가 제한될 수 있으므로, 발표된 사실과 추정은 분명히 구분해 읽어야 한다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
+  {
+    id: 'kasa-cas500-2-launch-scheduled',
+    icon: '🛰️',
+    title: '차세대중형위성 2호, 5월 3일 15시 59분 발사 예정',
+    summary: '우주항공청은 차세대중형위성 2호가 SpaceX Falcon 9에 탑재되어 5월 3일 발사를 앞두고 있다고 발표했다.',
+    date: '2026-05-02',
+    sourceName: 'KASA',
+    sourceUrl: 'https://www.kasa.go.kr/prog/bbsArticle/BBSMSTR_000000000041/view.do?mno=sub01_01&nttId=B000000003086Bf0qJ6',
+    reliability: 'official',
+    status: 'confirmed',
+    category: 'satellite',
+    tags: ['차세대중형위성', 'CAS500-2', '저궤도', '지구관측', 'SpaceX Falcon 9'],
+    whyItMatters: 'CAS500 계열은 한국의 500kg급 표준 위성 플랫폼과 지구관측 역량을 키우는 사업이다. 발사 일정은 국내 위성 개발과 민간 기술 이전 흐름의 중요한 운영 단계다.',
+    lastFactChecked: '2026-05-31',
+    editorNote: '공식 발표 기준으로 발사 예정 시각과 탑재 발사체를 정리했다. 실제 발사 결과는 별도 공식 발표가 있을 때 업데이트한다.',
+    sources: [
+      { name: 'KASA - CAS500-2 Scheduled for Launch at 15:59 on May 3', url: 'https://www.kasa.go.kr/prog/bbsArticle/BBSMSTR_000000000041/view.do?mno=sub01_01&nttId=B000000003086Bf0qJ6', type: 'official', usedFor: '발사 예정일, 시각, 발사체, 임무 성격 확인' }
+    ],
+    body: `<p>우주항공청은 <span class="hl">차세대중형위성 2호(CAS500-2)</span>가 SpaceX Falcon 9에 탑재되어 2026년 5월 3일 15시 59분 발사를 앞두고 있다고 발표했다. 차세대중형위성 사업은 한국의 표준 위성 플랫폼과 지구관측 활용 능력을 키우는 중요한 축이다.</p>
+<p>CAS500 계열은 약 500kg급 위성 플랫폼을 바탕으로 여러 임무 장비를 탑재할 수 있게 설계된 위성군이다. 플랫폼이 표준화되면 위성을 매번 새로 설계하는 부담을 줄이고, 관측·과학·공공 임무에 맞춰 더 빠르게 제작할 수 있다. 저궤도 지구관측 위성은 국토, 재난, 농업, 환경, 도시 변화를 반복적으로 관측하는 데 쓰인다.</p>
+<p>이번 발표에서 중요한 점은 위성 개발뿐 아니라 발사 운용의 국제 협력이다. Falcon 9 같은 상업 발사체를 이용하면 국내 위성을 원하는 일정과 궤도에 올리는 선택지가 넓어진다. 동시에 장기적으로는 국내 발사체와 위성 제작 생태계를 함께 키우는 전략이 필요하다. <span class="hl-warn">위성 역량은 위성을 만드는 능력, 데이터를 쓰는 능력, 안정적으로 궤도에 올리는 능력이 함께 맞물릴 때 커진다.</span></p>
+<p>앞으로 볼 포인트는 발사 후 초기 교신, 궤도 안착, 탑재체 성능 점검이다. 발사 예정 발표는 시작점이고, 실제 운영 능력은 궤도 검증과 데이터 서비스 단계에서 확인된다.</p>`,
+    image: { url: '', alt: '', caption: '', credit: '', license: '', sourceUrl: '' }
+  },
   /* ================================================================
      날짜 기준 최신순 정렬
      공개(official/reliable_media/analysis/low_confidence) 먼저,

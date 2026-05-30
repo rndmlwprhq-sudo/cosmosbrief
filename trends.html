@@ -500,6 +500,9 @@
     function esc(s) {
       return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
+    function sanitizeHtml(html) {
+      return (window.DOMPurify && typeof DOMPurify.sanitize === 'function') ? DOMPurify.sanitize(html) : html;
+    }
     function articleAnchor(id) {
       return 'article-' + String(id || '').replace(/[^a-zA-Z0-9_-]/g, '-');
     }
@@ -643,7 +646,7 @@
         }
         bodyHtml += `<div class="modal-verify-section"><div class="modal-verify-title">📋 출처 및 검증</div>${verifyRows}${editorNoteHtml}${sourcesHtml}</div>`;
 
-        document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(bodyHtml);
+        document.getElementById('modal-body').innerHTML = sanitizeHtml(bodyHtml);
 
         // Footer: source link
         let footerHtml = '';
@@ -794,7 +797,7 @@
       `<span class="modal-company">${esc(item.companyIcon||'')} ${esc(item.companyName)}</span>`+
       `<span class="modal-time">${item.publishedAtDisplay||''} &nbsp;·&nbsp; ${relTime(item.publishedAt)}</span>`;
     document.getElementById('modal-title').textContent = item.title||'';
-    document.getElementById('modal-body').innerHTML = DOMPurify.sanitize(item.content || ('<p>'+esc(item.summary||'')+'</p>'));
+    document.getElementById('modal-body').innerHTML = sanitizeHtml(item.content || ('<p>'+esc(item.summary||'')+'</p>'));
     const links = (item.links||[]).concat((item.articles||[]).map(a=>a.link)).filter(Boolean);
     document.getElementById('modal-footer').innerHTML = links.slice(0,4)
       .map(l=>`<a href="${esc(l)}" target="_blank" rel="noopener" class="modal-link">🔗 원문 보기</a>`).join('');
